@@ -1,0 +1,11 @@
+.select-wrapper {
+    
+	ul {
+		li > span {
+			color:#4e342e !important;
+		}
+	}
+}
+.select-wrapper:focus {
+    background-color:#4e342e !important;
+}

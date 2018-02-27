@@ -1,0 +1,27 @@
+.imagefile {
+  display: none;
+}
+
+#bestsellercarousel {
+  height: 300px;
+}
+#bestsellercarousel .carousel {
+  height: 100%;
+}
+
+.sellertitle h3 {
+  font-size: 2em;
+}
+
+.producttitle {
+  font-size: 1em;
+}
+
+.sliderbackground {
+  background-image: url("../img//home/homepageslider/pexels-photo-67468.jpg");
+  background-position: center;
+  background-size: 100% 100%;
+  background-attachment: fixed;
+}
+
+/*# sourceMappingURL=home.css.map */

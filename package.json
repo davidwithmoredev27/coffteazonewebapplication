@@ -1,0 +1,25 @@
+{
+  "name": "coffteazonewebsite",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidwithmoredev27/coffteazonewebsite.git"
+  },
+  "author": "george david withmore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidwithmoredev27/coffteazonewebsite.git/issues"
+  },
+  "homepage": "https://github.com/davidwithmoredev27/coffteazonewebsite#readme",
+  "dependencies": {
+    "html5shiv": "^3.7.3",
+    "jquery": "^3.3.1",
+    "material-design-icons": "^3.0.1",
+    "normalize.css": "^7.0.0"
+  }
+}

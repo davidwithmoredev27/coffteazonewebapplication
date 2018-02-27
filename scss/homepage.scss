@@ -1,0 +1,107 @@
+.fontpages {
+    font-size:2em !important;
+}
+.showontablet {
+    display:none;
+}
+@media only screen and(min-width:426px) and (max-width:768px) {
+    .showontablet {
+        display:block !important;
+    }
+}
+@media only screen and (max-width:767px) {
+    .removetabletandmobile {
+        display:none !important;
+    }
+}
+@media only scren and(max-width:1023px) {
+    .removetabletandmobile {
+        display:none !important;
+    }
+}
+@media only screen and (max-width:1023px) {
+    .homepagecategory {
+        height: 150px !important;
+    }
+    .removerowonhomepage {
+        display: block;
+    }
+}
+@media only screen and (min-width:1024px) {
+    .homepagecategory {
+        height: 200px !important;
+    }
+    .removerowonhomepage {
+        display: none !important;
+    }
+}
+
+@media only screen and(max-width:1023px) {
+    .showslidermobile {
+        display: block !important;
+
+    }
+    .removeslidermobile {
+        display:none !important;
+    }
+}
+
+@media only screen and(min-width:1024px) {
+    .showslidermobile {
+        display: none !important;
+
+    }
+    .removeslidermobile {
+        display:block !important;
+    }
+}
+@media only screen and (max-width:320px) {
+    .rowtitleseperator {
+        display:none !important;
+    }
+}
+@media only screen and (min-width:1024px) {
+    .rowtitleseperator {
+        display:none !important;
+    }
+}
+
+@media only screen and (min-width:768px) and(max-width:1023px) {
+    .rowtitleseperator {
+        display: block !important;
+    }
+}
+
+
+@media only screen and (min-width:768px) {
+    .sliderremovemobile {
+        display:block !important;
+
+    }
+    .slidereditshowmobile {
+        display:none !important;
+    }
+    
+}
+@media only screen and (min-width:767px) {
+     .showontabletseperator {
+        display:none;
+    }
+}
+@media only screen and (min-width:768px) and (max-width:1023px) {
+    .showontabletseperator {
+        display:block;
+    }
+}
+@media only screen and (min-width:1024px) {
+     .showontabletseperator {
+        display:none;
+    }
+}
+.sliderremovemobile {
+    display:none !important;
+
+}
+.slidereditshowmobile {
+    display:block !important;
+}

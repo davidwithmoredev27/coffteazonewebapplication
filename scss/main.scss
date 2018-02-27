@@ -1,0 +1,204 @@
+//@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+@import url("../node_modules/material-design-icons/iconfont/material-icons.css");
+//@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import "login";
+@import  "home";
+@import "register";
+@import "services";
+@import "dashboard";
+@import "pages";
+@import "users";
+@import "homepage";
+@import "menu";
+@import "gallery";
+@import "filter";
+@mixin TransitionAnimation($time , $function) {
+    -moz-transition: $time $function;
+    -webkit-transition: $time  $function;
+    -o-transition:$time $function;
+    -khtml-transition: $time $function;
+    -ms-transition: $time $function;
+    transition: $time  $function;
+}
+@mixin boxShadow($pxOne, $pxTwo, $pxThree , $color ) {
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+    box-shadow: $pxOne  $pxTwo  $pxThree  $color !important;
+}
+
+#materialbox-overlay {
+    background-color:rgba(0, 0, 0, 0.925) !important;
+    
+}
+.sellertitle {
+    h3 { 
+        color:#3e2923;
+        font-weight: bold;
+        font-family: 'Oleo Script', cursive;
+    }
+}
+#bodyshit {
+    //background-color:#633a2b;
+    background-color: #82512a;
+}
+body {
+    -webkit-font-smoothing:antialiased;
+    display: flex;
+    //min-height: 100vh;
+    flex-direction: column;
+    font-family: 'Noto Sans', tahoma , arial , helvetica ,  sans-serif;
+}
+main {
+    flex: 1 0 auto;
+    //height: 700px;
+    position: relative;
+    z-index: 1;
+}
+.nav-wrapper {
+    @include boxShadow(0px, 0px, 5px , #000);
+}
+/* .sliderbackground {
+ /*   nav {
+       @include boxShadow(0px, 2px, 10px , #000);
+   } */
+// } */
+.slider {
+    // position:absolute;
+    z-index: 0;
+    background-color:#212121;
+    padding-bottom:10px;
+    @include boxShadow(0px, 2px, 5px , #000);
+    
+}
+.materialboxed.initialized.active {
+    height: 400px !important;
+}
+
+.materialboxed.initialized.active:hover {
+    @include boxShadow(0px , 0px , 15px , #000);
+}
+.materialbox-caption {
+    margin-bottom:3em !important;
+}
+@media only screen and (min-width:1024px) {
+    .uplogo {
+        margin-left: 30px;
+    }
+    .right {
+        margin-right: 15px;
+    }
+}
+@media only screen and (max-width:768px) {
+    .uplogo {
+        margin-left: 0;
+    }
+}
+.sellerimg {
+    border:10px solid black;
+    @include boxShadow(0px ,0px ,10px, #000);
+}
+.indicators {
+    padding-bottom:20px !important;
+    //@include boxShadow(0px ,0px , 10px , #000);
+}
+.indicator-item {
+    width:12px !important;
+    height:12px !important;
+}
+.indicator-item.active {
+    background-color:#4e342e !important;
+   
+}
+.uplogo {
+    z-index: 4;
+    //margin-left: 20px;
+}
+
+#megadropdown {
+    position: absolute;
+    z-index: 3;
+    transition:linear .2s;
+    display: none;
+    background-color:brown;
+    width: 100vw;
+    height:400px;
+}
+
+#showdropdown {
+    #megadropdown {
+        @include TransitionAnimation(.2s ,linear);
+    }
+}
+#showdropdown:hover {
+    #megadropdown {
+        display:block;
+    }
+}
+.dropdowndevider {
+    .menutitle {
+         height:50px;
+        padding-left:30px;
+        h3 {
+            font-size:25px;
+            height:100%;
+        }
+    }
+   
+}
+
+.nav-wrapper {
+    ul {
+        li {
+            a {
+                @include TransitionAnimation(.2s , linear);
+                  
+                  &:hover {
+                    color:brown;
+                    // a {
+                      
+                    // }
+                  }
+            }
+        }
+    }
+}
+.dropdowndishcategory {
+    background-color:brown;
+    box-shadow: none;
+    ul {
+        height:100%;
+        li {
+            height:30px;
+    
+            a {
+                display: inline;
+                background-color:none;
+                color:white;
+                &:hover {
+                    color:white;
+                    background-color: inherit;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+#parralaxtwo {
+    margin-bottom: 0px;
+    background-image: url("../img/home/homepageslider/pexels-photo-67468.jpg");
+    background-attachment: fixed;
+    background-position: center;
+}
+
+.paddingfixed {
+    padding-left: 0px !important;
+}
+
+.indent {
+    padding-left:55px !important;
+    font-size:.9em !important;
+}

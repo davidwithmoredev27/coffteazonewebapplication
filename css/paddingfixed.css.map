@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,oBAAqB;EACf,YAAY,EAAE,CAAC;;;AAGrB,yCAA2C;EACvC,oBAAqB;IACrB,YAAY,EAAE,CAAC",
+"sources": ["../scss/paddingfixed.scss"],
+"names": [],
+"file": "paddingfixed.css"
+}

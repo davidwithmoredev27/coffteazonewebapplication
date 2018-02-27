@@ -1,0 +1,117 @@
+
+@media only screen and (min-width:321px) and (max-width:766px){
+    .rowtablet {    
+        display: block !important;
+    }
+}
+@media only screen and (max-width:767px) {
+     .tabletfix {
+        display: none !important;
+    
+    }
+    .rowtablet {
+        display: none !important;
+    }
+}
+
+@media only screen and (max-width:1023px) {
+   
+    .removemobile {
+        display: none !important;
+    }
+    .showmobile {
+        display: block;
+    }
+    .removeprefix {
+        margin-left:25px !important;
+    }
+    .centeronmobile {
+        text-align:center;
+        font-size:3em;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width: 1023px) {
+    .accountbtn {
+        text-align: center !important;
+    } 
+    .tabletfix {
+        display: block;
+
+    }
+    .rowtablet {
+        display: block;
+    }
+}
+@media only screen and(min-width:1440px) {
+    .centeronmobile {
+        text-align:center;
+        font-size:3em;
+    }
+}
+@media only screen and (min-width:1024px) {
+    .rowtablet {
+        display: none !important;
+    }
+    .tabletfix {
+        display: none;
+    }
+    .showmobile {
+        display: none !important;
+    }
+    .removemobile {
+        display:  block;
+    }
+    .accountbtn {
+        font-size:.5em !important;
+    }   
+     .accountbtn {
+        text-align: center !important;
+    }  
+}
+@media only screen and (max-width:767px) {
+    .filtertable {
+        thead {
+            tr {
+                // border:solid gray !important;
+                th {
+                    border:1px solid white !important;
+                    color:#424242;
+                }
+            
+            }
+        }
+        tbody {
+            tr {
+                //border:solid gray !important;
+                td {
+                    border:solid white !important;
+                    color:#424242;
+                }
+            }
+        }   
+    }
+}
+@media only screen and (min-width:1024px) {
+    .filtertable {
+        thead {
+            tr {
+                // border:solid gray !important;
+                th {
+                    border: .1em solid  #616161 !important;
+                    color:#424242;
+
+                }
+            
+            }
+        }
+        tbody {
+            tr {
+                //border:solid gray !important;
+                td {
+                    border:.1em  solid #616161 !important;
+                }
+            }
+        }
+    }
+}

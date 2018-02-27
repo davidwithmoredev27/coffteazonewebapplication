@@ -1,0 +1,9 @@
+xhosting account
+username:davidwithmore422@gmail.com
+password:cofftea2
+
+
+servername:coffteazone.x10host.com
+mysql username:cofftea2_admin
+mysql password:coffteazone
+dbname:cofftea2_coffteadb

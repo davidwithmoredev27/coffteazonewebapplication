@@ -1,0 +1,34 @@
+#username , #password {
+    text-align:center;
+    font-size:1.5em;
+}
+
+
+#loginbtnseperator {
+    display:none;
+}
+
+
+@media only screen and (max-width:769px) and (min-width:320px) {
+    #loginbtnseperator {
+        display:block;
+    }
+}
+
+#attempnotify {
+    display: none;
+    font-size:.8em !important;
+}
+
+input[type=text]:focus  ,input[type=password]:active{
+    border-bottom: 2px solid #4e342e !important;
+    //box-shadow: 0 1px 0 0 #000;
+}
+input[type=password]:focus , input[type=password]:active {
+     border-bottom:2px solid #4e342e !important;
+     box-shadow:none;
+}
+ 
+#submitbutton {
+    display: inline-block;
+}

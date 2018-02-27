@@ -1,0 +1,28 @@
+#username, #password {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+#loginbtnseperator {
+  display: none;
+}
+
+@media only screen and (max-width: 769px) and (min-width: 320px) {
+  #loginbtnseperator {
+    display: block;
+  }
+}
+input[type=text]:focus, input[type=password]:active {
+  border-bottom: 2px solid #4e342e !important;
+}
+
+input[type=password]:focus, input[type=password]:active {
+  border-bottom: 2px solid #4e342e !important;
+  box-shadow: none;
+}
+
+#submitbutton {
+  display: inline-block;
+}
+
+/*# sourceMappingURL=login.css.map */

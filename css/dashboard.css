@@ -1,0 +1,70 @@
+header, main, footer {
+  padding-left: 200px;
+}
+
+@media only screen and (max-width: 992px) {
+  header, main, footer {
+    padding-left: 0;
+  }
+}
+.logostyle {
+  height: 80px !important;
+}
+.logostyle a {
+  height: 100% !important;
+}
+
+.sidenavmainlinks {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.adminlinks li a {
+  color: white !important;
+}
+
+.admincolor {
+  background-color: #263238 !important;
+}
+
+@media only screen and (min-width: 1024px) {
+  .adminmenu {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 320px) and (max-width: 1023px) {
+  .adminprofilemobile {
+    display: block !important;
+  }
+
+  .logostyle {
+    display: none !important;
+  }
+
+  .brand-logomobile {
+    display: block !important;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .brand-logomobile {
+    display: none !important;
+  }
+
+  .adminprofilemobile {
+    display: none !important;
+  }
+
+  .dashboarddevicefixed {
+    display: none !important;
+  }
+}
+@media only screen and (max-width: 320px) {
+  .dashboarddevicefixed {
+    display: none !important;
+  }
+}
+.dashboardicons {
+  color: #424242 !important;
+}
+
+/*# sourceMappingURL=dashboard.css.map */

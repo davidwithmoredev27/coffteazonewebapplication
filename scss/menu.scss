@@ -1,0 +1,27 @@
+
+@media only screen and (max-width:767px) {
+    .showtabletandmobilemenu {
+        display:block !important;
+    }
+    .showontabletmenu {
+         display: none !important;
+    }
+}
+@media only screen and(min-width:768px) and (max-width:1023px) {
+    .showtabletandmobilemenu {
+        display:block !important;
+    }
+    .showontabletmenu {
+        display:block !important;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    .showtabletandmobilemenu {
+        display:none !important;
+    }
+    .showontabletmenu {
+         display: none !important;
+    }
+}
+
