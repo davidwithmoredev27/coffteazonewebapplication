@@ -53,7 +53,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img src="../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -68,7 +68,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
             <li class="logostyle">
-                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="../dashboard.php" class="left-align white-text sidenavmainlinks">

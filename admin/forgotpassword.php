@@ -2,6 +2,7 @@
 <?php
     session_start();
     $_SESSION['loginerror'] = 0;
+    unset($_SESSION['passwordattempt']);
     if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         mysqli_close($connection);
         header("location:dashboard.php?admin");

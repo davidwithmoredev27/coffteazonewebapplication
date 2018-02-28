@@ -117,17 +117,17 @@
                                             <div class="collapsible-body admincolor">
                                                 <ul>
                                                     <li>
-                                                        <a href="drinks.php" class="white-text left-align">drinks
+                                                        <a href="drinks.php" class="white-text left-align indent">Drinks
                                                             <i class="tiny material-icons left white-text">local_bar</i>
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="foods.php" class="white-text left-align">foods
+                                                         <a href="foods.php" class="white-text left-align indent">Foods
                                                             <i class="tiny material-icons left white-text">local_dining</i>
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="pastries.php" class="white-text left-align">pastries
+                                                         <a href="pastries.php" class="white-text left-align indent">Pastries
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
@@ -152,12 +152,12 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="faqsettings.php" class="white-text left-align">FAQ
+                                    <a href="faq.php" class="white-text left-align">FAQ
                                         <i class="tiny material-icons left white-text">help</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="faqsettings.php" class="white-text left-align">About Us
+                                    <a href="aboutus.php" class="white-text left-align">About Us
                                         <i class="tiny material-icons left white-text">person_pin</i>
                                     </a>
                                 </li>

@@ -2,6 +2,11 @@
 <?php
     session_start();
     //date_default_timezone_set("Asia/Manila");
+   
+    // echo "<pre>";
+    // print_r($_SESSION);
+    // echo "</pre>";
+    // die;
     if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         mysqli_close($connection);
         header("location:dashboard.php?admin");
@@ -43,16 +48,7 @@
     }
     if (isset($_POST['login'])) {
          
-            if (isset($_SESSION['passwordattempt'])) {
-                if ($_SESSION['passwordattempt'] == 5 && $_SESSION['passwordattempt'] !== 1) {
-                    $_SESSION['passwordattempt'] = $_SESSION['passwordattempt'] - 1;
-                } elseif ($_SESSION['passwordattempt'] == 1) {
-                    $_SESSION['passwordattempt'] = 0;
-                }
-            } else {
-                
-                $_SESSION['passwordattempt'] = 5;
-            }
+    
 
          if (isset($_POST['username']) && !empty($_POST['username'])) {
             $usernameSanitized = sanitizedData($_POST['username']);
@@ -76,8 +72,7 @@
                 if (!isset($userCredentials['username'])) {
                     $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Username did not match!</strong></span>\n";
                     $_SESSION['loginerror'] = $_SESSION['loginerror'] + 1;
-                    header("location:login.php");
-                    die();
+            
                 }
             }
         } 
@@ -108,17 +103,32 @@
                     $i++;
                 }
                 if (!isset($userCredentials['password'])) {
+                     
                     $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Password did not match!</strong></span>\n";
                     $_SESSION['loginerror'] = $_SESSION['loginerror'] + 1;
-                    header("location: login.php");
-                    die();
                 }
             }
         }
+        if (!isset($userCredentials['username'])) {
+            if (!isset($userCredentials['password'])) {
+                 $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like Username and Password did not match!</strong></span>\n";
+            }
+            mysqli_close($connection);
+            header("location:login.php");
+            die;
+        }
 
+        if (!isset($userCredentials['password'])) {
+             if (!isset($userCredentials['username'])) {
+                 $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like Username and Password did not match!</strong></span>\n";
+            }
+            mysqli_close($connection);
+            header("location:login.php");
+            die(); 
+        }
         if (isset($userCredentials['username']) && isset($userCredentials['password']) &&
             !empty($userCredentials['username']) && !empty($userCredentials['password'])) {
-            
+        
             $_SESSION['username'] = $userCredentials['username'];
             $_SESSION['password'] = $userCredentials['password'];
             header("location:dashboard.php?admin");
@@ -188,11 +198,7 @@
                     <span id="attempnotify" class="red darken-3 center-align z-depth-3">
             
                         <strong class="white-text">
-                        <?php 
-                            if (isset($_SESSION['passwordattempt'])) {
-                                echo $_SESSION['passwordattempt'];
-                            }
-                        ?> Password attempt will redirected you to forgot password form!</strong>
+                         5 Password attempt will redirected you to forgot password form!</strong>
                     </span>
                     <label for="password" class="brown-text text-darken-3" >Password</label>
                 </div>

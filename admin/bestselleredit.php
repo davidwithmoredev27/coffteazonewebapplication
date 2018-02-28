@@ -97,7 +97,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img src="../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin

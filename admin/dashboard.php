@@ -47,7 +47,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img  src="../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -61,6 +61,9 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
+             <li>
+                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            </li>
             <li class="logostyle">
                 <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
             </li>
@@ -252,15 +255,7 @@
                     <h4 class="center-align">Dashboard</h4>
                 </div>
             </div>
-            <div class="row tabletfixed">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row tabletfixed">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div> 
-            <div class="row tabletfixed">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>  
+    
             <div class="container">
              <?php
                 if(isset($_SESSION['registrationsuccess'])) {
@@ -282,7 +277,7 @@
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
                             <i class="medium  dashboardicons material-icons">account_circle</i>
-                            <span class="badge white-text">
+                            <span class="badge iconcolor white-text">
                                 <?php
                                     $admiuserenable = "SELECT * FROM tbl_admin";
                                     $adminuserdisable = "SELECT * FROM tbl_admin_disable";

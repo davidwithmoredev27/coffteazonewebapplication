@@ -102,7 +102,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img src="../../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -116,8 +116,11 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
+             <li>
+                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            </li>
             <li class="logostyle">
-                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="../dashboard.php" class="left-align white-text sidenavmainlinks">
@@ -291,6 +294,21 @@
         </a>
     </header>
    <main>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Our Menu</a>
+                            <a href="../foods.php" class="breadcrumb">Drinks</a>
+                            <a href="smoothies.php" class="breadcrumb">Smoothies</a>
+                            <a href="#!" class="breadcrumb"><?php echo $_SESSION['displaytitle'];?></a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
        <!-- show this on mobile and remove the above form -->
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>

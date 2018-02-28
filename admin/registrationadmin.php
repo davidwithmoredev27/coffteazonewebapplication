@@ -277,6 +277,9 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
+             <li>
+                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            </li>
             <li class="logostyle">
                 <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
             </li>
@@ -453,6 +456,18 @@
         </a>
     </header>
     <main>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="#!" class="breadcrumb">Authetication</a>
+                            <a href="#!" class="breadcrumb">Registration</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
         <div class="container">
             <div class="header row">
                 <div class="col s12 m12 l12 xl12 mobilecenter">
