@@ -69,13 +69,13 @@
         text-align: center !important;
     }  
 }
-@media only screen and (max-width:767px) {
-    .filtertable {
+@media only screen and (min-width:768px) and (max-width:1023px) {
+      .filtertable {
         thead {
             tr {
                 // border:solid gray !important;
                 th {
-                    border:1px solid white !important;
+                    border:.1em solid #616161 !important;
                     color:#424242;
                 }
             
@@ -85,13 +85,36 @@
             tr {
                 //border:solid gray !important;
                 td {
-                    border:solid white !important;
+                    border:.1em solid #616161 !important;
                     color:#424242;
                 }
             }
         }   
     }
 }
+// @media only screen and (min-width:767px) and (max-width:1023px) {
+//     .filtertable {
+//         thead {
+//             tr {
+//                 // border:solid gray !important;
+//                 th {
+//                     border:1px solid white !important;
+//                     color:#424242;
+//                 }
+            
+//             }
+//         }
+//         tbody {
+//             tr {
+//                 //border:solid gray !important;
+//                 td {
+//                     border:solid white !important;
+//                     color:#424242;
+//                 }
+//             }
+//         }   
+//     }
+// }
 @media only screen and (min-width:1024px) {
     .filtertable {
         thead {
@@ -114,4 +137,27 @@
             }
         }
     }
+}
+.accountbtn {
+    font-size:.8em !important;
+    text-align:center;
+}
+
+
+@media only screen and (max-width:767px) {
+    .fontsize {
+        font-size:1.5em !important;
+    }
+}
+@media only screen and (min-width:321px) and (max-width:767px) {
+    .rowtablet {
+        display:block !important;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+    .fontsize {
+        font-size:1.9em !important;
+    }
+    
 }

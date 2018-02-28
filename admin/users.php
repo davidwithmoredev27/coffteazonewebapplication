@@ -88,7 +88,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
             <li class="logostyle">
-                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="dashboard.php" class="center-align"><img .class="brand-logo" src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
             </li>
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
@@ -410,60 +410,60 @@
             </div>  
            <div class="row">
                <form class="col s12 m12 xl3 l3" action="editaccount.php" method="post">
-                    <div class="input-field col s12 m12 xl4 l5 removemobile">
+                    <div class="input-field col s12 m12 xl5 l5 removemobile">
                         <div class="row">
                             <button  name="editaccount" class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" id="edit" type="submit">Edit</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6 offset-l1 offset-xl1">
-                        <input placeholder="id you want to edit" class="center-align" name="editid" id="editid" type="text" required>
+                        <input placeholder="ID" class="center-align" name="editid" id="editid" type="text" required>
                     </div>
-                    <div class="input-field col s12 m12 xl4 l5 showmobile">
+                    <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
                             <button  name="editaccount" class="btn waves-light waves-effect brown darken-3 col  s12 m12 l12 xl12 accountbtn"  id="edit" type="submit">Edit</button>
                         </div>
                     </div>
                 </form>
                 <form class="col s12 m12 xl3 l3" action="enableaccount.php" method="post">
-                    <div class="input-field col s12 m12 xl4 l5 removemobile">
+                    <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 removemobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="id you want to enable" class="center-align" name="enableid" id="enableid" type="text" required>
+                        <input placeholder="ID" class="center-align" name="enableid" id="enableid" type="text" required>
                     </div>
-                    <div class="input-field col s12 m12 xl4 l5 showmobile">
+                    <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
                         </div>
                     </div>
                </form>
                <form class="col s12 m12 xl3 l3" action="disableaccount.php" method="post">
-                    <div class="input-field col s12 m12 xl4 l5 removemobile">
+                    <div class="input-field col s6 m6 xl5 l5 removemobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="id you want to disable" class="center-align" name="disableid" id="disableid" type="text" required>
+                        <input placeholder="ID" class="center-align" name="disableid" id="disableid" type="text" required>
                     </div>
-                    <div class="input-field col s12 m12 xl4 l5 showmobile">
+                    <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
                         </div>
                     </div>
                </form>
                <form class="col s12 m12 xl3 l3" action="deleteaccount.php" method="post">
-                    <div class="input-field col s12 m12 xl4 l5 removemobile">
+                    <div class="input-field col s6 m6 xl5 l5 removemobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="id you want to delete" class="center-align" name="deleteid" id="deleteid" type="text" required>
+                        <input placeholder="ID" class="center-align" name="deleteid" id="deleteid" type="text" required>
                     </div>
-                    <div class="input-field col s12 m12 xl4 l5 showmobile">
+                    <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
                             <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
                         </div>

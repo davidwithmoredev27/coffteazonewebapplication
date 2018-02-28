@@ -28,7 +28,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../../img/logo/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="../../img/logo/favicon.ico" type="image/x-icon" />
     <title><?php echo $_SESSION['pagename']; ?> Settings</title>
     <link rel="stylesheet" type="text/css" href="../../css/normalize.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
@@ -243,7 +243,20 @@
         </a>
     </header>
     <main>
-        
+         <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Our Menu</a>
+                            <a href="../drinks.php" class="breadcrumb">Drinks</a>
+                            <a href="#!" class="breadcrumb">Smoothies</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
         <!-- show on mobile -->
             
         <div class="container">
@@ -357,9 +370,9 @@
                             </div>
                             <div class="row">
                                 <div class="file-field input-field col s12 m12 l12 xl12">
-                                    <div class="btn brown darken-3">
+                                    <div class="btn blue-grey darken-4">
                                         <span>Image</span>
-                                        <input type="file" name="menuimg" required value="image">
+                                        <input type="file"  name="menuimg" required value="image">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -367,9 +380,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12 m12 l6 xl6 ">
+                                <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                     <div class="row">
-                                        <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="menusubmit">Add</button>
+                                        <button type="submit" class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4" name="menusubmit">Add</button>
                                     </div>
                                 </div>
                             </div>

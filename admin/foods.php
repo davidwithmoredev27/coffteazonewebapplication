@@ -237,6 +237,19 @@
         </a>
     </header>
     <main>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="pages.php" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Our Menu</a>
+                            <a href="foods.php" class="breadcrumb">Foods</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
          <div class="row showontabletmenu">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
@@ -246,111 +259,100 @@
         <div class="row showontabletmenu">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
-        <div class="row">
+         <div class="row">
             <div class="col s12 m12 l12 xl12">
-                <h4 class="center-align">Foods settings</h4>
-            </div>    
+                <div class="header">
+                    <h4 class="pagetitle">Foods</h4>
+                </div>
+            </div>
         </div>
         <div class="row">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 l12 xl12">
+            <div class="col s12 m12 l10 xl10">
                 <div class="row">
-                    <div class="container">
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Starter</h6>
-                            </div>
-                            <div class="row">
-                                <a href="../admin/menu/starter.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Starter</h6>
                         </div>
+                        <div class="row">
+                            <a href="../admin/menu/starter.php" class="btn waves-light waves-effect col  btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Burger &amp; Sand.</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/burgersandsandwiches.php" class="btn waves-light waves-effect col  btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Pizza</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/pizza.php" class="btn waves-light waves-effect col btncolor  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div> 
+                    </div>
                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Soup</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Burger &amp; sand.</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/burgersandsandwiches.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
-                        </div>
-                        <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Pizza</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/pizza.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div> 
-                        </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Soup</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/soup.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/soup.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m12 l12 xl12">
+            <div class="col s12 m12 l10 xl10">
                 <div class="row">
-                     <div class="container">
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1   brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Main Course</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/maincourse.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Main Course</h6>
                         </div>
+                        <div class="row">
+                                <a href="../admin/menu/maincourse.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Group Meals</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/groupmeals.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Platter</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Group Meals</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/groupmeals.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/platter.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                    </div>
+                        <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Pasta</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Platter</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/platter.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
-                        </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 brown darken-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Pasta</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/pasta.php" class="btn waves-light waves-effect col  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/pasta.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
                     </div>
                 </div>

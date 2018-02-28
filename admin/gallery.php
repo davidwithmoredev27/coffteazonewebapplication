@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <header class="headerstyle red darken-4">
+    <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="profile.php">Profile</a></li>
             <li><a href="logout.php">Log Out</a></li>
@@ -236,7 +236,7 @@
             <i class="material-icons brown-text text-darken-4 adminmenu">menu</i>
         </a>
     </header>
-   <main class="red darken-4">
+   <main>
        <div class="row">
            <div class="col s12 m12 l12 xl12">
                 <h4 class="center-align">Gallery Settings</h4>
@@ -248,7 +248,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container galleryheigth blue-grey darken-4 z-depth-3">
+                    <div class="container galleryheigth boxcolor z-depth-3">
                         <div class="row">
                             <div class="row">
                                 <col class="s12 m12 l12 xl12">
@@ -270,7 +270,7 @@
                             </div>
                 
                              <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
-                                <a href="#" class="btn waves-light brown darken-2 waves-effect col xl12 l12 s12 m12">View</a>
+                                <a href="#" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">View</a>
                             </div>
                         </div>
                     </div>
@@ -283,7 +283,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="container galleryheigth blue-grey darken-4 z-depth-3">
+                    <div class="container galleryheigth boxcolor z-depth-3">
                         <div class="row">
                                 <col class="s12 m12 l12 xl12">
                             </div>
@@ -305,13 +305,13 @@
                             </div>
         
                             <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
-                                <a href="#" class="btn waves-light brown darken-2 waves-effect col xl12 l12 s12 m12">Edit</a>
+                                <a href="addimages.php" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">Edit</a>
                             </div>  
                         </div>
                     </div>
                 </div>
                  <div class="row">
-                    <div class="container galleryheigth blue-grey darken-4 z-depth-3">
+                    <div class="container galleryheigth boxcolor z-depth-3">
                         <div class="row">
                                 <col class="s12 m12 l12 xl12">
                             </div>
@@ -333,7 +333,7 @@
                             </div>
         
                              <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
-                                <a href="galleryalbumadd.php" class="btn waves-light brown darken-2 waves-effect col xl12 l12 s12 m12">Edit</a>
+                                <a href="galleryalbumadd.php" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">Edit</a>
                             </div>
                         </div>
                     </div>

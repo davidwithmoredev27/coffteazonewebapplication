@@ -79,3 +79,21 @@ header, main, footer {
 .dashboardcattitle {
     font-size:1.5em;
 }
+.boxcolor {
+    background:#455a64 !important;
+}
+.iconcolor {
+    background-color:rgb(92, 25, 27) !important;
+}
+.btncolor {
+    font-size:.8em !important;
+}
+
+
+@media only screen and (min-width:994px) and (max-width:1023px) {
+    .brand-logo {
+        margin-left:250px;
+        height:300px;
+        width:300px;
+    }
+}

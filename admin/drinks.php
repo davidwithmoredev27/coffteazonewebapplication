@@ -237,6 +237,19 @@
         </a>
     </header>
     <main>
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="pages.php" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Our Menu</a>
+                            <a href="drinks.php" class="breadcrumb">Drinks</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
          <div class="row showontabletmenu">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
@@ -246,128 +259,129 @@
         <div class="row showontabletmenu">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
-        <div class="row">
+        <!-- <div class="row">
             <div class="col s12 m12 l12 xl12">
                 <h4 class="center-align white-text">Drinks settings</h4>
             </div>    
-        </div>
+        </div> -->
         <div class="row">
             <div class="col s12 m12 l12 xl12">
+                <div class="header">
+                    <h4 class="pagetitle">Drinks</h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l10 xl10">
                 <div class="row">
-                    <div class="container">
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Sig. Drinks</h6>
-                            </div>
-                            <div class="row">
-                                <a href="../admin/menu/signaturedrinks.php" class="btn waves-light waves-effect col brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align" style="font-size:14px !important">Signature Drinks</h6>
                         </div>
+                        <div class="row">
+                            <a href="../admin/menu/signaturedrinks.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Itallian Soda</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/italiansoda.php" class="btn waves-light waves-effect col btncolor  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Fruit Tea</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/fruittea.php" class="btn waves-light waves-effect col  btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Hot Drinks</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Itallian Soda</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/italiansoda.php" class="btn waves-light waves-effect col brown darken-2  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
-                        </div>
-                        <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Fruit Tea</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/fruittea.php" class="btn waves-light waves-effect col  brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
-                        </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Hot Drinks</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/hotdrinks.php" class="btn waves-light waves-effect col  brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/hotdrinks.php" class="btn waves-light waves-effect col  btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m12 l12 xl12">
+            <div class="col s12 m12 l10 xl10">
                 <div class="row">
-                     <div class="container">
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Iced Coffee</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/icedcoffee.php" class="btn waves-light waves-effect col brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Iced Coffee</h6>
                         </div>
+                        <div class="row">
+                                <a href="../admin/menu/icedcoffee.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
+                    <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3 ">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Frappucino</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/frapuccino.php" class="btn waves-light waves-effect col btncolor  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
+                        </div>
+                    </div>
                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Yakult Drinks</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3 ">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Frappucino</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/frapuccino.php" class="btn waves-light waves-effect col brown darken-2  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/yakultdrinks.php" class="btn waves-light waves-effect col btncolor  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                    </div>
+                        <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Milk Tea</h6>
                         </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Yakult Drinks</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/yakultdrinks.php" class="btn waves-light waves-effect col brown darken-2  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
-                        </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
-                        </div>
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Milk Tea</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/milktea.php" class="btn waves-light waves-effect col  brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                        <div class="row">
+                                <a href="../admin/menu/milktea.php" class="btn waves-light waves-effect col  btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col s12 m12 l12 xl12">
+            <div class="col s12 m12 l10 xl10">
                 <div class="row">
-                     <div class="container">
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l3 offset-xl3 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">Smoothies</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/smoothies.php" class="btn waves-light waves-effect col brown darken-2  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">Smoothies</h6>
                         </div>
-                         <div class="row showtabletandmobilemenu">
-                            <div class="col s12 m12 "></div>
+                        <div class="row">
+                                <a href="../admin/menu/smoothies.php" class="btn waves-light waves-effect col btncolor  offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
-                        
-                        <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1 blue-grey darken-4 z-depth-3">
-                            <div class="row">
-                                <h6 class="col s12 m12 xl12 l12 white-text center-align">CockTails</h6>
-                            </div>
-                            <div class="row">
-                                 <a href="../admin/menu/cocktails.php" class="btn waves-light waves-effect col  brown darken-2 offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
-                            </div>
+                    </div>
+                        <div class="row showtabletandmobilemenu">
+                        <div class="col s12 m12 "></div>
+                    </div>
+                    
+                    <div class="col s10 m10 l2 xl2 offset-s1 offset-m1 offset-l1 offset-xl1  boxcolor z-depth-3">
+                        <div class="row">
+                            <h6 class="col s12 m12 xl12 l12 white-text center-align">CockTails</h6>
+                        </div>
+                        <div class="row">
+                                <a href="../admin/menu/cocktails.php" class="btn waves-light waves-effect col btncolor offset-xl3 offset-l3 offset-s3 offset-m3 s6 m6 xl6 l6 white-text center-align">Edit</a>
                         </div>
                     </div>
                 </div>

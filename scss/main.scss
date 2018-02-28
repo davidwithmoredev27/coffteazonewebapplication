@@ -202,3 +202,31 @@ main {
     padding-left:55px !important;
     font-size:.9em !important;
 }
+.removebreadcrumbsstyle {
+    -webkit-box-shadow:none !important;
+    -moz-box-shadow:none !important;
+    -khtml-box-shadow:none !important;
+    -ms-box-shadow:none !important;
+    background:#607d8b;
+    height:40px !important;
+    .nav-wrapper {
+        height:inherit !important;
+        line-height:40px;
+    }
+}
+
+.breadcrumb {
+    font-size:.9em !important;
+    -webkit-transition:.2s ease-in-out;
+    -moz-transition:.2s ease-in-out;
+    -ms-transition:.2s ease-in-out;
+    -o-transition:.2s ease-in-out;
+    transition:.2s ease-in-out;
+    &:hover {
+        color:#212121 !important;
+    }
+}
+.pagetitle {
+    border-top:1px dashed #5a5a5a;
+    border-bottom:1px dashed #5a5a5a;
+}

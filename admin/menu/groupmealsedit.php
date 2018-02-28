@@ -362,9 +362,9 @@
                     </div>
                     <div class="row">
                         <div class="file-field input-field col s12 m12 l12 xl12">
-                            <div class="btn">
-                                <span>upload image</span>
-                                <input type="file" name="menuconfirmimg">
+                            <div class="btn blue-grey darken-4">
+                                <span>Image</span>
+                                <input type="file"  name="menuconfirmimg" required value="image">
                             </div>
                             <div class="file-path-wrapper">
                                 <input class="file-path validate" type="text">
@@ -373,12 +373,12 @@
                     </div>
                    
                     <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <div class="row">
-                                    <button type="submit" name="menusubtmiconfirm"  class="btn waves-light waves-effect brown darken-3 col s12 l5 m5 offset-m3 xl5 offset-xl3">Update</button>
-                                </div>
+                        <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
+                            <div class="row">
+                                <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
                             </div>
                         </div>
+                    </div>
                 </form>
             </div>
         </div>
@@ -393,7 +393,7 @@
                                 <div class="col s12 m12 l12 xl12">
                                     <table class="filtertable responsive-table">
                                         <thead>
-                                            <th>Title</th>
+                                            <th>Name</th>
                                             <th>Picture</th>
                                             <th>Caption</th>
                                             <th>Price</th>
@@ -449,9 +449,9 @@
                         </div>
                         <div class="row">
                             <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn">
-                                    <span>upload image</span>
-                                    <input type="file" name="menuconfirmimg">
+                                <div class="btn blue-grey darken-4">
+                                    <span>Image</span>
+                                    <input type="file"  name="menuconfirmimg" required value="image">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text">
@@ -460,9 +460,9 @@
                         </div>
                        
                         <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
+                            <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                 <div class="row">
-                                    <button type="submit" name="menusubtmiconfirm"  class="btn waves-light waves-effect brown darken-3 col s12 l5 offset-m3 xl5 offset-xl3">Update</button>
+                                    <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
                                 </div>
                             </div>
                         </div>

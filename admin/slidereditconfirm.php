@@ -108,7 +108,7 @@
             } elseif (!isset($_FILES['uploadimageupdate'])) {
                 mysqli_close($connection);
                 $_SESSION['slideruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">Upload  Image!</strong>\n".
+                                            "<strong class=\"white-text\">Upload image!</strong>\n".
                                             "</strong>\n";
                 header("location:slideedit.php");die();
             }

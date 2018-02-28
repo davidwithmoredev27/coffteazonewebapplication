@@ -245,7 +245,20 @@
     <main>
         
         <!-- show on mobile -->
-            
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Our Menu</a>
+                            <a href="../foods.php" class="breadcrumb">Foods</a>
+                            <a href="#!" class="breadcrumb">Burgers and Sandwiches</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
         <div class="container">
             <!--remove on mobile and tablet -->
             <div class="row rowtitleseperator">
@@ -356,9 +369,9 @@
                             </div>
                             <div class="row">
                                 <div class="file-field input-field col s12 m12 l12 xl12">
-                                    <div class="btn brown darken-3">
+                                    <div class="btn blue-grey darken-4">
                                         <span>Image</span>
-                                        <input type="file" name="menuimg" required value="image">
+                                        <input type="file"  name="menuimg" required value="image">
                                     </div>
                                     <div class="file-path-wrapper">
                                         <input class="file-path validate" type="text">
@@ -366,9 +379,9 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="input-field col s12 m12 l6 xl6 ">
+                                <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                     <div class="row">
-                                        <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="menusubmit">Add</button>
+                                        <button type="submit" class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4" name="menusubmit">Add</button>
                                     </div>
                                 </div>
                             </div>

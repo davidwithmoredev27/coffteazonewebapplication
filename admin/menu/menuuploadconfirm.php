@@ -98,7 +98,7 @@
                    
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['confirmtitle']);
     
-                    if (strlen($_SESSION['confirmpreventsqlinjection']) < 50 || strlen($_SESSION['confirmpreventsqlinjection']) == 50s) {
+                    if (strlen($_SESSION['confirmpreventsqlinjection']) < 50 || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
                         $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         //die($_SESSION['confirmpreventsqlinjection']);

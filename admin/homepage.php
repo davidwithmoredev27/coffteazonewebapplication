@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <header class="headerstyle red darken-4">
+    <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="profile.php">Profile</a></li>
             <li><a href="logout.php">Log Out</a></li>
@@ -236,7 +236,7 @@
             <i class="material-icons brown-text text-darken-4 adminmenu">menu</i>
         </a>
     </header>
-   <main class="red darken-4">
+   <main>
         <div class="row showontablet">
             <div class="m12"></div>
         </div>
@@ -248,7 +248,7 @@
         </div>
         <div class="row">
             <div class="col s12 m12 l12 xl12 header">
-                <h1 class="center-align fontpages white-text">Homepage Content</h1>
+                <h1 class="center-align fontpages">Homepage Content</h1>
             </div>
         </div>
         <div class="row">

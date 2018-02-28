@@ -215,7 +215,7 @@
         </a>
     </header>
     <main>
-        <div class="row">
+        <div  class="row">
             <div class="col s12 m12 l4 xl4">
                 <div class="header">
                     <h3 class="center-align">Drinks</h3>

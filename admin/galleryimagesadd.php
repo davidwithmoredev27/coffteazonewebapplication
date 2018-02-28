@@ -117,17 +117,17 @@
                                             <div class="collapsible-body admincolor">
                                                 <ul>
                                                     <li>
-                                                        <a href="drinks.php" class="white-text left-align">Drinks
+                                                        <a href="drinks.php" class="white-text left-align  indent">Drinks
                                                             <i class="tiny material-icons left white-text">local_bar</i>
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="foods.php" class="white-text left-align">Foods
+                                                         <a href="foods.php" class="white-text left-align ident">Foods
                                                             <i class="tiny material-icons left white-text">local_dining</i>
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="dessert.php" class="white-text left-align">Dessert
+                                                         <a href="dessert.php" class="white-text left-align indent">Dessert
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>

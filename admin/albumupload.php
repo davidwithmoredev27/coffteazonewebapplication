@@ -40,7 +40,7 @@
                 if(!array_key_exists($ext[$ii] , $allowed)) {
                     $_SESSION['uploadstatus'] = 0;
                     $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
-                        "There are other files!"."</strong></span>\n";
+                        "Invalid filetype!"."</strong></span>\n";
             
                     break;
                 }
@@ -55,12 +55,14 @@
                 }
                 if (!in_array($filetype[$ii] , $allowed)) {
                      $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
-                        "There are other files or Invalid image file type!"."</strong></span>\n";
+                        "one or more are invalid filtype!"."</strong></span>\n";
                     $_SESSION['uploadstatus'] = 0;
                     break;
                 }
             }
-        
+             if ($_SESSION['uploadstatus'] !== 0) {
+                $_SESSION['uploadstatus'] = 1;
+            }
             # check the upload status if 0 then stop the execution
             if ($_SESSION['uploadstatus'] == 0) {
                 mysqli_close($connection);
@@ -99,7 +101,7 @@
             }
 
         } else {
-            $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align \">".
+            $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                         "Upload failed!"."</strong></span>\n";
             header("location:galleryalbumadd.php");
             die();
@@ -116,11 +118,11 @@
             if (isset($_POST['albumtitle']))  {
                 $albumtitle = sanitizedData($_POST['albumtitle']);
                 $preventSQlinjection = mysqli_escape_string($connection , $albumtitle);
-                if ((strlen($preventSQlinjection) < 100 || strlen($preventSQlinjection) == 100) && strlen($preventSQlinjection) != 0 ) {
-                    $titleSuccess = $preventSQlinjection;
-        
+                if ((strlen($preventSQlinjection) < 50 || strlen($preventSQlinjection) == 50) && strlen($preventSQlinjection) != 0 ) {
+                    $title = $preventSQlinjection;
+                    $titleSuccess = preg_replace('/\s+/', '', $preventSQlinjection);
                     $_SESSION['albumtitlepath'] = $titleSuccess;
-                } elseif (strlen($preventSQlinjection) > 100 || strlen($preventSQlinjection) == 0) {
+                } elseif (strlen($preventSQlinjection) > 50 || strlen($preventSQlinjection) == 0) {
                     mysqli_close($connection);
                     $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                 "You've reach the maximum or 100 characters!"."</strong></span>\n";
@@ -140,9 +142,10 @@
                 $albumdescription = sanitizedData($_POST['albumdescription']);
                 $preventSQlinjection = mysqli_escape_string($connection , $albumdescription);
                 
-                if ((strlen($preventSQlinjection) < 1000 || strlen($preventSQlinjection) == 1000) && strlen($preventSQlinjection) != 0 ) {
+                if ((strlen($preventSQlinjection) < 100 || strlen($preventSQlinjection) == 100) && strlen($preventSQlinjection) != 0 ) {
                     $descriptionSuccess = $preventSQlinjection;
-                } elseif (strlen($preventSQlinjection) > 1000 || strlen($preventSQlinjection) == 0) {
+                    $_SESSION['albumdescription'] = $descriptionSuccess;
+                } elseif (strlen($preventSQlinjection) > 100 || strlen($preventSQlinjection) == 0) {
                     mysqli_close($connection);
                       $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                 "You've reach the maximum or 1000 characters for  your description!"."</strong></span>\n";
@@ -168,16 +171,24 @@
                 die();
             }
 
-            if (isset($titleSuccess) and isset($descriptionSuccess) and isset($_SESSION['uploadstatus'])) {
+            if (isset($titleSuccess) and isset($descriptionSuccess) and isset($_SESSION['uploadstatus']) && $_SESSION['uploadstatus'] == 1) {
                 for ($index = 0 ; $index < $_SESSION['filnamecount'] ; $index++) {
                     $sql = "INSERT INTO tbl_gallery_album_".$_SESSION['albumtitlepath']."(path)"." VALUES('".$_SESSION['path'][$index]."')";
                     mysqli_query($connection , $sql);
                 }
+               $sql = "CREATE TABLE IF NOT EXISTS tbl_gallery_album_title". "(".
+                        "id INT NOT NULL AUTO_INCREMENT, ".
+                        "title VARCHAR(100) NOT NULL,".
+                        "PRIMARY KEY(id)".
+                ")";
+                mysqli_query($connection , $sql);
+                $sql = "INSERT INTO tbl_gallery_album_title (title)"." VALUES('".$_SESSION['albumtitlepath']."')";
+                mysqli_query($connection , $sql);
                 mysqli_close($connection);
-                $_SESSION['albumsuccess'] = "<span class=\"green darken-3\"><strong class=\"white-text center-align\">".
-                "Album " .$_SESSION['albumtitlepath']." Successfully Updated!"."</strong></span>\n";
+                $_SESSION['albumsuccess'] = "<span class=\"center-align green darken-3\"><strong class=\"white-text \">".
+                "Album " .$title." Successfully Added!"."</strong></span>\n";
                 header("location:galleryalbumadd.php");die();
-            } elseif ((!isset($titleSuccess) and !isset($descriptionSuccess) and !isset($_SESSION['uploadstatus'])) and $_SESSION['uploadstatus'] === 0) {
+            } elseif ((!isset($titleSuccess) and !isset($descriptionSuccess) and !isset($_SESSION['uploadstatus'])) || $_SESSION['uploadstatus'] === 0) {
                  mysqli_close($connection);
                 $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                 "There's an error!"."</strong></span>\n";

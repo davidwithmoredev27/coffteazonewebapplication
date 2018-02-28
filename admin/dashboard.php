@@ -47,7 +47,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img src="../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img  src="../img/logo/cofftealogo.png" width="50%" heigth="50%" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -237,45 +237,52 @@
         </a>
     </header>
     <main>
-        <div class="row dashboarddevicefixed">
+        <div class="row tabletfixed">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
-        <div class="row dashboarddevicefixed">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        <div class="row dashboarddevicefixed">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-         <div class="row ">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        
-       
+         <div class="row tabletfixed">
+            <div class="col s12 m12 l12 xl12"></div>
+        </div> 
+        <div class="row tabletfixed">
+            <div class="col s12 m12 l12 xl12"></div>
+        </div> 
         <div class="row">
             <div class="row ">
                 <div class="col s12 m12 xl12 l12">
                     <h4 class="center-align">Dashboard</h4>
                 </div>
             </div>
-            <?php
+            <div class="row tabletfixed">
+                <div class="col s12 m12 l12 xl12"></div>
+            </div>
+            <div class="row tabletfixed">
+                <div class="col s12 m12 l12 xl12"></div>
+            </div> 
+            <div class="row tabletfixed">
+                <div class="col s12 m12 l12 xl12"></div>
+            </div>  
+            <div class="container">
+             <?php
                 if(isset($_SESSION['registrationsuccess'])) {
                     echo "<div class=\"row\">\n";
-                    echo "<div class=\"col s12 m12 l6 xl6 green darken-3\">\n";
+                    echo "<div class=\"col s12 m12 l12 xl12 green darken-3\">\n";
                     echo "". $_SESSION['registrationsuccess']."";
                     echo "</div>\n";
                     echo "</div>\n";
                 }
             ?>
+            </div>
+           
             <a href="users.php">
-                <div class="col s8 m8 offset-m2 offset-s2 xl4 offset-xl1 offset-l1 l4 blue-grey darken-4 z-depth-3">
+                <div class="col s6 m6 offset-m3 offset-s3 xl4 offset-xl1 offset-l1 l4 boxcolor z-depth-3">
                     <div class="header">
                         <h3 class="white-text center-align dashboardcattitle">Users</h3>
     
                     </div>
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
-                            <i class="large  dashboardicons material-icons">account_circle</i>
-                            <span class="badge brown darken-4 white-text">
+                            <i class="medium  dashboardicons material-icons">account_circle</i>
+                            <span class="badge white-text">
                                 <?php
                                     $admiuserenable = "SELECT * FROM tbl_admin";
                                     $adminuserdisable = "SELECT * FROM tbl_admin_disable";
@@ -304,14 +311,14 @@
                 <div class="col s12 m12 l12 xl12"></div>
             </div> -->
             <a href="pages.php">
-                <div class="col s8 m8 offset-m2 offset-s2 offset-xl2 xl4 offset-l2 l4 blue-grey darken-4 z-depth-3">
+                <div class="col s6 m6 offset-m3 offset-s3 offset-xl2 xl4 offset-l2 l4 boxcolor z-depth-3">
                     <div class="header">
                         <h3 class="white-text center-align dashboardcattitle">Pages</h3>
                     </div>
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
-                            <i class="large material-icons dashboardicons md-light">description</i>
-                            <span class="badge brown darken-4 white-text">
+                            <i class="medium material-icons dashboardicons md-light">description</i>
+                            <span class="badge iconcolor white-text">
                                 <?php
                                     $listFile = exec("ls -l menu/ | grep ^- | wc -l");
                                     echo $listFile;
@@ -336,14 +343,14 @@
         </div> -->
         <div class="row">
              <a href="messages.php">
-                <div class="col s8 m8 offset-m2 offset-s2 xl4 offset-xl1 offset-l1 l4 blue-grey darken-4 z-depth-3">
+                <div class="col s6 m6 offset-m3 offset-s3 xl4 offset-xl1 offset-l1 l4 boxcolor z-depth-3">
                     <div class="header">
                         <h3 class="white-text center-align dashboardcattitle">Messages</h3>
                     </div>
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
-                            <i class="large dashboardicons material-icons">email</i>
-                            <span class="badge darken-4 white-text">
+                            <i class="medium dashboardicons material-icons">email</i>
+                            <span class="badge iconcolor white-text">
                                 <?php
                                     $sql = "SELECT * FROM tbl_message";
                                     $filterData = mysqli_query($connection , $sql);
@@ -370,14 +377,14 @@
                 <div class="col s12 m12 l12 xl12"></div>
             </div> -->
             <a href="filter.php">
-                <div class="col s8 m8 offset-m2 offset-s2 offset-xl2 xl4 offset-l2 l4 blue-grey darken-4 z-depth-3">
+                <div class="col s6 m6 offset-m3 offset-s3 offset-xl2 xl4 offset-l2 l4 boxcolor z-depth-3">
                     <div class="header">
                         <h3 class="white-text center-align dashboardcattitle">Request</h3>
                     </div>
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
-                            <i class="large dashboardicons material-icons">vpn_key</i>
-                            <span class="badge brown darken-4 white-text">
+                            <i class="medium dashboardicons material-icons">vpn_key</i>
+                            <span class="badge iconcolor white-text">
                                 <?php 
                                     $sql = "SELECT * FROM tbl_filter";
                                     $filterData = mysqli_query($connection , $sql);

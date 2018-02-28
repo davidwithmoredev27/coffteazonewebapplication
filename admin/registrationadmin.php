@@ -219,7 +219,7 @@
             
             $_SESSION['newaccount'] = $passwordSuccess;
 
-            $_SESSION['registrationsuccess'] = "<span><strong class=\"white-text\">Account Created Succefully!</strong></span>\n";
+            $_SESSION['registrationsuccess'] = "<span class=\"center-align\"><strong class=\"white-text\">Account Created Succefully!</strong></span>\n";
             header("location:dashboard.php?admin");
           
         }
