@@ -72,7 +72,7 @@
         }
 
         if (isset($_POST['firstnamenew'])) {
-            if (!filter_var($_POST['firstnamenew'] , FILTER_VALIDATE_INT)) {
+            if (!is_numeric($_POST['firstnamenew'])) {
                 
                 if (preg_match('/^[1-9][0-9]*$/',$_POST['firstnamenew'])) {
                     mysqli_close($connection);
@@ -85,7 +85,7 @@
 
                     $firstnamenewPass = $fnamePreventSql;
                 }
-            } elseif (filter_var($_POST['firstnamenew'] , FILTER_VALIDATE_INT)) {
+            } elseif (is_numeric($_POST['firstnamenew'])) {
                 mysqli_close($connection);
                 $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Firstname needs to be a combination of characters without numbers!</strong></span>\n";
                 header("location:registration.php");
@@ -99,7 +99,7 @@
         }
         
          if (isset($_POST['lastnamenew'])) {
-            if (!filter_var($_POST['lastnamenew'] , FILTER_VALIDATE_INT)) {
+            if (!is_numeric($_POST['lastnamenew'])) {
                 
                 if (preg_match('/^[1-9][0-9]*$/',$_POST['lastnamenew'])) {
                     mysqli_close($connection);
@@ -110,17 +110,17 @@
                     $lastname = sanitizedData($_POST['lastnamenew']);
                     $lnamePreventSql = mysqli_escape_string($connection , $lastname);
 
-                    $lastnamenewPass = $fnamePreventSql;
+                    $lastnamenewPass = $lnamePreventSql;
                 }
-            } elseif (filter_var($_POST['lastnamenew'] , FILTER_VALIDATE_INT)) {
+            } elseif (is_numeric($_POST['lastnamenew'])) {
                 mysqli_close($connection);
                 $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Lastname needs to be a combination of characters without numbers!</strong></span>\n";
                 header("location:registration.php");
                 die();
             }
-        } elseif (!isset($_POST['firstnamenew'])) {
+        } elseif (!isset($_POST['lastnamenew'])) {
             mysqli_close($connection);
-            $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Provide lastname</strong></span>\n";
+            $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Provide lastname!</strong></span>\n";
             header('location:registration.php');
             die();
         }
@@ -261,8 +261,8 @@
                 date_default_timezone_set($Time);
                 $timecreated = date('Y/m/d h:i:s a');
                 $OS = getOS($_SERVER['HTTP_USER_AGENT']);
-                $sql = "INSERT INTO tbl_filter(username , password , pin, timecreated , platform , ip , location, isp , city , region , country)
-                    VALUES('$usernamenewPass' ,'$hashed_password', " .$securityPin . " , '$timecreated' ,'$OS' , '$ipaddress' , '$location' , '$isp' , '$city' , '$region' , '$country')";
+                $sql = "INSERT INTO tbl_filter(username , password  ,  pin, firstname , lastname, timecreated , platform , ip , location, isp , city , region , country)
+                    VALUES('$usernamenewPass' ,'$hashed_password', " .$securityPin . " , '$firstnamenewPass' ,'$lastnamenewPass' ,'$timecreated' ,'$OS' , '$ipaddress' , '$location' , '$isp' , '$city' , '$region' , '$country')";
 
                 mysqli_query($connection , $sql);
             }
@@ -304,15 +304,9 @@
         <div class="row">
             <div class="col s12 l12 m12 xl12"></div>
         </div>
-        <div class="row">
-            <div class="col s12 l12 m12 xl12"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 l12 m12 xl12"></div>
-        </div>
         <div class="row loginimg" role="coffteazonelogo">
             <div class="col l3 offset-l5 m3 offset-m5 xl3 offset-xl5 s5 offset-s4">
-                <img src="../img/logo/cofftealogo.png" width="75%" height="75%" alt="coffteazone logo">
+                <img src="../img/logo/cofftealogo.png"  width="70%" height="70%" alt="coffteazone logo">
             </div>
         </div>
         <?php
@@ -327,55 +321,53 @@
             
         ?>
     </div>
-    <div class="row col s12 m12 l12 xl12">
-        <div class="container">
-            <form class="col s12 m12 l12 x12" method="post" action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>">
+    <div class="row">
+        <form class="col s12 m12 l12 xl12" method="post" action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>">
+            <div class="row">
                 <div class="input-field col s12 m12 l12 xl12">
                     <input id="usernamenew" autocomplete="off" type="text" class="brown-text text-darken-3 center-align" required name="usernamenew" class="validate">
                     <label for="usernamenew" class="brown-text text-darken-3">Username</label>
                 </div>
-                <div class="row">
-                </div>
+            </div>
+            <div class="row">
                 <div class="input-field col s12 m12 l6 xl6">
-                    <input id="passwordnew" type="password" role="password" class="brown-text text-darken-3 center-align" name="passwordnew" required class="validate">
+                    <input id="passwordnew" type="password" role="password" autocomplete="off" class="brown-text text-darken-3 center-align" name="passwordnew" required class="validate">
                     <label for="passwordnew" class="brown-text text-darken-3">Password</label>
                 </div>
                 <div class="input-field col s12 m12 l6 xl6">
                     <input id="confirmpassword" role="confirmpassword" type="password" class="brown-text text-darken-3 center-align" required name="confirmpassword" class="validate">
                     <label for="confirmpassword" class="brown-text text-darken-3" >Confirm Password</label>
                 </div>
+            </div>
+            <div class="row">
                 <div class="input-field col s12 m12 l6 xl6">
                     <input id="firstname" role="firstname" maxlength="25" type="text" class="tooltipped brown-text text-darken-3 center-align" position="top" data-delayed="50" data-tooltip="Fillup Firstname field!" required name="firstnamenew" class="validate">
                     <label for="firstname" class="brown-text text-darken-3" >Firstname</label>
                 </div>
-                <div class="input-field col s12 m12  l6 xl6">
+                    <div class="input-field col s12 m12  l6 xl6">
                     <input id="lastname" type="text" maxlength="25" class="tooltipped brown-text text-darken-3 center-align" position="top" data-delayed="50" data-tooltip="Fillup Lastname field!" name="lastnamenew" required class="validate">
                     <label for="lastname" class="brown-text text-darken-3" >Lastname</label>
                 </div>
-                
-                <div class="input-field col s12 m6 xl7 l7 offset-m4 offset-l3 offset-xl3">
-                    <div class="row">
-                        <div class="col s12 m9 xl9 l9">
-                        <input id="securitypin" maxlength="5" autocomplete="off" role="securitypin" type="password" class="brown-text text-darken-3 center-align" required name="securitypin" class="validate">
-                        <label for="securitypin" class="brown-text text-darken-3 " >Security Pin</label>
-                        </div>
-                    </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12 m6 xl6 l6 offset-m3 offset-l3 offset-xl3">
+                    <input id="securitypin" maxlength="5" autocomplete="off" role="securitypin" type="password" class="brown-text text-darken-3 center-align" required name="securitypin" class="validate">
+                    <label for="securitypin" class="brown-text text-darken-3">Security Pin</label>
                 </div>
+            </div>
+            <div class="row">
                 <div class="input-field col s12 m12 l12 xl12">
-                    
                     <div class="row">
                         <div class="col s12 l12 m12 xl12"></div>
                     </div>
-                    <div class="row">
-                        <button role="addaccount" id="addsubmit" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l3 xl3 offset-l2 offset-xl2" type="submit" name="addaccount">Add Account</button>
-                        <div  id="loginbtnseperator"class="row">
-                            <div class="col s12 m12 xl12 l12"></div>
-                        </div>
-                        <a role="addaccount"  href="login.php" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l3 xl3 offset-l2 offset-xl2" >Log In</a>
-                    </div> 
+                    <button role="addaccount" id="addsubmit" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l3 xl3 offset-l2 offset-xl2" type="submit" name="addaccount">Add Account</button>
+                    <div  id="loginbtnseperator" class="row">
+                        <div class="col s12 m12 xl12 l12"></div>
+                    </div>
+                   <a role="addaccount"  href="login.php" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l3 xl3 offset-l2 offset-xl2" >Log In</a>
                 </div> 
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
     <!-- for development javascript file -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
