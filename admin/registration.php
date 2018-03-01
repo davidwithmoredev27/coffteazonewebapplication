@@ -8,8 +8,12 @@
     $NewUsername = false;
     $passwordPreventSql = false;
     $usernamePreventSql = false;
+    $fnamePreventSql = false;
+    $lnamePreventSql = false;
     $usernamenewPass = false;
     $passwordnewPass = false;
+    $firstnamenewPass = false;
+    $lastnamenewPass = false;
     $hashed_password = "";
     $hash_available  = "";
     $salt  = '$2a$07$usesomassodosrkeoaol1e35958kdafir1rsalt$';
@@ -66,7 +70,60 @@
             //header("location: newpassworderr.php");
             die("password is empty");
         }
+
+        if (isset($_POST['firstnamenew'])) {
+            if (!filter_var($_POST['firstnamenew'] , FILTER_VALIDATE_INT)) {
+                
+                if (preg_match('/^[1-9][0-9]*$/',$_POST['firstnamenew'])) {
+                    mysqli_close($connection);
+                    $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Invalid firstname!</strong></span>\n";
+                    header("location:registration.php");
+                    die();
+                } elseif (!preg_match('/^[1-9][0-9]*$/' , $_POST['firstnamenew'])) {
+                    $firstname = sanitizedData($_POST['firstnamenew']);
+                    $fnamePreventSql = mysqli_escape_string($connection , $firstname);
+
+                    $firstnamenewPass = $fnamePreventSql;
+                }
+            } elseif (filter_var($_POST['firstnamenew'] , FILTER_VALIDATE_INT)) {
+                mysqli_close($connection);
+                $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Firstname needs to be a combination of characters without numbers!</strong></span>\n";
+                header("location:registration.php");
+                die();
+            }
+        } elseif (!isset($_POST['firstnamenew'])) {
+            mysqli_close($connection);
+            $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Provide username!</strong></span>\n";
+            header('location:registration.php');
+            die();
+        }
         
+         if (isset($_POST['lastnamenew'])) {
+            if (!filter_var($_POST['lastnamenew'] , FILTER_VALIDATE_INT)) {
+                
+                if (preg_match('/^[1-9][0-9]*$/',$_POST['lastnamenew'])) {
+                    mysqli_close($connection);
+                    $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Invalid lastname!</strong></span>\n";
+                    header("location:registration.php");
+                    die();
+                } elseif (!preg_match('/^[1-9][0-9]*$/' , $_POST['lastnamenew'])) {
+                    $lastname = sanitizedData($_POST['lastnamenew']);
+                    $lnamePreventSql = mysqli_escape_string($connection , $lastname);
+
+                    $lastnamenewPass = $fnamePreventSql;
+                }
+            } elseif (filter_var($_POST['lastnamenew'] , FILTER_VALIDATE_INT)) {
+                mysqli_close($connection);
+                $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Lastname needs to be a combination of characters without numbers!</strong></span>\n";
+                header("location:registration.php");
+                die();
+            }
+        } elseif (!isset($_POST['firstnamenew'])) {
+            mysqli_close($connection);
+            $_SESSION['registrationoutside'] = "<span><strong class=\"white-text\">Provide lastname</strong></span>\n";
+            header('location:registration.php');
+            die();
+        }
 
         // check if username is already available in the database 
         $sql = "SELECT username FROM tbl_admin";
@@ -181,8 +238,8 @@
                 date_default_timezone_set($Time);
                 $timecreated = date('Y/m/d h:i:s a');
                 $OS = getOS($_SERVER['HTTP_USER_AGENT']);
-                $sql = "INSERT INTO tbl_filter(username , password , pin, timecreated , platform , ip , location, isp , city , region , country)
-                    VALUES('$usernamenewPass' ,'$hashed_password', ".$securityPin. ", '$timecreated' ,'$OS' , '$ipaddress' , '$location' , '$isp' , '$city' , '$region' , '$country')";
+                $sql = "INSERT INTO tbl_filter(username , password , pin, firstname ,lastname ,  timecreated , platform , ip , location, isp , city , region , country)
+                    VALUES('$usernamenewPass' ,'$hashed_password', ".$securityPin. ",'$firstnamenewPass', '$lastnamenewPass', '$timecreated' ,'$OS' , '$ipaddress' , '$location' , '$isp' , '$city' , '$region' , '$country')";
     
                 mysqli_query($connection , $sql);
             } else  {
@@ -277,14 +334,25 @@
                     <input id="usernamenew" autocomplete="off" type="text" class="brown-text text-darken-3 center-align" required name="usernamenew" class="validate">
                     <label for="usernamenew" class="brown-text text-darken-3">Username</label>
                 </div>
-                <div class="input-field col s12 m12  l6 xl6">
-                    <input id="passwordnew" type="password" class="brown-text text-darken-3 center-align" name="passwordnew" required class="validate">
-                    <label for="passwordnew" class="brown-text text-darken-3" >Password</label>
+                <div class="row">
+                </div>
+                <div class="input-field col s12 m12 l6 xl6">
+                    <input id="passwordnew" type="password" role="password" class="brown-text text-darken-3 center-align" name="passwordnew" required class="validate">
+                    <label for="passwordnew" class="brown-text text-darken-3">Password</label>
                 </div>
                 <div class="input-field col s12 m12 l6 xl6">
                     <input id="confirmpassword" role="confirmpassword" type="password" class="brown-text text-darken-3 center-align" required name="confirmpassword" class="validate">
                     <label for="confirmpassword" class="brown-text text-darken-3" >Confirm Password</label>
                 </div>
+                <div class="input-field col s12 m12 l6 xl6">
+                    <input id="firstname" role="firstname" maxlength="25" type="text" class="tooltipped brown-text text-darken-3 center-align" position="top" data-delayed="50" data-tooltip="Fillup Firstname field!" required name="firstnamenew" class="validate">
+                    <label for="firstname" class="brown-text text-darken-3" >Firstname</label>
+                </div>
+                <div class="input-field col s12 m12  l6 xl6">
+                    <input id="lastname" type="text" maxlength="25" class="tooltipped brown-text text-darken-3 center-align" position="top" data-delayed="50" data-tooltip="Fillup Lastname field!" name="lastnamenew" required class="validate">
+                    <label for="lastname" class="brown-text text-darken-3" >Lastname</label>
+                </div>
+                
                 <div class="input-field col s12 m6 xl7 l7 offset-m4 offset-l3 offset-xl3">
                     <div class="row">
                         <div class="col s12 m9 xl9 l9">

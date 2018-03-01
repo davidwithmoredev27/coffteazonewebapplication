@@ -41,13 +41,15 @@
                     $acceptedUser = $row['username'];
                     $acceptedPassword = $row['password'];
                     $acceptedSecurityPin = $row['pin'];
+                    $acceptedFirstname = $row['fistname'];
+                    $acceptedLastname = $row['lastname'];
 
                 }
             
                 if (isset($acceptedUser) && isset($acceptedPassword)) {
                 
-                        $sql = "INSERT INTO tbl_admin(username , password , pin)
-                         VALUES('$acceptedUser','$acceptedPassword' ,". $acceptedSecurityPin .")";
+                        $sql = "INSERT INTO tbl_admin(username , password , pin , firstname , lastname)
+                         VALUES('$acceptedUser','$acceptedPassword' ,". $acceptedSecurityPin ." , '$acceptedFirstname' , '$acceptedLastname')";
                         mysqli_query($connection , $sql);
                         // delete the particular row in the tbl_filter
                         $sql = "DELETE FROM tbl_filter WHERE id =". $userIDSQlIPrevent;
