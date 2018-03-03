@@ -197,7 +197,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -306,7 +306,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <button type="submit" name="addalbumsubmit" class="brown darken-4 col s6 offset-s3 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 btn waves-light waves-effect">Add New Album</button>
+                                    <button type="submit" name="addalbumsubmit" class="col s6 offset-s3 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 btn waves-light waves-effect">Add New Album</button>
                                 </div>
                             </div>
                         </form>

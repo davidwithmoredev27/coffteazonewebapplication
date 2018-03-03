@@ -18,4 +18,8 @@ $(document).ready(function(){
         opacity: .0
     });
     $("textarea#slidereditdecription").characterCounter();
+    $('.tooltipped').tooltip({
+        delay: 50,
+        html:true,
+    });
 });

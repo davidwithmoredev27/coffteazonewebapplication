@@ -94,11 +94,24 @@
 
                 if (isset($_POST['menuconfirmtitle'])) {
                     
+                    if (strlen($_POST['menuconfirmtitle']) === 0) {
+                        
+                        $sql = "SELECT title FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                        
+                        $result  = mysqli_query($connection , $sql);
+                    
+                        if (mysqli_num_rows($result) > 0) {
+            
+                            while($rows = mysqli_fetch_assoc($result)) {
+                                $_SESSION['titleconfirmsuccess'] = $rows['title'];
+                            }
+                        } 
+                    }
                     $_SESSION['confirmtitle'] = sanitizedData($_POST['menuconfirmtitle']);
-                   
+                  
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['confirmtitle']);
     
-                    if (strlen($_SESSION['confirmpreventsqlinjection']) < 50 || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
+                    if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
                         $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         //die($_SESSION['confirmpreventsqlinjection']);
@@ -108,22 +121,40 @@
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">You cannot use more than 50 characters!</strong>\n".
                                                 "</strong>\n";
-                        header("location:" .  $_SESSION['pagelink']);
+                        header("location:" .  $_SESSION['editpage']);
                         die();
                     } 
-                } elseif (!isset($_POST['menuconfirmtitle']) || strlen($_POST['menuconfirmtitle']) == 0) {
-                    mysqli_close($connection);
-                    $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Give a title for this bestseller</strong>\n".
-                                                "</strong>\n";
-                    header("location:" .  $_SESSION['pagelink']);die();
+                } elseif (isset($_POST['menuconfirmtitle']) && strlen($_POST['menuconfirmtitle']) == 0) {
+                    //die("title" . $_POST['menuconfirmtitle']);
+                    $sql = "SELECT title FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                    $result  = mysqli_query($connection , $sql);
+                    
+                    if (mysqli_num_rows($result) > 0) {
+                        while($rows = mysqli_fetch_assoc($result)) {
+                            $_SESSION['titleconfirmsuccess'] = $rows['title'];
+                        }
+                    } 
                 }
 
                 if (isset($_POST['menuconfirmcaption'])) {
+
+                    if (strlen($_POST['menuconfirmcaption']) === 0) {
+                        
+                        $sql = "SELECT caption FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                        
+                        $result  = mysqli_query($connection , $sql);
+                    
+                        if (mysqli_num_rows($result) > 0) {
+            
+                            while($rows = mysqli_fetch_assoc($result)) {
+                                $_SESSION['descriptionconfirmsuccess'] = $rows['caption'];
+                            }
+                        } 
+                    }
                     $_SESSION['confirmdescription'] = sanitizedData($_POST['menuconfirmcaption']);
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmdescription']);
         
-                    if (strlen($_SESSION['confirmpreventsqlinjection']) < 100 || strlen($_SESSION['confirmpreventsqlinjection']) == 100) {
+                    if ((strlen($_SESSION['confirmpreventsqlinjection']) < 100 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 100) {
                     
                         $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         //die($_SESSION['descriptionconfirmsuccess']);
@@ -132,21 +163,22 @@
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">You cannot use more than 100 characters!</strong>\n".
                                                 "</strong>\n";
-                        header("location:" .  $_SESSION['pagelink']);
+                        header("location:" .  $_SESSION['editpage']);
                         die();
                     } 
                 } elseif (!isset($_POST['menuconfirmcaption']) || strlen($_POST['menuconfirmcaption']) == 0) {
-                    mysqli_close($connection);
-                        $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Provide a caption!</strong>\n".
-                                                "</strong>\n";
-                        header("location:" .  $_SESSION['pagelink']);
-                        die();
+                    $sql = "SELECT caption FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                    $result  = mysqli_query($connection , $sql);
+                    
+                    if (mysqli_num_rows($result) > 0) {
+                        while($rows = mysqli_fetch_assoc($result)) {
+                            $_SESSION['descriptionconfirmsuccess'] = $rows['caption'];
+                        }
+                    } 
                 }
 
-                if (isset($_POST['menupriceconfirm'])) {
-
-                    if (filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT)) {
+                if (isset($_POST['menupriceconfirm']) && strlen($_POST['menupriceconfirm']) !== 0) {
+                    if (filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT ) || filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_FLOAT )) {
 
                         $_SESSION['confirmprice'] = sanitizedData($_POST['menupriceconfirm']);
                         $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice']);
@@ -155,40 +187,48 @@
                         
 
 
-                    } elseif (!filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT)) {
+                    } elseif (!filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT) || !filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_FLOAT )) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
                                                 "</strong>\n";
-                        header("location:" .  $_SESSION['pagelink']);;die();
+                        header("location:" .  $_SESSION['editpage']);
+                        die();
                     }
                     
                 } elseif (!isset($_POST['menupriceconfirm']) || strlen($_POST['menupriceconfirm']) == 0) {
-                    mysqli_close($connection);
-                        $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">please give a price</strong>\n".
-                                                "</strong>\n";
-                        header("location:" .  $_SESSION['pagelink']);;die();
+                    $sql = "SELECT price FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                    $result  = mysqli_query($connection , $sql);
+                    
+                    if (mysqli_num_rows($result) > 0) {
+                        while($rows = mysqli_fetch_assoc($result)) {
+                            $_SESSION['priceconfirmsuccess'] = $rows['price'];
+                        }
+                    }
                 }
 
 
-                if (isset($_FILES['menuconfirmimg'])) {
-                    //print_r($_FILES['menuconfirmimg']);
-                    //die();
+                if (isset($_FILES['menuconfirmimg']) && $_FILES['menuconfirmimg']['error'] === 0) {
+                
                     $_SESSION['confirmfilepath'] = UploadFile($_FILES['menuconfirmimg']);
-                } elseif (!isset($_FILES['menuconfirmimg'])) {
-                    mysqli_close($connection);
-                    $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Upload Image!</strong>\n".
-                                                "</strong>\n";
-                    header("location:" .  $_SESSION['pagelink']);;die();
+                } elseif (isset($_FILES['menuconfirmimg']) && $_FILES['menuconfirmimg']['error'] !== 0) {
+                   $sql = "SELECT image, path FROM ".$_SESSION['database_name']. " WHERE id =".$_SESSION['menuconfirm'];
+                   $result = mysqli_query($connection, $sql);
+                   if (mysqli_num_rows($result) > 0) {
+                        while ($rows = mysqli_fetch_assoc($result)) {
+                            $_SESSION['confirmfilepath'] = $rows['image'];
+                            $_SESSION['confirmmenudirpath'] = $rows['path'];
+                        }
+                   }
                 }
             }
+            
+            //die($_SESSION['titleconfirmsuccess']);
             if (isset($_SESSION['confirmfilepath']) && isset($_SESSION['titleconfirmsuccess']) &&
                   isset($_SESSION['descriptionconfirmsuccess']) && isset($_SESSION['priceconfirmsuccess'])) {
                 
 
-                
+                //die("image:" .$_SESSION['confirmfilepath'] ." ". "title:".$_SESSION['titleconfirmsuccess'] . " ". "path:". $_SESSION['confirmmenudirpath'] . " " ."Caption:" . $_SESSION['descriptionconfirmsuccess'] . " ". "price:" . $_SESSION['priceconfirmsuccess'] . " " .$_SESSION['database_name']);
                 
                 $dirPath = $_SESSION['confirmmenudirpath'];
                 $titleSuccess = $_SESSION['titleconfirmsuccess'];
@@ -201,7 +241,7 @@
                 $sql = "UPDATE ".$_SESSION['database_name']. " SET" .
                  " title = '$titleSuccess' , image = '$filePath' , caption = '$DescriptionSuccess' , price = ".$priceSuccess." ,  path = '$dirPath'".
                  " WHERE id = ".$_SESSION['menuconfirm'];
-               
+
 
                 // $sql = "INSERT INTO ".$_SESSION['database_name']." (title, image , caption , price ,  path) 
                 //         VALUES( '$titleSuccess','$filePath','$DescriptionSuccess' , $priceSuccess ,  '$dirPath')";
@@ -212,8 +252,7 @@
                 $_SESSION['menuuploadsuccess'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">".$_SESSION['pagename']." Successfully updated!</strong>\n".
                                                 "</strong>\n";
-                header("location:" .  $_SESSION['pagelink']);
-
+                
                 
                 unset($_SESSION['confirmtitle']);
                 unset($_SESSION['confirmprice']);
@@ -225,13 +264,14 @@
                 unset($_SESSION['confirmmenudirpath']);
                 unset($_SESSION['confirmfilepath']);
                 unset($_SESSION['confirmuploadstatus']);
+                header("location:" .  $_SESSION['editpage']);
+                header("location:" .  $_SESSION['editpage']);
                 die();
             } elseif (!isset($_SESSION['confirmuploadstatus'])  && !isset($_SESSION['titleconfirmsuccess']) &&
                   !isset($_SESSION['descriptionconfirmsuccess']) && !isset($_SESSION['priceconfirmsuccess'])) {
                 $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">There's an error!</strong>\n".
                                                 "</strong>\n";
-                header("location:" .  $_SESSION['pagelink']);
                 unset($_SESSION['confirmtitle']);
                 unset($_SESSION['confirmprice']);
                 unset($_SESSION['confirmdescription']);
@@ -242,13 +282,25 @@
                 unset($_SESSION['confirmmenudirpath']);
                 unset($_SESSION['confirmfilepath']);
                 unset($_SESSION['confirmuploadstatus']);
+                header("location:" .  $_SESSION['editpage']);
+                
                 die();
             } else {
                 mysqli_close($connection);
+                unset($_SESSION['confirmtitle']);
+                unset($_SESSION['confirmprice']);
+                unset($_SESSION['confirmdescription']);
+                unset($_SESSION['titleconfirmsuccess']);
+                unset($_SESSION['priceconfirmsuccess']);
+                unset($_SESSION['descriptionconfirmsuccess']);
+                unset($_SESSION['confirmpreventsqlinjection']);
+                unset($_SESSION['confirmmenudirpath']);
+                unset($_SESSION['confirmfilepath']);
+                unset($_SESSION['confirmuploadstatus']);
                 $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Upload Failed!</strong>\n".
                                                 "</strong>\n";
-                header("location:" .  $_SESSION['pagelink']);
+                header("location:" .  $_SESSION['editpage']);
                 die();
             }
         } else {

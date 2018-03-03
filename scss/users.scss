@@ -116,14 +116,15 @@
 //     }
 // }
 @media only screen and (min-width:1024px) {
-    .filtertable {
+    .userstable {
+        border:.1em solid #616161 !important;
         thead {
             tr {
                 // border:solid gray !important;
                 th {
                     border: .1em solid  #616161 !important;
                     color:#424242;
-
+                    
                 }
             
             }
@@ -131,8 +132,13 @@
         tbody {
             tr {
                 //border:solid gray !important;
+                
                 td {
                     border:.1em  solid #616161 !important;
+                    color:#424242;
+                }
+                td{
+                    column-span: 2;
                 }
             }
         }

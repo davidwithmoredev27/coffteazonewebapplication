@@ -127,7 +127,7 @@
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="pastries.php" class="white-text left-align indent">Pastries
+                                                         <a href="dessert.php" class="white-text left-align indent">Dessert
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>

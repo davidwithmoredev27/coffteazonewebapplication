@@ -307,7 +307,7 @@
                             <div class="row">
                                 <div class="col s12 m12 l12 xl12">
                                     <div class="container">
-                                         <div class="btn">
+                                         <div class="btn blue-grey darken-4">
                                             <span>image</span>
                                             <input type="file" name="addimg[]" multiple>
                                         </div>
@@ -325,7 +325,7 @@
                                 <div class="col s12 m12 l12 xl12">
                                     <div class="container">
                                         <div class="row">
-                                            <button type="submit" name="albumupdate" class="red darken-4 btn waves-light waves-effect col s6 m6 16 xl6 offset-s3 offset-l3 offset-xl3 offset-m3">Update</button>
+                                            <button type="submit" name="albumupdate" class="btn waves-light waves-effect col s6 m6 16 xl6 offset-s3 offset-l3 offset-xl3 offset-m3">Update</button>
                                         </div>
                                     </div>
                                 </div>

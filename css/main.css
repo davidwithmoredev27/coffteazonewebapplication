@@ -262,12 +262,19 @@ header, main, footer {
   }
 }
 @media only screen and (min-width: 1024px) {
-  .filtertable thead tr th {
+  .userstable {
+    border: .1em solid #616161 !important;
+  }
+  .userstable thead tr th {
     border: .1em solid  #616161 !important;
     color: #424242;
   }
-  .filtertable tbody tr td {
+  .userstable tbody tr td {
     border: .1em  solid #616161 !important;
+    color: #424242;
+  }
+  .userstable tbody tr td {
+    column-span: 2;
   }
 }
 .accountbtn {
@@ -671,6 +678,100 @@ main {
 
 .adminnavbar ul li {
   text-transform: capitalize;
+}
+
+/* width="50px
+width="50px
+width="100px
+width="350px
+width="70px
+width="100px */
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  .filtertable {
+    border: none;
+  }
+  .filtertable thead tr th {
+    border: none !important;
+  }
+  .filtertable tbody tr td {
+    border: none !important;
+  }
+  .filtertable tbody tr td:nth-child(4) {
+    word-wrap: break-word !important;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .colwidth:nth-child(1) {
+    width: 60px;
+  }
+
+  .colwidth:nth-child(2) {
+    width: 100px;
+  }
+
+  .colwidth:nth-child(3) {
+    width: 100px;
+  }
+
+  .colwidth:nth-child(4) {
+    width: 300px;
+  }
+
+  .colwidth:nth-child(5) {
+    width: 100px;
+  }
+
+  .colwidth:nth-child(6) {
+    width: 120px;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .colwidth:nth-child(1) {
+    width: 50px;
+  }
+
+  .colwidth:nth-child(2) {
+    width: 100px;
+  }
+
+  .colwidth:nth-child(3) {
+    width: 200px;
+  }
+
+  .colwidth:nth-child(4) {
+    width: 350px;
+  }
+
+  .colwidth:nth-child(5) {
+    width: 100px;
+  }
+
+  .colwidth:nth-child(6) {
+    width: 120px;
+  }
+}
+.filtertable {
+  table-layout: fixed;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  -moz-box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  -o-box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  -khtml-box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  -ms-box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  box-shadow: rgba(0, 0, 0, 0.14) 0px 8px 10px 1px;
+  border: 0.1 0.1em solid #616161 !important;
+}
+.filtertable tbody td {
+  font-size: .8em;
+  border: .1em  solid #616161 !important;
+}
+.filtertable tbody td:nth-child(4) {
+  word-wrap: break-word;
+}
+.filtertable thead tr th {
+  border: .1em  solid #616161 !important;
+}
+.filtertable thead tr th:first-child {
+  content: "#";
 }
 
 /*# sourceMappingURL=main.css.map */

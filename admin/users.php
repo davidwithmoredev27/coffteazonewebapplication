@@ -209,7 +209,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -266,8 +266,8 @@
             <div class="row rowtablet">
                 <div class="col s12 m12 l12 xl12"></div>
             </div>
-            <div class="header row">
-                <h4 class="col s12 m12 centeronmobile fontsize">Enabled Accounts</h4>
+            <div class="row">
+                <h4 class="col s12 m12 center-align centeronmobile fontsize">Enabled Accounts</h4>
             </div>
             <?php
                 if (isset($_SESSION['accountdeletesuccess'])) {
@@ -332,13 +332,14 @@
                     echo "</div>\n";
                 }
                 ?> 
-                 <table class="filtertable responsive-table">
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l10 xl10 offset-l1 offset-xl1">
+                <table class="userstable responsive-table z-depth-4">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th class="white-text">dummies</th>
-
-                            <th>Username</th>
+                            <th class="center-align">ID</th>
+                            <th class="center-align">Username</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -350,26 +351,29 @@
                                 while($usernameData = mysqli_fetch_assoc($result)) {
                                     
                                     echo "\t\t\t<tr>";
-                                    echo "\t\t\t\t<td>". $usernameData['ID']."</td>\n";
-                                    echo "\t\t\t\t<td></td>\n";
-                                    echo "\t\t\t\t<td>". $usernameData['username']."</td>\n";
+                                    echo "\t\t\t\t<td class=\"center-align\">". $usernameData['ID']."</td>\n";
+                                    echo "\t\t\t\t<td class=\"center-align\">". $usernameData['username']."</td>\n";
                                     echo "\t\t\t</tr>\n";
                                     $counter++;
                                 }
                             }
                         ?>     
-                </tbody>
-            </table>
-            <div class="header row">
-                <h4 class="col s12 m12 centeronmobile fontsize">Disabled Accounts</h4>
+                    </tbody>
+                </table>
             </div>
-            <table class="filtertable responsive-table">
+        </div>
+        <div class="container">
+            <div class="row">
+                <h4 class="col s12 m12 centeronmobile   center-align fontsize">Disabled Accounts</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l10 xl10 offset-l1 offset-xl1">
+                <table class="responsive-table userstable  z-depth-4">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th class="white-text">dummies</th>
-
-                            <th>Username</th>
+                            <th class="center-align">ID</th>
+                            <th class="center-align">Username</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -381,17 +385,19 @@
                                 while($usernameData = mysqli_fetch_assoc($result)) {
                                     
                                     echo "\t\t\t<tr>";
-                                    echo "\t\t\t\t<td>". $usernameData['id']."</td>\n";
-                                    echo "\t\t\t\t<td></td>\n";
-            
-                                    echo "\t\t\t\t<td>". $usernameData['username']."</td>\n";
+                                    echo "\t\t\t\t<td class=\"center-align\">". $usernameData['id']."</td>\n";
+                                    echo "\t\t\t\t<td class=\"center-align\">". $usernameData['username']."</td>\n";
                                     echo "\t\t\t</tr>\n";
                                     $counter++;
                                 }
                             }
                         ?>     
-                </tbody>
-            </table>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="container">
               <?php
                 for ($i=0; $i < 5 ; $i++) { 
                     echo "<div class=\"row\ removemobile\">\n";
@@ -415,60 +421,60 @@
                <form class="col s12 m12 xl3 l3" action="editaccount.php" method="post">
                     <div class="input-field col s12 m12 xl5 l5 removemobile">
                         <div class="row">
-                            <button  name="editaccount" class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" id="edit" type="submit">Edit</button>
+                            <button  name="editaccount" class="btn waves-light col s12 m12 l12 xl12 accountbtn" id="edit" type="submit">Edit</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6 offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" name="editid" id="editid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" name="editid" id="editid" data-position="top" data-delay="50" data-tooltip="Select id" type="text" required>
                     </div>
                     <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
-                            <button  name="editaccount" class="btn waves-light waves-effect brown darken-3 col  s12 m12 l12 xl12 accountbtn"  id="edit" type="submit">Edit</button>
+                            <button  name="editaccount" class="btn waves-light waves-effect  col  s12 m12 l12 xl12 accountbtn"  id="edit" type="submit">Edit</button>
                         </div>
                     </div>
                 </form>
                 <form class="col s12 m12 xl3 l3" action="enableaccount.php" method="post">
                     <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 removemobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
+                            <button class="btn waves-light waves-effect  col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" name="enableid" id="enableid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" data-position="top" data-delay="50" data-tooltip="Select id" name="enableid" id="enableid" type="text" required>
                     </div>
                     <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
+                            <button class="btn waves-light waves-effect  col s12 m12 l12 xl12 accountbtn" name="enableaccount"  id="enable" type="submit">Enable</button>
                         </div>
                     </div>
                </form>
                <form class="col s12 m12 xl3 l3" action="disableaccount.php" method="post">
                     <div class="input-field col s6 m6 xl5 l5 removemobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
+                            <button class="btn waves-light waves-effect col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" name="disableid" id="disableid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" name="disableid" data-position="top" data-delay="50" data-tooltip="Select id" id="disableid" type="text" required>
                     </div>
                     <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
+                            <button class="btn waves-light waves-effect  col s12 m12 l12 xl12 accountbtn" name="disableaccount" id="disable" type="submit">Disable</button>
                         </div>
                     </div>
                </form>
                <form class="col s12 m12 xl3 l3" action="deleteaccount.php" method="post">
                     <div class="input-field col s6 m6 xl5 l5 removemobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
+                            <button class="btn waves-light waves-effect  col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" name="deleteid" id="deleteid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" name="deleteid" data-position="top" data-delay="50" data-tooltip="Select id" id="deleteid" type="text" required>
                     </div>
                     <div class="input-field col s6 m6 offset-s3 offset-m3 xl5 l5 showmobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
+                            <button class="btn waves-light waves-effect  col s12 m12 l12 xl12 accountbtn" name="deleteaccount"  id="delete" type="submit">Delete</button>
                         </div>
                     </div>
                </form>

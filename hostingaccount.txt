@@ -1,6 +1,7 @@
 xhosting account
 username:davidwithmore422@gmail.com
-password:cofftea2
+username:cofftea2
+password:coffteazone
 
 
 servername:coffteazone.x10host.com

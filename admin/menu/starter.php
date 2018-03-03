@@ -15,7 +15,7 @@
     $_SESSION['pagelink'] = "starter.php";
     $_SESSION['pagename'] = "Starter";
     $_SESSION['editpage'] = "starteredit.php";
-
+    $_SESSION['pagemessage'] = "Starter";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -203,7 +203,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../filter.php" class="white-text left-align">Filter
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -278,7 +278,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m12 xl12 m12">
-                    <h4 class="center-align"><?php echo $_SESSION['pagename'];?> Settings</h4>
+                    <h4 class="center-align"><?php echo $_SESSION['pagename']?> Settings</h4>
                 </div>
                 <?php 
                     if(isset($_SESSION['menuuploaderror'])) {
@@ -296,53 +296,61 @@
 
                 ?>
             </div>
-            <div class="row">
-                <div class="col s12 m12 l12 x12 ">
+        </div>
+        <div class="row">
+            <div class="col s12 m12 l12 x12 ">
+                <div class="row">
+                    <h5 class="col s12 m12 l12 xl12 center-align"><?php echo $_SESSION['pagename'];?> list</h5>
                     <div class="row">
-                        <h5 class="col s12 m12 l12 xl12 center-align"><?php echo $_SESSION['pagename'];?> list</h5>
-                        <div class="row">
-                            <div class="col s12 m12 l12 xl12"></div>
-                        </div>
-                        <div class="col s12 m12 l12 xl12">
-                            <table class="responsive-table filtertable">
-                                <thead>
-                                    <tr>
-                                        <th class="center-align"></th>
-                                        <th class="center-align">Picture</th>
-                                        <th class="center-align">Name</th>
-                                        <th class="center-align">Caption</th>
-                                        <th class="center-align">Price</th>
-                                        <th></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                        $sql = "SELECT * FROM ". $_SESSION['database_name'];
-                                        $result = mysqli_query($connection , $sql);
-                                        $counter = 1;
-                                        while($rows = mysqli_fetch_assoc($result)) {
-                                            echo "<tr>\n";
-                                            echo "<td class=\"center-align\">".$counter."</td>\n";
-                                            echo "<td class=\"center-align\"><img height=\"35px\" width=\"50px\" src=\"../../".$rows['path']."\"></td>\n";
-                                            echo "<td class=\"center-align\">".$rows['image']."</td>\n";
-                                            echo "<td class=\"center-align\">".$rows['caption']."</td>\n";
-                                            echo "<td class=\"center-align\">".$rows['price']."</td>\n";
-                                            echo "<td class=\"center-align\">".
-                                                    "<form method=\"POST\" action=\"".$_SESSION['editpage']."\">".
-                                                        "<input type=\"hidden\" name=\"menueditid\" value=\"".$rows['id'] . "\">".
-                                                        "<button type=\"submit\"name=\"menuedit\" class=\"btn waves-effect waves-light\">edit</button>".
-                                                    "</form>".
-                                                "</td>";
-                                            echo "</tr>\n";
-                                            $counter++;
-                                        }
-                                    ?>
-
-                                </tbody>
-                        </table>
+                        <div class="col s12 m12 l12 xl12"></div>
                     </div>
+                    <div class="col s12 m12 l12 xl12">
+                        <table class="responsive-table filtertable">
+                            <col class="colwidth" >
+                            <col class="colwidth" >
+                            <col class="colwidth" >
+                            <col class="colwidth" >
+                            <col class="colwidth" >
+                            <col class="colwidth" >
+                            <thead>
+                                <tr>
+                                    <th class="center-align"></th>
+                                    <th class="center-align">Picture</th>
+                                    <th class="center-align">Name</th>
+                                    <th class="center-align">Caption</th>
+                                    <th class="center-align">Price</th>
+                                    <th></th>  
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                    $sql = "SELECT * FROM ". $_SESSION['database_name'];
+                                    $result = mysqli_query($connection , $sql);
+                                    $counter = 1;
+                                    while($rows = mysqli_fetch_assoc($result)) {
+                                        echo "<tr>\n";
+                                        echo "<td class=\"center-align\">".$counter."</td>\n";
+                                        echo "<td class=\"center-align\"><img height=\"35px\" width=\"50px\" src=\"../../".$rows['path']."\"></td>\n";
+                                        echo "<td class=\"center-align\">".$rows['image']."</td>\n";
+                                        echo "<td class=\"center-align\"`>".$rows['caption']."</td>\n";
+                                        echo "<td class=\"center-align\">".$rows['price']."</td>\n";
+                                        echo "<td class=\"center-align\">".
+                                                "<form method=\"POST\" action=\"".$_SESSION['editpage']."\">".
+                                                    "<input type=\"hidden\" name=\"menueditid\" value=\"".$rows['id'] . "\">".
+                                                    "<button type=\"submit\"name=\"menuedit\" class=\"btn waves-effect waves-light\">edit</button>".
+                                                "</form>".
+                                            "</td>";
+                                        echo "</tr>\n";
+                                        $counter++;
+                                    }
+                                ?>
+
+                            </tbody>
+                    </table>
                 </div>
             </div>
+        </div>
+        <div class="container">
             <div class="row">
                 <div class="col s12 m12 l12 x12">
                     <div class="row">
@@ -355,13 +363,13 @@
                         <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="menuupload.php">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <input type="text" id="menutitle" class="center-align" name="menutitle" autocomplete="off" maxlength="50" data-length="50" required class="validate">
+                                    <input type="text" id="menutitle" class="center-align" autocomplete="off" name="menutitle" maxlength="50s" data-length="50" required class="validate">
                                     <label for="menutitle">Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea id="textarea1"  maxlength="100"  data-length="100" autocomplete="off" name="menucaption" class="materialize-textarea"></textarea>
+                                    <textarea id="textarea1"  maxlength="100" autocomplete="off" data-length="100"   name="menucaption" class="materialize-textarea"></textarea>
                                     <label for="textarea1">Caption</label>
                                 </div>
                             </div>

@@ -197,7 +197,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -273,7 +273,7 @@
                             </div>
                 
                              <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
-                                <a href="#" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">View</a>
+                                <a href="galleryview.php" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">View</a>
                             </div>
                         </div>
                     </div>

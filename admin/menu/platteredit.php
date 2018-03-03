@@ -7,7 +7,8 @@
     $_SESSION['database_name'] = "tbl_menu_platter";
     $_SESSION['pagelink'] = "platter.php";
     $_SESSION['pagename'] = "Platter";
-
+    $_SESSION['pagemessage'] = "Platter";
+    
 
      if (!isset($_SESSION['username']) && empty($_SESSION['username'])) {
         header("location:login.php");
@@ -30,7 +31,7 @@
                 if (filter_var($_POST['menueditid'], FILTER_VALIDATE_INT)){
                     $menu = sanitizedData($_POST['menueditid']);
                     $sqlInjectionPrevention = mysqli_escape_string($connection , $menu);
-                    
+                    $_SESSION['idstay'] = $sqlInjectionPrevention;
 
                     $sql = "SELECT * FROM ".$_SESSION['database_name']. " WHERE id =". $sqlInjectionPrevention;
                     $_SESSION['menuconfirm'] = $sqlInjectionPrevention;
@@ -58,15 +59,41 @@
                     die();
             }
         } else {
-             $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">Select ".$_SESSION['pagename']." id!</strong></span>\n";
+             $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">Select and ".$_SESSION['pagename']." id!</strong></span>\n";
              header("location:". $_SESSION['pagelink']);
                 die();
         }
     } else {
-        header("location:". $_SESSION['pagelink']);
-        die();
+        if(!isset($_SESSION['editpage'])) {
+            header("location:". $_SESSION['pagelink']);
+            die();
+        } elseif (isset($_SESSION['editpage'])) {
+            if (!isset($_SESSION['idstay'])) {
+                header("location:dashboard.php");
+                die();
+            } elseif (isset($_SESSION['idstay'])) {
+                $sql = "SELECT * FROM ".$_SESSION['database_name']. " WHERE id =". $_SESSION['idstay'];
+                $result = mysqli_query($connection , $sql);
+                    if (mysqli_num_rows($result) <= 0) {
+                    
+                    $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">".$_SESSION['pagename']." id is not available!</strong></span>\n";
+                    header("location:". $_SESSION['pagelink']);
+                    die();
+                }
+                while($rows = mysqli_fetch_assoc($result)) {
+                    $_SESSION['displaytitle'] = $rows['title'];
+                    $_SESSION['displayprice'] = $rows['price'];
+                    $_SESSION['displaycaption'] = $rows['caption'];
+                    $_SESSION['displaypath'] = $rows['path'];
+                }
+            }
+
+        }
+        
+        
     }
 ?>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -91,6 +118,45 @@
         }       
     ?>
     <style type="text/css">
+        @media only screen and (min-width:768px) and (max-width:1023px) {
+
+            .menconfirmcolwidth:nth-child(1) {
+                width:60px;
+            }
+            .menconfirmcolwidth:nth-child(2) {
+                width:100px;
+            }
+            .menconfirmcolwidth:nth-child(3) {
+                width:300px;
+            }
+            .menconfirmcolwidth:nth-child(4) {
+                width:100px;
+            }
+        }
+        @media only screen and (min-width:1024px) {
+            .menconfirmcolwidth:nth-child(1) {
+                width:100px;
+            }
+            .menconfirmcolwidth:nth-child(2) {
+                width:100px;
+            }
+            .menconfirmcolwidth:nth-child(3) {
+                width:350px;
+            }
+            .menconfirmcolwidth:nth-child(4) {
+                width:100px;
+            }
+        }
+        .confirmtable {
+            table-layout:fixed;
+        
+            tbody {
+                td {
+                    word-wrap:break-word;
+                    text-align:center;
+                }
+            }
+        }
     </style>
 </head>
 
@@ -251,7 +317,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../filter.php" class="white-text left-align">Filter
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -315,147 +381,66 @@
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
        
-        <div class="container slidereditshowmobile">
-            <div class="row">
-                <div class="col s12 m12 l12 xl12">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col s12 m12 l12 xl12">
-                                <table class="filtertable responsive-table">
-                                    <thead>
-                                        <th>Name</th>
-                                        <th>Picture</th>
-                                        <th>Caption</th>
-                                        <th>Price</th>
-                                    </thead>
-                                    <tbody>
-                                        <td><?php echo $_SESSION['displaytitle'];?></td>
-                                        <td><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                        <td><?php echo $_SESSION['displaycaption'];?></td>
-                                        <td><?php echo $_SESSION['displayprice'];?></td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l12 xl12">
-                    <?php
-                         if(isset($_SESSION['menuuploaderror'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['betselleruploaderror'] = null;
-                        }
-                        if (isset($_SESSION['menuuploadsuccess'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['menuuploadsuccess'] =null;
-                        }
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">
+                <?php
+                        if(isset($_SESSION['menuuploaderror'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['betselleruploaderror'] = null;
+                    }
+                    if (isset($_SESSION['menuuploadsuccess'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploadsuccess'] =null;
+                    }
 
-                    ?>
-                </div>
-            </div>
-          
-            <div class="row">
-                <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
-                     <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="menuconfirmtitle" autocomplete="off" name="menuconfirmtitle" maxlength="50" data-length="50" required class="validate">
-                                <label for="menuconfirmtitle">Title</label>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <textarea data-length="100" data-length="100" autocomplete="off"  id="menuconfirmcaption" required name="menuconfirmcaption" class="materialize-textarea"></textarea>
-                            <label for="menuconfirmcaption">Caption</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
-                            <label for="menupriceconfirm">Price</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="file-field input-field col s12 m12 l12 xl12">
-                            <div class="btn blue-grey darken-4">
-                                <span>Image</span>
-                                <input type="file"  name="menuconfirmimg" required value="image">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="row">
-                        <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
-                            <div class="row">
-                                <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                ?>
             </div>
         </div>
-      
-       <div class="container sliderremovemobile">
-
-            <div class="container">
-                 <div class="row">
-                    <div class="col s12 m12 l12 xl12">
-                        <div class="container">
-                            <div class="row">
-                                <div class="col s12 m12 l12 xl12">
-                                    <table class="filtertable responsive-table">
-                                        <thead>
-                                            <th>Name</th>
-                                            <th>Picture</th>
-                                            <th>Caption</th>
-                                            <th>Price</th>
-                                        </thead>
-                                        <tbody>
-                                            <td><?php echo $_SESSION['displaytitle'];?></td>
-                                            <td><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                            <td><?php echo $_SESSION['displaycaption'];?></td>
-                                            <td><?php echo $_SESSION['displayprice'];?></td>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+        <div class="row slidereditshowmobile">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <table class="filtertable responsive-table confirmtable">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <thead>
+                                    <th class="center-align">Title</th>
+                                    <th class="center-align">Picture</th>
+                                    <th class="center-align">Caption</th>
+                                    <th class="center-align">Price</th>
+                    
+                                </thead>
+                                <tbody>
+                                    <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                    <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                    <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                    <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                    <div class="col s12 m12 l12 xl12">
-                        <?php
-                           
-                        if(isset($_SESSION['menuuploaderror'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['betselleruploaderror'] = null;
-                        }
-                        if (isset($_SESSION['menuuploadsuccess'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['menuuploadsuccess'] =null;
-                        }
-                        ?>
-                    </div>
                 </div>
+               
+            </div>
+            <div class="container">
                 <div class="row">
                     <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" maxlength= "50" data-length="50" required class="validate">
-                                <label for="title">Title</label>
+                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" required class="validate">
+                                <label for="menuconfirmtitle">Title</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <textarea maxlength="1000" data-length="1000" autocomplete="off" required id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100" required name="menuconfirmcaption" class="materialize-textarea"></textarea>
                                 <label for="menuconfirmcaption">Caption</label>
                             </div>
                         </div>
@@ -476,7 +461,103 @@
                                 </div>
                             </div>
                         </div>
-                       
+                    
+                        <div class="row">
+                        <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
+                                <div class="row">
+                                    <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+         <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <?php
+                        
+                    if(isset($_SESSION['menuuploaderror'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploaderror'] = null;
+                    }
+                    if (isset($_SESSION['menuuploadsuccess'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploadsuccess'] =null;
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+       <div class="row sliderremovemobile">
+           <div class="col s12 m12 l12 xl12">
+               <div class="row">
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <table class="filtertable responsive-table" >
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <thead>
+                                        <th class="center-align">Title</th>
+                                        <th class="center-align">Picture</th>
+                                        <th class="center-align">Caption</th>
+                                        <th class="center-align">Price</th>
+                        
+                                    </thead>
+                                    <tbody>
+                                        <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                        <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                        <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                        <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+    
+            <div class="container">
+                <div class="row">
+                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50" required class="validate">
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" required id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <label for="menuconfirmcaption">Caption</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
+                                <label for="menupriceconfirm">Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field col s12 m12 l12 xl12">
+                                <div class="btn blue-grey darken-4">
+                                    <span>Image</span>
+                                    <input type="file"  name="menuconfirmimg" required value="image">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        
                         <div class="row">
                             <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                 <div class="row">

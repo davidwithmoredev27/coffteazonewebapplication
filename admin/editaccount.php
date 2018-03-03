@@ -1,6 +1,8 @@
 <?php require "connection.php"; ?>
 <?php
     $Status = null;
+    $_SESSION['idcontinuation'] = null;
+    $_SESSION['continuesql'] = null;
     function sanitizedData($data) {
         $triminput  = trim($data);
         $striplashesinput = stripslashes($triminput);
@@ -23,6 +25,7 @@
                 $userid = sanitizedData($_POST['editid']);
                 $preventSQLinjection = mysqli_escape_string($connection , $userid);
                 
+                
 
                 $sql = "SELECT ID FROM tbl_admin WHERE ID = ". $preventSQLinjection;
                 $idResult = mysqli_query($connection , $sql);
@@ -30,9 +33,16 @@
                     $_SESSION['accountediterror'] = "
                         <span><strong class=\"white-text\">Username id is not available!</strong></span>\n";
                     header("location:users.php?admin");
+                    die();
+                } elseif (mysqli_num_rows($idResult) > 0) {
+                    $Status = 1;
+                    $_SESSION['idcontinuation'] = $Status;
+                    while($rows = mysqli_fetch_assoc($idResult)) {
+                        $_SESSION['continuesql'] = $rows['ID'];
+                    }
                 }
-                $Status = 1;
-            } else if (!filter_var($_POST['editid'] ,FILTER_VALIDATE_INT)) {
+               
+            } elseif (!filter_var($_POST['editid'] ,FILTER_VALIDATE_INT)) {
                 $_SESSION['accountediterror'] = "
                 <span><strong class=\"white-text\">Please Enter Valid Id!</strong></span>\n";
                 header("location:users.php?admin");
@@ -44,8 +54,12 @@
                 <span><strong class=\"white-text\">Please Enter Valid Id!</strong></span>\n";
             header("location:users.php?admin");
         }     
-    } else {
-        header("location:users.php");
+    }else {
+        if (!isset($_SESSION['idcontinuation'])) {
+            mysql_close($connection);
+            header("location:user.php");
+            die;
+        }
     }
      
    
@@ -76,6 +90,9 @@
         }       
     ?>
     <style type="text/css">
+        .tooltippedstyle {
+            font-size:.8em !important;
+        }
     </style>
 </head>
 
@@ -223,7 +240,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -267,12 +284,7 @@
     </header>
    <main>   
         <div class="container">
-            <div class="row">
-                <div class="col s12 m12 xl12 l12"></div>
-            </div>
-            <div class="row">
-                <div class="col  m12 xl12 l12"></div>
-            </div>
+           
             <div class="row tabletfix">
                 <div class="col s12 m12 xl12 l12"></div>
             </div>
@@ -282,8 +294,10 @@
             <div class="row">
                 <form  method="post" action="editconfirm.php" class="col s12 m12 l6 xl6 offset-l3 offset-xl3">
                     <div class="header col m12 l12 xl12 s12">
+                    
                     <?php
-                        $sql = "SELECT ID ,username , password FROM tbl_admin WHERE ID =".$preventSQLinjection;
+                        
+                        $sql = "SELECT ID ,username , password FROM tbl_admin WHERE ID =".$_SESSION['continuesql'];
                         $result = mysqli_query($connection , $sql);
         
                         if(mysqli_num_rows($result) > 0) {
@@ -297,16 +311,21 @@
                             
                         }
                     ?>
+
                 </div>
-                        <?php
-                            if(isset($_SESSION['accountediterror'])){
-                                echo "<div class=\"row\">\n";
-                                echo "<div class=\"col s12 m12 l6 xl6 ]red darken-3\">\n";
-                                echo "". $_SESSION['accountediterror']."";
-                                echo "</div>\n";
-                                echo "</div>\n";
-                            }
-                        ?>
+                <div class="row">
+                    <div class="col s12 m12 l12 xl12">
+                    </div>
+                </div>
+                    <?php
+                        if(isset($_SESSION['accountediterror'])){
+                            echo "<div class=\"row\">\n";
+                            echo "<div class=\"col s12 m12 l12 xl12 red darken-3 center-align\">\n";
+                            echo "". $_SESSION['accountediterror']."";
+                            echo "</div>\n";
+                            echo "</div>\n";
+                        }
+                    ?>
                      <div class="row">
                         <div class="col s12 m12 xl12 l12"></div>
                     </div>
@@ -316,20 +335,33 @@
                         </div>
                         <div class="input-field col s12 m12 l12 xl12">
                             <i class="large dashboardicons material-icons prefix removemobile">account_circle</i>
-                            <input class="center-align removeprefix" id="icon_prefix" autocomplete="off" name="newusername" type="text" required class="validate">
-                            <label class="removeprefix" for="icon_prefix">New Username</label>
+                            <input class="center-align removeprefix tooltipped" data-position="right" data-delay="50" data-tooltip='<span class="tooltippedstyle">Provide new username!</span>' id="icon_prefix" autocomplete="off" name="newusername" type="text" required class="validate">
+                            <label class="removeprefix" for="icon_prefix">New username</label>
                         </div>
                         <div class="col s12 m12 l12 xl12 center-align showmobile">
                             <i class="medium dashboardicons material-icons center">vpn_key</i>
                         </div>
                         <div class="input-field col s12 m12 l12 xl12">
                             <i class="large dashboardicons material-icons prefix removemobile">vpn_key</i>
-                            <input class="center-align removeprefix" autocomplete="off" id="icon_vpn" name="newpassword" type="password" required class="validate">
-                            <label  class="removeprefix" for="icon_vpn">New Password</label>
+                            <input class="center-align removeprefix tooltipped" data-position="right" data-delay="50" data-tooltip='<span class="tooltippedstyle">Your old Password</span>' autocomplete="off" id="icon_vpn" name="oldpassword" type="password" required class="validate">
+                            <label  class="removeprefix" for="icon_vpn">Old password</label>
+                        </div>
+                        <div class="input-field col s12 m12 l12 xl12">
+                            <i class="large dashboardicons material-icons prefix removemobile">vpn_key</i>
+                            <input class="center-align removeprefix tooltipped" data-position="right" data-delay="50" data-tooltip='<span class="tooltippedstyle">Provide new password</span>' autocomplete="off" id="icon_vpn" name="newpassword" type="password" required class="validate">
+                            <label  class="removeprefix" for="icon_vpn">New password</label>
+                        </div>
+                        <div class="col s12 m12 l12 xl12 center-align showmobile">
+                            <i class="medium dashboardicons material-icons center">autorenew</i>
+                        </div>
+                        <div class="input-field col s12 m12 l12 xl12">
+                            <i class="large dashboardicons material-icons prefix removemobile">autorenew</i>
+                            <input class="center-align removeprefix tooltipped" data-position="right" data-delay="50" data-tooltip='<span class="tooltippedstyle">Provide your 5 digit pin!</span>' maxlength="5" autocomplete="off" id="icon_renew" name="securitypin" type="password" required class="validate">
+                            <label  class="removeprefix" for="icon_renew">Security pin</label>
                         </div>
                          <div class="input-field col s12 m12 l12 xl12">
                              <div class="row">
-                                <input class="center-align col s6 offset-s3 m6 offset-m3 l5 offset-l4 xl5 offset-xl4 red darken-3  btn wave-light" name="accountchange" value="Change" type="submit">
+                                <input class="center-align col s6 offset-s3 m6 offset-m3 l5 offset-l4 xl5 offset-xl4  btn wave-light" name="accountchange" value="Update" type="submit">
                              </div>
                         </div>
                     </div>

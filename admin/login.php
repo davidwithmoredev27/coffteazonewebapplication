@@ -154,6 +154,13 @@
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
     <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="screen , projection">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <style type="text/css">
+        @media only screen and (min-width:1024px) {
+            .loginlogo {
+                margin-left:420px !important;
+            }    
+        }
+    </style>
 </head>
 <body>
     <?php  ?>
@@ -171,8 +178,8 @@
             <div class="col s12 l12 m12 xl12"></div>
         </div>
         <div class="row loginimg" role="coffteazonelogo">
-            <div class="col l3 offset-l5 m3 offset-m5 xl3 offset-xl5 s7 offset-s3">
-                <img src="../img/logo/cofftealogo.png" width="75%" height="75%" alt="coffteazone logo">
+            <div class="col l3 offset-l5 m3 offset-m5 xl3 offset-xl5 s7 offset-s3 loginlogo">
+                <img src="../img/logo/cofftealogo.png"  width="120px" height="120px" alt="coffteazone logo">
             </div>
         </div>
         <?php
@@ -189,32 +196,35 @@
     <div class="row col s12 m12 l12 xl12">
         <div class="container">
             <form class="col s12 m12 l12 x12" method="post" action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>">
-                <div class="input-field col s12 m12 l12 xl12">
-                    <input id="username" autocomplete="off" onfocus="this.value =''" role="username" type="text" class="brown-text text-darken-3" name="username" class="validate">
-                    <label for="username" class="brown-text text-darken-3">Username</label>
-                </div>
-                <div class="input-field col s12 m12  l12 xl12">
-                    <input id="password" role="password" type="password" class="brown-text text-darken-3" name="password" class="validate">
-                    <span id="attempnotify" class="red darken-3 center-align z-depth-3">
-            
-                        <strong class="white-text">
-                         5 Password attempt will redirected you to forgot password form!</strong>
-                    </span>
-                    <label for="password" class="brown-text text-darken-3" >Password</label>
-                </div>
-                <div class="input-field col s12 m12 l12 xl12">
-                    <a role="passwordrecovery" href="forgotpassword.php" class="brown-text text-darken-3" id="forgotpassword" >forgot password?</a>
-                    <div class="row">
-                        <div class="col s12 l12 m12 xl12"></div>
-                    </div> 
-                    <div class="row">
-                        <button role="login" id="submitbutton" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l4 xl4 offset-xl1 offset-l1" type="submit" name="login">login</button>
-                        <div  id="loginbtnseperator"class="row">
-                            <div class="col s12 m12 xl12 l12"></div>
+                <div class="container">
+                    <div class="container">
+                         <div class="input-field col s12 m12 l12 xl12">
+                            <input id="username" autocomplete="off" onfocus="this.value =''" role="username" type="text" class="brown-text text-darken-3" name="username" class="validate">
+                            <label for="username" class="brown-text text-darken-3">Username</label>
                         </div>
-                        <a href="registration.php" role="regiter" class="waves-effect brown darken-3 waves-light btn col s6 offset-s3 m6 offset-m3 l4 xl4 offset-xl2 offset-l2">Sign Up</a>
-                    </div> 
-                </div> 
+                        <div class="input-field col s12 m12  l12 xl12">
+                            <input id="password" role="password" type="password" class="brown-text text-darken-3" name="password" class="validate">
+                            <span id="attempnotify" class="red darken-3 center-align z-depth-3">
+                                <strong class="white-text">5 multiple Attempts to type your password!</strong>
+                            </span>
+                            <label for="password" class="brown-text text-darken-3" >Password</label>
+                        </div>
+                        <div class="input-field col s12 m12 l12 xl12">
+                            <a role="passwordrecovery" href="forgotpassword.php" class="brown-text text-darken-3" id="forgotpassword" >forgot password?</a>
+                            <div class="row">
+                                <div class="col s12 l12 m12 xl12"></div>
+                            </div> 
+                            <div class="row">
+                                <button role="login" id="submitbutton" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12  xl12" type="submit" name="login">login</button>
+                            </div> 
+                            <div class="row">
+                                <a href="registration.php" role="regiter" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12 xl12">Sign Up</a>
+                            </div>
+                        </div>  
+                    </div>
+                      
+                </div>
+                 
             </form>
         </div>
     </div>

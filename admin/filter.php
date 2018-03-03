@@ -209,7 +209,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -340,30 +340,30 @@
                <form class="col s12 m12 xl6 l6" action="acceptrequest.php" method="post">
                     <div class="input-field col s12 m12 xl3 l3 removemobile">
                         <div class="row">
-                            <button  name="accept" class="btn waves-light waves-effect brown darken-3 col s12 m12" id="accept" type="submit">Accept</button>
+                            <button  name="accept" class="btn waves-light waves-effect  col s12 m12" id="accept" type="submit">Accept</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6 offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" autocomplete="off" name="acceptid" id="acceptid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" data-position="top" data-delay="50" data-tooltip="Select id" autocomplete="off" name="acceptid" id="acceptid" type="text" required>
                     </div>
                     <div class="input-field col s12 m12 xl3 l3 showmobile">
                         <div class="row">
-                            <button  name="accept" class="btn waves-light waves-effect brown darken-3 col s12 m12" value="Accept" id="accept" type="submit">Accept</button>
+                            <button  name="accept" class="btn waves-light waves-effect  col s12 m12" value="Accept" id="accept" type="submit">Accept</button>
                         </div>
                     </div>
                </form>
                <form class="col s12 m12 xl6 l6" action="revokerequest.php" method="post">
                     <div class="input-field col s12 m12 xl3 l3 removemobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12" name="revoke"  id="Revoke" type="submit">Revoke</button>
+                            <button class="btn waves-light waves-effect col s12 m12" name="revoke"  id="Revoke" type="submit">Revoke</button>
                         </div>
                     </div>
                     <div class="input-field col s12 m12 xl6 l6  offset-l1 offset-xl1">
-                        <input placeholder="ID" class="center-align" autocomplete="off" name="revokeid" id="revokeid" type="text" required>
+                        <input placeholder="ID" class="center-align tooltipped" data-position="top" data-delay="50" data-tooltip="Select id" autocomplete="off" name="revokeid" id="revokeid" type="text" required>
                     </div>
                     <div class="input-field col s12 m12 xl3 l3 showmobile">
                         <div class="row">
-                            <button class="btn waves-light waves-effect brown darken-3 col s12 m12" name="revoke" id="Revoke" type="submit">Revoke</button>
+                            <button class="btn waves-light waves-effect  col s12 m12" name="revoke" id="Revoke" type="submit">Revoke</button>
                         </div>
                     </div>
                </form>
