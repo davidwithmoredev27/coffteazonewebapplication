@@ -388,7 +388,7 @@
                         echo "<div class=\"col s12 m12 xl12 m12\">\n";
                         echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
                         echo "</div>\n";
-                        $_SESSION['betselleruploaderror'] = null;
+                        $_SESSION['menuuploaderror'] = null;
                     }
                     if (isset($_SESSION['menuuploadsuccess'])) {
                         echo "<div class=\"col s12 m12 xl12 m12\">\n";
@@ -434,19 +434,19 @@
                     <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" required class="validate">
+                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" class="validate">
                                 <label for="menuconfirmtitle">Title</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100" required name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100"  name="menuconfirmcaption" class="materialize-textarea"></textarea>
                                 <label for="menuconfirmcaption">Caption</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
+                                <input type="text" class="center-align" autocomplete="off" name="menupriceconfirm" id="menupriceconfirm">   
                                 <label for="menupriceconfirm">Price</label>
                             </div>
                         </div>
@@ -454,7 +454,7 @@
                             <div class="file-field input-field col s12 m12 l12 xl12">
                                 <div class="btn blue-grey darken-4">
                                     <span>Image</span>
-                                    <input type="file"  name="menuconfirmimg" required value="image">
+                                    <input type="file"  name="menuconfirmimg"  value="image">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text">
@@ -530,19 +530,19 @@
                     <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50" required class="validate">
+                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50"  class="validate">
                                 <label for="title">Title</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" required id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
                                 <label for="menuconfirmcaption">Caption</label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
+                                <input type="text" class="center-align" autocomplete="off"  name="menupriceconfirm" id="menupriceconfirm">   
                                 <label for="menupriceconfirm">Price</label>
                             </div>
                         </div>
@@ -550,7 +550,7 @@
                             <div class="file-field input-field col s12 m12 l12 xl12">
                                 <div class="btn blue-grey darken-4">
                                     <span>Image</span>
-                                    <input type="file"  name="menuconfirmimg" required value="image">
+                                    <input type="file"  name="menuconfirmimg"  value="image">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text">
@@ -575,7 +575,194 @@
         <div class="footer-copyright">
             <div class="container">
                 <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
+              <div class="row">
+            <div class="col s12 m12 l12 xl12">
+                <?php
+                        if(isset($_SESSION['menuuploaderror'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploaderror'] = null;
+                    }
+                    if (isset($_SESSION['menuuploadsuccess'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploadsuccess'] =null;
+                    }
+
+                ?>
+            </div>
+        </div>
+        <div class="row slidereditshowmobile">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
+                            <table class="filtertable responsive-table confirmtable">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <thead>
+                                    <th class="center-align">Title</th>
+                                    <th class="center-align">Picture</th>
+                                    <th class="center-align">Caption</th>
+                                    <th class="center-align">Price</th>
+                    
+                                </thead>
+                                <tbody>
+                                    <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                    <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                    <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                    <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+            <div class="container">
+                <div class="row">
+                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" class="validate">
+                                <label for="menuconfirmtitle">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100"  name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <label for="menuconfirmcaption">Caption</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input type="text" class="center-align" autocomplete="off" name="menupriceconfirm" id="menupriceconfirm">   
+                                <label for="menupriceconfirm">Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field col s12 m12 l12 xl12">
+                                <div class="btn blue-grey darken-4">
+                                    <span>Image</span>
+                                    <input type="file"  name="menuconfirmimg"  value="image">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="row">
+                        <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
+                                <div class="row">
+                                    <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+         <div class="container">
+            <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <?php
+                        
+                    if(isset($_SESSION['menuuploaderror'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploaderror'] = null;
+                    }
+                    if (isset($_SESSION['menuuploadsuccess'])) {
+                        echo "<div class=\"col s12 m12 xl12 m12\">\n";
+                        echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
+                        echo "</div>\n";
+                        $_SESSION['menuuploadsuccess'] =null;
+                    }
+                    ?>
+                </div>
+            </div>
+        </div>
+       <div class="row sliderremovemobile">
+           <div class="col s12 m12 l12 xl12">
+               <div class="row">
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <table class="filtertable responsive-table" >
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <thead>
+                                        <th class="center-align">Title</th>
+                                        <th class="center-align">Picture</th>
+                                        <th class="center-align">Caption</th>
+                                        <th class="center-align">Price</th>
+                        
+                                    </thead>
+                                    <tbody>
+                                        <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                        <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                        <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                        <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+           </div>
+    
+            <div class="container">
+                <div class="row">
+                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50"  class="validate">
+                                <label for="title">Title</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <label for="menuconfirmcaption">Caption</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12 m12 l12 xl12">
+                                <input type="text" class="center-align" autocomplete="off"  name="menupriceconfirm" id="menupriceconfirm">   
+                                <label for="menupriceconfirm">Price</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="file-field input-field col s12 m12 l12 xl12">
+                                <div class="btn blue-grey darken-4">
+                                    <span>Image</span>
+                                    <input type="file"  name="menuconfirmimg"  value="image">
+                                </div>
+                                <div class="file-path-wrapper">
+                                    <input class="file-path validate" type="text">
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
+                                <div class="row">
+                                    <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+       </div>      <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
                         <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
                     </span>
                     <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>

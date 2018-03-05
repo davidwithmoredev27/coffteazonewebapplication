@@ -289,7 +289,7 @@
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea  maxlength="1000" name="albumdescription" data-length="100" autocomplete="off" id="albumdescription" class="materialize-textarea"></textarea>
+                                    <textarea  maxlength="100" name="albumdescription" data-length="100" autocomplete="off" id="albumdescription" class="materialize-textarea"></textarea>
                                     <label for="albumdescription">Description</label>
                                 </div>
                             </div>

@@ -75,7 +75,7 @@
                 $result = mysqli_query($connection , $sql);
                     if (mysqli_num_rows($result) <= 0) {
                     
-                    $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">".$_SESSION['pagemessage']]." id is not available!</strong></span>\n";
+                    $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">". $_SESSION['pagemessage']. " id is not available!</strong></span>\n";
                     header("location:". $_SESSION['pagelink']);
                     die();
                 }
@@ -86,7 +86,6 @@
                     $_SESSION['displaypath'] = $rows['path'];
                 }
             }
-
         }
     }
 ?>
@@ -568,18 +567,7 @@
        </div>
        
    </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+   
     <!-- for development javascript file -->
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>

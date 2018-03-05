@@ -118,14 +118,14 @@
             if (isset($_POST['albumtitle']))  {
                 $albumtitle = sanitizedData($_POST['albumtitle']);
                 $preventSQlinjection = mysqli_escape_string($connection , $albumtitle);
-                if ((strlen($preventSQlinjection) < 50 || strlen($preventSQlinjection) == 50) && strlen($preventSQlinjection) != 0 ) {
+                if (strlen($preventSQlinjection) <= 50 && strlen($preventSQlinjection) !== 0 ) {
                     $title = $preventSQlinjection;
                     $titleSuccess = preg_replace('/\s+/', '', $preventSQlinjection);
                     $_SESSION['albumtitlepath'] = $titleSuccess;
-                } elseif (strlen($preventSQlinjection) > 50 || strlen($preventSQlinjection) == 0) {
+                } elseif (strlen($preventSQlinjection) > 50) {
                     mysqli_close($connection);
                     $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
-                "You've reach the maximum or 100 characters!"."</strong></span>\n";
+                "You've reach the maximum 50 characters!"."</strong></span>\n";
                     header("location:galleryalbumadd.php");
                     die();
                 }
@@ -142,13 +142,13 @@
                 $albumdescription = sanitizedData($_POST['albumdescription']);
                 $preventSQlinjection = mysqli_escape_string($connection , $albumdescription);
                 
-                if ((strlen($preventSQlinjection) < 100 || strlen($preventSQlinjection) == 100) && strlen($preventSQlinjection) != 0 ) {
+                if (strlen($preventSQlinjection) <= 100  && strlen($preventSQlinjection) !== 0 ) {
                     $descriptionSuccess = $preventSQlinjection;
                     $_SESSION['albumdescription'] = $descriptionSuccess;
-                } elseif (strlen($preventSQlinjection) > 100 || strlen($preventSQlinjection) == 0) {
+                } elseif (strlen($preventSQlinjection) > 100) {
                     mysqli_close($connection);
                       $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
-                "You've reach the maximum or 1000 characters for  your description!"."</strong></span>\n";
+                "You've reach the maximum or 100 characters for  your description!"."</strong></span>\n";
                     header("location:galleryalbumadd.php");
                     die();
                 }

@@ -118,6 +118,7 @@
             $sql ="SELECT * FROM tbl_slider";
             $result = mysqli_query($connection , $sql);
            
+        
             $dirPath = $_SESSION['dirpath'];
             $_SESSION['dirpath'] = null;
         

@@ -195,7 +195,7 @@
     </div>
     <div class="row col s12 m12 l12 xl12">
         <div class="container">
-            <form class="col s12 m12 l12 x12" method="post" action="<?php htmlspecialchars($_SERVER['PHP_SELF']);?>">
+            <form class="col s12 m12 l12 x12" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
                 <div class="container">
                     <div class="container">
                          <div class="input-field col s12 m12 l12 xl12">

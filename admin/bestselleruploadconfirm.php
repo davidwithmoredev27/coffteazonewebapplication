@@ -221,6 +221,6 @@
         }
     } else {
         header("location:bestseller.php");
-
+        die();
     }
 ?>

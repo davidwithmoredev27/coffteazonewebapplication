@@ -118,7 +118,17 @@
         }
    
         if ((isset($uploadStatus) && isset($DescriptionSuccess)) || !isset($DescriptionSuccess)) {
-            
+            $sql = "SELECT * FROM tbl_slider";
+            $result = mysqli_query($connection ,$sql);
+
+            if (mysqli_num_rows($result) === 5) {
+                mysqli_close($connection);
+                $_SESSION['slideruploaderror'] =  "<span class=\"center-align\">\n".
+                                            "<strong class=\"white-text\">Slider Reach the capacity of 5 slides</strong>\n".
+                                            "</strong>\n";
+                header("location:slideredit.php");
+                die();
+            }
         
             $dirPath = $_SESSION['dirpath'];
             $_SESSION['dirpath'] = null;

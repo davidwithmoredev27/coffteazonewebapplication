@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
-    <title>Add Images in to Gallery</title>
+    <title>Delete Album</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
@@ -40,7 +40,7 @@
 </head>
 
 <body>
-    <header class="headerstyle red darken-4">
+    <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="profile.php">Profile</a></li>
             <li><a href="logout.php">Log Out</a></li>
@@ -65,7 +65,7 @@
                 <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
             </li>
             <li class="logostyle">
-                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
+                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
             </li>
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
@@ -115,17 +115,17 @@
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header white-text left-align">Our Menu
-                                                <i class="tiny material-icons left white-text">local_cafe</i>
+                                                <i class="tiny material-icons left white-text">arrow_drop_down</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
                                                     <li>
-                                                        <a href="drinks.php" class="white-text left-align  indent">Drinks
+                                                        <a href="drinks.php" class="white-text left-align indent">Drinks
                                                             <i class="tiny material-icons left white-text">local_bar</i>
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="foods.php" class="white-text left-align ident">Foods
+                                                         <a href="foods.php" class="white-text left-align indent">Foods
                                                             <i class="tiny material-icons left white-text">local_dining</i>
                                                         </a>
                                                     </li>
@@ -197,7 +197,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Filter
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
@@ -239,172 +239,86 @@
             <i class="material-icons brown-text text-darken-4 adminmenu">menu</i>
         </a>
     </header>
-    <main class="red darken-4">
-        <div class="row dashboarddevicefixed">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div>
-        <div class="row dashboarddevicefixed">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        <div class="row dashboarddevicefixed">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-         <div class="row ">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        
-       
-        <div class="row">
-            <div class="row ">
-                <div class="col s12 m12 xl12 l12">
-                    <h4 class="center-align white-text">Dashboard</h4>
-                </div>
-            </div>
-            <?php
-                if(isset($_SESSION['registrationsuccess'])) {
-                    echo "<div class=\"row\">\n";
-                    echo "<div class=\"col s12 m12 l6 xl6 green darken-3\">\n";
-                    echo "". $_SESSION['registrationsuccess']."";
-                    echo "</div>\n";
-                    echo "</div>\n";
-                }
-            ?>
-            <a href="users.php">
-                <div class="col s8 m8 offset-m2 offset-s2 xl4 offset-xl1 offset-l1 l4 blue-grey darken-4 z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align">Users</h3>
-    
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="large  dashboardicons material-icons">account_circle</i>
-                            <span class="badge brown darken-4 white-text">
-                                <?php
-                                    $admiuserenable = "SELECT * FROM tbl_admin";
-                                    $adminuserdisable = "SELECT * FROM tbl_admin_disable";
-                                    $filterDataEnable = mysqli_query($connection , $admiuserenable);
-                                    $filterDataDisable = mysqli_query($connection, $adminuserdisable);
-                                    echo mysqli_num_rows($filterDataEnable) + mysqli_num_rows($filterDataDisable);
-                                ?>
-                            </span>
+      <main>
+         <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="gallery.php" class="breadcrumb">Gallery</a>
+                            <a href="#!" class="breadcrumb">Delete Albums</a>
                         </div>
                     </div>
+                </nav>
+            </div>
+        </div>
+        <div class="container">
+             <div class="row">
+                <div class="col s12 m12 l12 xl12">
+                    <h5 class="center-align">Delete Albums</h5>
                 </div>
-            </a>
-             <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
             </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
+            <div class="row">
+                <?php
+                    if (isset($_SESSION['albumdeleteerror'])) {
+                        echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n";
+                        echo $_SESSION['albumdeleteerror']."\n";
+                        echo "</div>\n";
+                        $_SESSION['albumdeleteerror'] = null;
+                    }
+
+                    if (isset($_SESSION['albumdeletesuccess'])) {
+                        echo "<div class=\"col s12 m12 l12 xl12 center-align green darken-3\">\n";
+                        echo $_SESSION['albumdeletesuccess']."\n";
+                        echo "</div>\n";
+                        $_SESSION['albumdeletesuccess'] = null;
+                    }
+                ?>
             </div>
-             <!-- <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div> -->
-            <a href="pages.php">
-                <div class="col s8 m8 offset-m2 offset-s2 offset-xl2 xl4 offset-l2 l4 blue-grey darken-4 z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align">Pages</h3>
-                    </div>
+            <div class="row">
+                <form class="col s12 m12 l12 xl12" method="POST" action="deletealbumconfirm.php" >
                     <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="large material-icons dashboardicons md-light">description</i>
-                            <span class="badge brown darken-4 white-text">
-                                <?php
-                                    $listFile = exec("ls -l menu/ | grep ^- | wc -l");
-                                    echo $listFile;
-                                ?>
-                            </span>
-                        </div>
-                    </div>     
-                </div>
-            </a>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        <!-- <div class="row">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div> -->
-         <!-- <div class="row">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div>
-        <div class="row">
-            <div class="col s12 m12 xl12 l12"></div>
-        </div> -->
-        <div class="row">
-             <a href="messages.php">
-                <div class="col s8 m8 offset-m2 offset-s2 xl4 offset-xl1 offset-l1 l4 blue-grey darken-4 z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align">Messages</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="large dashboardicons material-icons">email</i>
-                            <span class="badge darken-4 white-text">
-                                <?php
-                                    $sql = "SELECT * FROM tbl_message";
-                                    $filterData = mysqli_query($connection , $sql);
-                                    echo mysqli_num_rows($filterData);
-                                ?>
-                            </span>
+                        <div class="input-field col s12 m12 l12 xl12">
+                            <div class="row">
+                                <div class="col s12 m12 12 xl12">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col s12 m12 l12 xl12">
+                                                <h5 style="font-size:.9em;">Album List</h5>
+                                            </div>
+                                        </div>
+                                        <select name="selectalbum" id="albumname">
+                                            <option value="" disabled selected >Select Album</option>
+                                                <?php
+                                                    $sql = "SELECT * FROM tbl_gallery_album_title";
+                                                    $result = mysqli_query($connection , $sql);
+                                                    while($row = mysqli_fetch_assoc($result)) {
+                                                        echo "\t\t\t<option class=\"center-align\" value=\"".$row['title'] ."\">".$row['title']."</option>\n";
+                                                    }
+                                                ?>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </a>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-             <!-- <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div> -->
-            <a href="filter.php">
-                <div class="col s8 m8 offset-m2 offset-s2 offset-xl2 xl4 offset-l2 l4 blue-grey darken-4 z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align">Request</h3>
-                    </div>
                     <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="large dashboardicons material-icons">vpn_key</i>
-                            <span class="badge brown darken-4 white-text">
-                                <?php 
-                                    $sql = "SELECT * FROM tbl_filter";
-                                    $filterData = mysqli_query($connection , $sql);
-                                    echo mysqli_num_rows($filterData);
-                                ?>
-                            </span>
-                        </div>
+                       <div class="input-field col s12 m12 l12 xl12">
+                            <div class="row">
+                                <div class="col s12 m12 l12 xl12">
+                                    <div class="container">
+                                        <div class="row">
+                                            <button type="submit" name="albumdelete" class="btn red darken-2 waves-light waves-effect col s6 m6 16 xl6 offset-s3 offset-l3 offset-xl3 offset-m3">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                       </div>
                     </div>
-                </div>
-            </a>
+                </form>
+            </div>
         </div>
     </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
     <!-- for development javascript file -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
@@ -418,5 +332,4 @@
     <script src="../js/main.js" type="text/javascript"></script>
 
 </body>
-<?php $_SESSION['registrationsuccess'] = null;?>
 </html>

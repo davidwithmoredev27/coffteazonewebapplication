@@ -379,15 +379,14 @@
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
         <div class="row showontabletseperator"><div class="col s12 m12 l12 xl12"></div></div>
-       
-         <div class="row">
+       <div class="row">
             <div class="col s12 m12 l12 xl12">
                 <?php
                         if(isset($_SESSION['menuuploaderror'])) {
                         echo "<div class=\"col s12 m12 xl12 m12\">\n";
                         echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
                         echo "</div>\n";
-                        $_SESSION['betselleruploaderror'] = null;
+                        $_SESSION['menuuploaderror'] = null;
                     }
                     if (isset($_SESSION['menuuploadsuccess'])) {
                         echo "<div class=\"col s12 m12 xl12 m12\">\n";
@@ -433,7 +432,7 @@
                     <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50"  class="validate">
+                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" class="validate">
                                 <label for="menuconfirmtitle">Title</label>
                             </div>
                         </div>
@@ -535,7 +534,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100"  id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
                                 <label for="menuconfirmcaption">Caption</label>
                             </div>
                         </div>
@@ -549,7 +548,7 @@
                             <div class="file-field input-field col s12 m12 l12 xl12">
                                 <div class="btn blue-grey darken-4">
                                     <span>Image</span>
-                                    <input type="file"  name="menuconfirmimg" required value="image">
+                                    <input type="file"  name="menuconfirmimg"  value="image">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path validate" type="text">

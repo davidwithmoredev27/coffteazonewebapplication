@@ -278,7 +278,7 @@
             </div>
             <div class="row">
                 <div class="col s12 m12 xl12 m12">
-                    <h4 class="center-align"><?php echo $_SESSION['pagemessage'];?></h4>
+                    <h4 class="center-align"><?php echo $_SESSION['pagename'];?></h4>
                 </div>
                 <?php 
                     if(isset($_SESSION['menuuploaderror'])) {

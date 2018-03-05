@@ -724,6 +724,22 @@ width="100px */
   .colwidth:nth-child(6) {
     width: 120px;
   }
+
+  .menconfirmcolwidth:nth-child(1) {
+    width: 60px;
+  }
+
+  .menconfirmcolwidth:nth-child(2) {
+    width: 100px;
+  }
+
+  .menconfirmcolwidth:nth-child(3) {
+    width: 300px;
+  }
+
+  .menconfirmcolwidth:nth-child(4) {
+    width: 100px;
+  }
 }
 @media only screen and (min-width: 1024px) {
   .colwidth:nth-child(1) {
@@ -749,6 +765,22 @@ width="100px */
   .colwidth:nth-child(6) {
     width: 120px;
   }
+
+  .menconfirmcolwidth:nth-child(1) {
+    width: 100px;
+  }
+
+  .menconfirmcolwidth:nth-child(2) {
+    width: 100px;
+  }
+
+  .menconfirmcolwidth:nth-child(3) {
+    width: 350px;
+  }
+
+  .menconfirmcolwidth:nth-child(4) {
+    width: 100px;
+  }
 }
 .filtertable {
   table-layout: fixed;
@@ -762,9 +794,13 @@ width="100px */
 }
 .filtertable tbody td {
   font-size: .8em;
+  text-align: center !important;
   border: .1em  solid #616161 !important;
 }
 .filtertable tbody td:nth-child(4) {
+  word-wrap: break-word;
+}
+.filtertable tbody td:nth-child(3) {
   word-wrap: break-word;
 }
 .filtertable thead tr th {
@@ -772,6 +808,10 @@ width="100px */
 }
 .filtertable thead tr th:first-child {
   content: "#";
+}
+
+.tooltippedstyle {
+  font-size: .9em !important;
 }
 
 /*# sourceMappingURL=main.css.map */

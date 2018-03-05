@@ -47,7 +47,7 @@
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -274,6 +274,34 @@
                 
                              <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
                                 <a href="galleryview.php" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="container galleryheigth boxcolor z-depth-3">
+                        <div class="row">
+                            <div class="row">
+                                <col class="s12 m12 l12 xl12">
+                            </div>
+                            <div class="row">
+                                <col class="s12 m12 l12 xl12">
+                            </div>
+                            <div class="col s12 m12 l12 xl12 ">
+                                <h6 class="center-align white-text">Delete Albums</h6>
+                            </div>
+                             <div class="row">
+                                <col class="s12 m12 l12 xl12">
+                            </div>
+                            <div class="row">
+                                <col class="s12 m12 l12 xl12">
+                            </div>
+                            <div class="row">
+                                <col class="s12 m12 l12 xl12">
+                            </div>
+                
+                             <div class="col s6 m6 l4 xl4 offset-s3 offset-l4 offset-xl4 offset-m4">
+                                <a href="deletealbum.php" class="btn waves-light btncolor waves-effect col xl12 l12 s12 m12">View</a>
                             </div>
                         </div>
                     </div>
