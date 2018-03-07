@@ -48,6 +48,8 @@
                         $sql = "DELETE FROM tbl_gallery_album_title WHERE title = '$preventSQLInjection'";
                         $_SESSION['dirtobedelete'] = $preventSQLInjection;
                         RemoveDirectory("../img/gallery/". $_SESSION['dirtobedelete']);
+                        $sql = "DROP TABLE tbl_gallery_album_".$_SESSION['dirtobedelete'];
+            
                         mysqli_query($connection , $sql);
                         $_SESSION['albumdeletesuccess'] = "<span><strong class=\"white-text\">".$_SESSION['dirtobedelete']. " album successfully deleted!</strong></span>\n";
                         header("location:deletealbum.php");

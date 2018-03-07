@@ -279,10 +279,39 @@
                                         <i class="tiny material-icons left white-text">help</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="../aboutus.php" class="white-text left-align">About Us
-                                        <i class="tiny material-icons left white-text">person_pin</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header left-align admincolor white-text">
+                                                <span>About us</span>
+                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="../history.php" class="white-text left-align indent" style="font-size:.8em !important;">History
+                                                            <i class="tiny material-icons  white-text left">access_time</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="../historyimages.php" class="white-text left-align indent" style="font-size:.8em !important;">images
+                                                            <i class="tiny material-icons  white-text left">access_time</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                        <a href="../vision.php" class="white-text left-align indent" style="font-size:.8em !important;">Vision
+                                                            <i class="tiny material-icons  white-text left">remove_red_eye</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                        <a href="../mission.php" class="white-text left-align indent" style="font-size:.8em !important;">Mission
+                                                            <i class="tiny material-icons  white-text left">flag</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>    
+                                        </li>
+                                    </ul>
                                 </li>
                             </ul>
                         </div>

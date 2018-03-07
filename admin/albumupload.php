@@ -161,9 +161,9 @@
                 die();
             }
 
-            if (isset($_FILES['album'])) {
+            if (isset($_FILES['album'])  && $_FILES['album']['error'] == 0) {
                 UploadFile($_FILES['album']);
-            } elseif (!isset($_FILES['album'])) {
+            } elseif (isset($_FILES['album']) && $_FILES['album']['error'] > 0) {
                 mysqli_close($connection);
                  $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                 "Upload Images for your album"."</strong></span>\n";
