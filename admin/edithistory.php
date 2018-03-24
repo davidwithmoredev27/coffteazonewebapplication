@@ -59,15 +59,15 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
     <![endif]-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <title>Edit History Id <?php echo  $numbering;?></title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -103,7 +103,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
              <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
                 <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
@@ -111,12 +111,6 @@
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
-                </a>
-            </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
                 </a>
             </li>
             <li class="no-padding">
@@ -258,7 +252,7 @@
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -280,7 +274,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -290,8 +284,8 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -366,8 +360,8 @@
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="../js/main.js" type="text/javascript"></script>

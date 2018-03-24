@@ -108,11 +108,14 @@
                     die();
                 } 
             } else if (!isset($_POST['bestsellertitleconfirm']) || strlen($_POST['bestsellertitleconfirm']) == 0) {
-                 mysqli_close($connection);
-                $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">Please Give a Title for this bestseller</strong>\n".
-                                            "</strong>\n";
-                header("location:bestselleredit.php");die();
+                $sql = "SELECT title FROM tbl_bestseller WHERE id =". $_SESSION['bestsellerconfirm'];
+                $result = mysqli_query($connection , $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($rows = mysqli_fetch_assoc($result)) {
+                        $titleSuccess = $rows['title'];
+                    }
+                }
             }
 
             if (isset($_POST['bestsellerdecriptionconfirm'])) {
@@ -132,12 +135,14 @@
                     die();
                 } 
             } else if (!isset($_POST['bestsellerdecriptionconfirm']) || strlen($_POST['bestsellerdecriptionconfirm']) == 0) {
-                mysqli_close($connection);
-                    $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">Provide a caption!</strong>\n".
-                                            "</strong>\n";
-                    header("location:bestselleredit.php");
-                    die();
+                $sql = "SELECT caption FROM tbl_bestseller WHERE id =".$_SESSION['bestsellerconfirm'];
+                $result = mysqli_query($connection , $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($rows = mysqli_fetch_assoc($result)) {
+                        $DescriptionSuccess = $rows['caption'];
+                    }
+                }
             }
 
             if (isset($_POST['bestsellerpriceconfirm'])) {
@@ -152,32 +157,52 @@
 
 
                 } else if (!filter_var($_POST['bestsellerpriceconfirm'] , FILTER_VALIDATE_INT)) {
-                    mysqli_close($connection);
-                    $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
-                                            "</strong>\n";
-                    header("location:bestselleredit.php");die();
+                    if (!isset($_POST['bestsellerpriceconfirm']) || strlen($_POST['bestsellerpriceconfirm']) == 0) {
+                        $sql = "SELECT price FROM tbl_bestseller WHERE id =".$_SESSION['bestsellerconfirm'];
+                        $result = mysqli_query($connection , $sql);
+
+                        if (mysqli_num_rows($result) > 0) {
+                            while($rows = mysqli_fetch_assoc($result)) {
+                                $priceSuccess = $rows['price'];
+                            }
+                        }
+                    } else if (isset($_POST['bestsellerpriceconfirm'])) {
+                        mysqli_close($connection);
+                        $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
+                                                "</strong>\n";
+                        header("location:bestselleredit.php");die();
+                    }
+                   
                 }
                 
             } else if (!isset($_POST['bestsellerpriceconfirm']) || strlen($_POST['bestsellerpriceconfirm']) == 0) {
-                 mysqli_close($connection);
-                    $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">please give a price</strong>\n".
-                                            "</strong>\n";
-                    header("location:bestselleredit.php");die();
+                $sql = "SELECT * FROM tbl_bestseller WHERE id = ".$_SESSION['bestsellerconfirm'];
+                $result = mysqli_query($connection , $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($rows = mysqli_fetch_assoc($result)) {
+                        $priceSuccess = $rows['price'];
+                    }
+                }
             }
 
-
-            if (isset($_FILES['bestsellerimgconfirm'])) {
-        
+           
+            if (isset($_FILES['bestsellerimgconfirm']) && $_FILES['bestsellerimgconfirm']['error'] == 0) {
+    
                 $filePath = UploadFile($_FILES['bestsellerimgconfirm']);
-            } else if (!isset($_FILES['bestsellerimgconfirm'])) {
-                mysqli_close($connection);
-                $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-                                            "<strong class=\"white-text\">Upload Image!</strong>\n".
-                                            "</strong>\n";
-                header("location:bestselleredit.php");die();
+            } elseif (isset($_FILES['bestsellerimgconfirm']) && $_FILES['bestsellerimgconfirm']['error'] > 0) {
+                 $sql = "SELECT * FROM tbl_bestseller WHERE id = ".$_SESSION['bestsellerconfirm'];
+                $result = mysqli_query($connection , $sql);
+
+                if (mysqli_num_rows($result) > 0) {
+                    while($rows = mysqli_fetch_assoc($result)) {
+                        $dirPath = $rows['path'];
+                        
+                    }
+                }
             }
+            die($priceSuccess . $DescriptionSuccess . $titleSuccess . $_SESSION['dirpath']);
         }
         if (isset($filePath) && isset($titleSuccess) &&  isset($DescriptionSuccess) && isset($priceSuccess)) {
             

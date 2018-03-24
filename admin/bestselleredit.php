@@ -92,7 +92,7 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
         <nav>
@@ -119,12 +119,7 @@
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
             </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
+
             <li class="no-padding">
                 <ul class="collasible collapsible-accordion">
                     <li>
@@ -186,11 +181,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
-                                </li>
+                    
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -230,11 +221,7 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                        
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -293,7 +280,7 @@
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+            <!--  <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -315,7 +302,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -324,9 +311,9 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                 <li>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -410,7 +397,7 @@
                 <form class="col s12 m12 l12 xl12" method="POST" action="bestselleruploadconfirm.php" enctype="multipart/form-data">
                      <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" name="bestsellertitleconfirm" maxlength="20" required class="validate">
+                                <input type="text" class="center-align" id="title" name="bestsellertitleconfirm" maxlength="20" class="validate">
                                 <label for="title">Title</label>
                             </div>
                     </div>
@@ -422,7 +409,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12 m12 l12 xl12">
-                            <input type="text" class="center-align" required name="bestsellerpriceconfirm" id="bestsellerpriceconfirm">   
+                            <input type="text" class="center-align"  name="bestsellerpriceconfirm" id="bestsellerpriceconfirm">   
                             <label for="bestsellerpriceconfirm">Price</label>
                         </div>
                     </div>
@@ -511,7 +498,7 @@
                     <form class="col s12 m12 l12 xl12" method="POST" action="bestselleruploadconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" name="bestsellertitleconfirm" maxlength="20" required class="validate">
+                                <input type="text" class="center-align" id="title" name="bestsellertitleconfirm" maxlength="20" class="validate">
                                 <label for="title">Title</label>
                             </div>
                         </div>
@@ -523,7 +510,7 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" required name="bestsellerpriceconfirm" id="bestsellerpriceconfirm">   
+                                <input type="text" class="center-align"  name="bestsellerpriceconfirm" id="bestsellerpriceconfirm">   
                                 <label for="bestsellerpriceconfirm">Price</label>
                             </div>
                         </div>
@@ -552,27 +539,16 @@
        </div>
        
    </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+  
     <!-- for development javascript file -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="../js/main.js" type="text/javascript"></script>
 

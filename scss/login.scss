@@ -1,34 +1,74 @@
-#username , #password {
-    text-align:center;
-    font-size:1.5em;
+@media only screen and (max-width:767px) {
+    #loginbackground {
+        background-image: url("../img/loginbackground-small.jpeg");
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:1023px) {
+    #loginbackground {
+        background-image: url("../img/loginbackground-medium.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    #loginbackground {
+        background-image: url("../img/loginbackground-large.jpeg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+}
+
+#username,
+#password {
+    text-align: center;
+    font-size: 1.5em;
 }
 
 #loginbtnseperator {
-    display:none;
+    display: none;
 }
-
 
 @media only screen and (max-width:769px) and (min-width:320px) {
     #loginbtnseperator {
-        display:block;
+        display: block;
     }
 }
 
 #attempnotify {
     display: none;
-    font-size:.8em !important;
+    font-size: .8em !important;
 }
 
-input[type=text]:focus  ,input[type=password]:active{
-    border-bottom: 2px solid #4e342e !important;
-    //box-shadow: 0 1px 0 0 #000;
+input[type=text],
+input[type=password] {
+    border-bottom: 2px solid #221e1d !important; //box-shadow: 0 1px 0 0 #000;
 }
-input[type=password]:focus , input[type=password]:active {
-     border-bottom:2px solid #4e342e !important;
-     box-shadow:none;
+
+input[type=password],
+input[type=password] {
+    border-bottom: 2px solid #221e1d !important; //box-shadow: 0 1px 0 0 #000;
+    box-shadow: none;
 }
- 
+
+input[type=text]:focus,
+input[type=password]:active {
+    border-bottom: 2px solid #7c4d42 !important; //box-shadow: 0 1px 0 0 #000;
+}
+
+input[type=password]:focus,
+input[type=password]:active {
+    border-bottom: 2px solid #7c4d42 !important;
+    box-shadow: none;
+}
+
 #submitbutton {
     display: inline-block;
 }
-

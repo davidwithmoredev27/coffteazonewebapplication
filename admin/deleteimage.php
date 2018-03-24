@@ -16,7 +16,7 @@ session_start();
 
     if ($_SERVER['REQUEST_METHOD'] === "POST") {
         if (isset($_POST['deletesubmit'])) {
-
+        
             if (isset($_POST['deleteid'])) {
                 $deleteid = sanitizedData($_POST['deleteid']);
                 $preventSqlInjection = mysqli_escape_string($connection , $deleteid);

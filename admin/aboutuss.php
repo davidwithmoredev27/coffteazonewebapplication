@@ -62,7 +62,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
              <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+                <h1 class="center-align white-text usernametextadmin"></h1>
             </li>
             <li class="logostyle">
                 <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
@@ -140,11 +140,6 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
-                                </li>
-                                <li>
                                     <a href="gallery.php" class="white-text left-align">Gallery
                                         <i class="tiny material-icons left white-text">photo_library</i>
                                     </a>
@@ -154,11 +149,7 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                               
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>

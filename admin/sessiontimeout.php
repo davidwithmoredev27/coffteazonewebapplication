@@ -1,5 +1,5 @@
 <?php
-    $time  = $_SERVER['REQUEST_TIME'];
+   /*  $time  = $_SERVER['REQUEST_TIME'];
 
     $timeDuration = 3600;
 
@@ -9,5 +9,5 @@
         session_start();
         $_SESSION['sessionexpnotifacation'] = "<script type=\"text/javascript\">alert(\"Session Expired\");</script>\n";
     }
-    $_SESSION['LAST_ACTIVITY'] = $time;
+    $_SESSION['LAST_ACTIVITY'] = $time; */
 ?>

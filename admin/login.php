@@ -3,10 +3,7 @@
     session_start();
     //date_default_timezone_set("Asia/Manila");
    
-    // echo "<pre>";
-    // print_r($_SESSION);
-    // echo "</pre>";
-    // die;
+
     if (isset($_SESSION['username']) && isset($_SESSION['password'])) {
         mysqli_close($connection);
         header("location:dashboard.php?admin");
@@ -14,8 +11,10 @@
     if (!isset($_SESSION['loginerror'])) {
         $_SESSION['loginerror'] = 0;
     }
-    
-    if ($_SESSION['loginerror'] == 5) {
+    if ($_SESSION['loginerror'] == 2) {
+        $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">1 more password attempt and you wil be directed to forgot password form!</strong></span>\n";
+    }
+    if ($_SESSION['loginerror'] == 3) {
         mysqli_close($connection);
         
         header("location:forgotpassword.php");
@@ -70,9 +69,8 @@
                     $i++;
                 }
                 if (!isset($userCredentials['username'])) {
-                    $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Username did not match!</strong></span>\n";
-                    $_SESSION['loginerror'] = $_SESSION['loginerror'] + 1;
-            
+                    $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Enter a valid username!</strong></span>\n";
+                    
                 }
             }
         } 
@@ -102,30 +100,28 @@
                     }
                     $i++;
                 }
+        
                 if (!isset($userCredentials['password'])) {
-                     
-                    $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Password did not match!</strong></span>\n";
                     $_SESSION['loginerror'] = $_SESSION['loginerror'] + 1;
+                     if ($_SESSION['loginerror'] == 1) {
+                         $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Password did not match!</strong></span>\n";
+                     }
+                     mysqli_close($connection);
+                    header("location:login.php");
+                    die;                    
                 }
             }
         }
-        if (!isset($userCredentials['username'])) {
+        if (!isset($userCredentials['username']) && !isset($userCredentials['password'])) {
             if (!isset($userCredentials['password'])) {
-                 $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like Username and Password did not match!</strong></span>\n";
+                 $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Enter a valid account!</strong></span>\n";
             }
             mysqli_close($connection);
             header("location:login.php");
             die;
         }
 
-        if (!isset($userCredentials['password'])) {
-             if (!isset($userCredentials['username'])) {
-                 $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like Username and Password did not match!</strong></span>\n";
-            }
-            mysqli_close($connection);
-            header("location:login.php");
-            die(); 
-        }
+       
         if (isset($userCredentials['username']) && isset($userCredentials['password']) &&
             !empty($userCredentials['username']) && !empty($userCredentials['password'])) {
         
@@ -144,7 +140,7 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <![endif]-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon"/>
@@ -154,16 +150,9 @@
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen , projection">
     <link rel="stylesheet" type="text/css" href="../css/main.css">
-    <style type="text/css">
-        @media only screen and (min-width:1024px) {
-            .loginlogo {
-                margin-left:420px !important;
-            }    
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/logofixed.css">
 </head>
-<body>
-    <?php  ?>
+<body id="loginbackground">
     <div class="container">
         <div class="row">
             <div class="col s12 l12 m12 xl12"></div>
@@ -174,21 +163,23 @@
         <div class="row">
             <div class="col s12 l12 m12 xl12"></div>
         </div>
-        <div class="row">
+        <div class="row removeonmedium">
             <div class="col s12 l12 m12 xl12"></div>
         </div>
         <div class="row loginimg" role="coffteazonelogo">
-            <div class="col l3 offset-l5 m3 offset-m5 xl3 offset-xl5 s7 offset-s3 loginlogo">
-                <img src="../img/logo/cofftealogo.png"  width="120px" height="120px" alt="coffteazone logo">
+            <div class="col l3 offset-l4 m3 offset-m4 xl3 offset-xl4 s5 offset-s3 loginlogo">
+                <img src="../img/logo/cofftealogo.png"  alt="coffteazone logo"  id="logoimage">
             </div>
         </div>
         <?php
             if (isset($_SESSION['usernameloginerror'])) {
-                echo "<div class=\"row\">\n";
-                echo "<div class=\"col s12 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 card-panel red darken-3\">\n";
-                echo "<p class=\"center-align\"><strong class=\"white-text\" >". $_SESSION['usernameloginerror']."</strong></p>\n";
-                echo "<p class=\"center-align\"><strong class=\"white-text\" >Please try again.</strong></p>\n";
-                echo "</div>\n";
+                echo "<div class=\"container\">\n";
+                    echo "<div class=\"row\">\n";
+                        echo "<div class=\"col s12 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 card-panel red darken-3\">\n";
+                            echo "<p class=\"center-align\"><strong class=\"white-text\" >". $_SESSION['usernameloginerror']."</strong></p>\n";
+                            echo "<p class=\"center-align\"><strong class=\"white-text\" >Please try again.</strong></p>\n";
+                        echo "</div>\n";
+                    echo "</div>\n";
                 echo "</div>\n";
             }
         ?>
@@ -199,27 +190,22 @@
                 <div class="container">
                     <div class="container">
                          <div class="input-field col s12 m12 l12 xl12">
-                            <input id="username" autocomplete="off" onfocus="this.value =''" role="username" type="text" class="brown-text text-darken-3" name="username" class="validate">
-                            <label for="username" class="brown-text text-darken-3">Username</label>
+                            <input id="username"  autocomplete="off" onfocus="this.value =''" role="username" type="text" class="brown-text text-darken-3" name="username" class="validate">
+                            <label for="username" class="brown-text text-lighten-4">Username</label>
                         </div>
                         <div class="input-field col s12 m12  l12 xl12">
                             <input id="password" role="password" type="password" class="brown-text text-darken-3" name="password" class="validate">
-                            <span id="attempnotify" class="red darken-3 center-align z-depth-3">
-                                <strong class="white-text">5 multiple Attempts to type your password!</strong>
-                            </span>
-                            <label for="password" class="brown-text text-darken-3" >Password</label>
+                    
+                            <label for="password" class="brown-text text-lighten-3" >Password</label>
                         </div>
                         <div class="input-field col s12 m12 l12 xl12">
-                            <a role="passwordrecovery" href="forgotpassword.php" class="brown-text text-darken-3" id="forgotpassword" >forgot password?</a>
+                            <a role="passwordrecovery" href="forgotpassword.php" class="brown-text text-lighten-4" id="forgotpassword" >forgot password?</a>
                             <div class="row">
                                 <div class="col s12 l12 m12 xl12"></div>
                             </div> 
                             <div class="row">
                                 <button role="login" id="submitbutton" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12  xl12" type="submit" name="login">login</button>
                             </div> 
-                            <div class="row">
-                                <a href="registration.php" role="regiter" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12 xl12">Sign Up</a>
-                            </div>
                         </div>  
                     </div>
                       
@@ -236,8 +222,8 @@
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script> -->
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/validation.js" type="text/javascript"></script>
 </body>

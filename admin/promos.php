@@ -18,7 +18,7 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
     <![endif]-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
@@ -42,12 +42,12 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -61,42 +61,16 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
-             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            <li>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
-                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
-            </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="securityquestion.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-               
             </li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -115,7 +89,7 @@
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header white-text left-align">Our Menu
-                                                <i class="tiny material-icons left white-text">arrow_drop_down</i>
+                                                <i class="tiny material-icons left white-text">local_cafe</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -144,32 +118,62 @@
                                         <i class="tiny material-icons left white-text">style</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="gallery.php" class="white-text left-align">Gallery
-                                        <i class="tiny material-icons left white-text">photo_library</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header left-align admincolor white-text">
+                                                <span>Gallery</span>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="galleryview.php" class="white-text left-align indentgallery" style="font-size:.8em !important;">View Album
+                                           
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="addimages.php" class="white-text left-align indentgallery" style="font-size:.8em !important;">Add Images
+                                                    
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                        <a href="galleryalbumadd.php" class="white-text left-align indentgallery" style="font-size:.8em !important;">Add Album
+                                                       
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                        <a href="deletealbum.php" class="white-text left-align indentgallery" style="font-size:.8em !important;">Delete Album
+                                                            
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>    
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li>
                                     <a href="contactus.php" class="white-text left-align">Contact Us
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header left-align admincolor white-text">
                                                 <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
                                                     <li>
                                                         <a href="history.php" class="white-text left-align indent" style="font-size:.8em !important;">History
+                                                            <i class="tiny material-icons  white-text left">access_time</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="historyimages.php" class="white-text left-align indent" style="font-size:.8em !important;">images
                                                             <i class="tiny material-icons  white-text left">access_time</i>
                                                         </a>
                                                     </li>
@@ -203,16 +207,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="inbox.php" class="white-text left-align">Inbox
+                                    <a href="feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+            <!--  <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -234,7 +238,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -243,9 +247,9 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                 <li>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -265,6 +269,20 @@
     </header>
     <main>
         <div class="row">
+            <div class="col s12 m12 l12 xl12">   
+                <nav class="removebreadcrumbsstyle">
+                    <div class="nav-wrapper">
+                        <div class="col s12 m12 l12 xl12">
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="homepage.php" class="breadcrumb">Home</a>
+        
+                            <a href="#!" class="breadcrumb">Promos setting</a>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="row">
             <h4 class="col s12 12 xl12 m12 center-align">Promos</h4>
             <?php
                 if (isset($_SESSION['promossuccess'])) {
@@ -276,56 +294,8 @@
             ?>
         </div>
         <div class="row">
-            <div class="col s12 m12 l5 xl15">
-                <div class="row">
-                    <div class="col s12 m12 12 xl12">
-                        <h5 class="center-align">Add promo</h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <?php
-                        if(isset($_SESSION['promoserror'])) {
-                            echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n".
-                                 $_SESSION['promoserror']. "\n".
-                                 "</div>\n";
-                            $_SESSION['promoserror'] = null;
-                        }
-                    ?>
-                </div>
-                <div class="row">
-                    <form action="addpromos.php" method="post" class="col s12 m12 xl12 l12" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12 ">
-                                <input type="text"  autocomplete="off" required name="promostitle" maxlength="50" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add title!</strong>" data-length="50" id="promostitle">
-                                <label for="promostitle">Title</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <textarea name="promosdescription" autocomplete="off" required id="promosdescription" class="tooltipped materialize-textarea" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add description!</strong>" maxlength="100" data-length="100"></textarea>
-                                <label for="promosdescription">Description</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" autocomplete="off" required id="promosurl" maxlength="20" data-length="20" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add pagename</strong>"  name="promosurl">
-                                <label for="promosurl">Page name</label>
-                            </div>
-                            <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn blue-grey darken-4">
-                                    <span>Image</span>
-                                    <input type="file" autocomplete="off" required name="promosimg">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text" placeholder="Upload image">
-                                </div>
-                            </div>
-                            <div class="input-field col l12 m12 xl12 s12">
-                                <div class="row">
-                                    <button type="submit" name="promosaddsubmit" class="col xl12 l12 m12 s12 btn waves-light waves-effect">Add</button>
-                                </div>
-                            </div>
-                        </div>   
-                    </form>
-                </div>
-            </div>   
-            <div class="col s12 m12 xl7 l7">
+               
+            <div class="col s12 m12 xl12 l12">
                 <div class="row">
                     <h5 class="col s12 m12 l12 xl12 center-align center-align">Promos list</h5>  
                 </div>
@@ -340,24 +310,91 @@
                                     <th class="center-align">Title</th>
                                     <th class="center-align">Image</th>
                                     <th class="center-align">Description</th>
-                                    <th class="center-align">Url</th>
-                                    <th class="center-align" colspan="2">Option</th>
+                                   <th class="center-align"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    
-                                </tr>
+                
+                                    <?php
+                                        $sql = "SELECT * FROM tbl_promos";
+                                        $result = mysqli_query($connection, $sql);
+
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($rows = mysqli_fetch_assoc($result)) {
+                                                $title = $rows['title'];
+                                                $description = $rows['description'];
+                                                $path = $rows['path'];
+                                                $id = $rows['id'];
+                                                echo "<tr>\n";
+                                                echo "<td class=\"center-align\">". $title ."</td>\n";
+                                                echo "<td class='center-align'>". "<img src='../$path' width='50px' height='75px'/></td>\n";
+                                                echo "<td class='center-align'>$description</td>\n";
+                                                echo "<td class='center-align'>\n".
+                                                        "<form method=\"post\" action='editpromos.php' enctype='multipart/form-data'>".
+                                                            "<input type='hidden' value='$id' name='editpromosid'>\n".
+                                                            "<button type='submit' name='promoseditsubmit' class='btn waves-light waves-effect'>Edit</button>\n".
+                                                        "</form>\n";
+                                                echo "</td>";
+                                            }
+                                        }
+                                    ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col s12 m12 l6 xl6">
-                        <form action="methoddelete" class="row"></form>
+            </div>
+            <div class="col s12 m12 l12 xl12">
+                <div class="container">
+                    <div class="row">
+                        <div class="col s12 m12 12 xl12">
+                            <h5 class="center-align">Add promo</h5>
+                        </div>
                     </div>
-                    <div class="col s12 m12 l6 xl6">
-
+                    <div class="row">
+                        <?php
+                            if(isset($_SESSION['promoserror'])) {
+                                echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n".
+                                    $_SESSION['promoserror']. "\n".
+                                    "</div>\n";
+                                $_SESSION['promoserror'] = null;
+                            }
+                        ?>
+                         <?php
+                            if(isset($_SESSION['promossuccess'])) {
+                                echo "<div class=\"col s12 m12 l12 xl12 center-align green darken-3\">\n".
+                                    $_SESSION['promossuccess']. "\n".
+                                    "</div>\n";
+                                $_SESSION['promosuccess'] = null;
+                            }
+                        ?>
+                    </div>
+                    <div class="row">
+                        <form action="addpromos.php" method="post" class="col s12 m12 xl12 l12" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12 xl12 ">
+                                    <input type="text"  autocomplete="off" required name="promostitle" maxlength="50" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add title!</strong>" data-length="50" id="promostitle">
+                                    <label for="promostitle">Title</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <textarea name="promosdescription" autocomplete="off" required id="promosdescription" class="tooltipped materialize-textarea" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add description!</strong>" maxlength="500" data-length="500"></textarea>
+                                    <label for="promosdescription">Description</label>
+                                </div>
+                                <div class="file-field input-field col s12 m12 l12 xl12">
+                                    <div class="btn blue-grey darken-4">
+                                        <span>Image</span>
+                                        <input type="file" autocomplete="off" required name="promosimg">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text" placeholder="Upload image">
+                                    </div>
+                                </div>
+                                <div class="input-field col offset-l5 offset-xl5 m12 l2 xl2 s12">
+                                    <div class="row">
+                                        <button type="submit" name="promosaddsubmit" class="col xl12 l12 m12 s12 btn waves-light waves-effect">Add</button>
+                                    </div>
+                                </div>
+                            </div>   
+                        </form>
                     </div>
                 </div>
             </div>
@@ -369,8 +406,8 @@
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="../js/main.js" type="text/javascript"></script>

@@ -28,7 +28,9 @@
         return $sanitizedData;
     }
   
-    function UploadFile($img) {
+   
+    
+ function UploadFile($img) {
          $allowed = array('jpg' => 'image/jpeg' ,  'jpeg' => 'image/jpeg' , 'JPG' => 'image/jpg');
         //print_r($img);
         if(isset($img)) {
@@ -45,7 +47,7 @@
                  $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Use a jpeg image format!</strong>\n".
                                             "</strong>\n";
-                header("location:bestseller.php");
+                header("location:bestselleredit.php");
                 die();
             }
             if ($size > $maxSize) {
@@ -53,7 +55,7 @@
                 $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Use a mininum of 1MB of JPG image!</strong>\n".
                                             "</strong>\n";
-                header("location:bestseller.php");
+                header("location:bestselleredit.php");
                 die();
             }
             if (in_array($filetype , $allowed)) {
@@ -76,16 +78,10 @@
                 $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Invalid File Type!</strong>\n".
                                             "</strong>\n";
-                header("location:bestseller.php");
+                header("location:bestselleredit.php");
                 die();
             }
         }
-    }
-    
-
-    if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
-        mysqli_close($connection);
-        header("location:login.php");
     }
 
     if ($_SERVER['REQUEST_METHOD'] == "POST") {

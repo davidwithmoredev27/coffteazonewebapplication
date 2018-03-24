@@ -18,7 +18,7 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
     <![endif]-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
@@ -42,12 +42,12 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -61,42 +61,16 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
-             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            <li>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
-                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
-            </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="securityquestion.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-               
             </li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -115,7 +89,7 @@
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header white-text left-align">Our Menu
-                                                <i class="tiny material-icons left white-text">arrow_drop_down</i>
+                                                <i class="tiny material-icons left white-text">local_cafe</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -138,11 +112,6 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -183,17 +152,13 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header left-align admincolor white-text">
                                                 <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -237,16 +202,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="inbox.php" class="white-text left-align">Inbox
+                                    <a href="feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -268,7 +233,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -277,9 +242,9 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                 <li>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -303,8 +268,9 @@
                 <nav class="removebreadcrumbsstyle">
                     <div class="nav-wrapper">
                         <div class="col s12 m12 l12 xl12">
-                            <a href="gallery.php" class="breadcrumb">Gallery</a>
-                            <a href="#!" class="breadcrumb">Delete Albums</a>
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Gallery</a>
+                            <a href="#!" class="breadcrumb">Delete Album</a>
                         </div>
                     </div>
                 </nav>

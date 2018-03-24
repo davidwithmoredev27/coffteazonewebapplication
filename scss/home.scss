@@ -3,27 +3,25 @@
 }
 
 #bestsellercarousel {
-    height:300px;
+    height: 300px;
     .carousel {
         height: 100%;
     }
-
 }
-
 
 .sellertitle {
     h3 {
         font-size: 2em;
     }
 }
-.producttitle  {
-    font-size:1em;
+
+.producttitle {
+    font-size: 1em;
 }
 
 
-.sliderbackground {
-    background-image: url("../img//home/homepageslider/pexels-photo-67468.jpg");
-    background-position: center;
-    background-size: 100% 100%;
-    background-attachment: fixed;
-}
+/* @media only screen and (min-width:1024px) {
+    .slider {
+        height: 500px !important;
+    }
+}*/

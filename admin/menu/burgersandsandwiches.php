@@ -12,7 +12,7 @@
     $_SESSION['menuid'] = 12;
     $_SESSION['menupath'] = "img/menu/foods/burgersandsandwiches/";
     $_SESSION['database_name'] = "tbl_menu_burgerandsandwiches";
-    $_SESSION['pagelink'] = "burgerandsandwiches.php";
+    $_SESSION['pagelink'] = "burgersandsandwiches.php";
     $_SESSION['pagename'] = "Burger And Sandwiches";
     $_SESSION['pagemessage'] = "Burger And sandwiches";
     $_SESSION['editpage'] = "burgersandsandwichesedit.php";
@@ -47,10 +47,10 @@
 </head>
 
 <body>
-    <header class="headerstyle">
+   <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="../profile.php">Profile</a></li>
-            <li><a href="../logout.php">Log Out</a></li>
+            <li><a href="../editaccount.php">Change Password</a></li>
+            <li><a href="../logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
@@ -69,7 +69,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
                 <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
@@ -79,32 +79,7 @@
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
             </li>
-            <li>
-                <a href="../users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="securityquestion.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-               
-            </li>
+            
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -146,11 +121,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="../services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
-                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -190,11 +160,7 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="../faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -244,16 +210,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../inbox.php" class="white-text left-align">Inbox
+                                    <a href="../feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -275,7 +241,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -285,8 +251,8 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                    <a href="../editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -321,7 +287,9 @@
                 </nav>
             </div>
         </div>
-       <div class="container">
+       
+            <!--remove on mobile and tablet -->
+         <div class="container">
             <!--remove on mobile and tablet -->
             <div class="row rowtitleseperator">
                 <div class="col s12 m12 l12 xl12"></div>
@@ -422,13 +390,13 @@
                         <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="menuupload.php">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <input type="text" id="menutitle" class="center-align" autocomplete="off" name="menutitle" maxlength="50s" data-length="50" required class="validate">
+                                    <input type="text" id="menutitle" class="center-align" autocomplete="off" name="menutitle" maxlength="50" data-length="50" required class="validate">
                                     <label for="menutitle">Title</label>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea id="textarea1"  maxlength="100" autocomplete="off" data-length="100"   name="menucaption" class="materialize-textarea"></textarea>
+                                    <textarea id="textarea1"  maxlength="500" autocomplete="off" data-length="500"   name="menucaption" class="materialize-textarea"></textarea>
                                     <label for="textarea1">Caption</label>
                                 </div>
                             </div>
@@ -460,28 +428,17 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div>  
     </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+    
     <!-- for development javascript file -->
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="../../js/main.js" type="text/javascript"></script>

@@ -46,6 +46,8 @@
                     }
                     if ($titleStatus == true) {
                         $sql = "DELETE FROM tbl_gallery_album_title WHERE title = '$preventSQLInjection'";
+                        mysqli_query($connection , $sql);
+                    
                         $_SESSION['dirtobedelete'] = $preventSQLInjection;
                         RemoveDirectory("../img/gallery/". $_SESSION['dirtobedelete']);
                         $sql = "DROP TABLE tbl_gallery_album_".$_SESSION['dirtobedelete'];

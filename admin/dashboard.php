@@ -18,15 +18,15 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
     <![endif]-->
-    <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <title>Admin Dashboard</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -42,12 +42,12 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -61,42 +61,16 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
-             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            <li>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
-                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="70%" height="100%" srcset=""></a>
+                <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
-            </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="securityquestion.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-               
             </li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -115,7 +89,7 @@
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header white-text left-align">Our Menu
-                                                <i class="tiny material-icons left white-text">arrow_drop_down</i>
+                                                <i class="tiny material-icons left white-text">local_cafe</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -139,11 +113,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
-                                </li>
+                             
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -183,17 +153,13 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header left-align admincolor white-text">
                                                 <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -237,16 +203,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="inbox.php" class="white-text left-align">Inbox
+                                    <a href="feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+          <!--    <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -268,7 +234,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -277,9 +243,9 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                 <li>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -298,12 +264,7 @@
         </a>
     </header>
     <main>
-        <div class="row tabletfixed">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div>
-         <div class="row tabletfixed">
-            <div class="col s12 m12 l12 xl12"></div>
-        </div> 
+    
         <div class="row tabletfixed">
             <div class="col s12 m12 l12 xl12"></div>
         </div> 
@@ -326,61 +287,33 @@
             ?>
             </div>
            
-            <a href="users.php">
-                <div class="col s6 m6 offset-m3 offset-s3 xl4 offset-xl1 offset-l1 l4 boxcolor z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align dashboardcattitle">Users</h3>
-    
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="medium  dashboardicons material-icons">account_circle</i>
-                            <span class="badge iconcolor white-text">
-                                <?php
-                                    $admiuserenable = "SELECT * FROM tbl_admin";
-                                    $adminuserdisable = "SELECT * FROM tbl_admin_disable";
-                                    $filterDataEnable = mysqli_query($connection , $admiuserenable);
-                                    $filterDataDisable = mysqli_query($connection, $adminuserdisable);
-                                    echo mysqli_num_rows($filterDataEnable) + mysqli_num_rows($filterDataDisable);
-                                ?>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
              <div class="row showmobile">
                 <div class="col s12 m12 l12 xl12"></div>
             </div>
             <div class="row showmobile">
                 <div class="col s12 m12 l12 xl12"></div>
             </div>
-             <!-- <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div>
-            <div class="row showmobile">
-                <div class="col s12 m12 l12 xl12"></div>
-            </div> -->
-            <a href="pages.php">
-                <div class="col s6 m6 offset-m3 offset-s3 offset-xl2 xl4 offset-l2 l4 boxcolor z-depth-3">
+             <a href="feedback.php">
+                <div class="col s6 m6 offset-m3 offset-s3 xl5 offset-l1 offset-xl1 l5 boxcolor z-depth-3">
                     <div class="header">
-                        <h3 class="white-text center-align dashboardcattitle">Pages</h3>
+                        <h2 class="white-text center-align dashboardcattitle">Messages</h2>
                     </div>
                     <div class="row">
                         <div class="col s12 m12 xl12 l12 white">
-                            <i class="medium material-icons dashboardicons md-light">description</i>
+                            <i class="large dashboardicons material-icons">email</i>
                             <span class="badge iconcolor white-text">
                                 <?php
-                                    $listFile = exec("ls -l menu/ | grep ^- | wc -l");
-                                    echo $listFile;
+                                    $sql = "SELECT * FROM tbl_feedback";
+                                    $filterData = mysqli_query($connection , $sql);
+                                    echo mysqli_num_rows($filterData);
                                 ?>
                             </span>
                         </div>
-                    </div>     
+                    </div>
                 </div>
             </a>
+           
+            
         </div>
         <div class="row">
             <div class="col s12 m12 xl12 l12"></div>
@@ -395,25 +328,7 @@
             <div class="col s12 m12 xl12 l12"></div>
         </div> -->
         <div class="row">
-             <a href="messages.php">
-                <div class="col s6 m6 offset-m3 offset-s3 xl4 offset-xl1 offset-l1 l4 boxcolor z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align dashboardcattitle">Messages</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="medium dashboardicons material-icons">email</i>
-                            <span class="badge iconcolor white-text">
-                                <?php
-                                    $sql = "SELECT * FROM tbl_message";
-                                    $filterData = mysqli_query($connection , $sql);
-                                    echo mysqli_num_rows($filterData);
-                                ?>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            
             <div class="row showmobile">
                 <div class="col s12 m12 l12 xl12"></div>
             </div>
@@ -429,50 +344,30 @@
             <div class="row showmobile">
                 <div class="col s12 m12 l12 xl12"></div>
             </div> -->
-            <a href="filter.php">
-                <div class="col s6 m6 offset-m3 offset-s3 offset-xl2 xl4 offset-l2 l4 boxcolor z-depth-3">
-                    <div class="header">
-                        <h3 class="white-text center-align dashboardcattitle">Request</h3>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 xl12 l12 white">
-                            <i class="medium dashboardicons material-icons">vpn_key</i>
-                            <span class="badge iconcolor white-text">
-                                <?php 
-                                    $sql = "SELECT * FROM tbl_filter";
-                                    $filterData = mysqli_query($connection , $sql);
-                                    echo mysqli_num_rows($filterData);
-                                ?>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </a>
+            
         </div>
     </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
     <!-- for development javascript file -->
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script>
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="../js/main.js" type="text/javascript"></script>
+     <script type="text/javascript">
+       $(document).ready(function(){
+             function disableBack() {
+                 window.history.forward()
+             }
+
+            window.onload = disableBack();
+            window.onpageshow = function(evt) { if (evt.persisted) disableBack() }
+       });
+    </script>
 
 </body>
 <?php $_SESSION['registrationsuccess'] = null;?>

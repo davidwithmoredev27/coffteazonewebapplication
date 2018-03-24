@@ -1,0 +1,594 @@
+    /**************************************
+    services stylesheet
+*************************************/
+    
+    .shadowtext {
+        -ms-text-shadow: 0px 0px 7px #000;
+        -webkit-text-shadow: 0px 0px 7px #000;
+        -moz-text-shadow: 0px 0px 7px #000;
+        -khtml-text-shadow: 0px 0px 7px #000;
+        -o-text-shadow: 0px 0px 7px #000;
+        text-shadow: 0px 0px 7px #000;
+    }
+    
+    .titleoutline {
+        font-weight: bolder;
+        -ms-text-shadow: 5px 5px 35px #000;
+        -webkit-text-shadow: 5px 5px 35px #000;
+        -moz-text-shadow: 5px 5px 35px #000;
+        -khtml-text-shadow: 5px 5px 35px #000;
+        -o-text-shadow: 5px 5px 35px #000;
+        text-shadow: 5px 5px 35px #000;
+    }
+    
+    .boxservices {
+        background-color: rgba(255, 255, 255, 0.7);
+        margin-left: 50px;
+        margin-right: 50px;
+        -webkit-box-shadow: 0px 0px 10px #000;
+        -moz-box-shadow: 0px 0px 10px #000;
+        -khtml-box-shadow: 0px 0px 10px #000;
+        -ms-box-shadow: 0px 0px 10px #000;
+        -webkit-box-shadow: 0px 0px 10px #000;
+        -o-box-shadow: 0px 0px 10px #000;
+        box-shadow: 0px 0px 10px #000;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+        -o-border-radius: 10px;
+        -khtml-border-radius: 10px;
+        -ms-border-radius: 10px;
+        border-radius: 10px;
+    }
+    
+    .servicestitle {
+        font-size: 75px;
+        color: rgba(62, 39, 35, 0.9);
+        margin-top: 0px !important;
+        font-family: 'Roboto Slab', serif;
+    }
+    
+    @media only screen and(max-width:456px) {
+        .servicestitle {
+            font-size: 3rem;
+        }
+    }
+    
+    .description {
+        color: #3a3a3a;
+    }
+    
+    @media only screen and (min-width:1024px) and (max-width:1158px) {
+        #material-overlay {
+            .materialboxed.initialized.active {
+                height: 1000px !important;
+                width: 100% !important;
+                margin: 50px auto !important;
+            }
+        }
+    }
+    
+    @media only screen and (min-width:1159px) and (max-width:1440px) {
+        #materialbox-overlay {
+            .materialboxed.initialized.active {
+                height: 1000px !important;
+                width: 100% !important;
+                margin: 50px auto !important;
+            }
+        }
+    }
+    
+    .showmoreoverlay {
+        position: relative;
+        cursor: pointer;
+        .overlaycontent {
+            visibility: hidden;
+            position: absolute;
+            color: white;
+            -webkit-transition: .3s all ease-in-out;
+            -moz-transition: .3s all ease-in-out;
+            -ms-transition: .3s all ease-in-out;
+            -o-transition: .3s all ease-in-out;
+            -khtml-transition: .3s all ease-in-out;
+            transition: .3s all ease-in-out;
+            height: 100%;
+            width: 96%;
+            text-align: center;
+        }
+        .overlaycontent:nth-child(1),
+        .overlaycontent:nth-child(2),
+        .overlaycontent:nth-child(3) {
+            padding-top: 50px;
+        }
+        .overlaycontent:nth-child(4),
+        .overlaycontent:nth-child(5) {
+            padding-top: 200px;
+        }
+        &:hover {
+            .overlaycontent {
+                background-color: rgba(0, 0, 0, 0.8);
+                visibility: visible;
+                z-index: 3;
+                text-align: center;
+            }
+        }
+    }
+    
+    .rooms {
+        height: 200px;
+        figure {
+            margin: 0;
+            padding: 0;
+        }
+        #ktv1 {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../img/services/ktvrooms/ktv1.jpg");
+            background-size: cover;
+        }
+        #ktv2 {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../img/services/ktvrooms/ktv2.jpg");
+            background-size: cover;
+        }
+        #ktv3 {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../img/services/ktvrooms/ktv3.jpg");
+            background-size: cover;
+        }
+    }
+    
+    .martinas {
+        height: 300px;
+        cursor: pointer;
+        figure {
+            margin: 0;
+            padding: 0;
+        }
+        #martinasone {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../img/services/martinas/martinas1.JPG");
+            background-size: cover;
+        }
+        #martinastwo {
+            width: 100%;
+            height: 100%;
+            background-repeat: no-repeat;
+            background-position: center;
+            background-image: url("../img/services/martinas/martinas2.JPG");
+            background-size: cover;
+        }
+    }
+    
+    #mainoeverlaycontainer {
+        width: 100%;
+        height: 100%; //visibility: visible;
+        display: none;
+        z-index: 5;
+        position: fixed;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        background-color: rgba(0, 0, 0, 0.8);
+    }
+    /* for ktv overlay resolution configuration */
+    
+    .roomcontent {
+        border: 1px solid white;
+        color: white;
+    }
+    
+    @media only screen and (max-width:1023px) {
+        .showonmobileservices {
+            display: block;
+        }
+        .showondesktopservices {
+            display: none;
+        }
+    }
+    
+    @media only screen and (min-width:1024px) {
+        .showonmobileservices {
+            display: none;
+        }
+        .showondesktopservices {
+            display: block;
+        }
+    }
+    
+    .roomcontent {
+        background-color: rgba(255, 255, 255, 0.8);
+        color: #3a3a3a;
+    }
+    
+    .overlay {
+        display: none;
+    }
+    
+    .roomsoverlay {
+        display: none;
+    }
+    
+    #closebtn {
+        &:hover {
+            cursor: pointer;
+        }
+    }
+    
+    @media only screen and (max-width:425px) {
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 150px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 200px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:426px) and (max-width:480px) {
+        #mainoeverlaycontainer {
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 150px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 200px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:466px) and (max-width:550px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 170px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 220px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:551px) and (max-width:600px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 220px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 270px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:601px) and (max-width:650px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 250px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 300px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:651px) and (max-width:700px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 300px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 320px !important;
+            }
+        }
+        .roomcontent {
+            height: 250px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:701px) and (max-width:767px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 350px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 370px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:768px) and (max-width:1023px) {
+        .showonmobileservices {
+            padding-left: 5rem !important;
+            padding-right: 5rem !important;
+        }
+    }
+    
+    @media only screen and (min-width:768px) and (max-width:800px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 350px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 370px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:801px) and (max-width:850px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 350px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 370px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:851px) and (max-width:900px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 350px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 370px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:901px) and (max-width:950px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 370px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 390px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:951px) and (max-width:1023px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: scroll;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 370px !important;
+            margin-top: 1.2rem;
+            .slides {
+                height: 390px !important;
+            }
+        }
+        .roomcontent {
+            height: 300px !important;
+            margin-top: 6rem !important;
+            padding: 10px;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+    }
+    
+    @media only screen and (min-width:1024px) {
+        #mainoeverlaycontainer {
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        #closebtn {
+            width: 30px;
+            height: 30px;
+            float: right;
+            margin-top: 1.5rem;
+            margin-right: 1.2rem;
+        }
+        .slideroverlay {
+            height: 500px !important;
+            .slides {
+                height: inherit !important;
+            }
+        }
+        .roomcontent {
+            padding-top: 5rem !important;
+            text-align: center;
+            height: 500px !important;
+            padding: 10px;
+            line-height: 200%;
+        }
+        .martinascontent {
+            padding-top: .5rem !important;
+        }
+    }

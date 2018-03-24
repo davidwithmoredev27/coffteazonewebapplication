@@ -98,11 +98,11 @@
                    
                     $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['title']);
     
-                    if (strlen($_SESSION['preventsqlinjection']) < 20 || strlen($_SESSION['preventsqlinjection']) == 20) {
+                    if (strlen($_SESSION['preventsqlinjection']) < 50 || strlen($_SESSION['preventsqlinjection']) == 50) {
                         
                         $_SESSION['titlesuccess'] = $_SESSION['preventsqlinjection'];
                        
-                    } else if (strlen($_SESSION['preventsqlinjection']) > 20) {
+                    } else if (strlen($_SESSION['preventsqlinjection']) > 50) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">You cannot use more than 20 characters!</strong>\n".
@@ -122,11 +122,11 @@
                     $_SESSION['description'] = sanitizedData($_POST['menucaption']);
                     $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['description']);
         
-                    if (strlen($_SESSION['preventsqlinjection']) < 100 || strlen($_SESSION['preventsqlinjection']) == 100) {
+                    if (strlen($_SESSION['preventsqlinjection']) < 500 || strlen($_SESSION['preventsqlinjection']) == 500) {
                     
                         $_SESSION['descriptionsuccess'] = $_SESSION['preventsqlinjection'];
             
-                    } else if (strlen($_SESSION['preventsqlinjection']) > 100) {
+                    } else if (strlen($_SESSION['preventsqlinjection']) > 500) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">You cannot use more than 100 characters!</strong>\n".
@@ -186,17 +186,8 @@
                   isset($_SESSION['descriptionsuccess']) && isset($_SESSION['pricesuccess'])) {
                 
 
-                
-                $sql ="SELECT * FROM " . $_SESSION['database_name'];
-                $result = mysqli_query($connection , $sql);
-                if (mysqli_num_rows($result) === 6) {
-                    $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Bestseller reach 6!</strong>\n".
-                                                "</strong>\n";
-                    mysqli_close($connection);
-                    header("location:" .  $_SESSION['pagelink']);
-                    die();
-                }
+    
+            
                 
                 $dirPath = $_SESSION['menudirpath'];
                 $titleSuccess = $_SESSION['titlesuccess'];

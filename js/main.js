@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function() {
     $(".button-collapse").sideNav({
         edge: 'left',
-        menuWidth:200,
+        menuWidth: 200,
     });
- 
+
     $(".slider").slider();
     $('.carousel').carousel();
     $('.carousel.carousel-slider').carousel({
@@ -20,6 +20,6 @@ $(document).ready(function(){
     $("textarea#slidereditdecription").characterCounter();
     $('.tooltipped').tooltip({
         delay: 50,
-        html:true,
+        html: true,
     });
 });

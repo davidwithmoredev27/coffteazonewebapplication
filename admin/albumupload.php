@@ -10,6 +10,7 @@
     $titleSuccess = false;
     $descriptionSuccess = false;
     $priceSuccess = false;
+    $albumstatus = 0;
     $_SESSION['dirpath'] = array();
     $_SESSION['uploadstatus'] = 1;
     $_SESSION['albumerror'] = null;
@@ -118,6 +119,7 @@
             if (isset($_POST['albumtitle']))  {
                 $albumtitle = sanitizedData($_POST['albumtitle']);
                 $preventSQlinjection = mysqli_escape_string($connection , $albumtitle);
+               
                 if (strlen($preventSQlinjection) <= 50 && strlen($preventSQlinjection) !== 0 ) {
                     $title = $preventSQlinjection;
                     $titleSuccess = preg_replace('/\s+/', '', $preventSQlinjection);
@@ -160,17 +162,22 @@
                 header("location:galleryalbumadd.php");
                 die();
             }
-
-            if (isset($_FILES['album'])  && $_FILES['album']['error'] == 0) {
-                UploadFile($_FILES['album']);
-            } elseif (isset($_FILES['album']) && $_FILES['album']['error'] > 0) {
+            
+            if ($_FILES['album']['error'][0] >= 1) {
+                $albumstatus = 1;
+            }
+        
+            if ($albumstatus >= 1) {
                 mysqli_close($connection);
-                 $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
+                $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
                 "Upload Images for your album"."</strong></span>\n";
                 header("location:galleryalbumadd.php");
                 die();
+            } elseif ($albumstatus == 0) {
+                 UploadFile($_FILES['album']);
             }
 
+        
             if (isset($titleSuccess) and isset($descriptionSuccess) and isset($_SESSION['uploadstatus']) && $_SESSION['uploadstatus'] == 1) {
                 for ($index = 0 ; $index < $_SESSION['filnamecount'] ; $index++) {
                     $sql = "INSERT INTO tbl_gallery_album_".$_SESSION['albumtitlepath']."(path)"." VALUES('".$_SESSION['path'][$index]."')";

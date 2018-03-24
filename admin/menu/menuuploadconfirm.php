@@ -154,11 +154,11 @@
                     $_SESSION['confirmdescription'] = sanitizedData($_POST['menuconfirmcaption']);
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmdescription']);
         
-                    if ((strlen($_SESSION['confirmpreventsqlinjection']) < 100 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 100) {
+                    if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
                     
                         $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         //die($_SESSION['descriptionconfirmsuccess']);
-                    } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 100) {
+                    } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 500) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">You cannot use more than 100 characters!</strong>\n".

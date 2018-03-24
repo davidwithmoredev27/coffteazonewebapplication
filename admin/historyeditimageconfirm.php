@@ -78,20 +78,21 @@
 
         if (isset($_POST['editconfirmsubmit'])) {
 
-            if (isset($_POST['historyimgname'])) {
-                if (is_numeric($_POST['historyimgname'])) {
+            if (isset($_POST['historyname'])) {
+                if (is_numeric($_POST['historyname'])) {
+                    die($_POST['historyname']);
                     mysqli_close($connection);
                     $_SESSION['historyerror']= "<span class=\"center-align\"><strong class=\"white-text\">Don't use a number for a name!</strong></span>\n";
                     header("location:edithistory.php");
                     die;
-                } elseif (!is_numeric($_POST['historyimgname'])) {
-                    if (strlen($_POST['historyimgname']) > 0 && is_numeric($_POST['historyimgname'][0])) {
+                } elseif (!is_numeric($_POST['historyname'])) {
+                    if (strlen($_POST['historyname']) > 0 && is_numeric($_POST['historyname'][0])) {
                         mysqli_close($connection);
                         $_SESSION['historyerror']= "<span class=\"center-align\"><strong class=\"white-text\">First character is a number!</strong></span>\n";
                         header("location:edithistory.php");
                         die;
-                    } elseif (strlen($_POST['historyimgname']) > 0 && !is_numeric($_POST['historyimgname'][0])) {
-                        $name = sanitizedData($_POST['historyimgname']);
+                    } elseif (strlen($_POST['historyname']) > 0 && !is_numeric($_POST['historyname'][0])) {
+                        $name = sanitizedData($_POST['historyname']);
                         $sqlPreventInjection = mysqli_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
@@ -106,50 +107,54 @@
                     }
                 }
                
-            } elseif (!isset($_POST['editnameconfirm'])) {
-                $sql = "SELECT name FROM tbl_about_history";
+            } elseif (!isset($_POST['historyname'])) {
+                $sql = "SELECT name FROM tbl_about_image";
                 $result = mysqli_query($connection , $sql);
 
                 if (mysqli_num_rows($result) > 0) {
                     while ($rows = mysqli_num_rows($result)) {
-                        $_SESSION['historyeditconfirm'] = $rows['description'];
+                        $_SESSION['historyimgnamesuccess'] = $rows['name'];
                     }
                     
                 }
             }
 
             
-            if ($_FILES['historyimg']['error'] === 0) {
-
+            if ($_FILES['imageconfirm']['error'] == 0) {
         
-                $filePath = UploadFile($_FILES['historyimg']);
+                $filePath = UploadFile($_FILES['imageconfirm']);
                 
-            } else if ($_FILES['historyimg']['error'] > 0) {
-               
-                mysqli_close($connection);
+            } else if ($_FILES['imageconfirm']['error'] !== 0) {
+                $sql = "SELECT path FROM tbl_about_image WHERE id =".$_SESSION['oldeditid'];
+                $result = mysqli_query($connection , $sql);
+
+                while ($rows = mysqli_fetch_assoc($result)) {
+                    $_SESSION['dirpath'] = $rows['path'];
+                }
+    
                 $_SESSION['historyerror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Upload Image!</strong>\n".
                                             "</strong>\n";
                 header("location:historyimages.php");die();
             }
 
-            if (isset($_SESSION['descriptioneditconfirm']) && isset($_SESSION['historyeditconfirm'])) {
-                $descriptiontrue = $_SESSION['descriptioneditconfirm'];
-                $nameTrue = $_SESSION['historyeditconfirm'];
+            if (isset($_SESSION['uploadstatus']) && isset($_SESSION['historyimgnamesuccess'])) {
+                $nameTrue = $_SESSION['historyimgnamesuccess'];
                 $oldid = $_SESSION['oldeditid'];
+                $pathTrue = $_SESSION['dirpath'];
         
-                $sql = "UPDATE tbl_about_history SET name = '$nameTrue' , description = '$descriptiontrue' WHERE id  = ".$oldid;
+                $sql = "UPDATE tbl_about_image SET name = '$nameTrue' , path= '$pathTrue' WHERE id  = ".$oldid;
                 mysqli_query($connection , $sql);
                 mysqli_close($connection);
-                $_SESSION['historysuccess'] = "<span class=\"center-align\"><strong class=\"white-text\">History Successfully Updated!</strong></span>\n";
-                        header("location:history.php");
+                $_SESSION['historysuccess'] = "<span class=\"center-align\"><strong class=\"white-text\">Data Successfully Updated!</strong></span>\n";
+                        header("location:historyimages.php");
                         die;
             }
 
         }
     } else {
         mysqli_close($connection);
-        header("location:history.php");
+        header("location:historyimages.php");
         die();
     }
 ?>

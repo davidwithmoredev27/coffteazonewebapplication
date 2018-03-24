@@ -25,8 +25,8 @@
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <title>Add Albums</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -42,12 +42,12 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="profile.php">Profile</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
             <li><a href="logout.php">Log Out</a></li>
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -61,8 +61,8 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
-             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            <li>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
                 <a href="dashboard.php" class="center-align"><img src="../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
@@ -71,32 +71,6 @@
                 <a href="dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
-            </li>
-            <li>
-                <a href="users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="securityquestion.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-               
             </li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -139,11 +113,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                                <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
-                                </li>
+                               
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -183,17 +153,13 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header left-align admincolor white-text">
                                                 <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -222,40 +188,7 @@
                                         </li>
                                     </ul>
                                 </li>
-                            </ul><li class="no-padding">
-                                    <ul class="collapsible collapsible-accordion">
-                                        <li>
-                                            <a href="#!" class="collapsible-header left-align admincolor white-text">
-                                                <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
-                                            </a>
-                                            <div class="collapsible-body admincolor">
-                                                <ul>
-                                                    <li>
-                                                        <a href="history.php" class="white-text left-align indent" style="font-size:.8em !important;">History
-                                                            <i class="tiny material-icons  white-text left">access_time</i>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="historyimages.php" class="white-text left-align indent" style="font-size:.8em !important;">images
-                                                            <i class="tiny material-icons  white-text left">access_time</i>
-                                                        </a>
-                                                    </li>
-                                                     <li>
-                                                        <a href="vision.php" class="white-text left-align indent" style="font-size:.8em !important;">Vision
-                                                            <i class="tiny material-icons  white-text left">remove_red_eye</i>
-                                                        </a>
-                                                    </li>
-                                                     <li>
-                                                        <a href="mission.php" class="white-text left-align indent" style="font-size:.8em !important;">Mission
-                                                            <i class="tiny material-icons  white-text left">flag</i>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </div>    
-                                        </li>
-                                    </ul>
-                                </li>
+                            </ul>
                         </div>
                     </li>
                 </ul>
@@ -270,16 +203,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="inbox.php" class="white-text left-align">Inbox
+                                    <a href="feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -301,7 +234,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -310,9 +243,9 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                 <li>
+                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -336,98 +269,94 @@
                 <nav class="removebreadcrumbsstyle">
                     <div class="nav-wrapper">
                         <div class="col s12 m12 l12 xl12">
-                            <a href="gallery.php" class="breadcrumb">Gallery</a>
+                            <a href="#!" class="breadcrumb">Pages</a>
+                            <a href="#!" class="breadcrumb">Gallery</a>
                             <a href="#!" class="breadcrumb">Add Album</a>
                         </div>
                     </div>
                 </nav>
             </div>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col s12 m12 l12 xl12">
-                    <h4 class="center-align">Add Album</h4>
-                </div>
-            </div>
-            <?php
-               if(isset($_SESSION['albumerror'])) {
-                    echo"<div class=\"row red darken-3\">\n";
-                    echo "<div class=\"col s12 m12 l12 xl12 \">\n";
-                    echo $_SESSION['albumerror'];
-                    echo "</div>\n";
-                    echo "</div>\n";
-                    $_SESSION['albumerror'] = null;
-               }
-                if(isset($_SESSION['albumsuccess'])) {
-                    echo "<div class=\"row green darken-3\">\n";
-                    echo "<div class=\"col s12 m12 l12 xl12 \">\n";
-                    echo $_SESSION['albumsuccess'];
-                    echo "</div>\n";
-                    echo "</div>\n";
-                    $_SESSION['albumsuccess'] = null;
-               }
-            ?>
-           
-            <div class="row">
-                <div class="col s12 m12 l12 xl12">
+        <div class="row">
+            <div class="col s12 m12 l12 xl12">
+                <div class="container">
                     <div class="row">
-                        <form method="post" action="albumupload.php" enctype="multipart/form-data" class="col s12 m12 l12 xl12">
+                        <div class="col s12 m12 l12 xl12">
+                            <h4 class="center-align">Add album</h4>
+                        </div>
+                    </div>
+                    <?php
+                    if(isset($_SESSION['albumerror'])) {
+                            echo"<div class=\"row red darken-3\">\n";
+                            echo "<div class=\"center-align col s12 m12 l12 xl12 \">\n";
+                            echo $_SESSION['albumerror'];
+                            echo "</div>\n";
+                            echo "</div>\n";
+                            $_SESSION['albumerror'] = null;
+                    }
+                        if(isset($_SESSION['albumsuccess'])) {
+                            echo "<div class=\"row green darken-3\">\n";
+                            echo "<div class=\"center-align col s12 m12 l12 xl12 \">\n";
+                            echo $_SESSION['albumsuccess'];
+                            echo "</div>\n";
+                            echo "</div>\n";
+                            $_SESSION['albumsuccess'] = null;
+                    }
+                    ?>
+                
+                    <div class="row">
+                        <div class="col s12 m12 l12 xl12">
                             <div class="row">
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <input class="center-align" type="text" maxlength="50" data-length="50" autocomplete="off" name="albumtitle" id="albumtitle">
-                                    <label for="albumtitle">Title</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea  maxlength="100" name="albumdescription" data-length="100" autocomplete="off" id="albumdescription" class="materialize-textarea"></textarea>
-                                    <label for="albumdescription">Description</label>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="file-field input-field">
-                                    <div class="btn blue-grey darken-4">
-                                        <span>Images</span>
-                                        <input type="file" name="album[]" multiple>
+                                <form method="post" action="albumupload.php" enctype="multipart/form-data" class="col s12 m12 l12 xl12">
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12 xl12">
+                                            <input class="center-align" type="text" maxlength="50" data-length="50" autocomplete="off" name="albumtitle" id="albumtitle">
+                                            <label for="albumtitle">Title</label>
+                                        </div>
                                     </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload one Or more Images">
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12 xl12">
+                                            <textarea  maxlength="100" name="albumdescription" data-length="100" autocomplete="off" id="albumdescription" class="materialize-textarea"></textarea>
+                                            <label for="albumdescription">Description</label>
+                                        </div>
                                     </div>
-                                </div>
+                                    <div class="row">
+                                        <div class="file-field input-field col s12 m12 l12 xl12">
+                                            <div class="btn blue-grey darken-4">
+                                                <span>Images</span>
+                                                <input type="file" name="album[]" multiple>
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Upload one Or more Images">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12 xl12">
+                                            <div class="row">
+                                                <button type="submit" name="addalbumsubmit" class="col s6 offset-s3 m6 offset-m3 l6 offset-l3 xl4 offset-xl5  btn waves-light waves-effect">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="row">
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <button type="submit" name="addalbumsubmit" class="col s6 offset-s3 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 btn waves-light waves-effect">Add New Album</button>
-                                </div>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+
     <!-- for development javascript file -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
+    
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    
     <script src="../js/main.js" type="text/javascript"></script>
 
 </body>

@@ -5,7 +5,7 @@
     // $_SESSION['usernamechange'] = $rows['username'];
     // $_SESSION['passwordchange'] = $rows['password'];
     if (!isset($_SESSION['username']) && !isset($_POST['password'])) {
-        mysqli_close($connection);
+        mysqli_close($connection);                         
         header("location:login.php");
     }
 
@@ -101,7 +101,6 @@
                         $_SESSION['descriptioneditconfirm'] = $rows['description'];
                     }
                 }
-                
                 
             }
 

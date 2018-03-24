@@ -44,7 +44,9 @@
                     }
                     while($rows = mysqli_fetch_assoc($result)) {
                         $_SESSION['displaytitle'] = $rows['title'];
-                        $_SESSION['displayprice'] = $rows['price'];
+                        $_SESSION['oz12price'] = $rows['oz12price'];
+                        $_SESSION['oz16price'] = $rows['oz16price'];
+                        $_SESSION['oz22price'] = $rows['oz22price'];
                         $_SESSION['displaycaption'] = $rows['caption'];
                         $_SESSION['displaypath'] = $rows['path'];
                     }
@@ -82,7 +84,9 @@
                 }
                 while($rows = mysqli_fetch_assoc($result)) {
                     $_SESSION['displaytitle'] = $rows['title'];
-                    $_SESSION['displayprice'] = $rows['price'];
+                    $_SESSION['oz12price'] = $rows['oz12price'];
+                    $_SESSION['oz16price'] = $rows['oz16price'];
+                    $_SESSION['oz22price'] = $rows['oz22price'];
                     $_SESSION['displaycaption'] = $rows['caption'];
                     $_SESSION['displaypath'] = $rows['path'];
                 }
@@ -161,14 +165,14 @@
 </head>
 
 <body>
-    <header class="headerstyle">
+   <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="../profile.php">Profile</a></li>
-            <li><a href="../logout.php">Log Out</a></li>
+            <li><a href="../editaccount.php">Change Password</a></li>
+            <li><a href="../logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
-                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../../img/logo/cofftealogo.png" width="100px" heigth="100px"></a>
+                <a href="#" class="brand-logo center-align brand-logomobile"><img class="logo-brand" src="../../img/logo/cofftealogo.png" width="100px" heigth="100px" alt=""></a>
                 <ul class="right hide-on-med-and-down">
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown1">admin
@@ -182,41 +186,16 @@
             <div class="col s12 m12 l12 xl12"></div>
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
-             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+            <li>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
-                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px"></a>
+                <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
             </li>
             <li>
                 <a href="../dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
-            </li>
-            <li>
-                <a href="../users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
-                </a>
-            </li>
-            <li class="no-padding">
-                <ul class="collasible collapsible-accordion">
-                    <li>
-                         <a href="#!" class="left-align white-text sidenavmainlinks">
-                            <span>Maintenance</span>
-                            <i class="left material-icons white-text">build</i>
-                        </a>
-                        <div class="collapsible-body admincolor">
-                            <ul>
-                                <li>
-                                    <a href="../messagebox.php" class="white-text left-align">Inbox
-                                        <i class="tiny material-icons  white-text left">inbox</i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
             </li>
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
@@ -250,7 +229,7 @@
                                                         </a>
                                                     </li>
                                                      <li>
-                                                         <a href="../dessert.php" class="white-text left-align indent">dessert
+                                                         <a href="../dessert.php" class="white-text left-align indent">Dessert
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
@@ -258,11 +237,6 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="../services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -303,17 +277,13 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="../faq.php" class="white-text left-align">FAQ
-                                        <i class="tiny material-icons left white-text">help</i>
-                                    </a>
-                                </li>
+                            
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
                                             <a href="#!" class="collapsible-header left-align admincolor white-text">
                                                 <span>About us</span>
-                                                <i class="left tiny material-icons white-text">person_pin</i>
+                                                <i class="left tiny material-icons white-text">photo_library</i>
                                             </a>
                                             <div class="collapsible-body admincolor">
                                                 <ul>
@@ -357,16 +327,16 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../inbox.php" class="white-text left-align">Inbox
+                                    <a href="feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
                             </ul>
-                        </div>    
+                        </div>       
                     </li>
                 </ul>
             </li>
-             <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -375,12 +345,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../filter.php" class="white-text left-align">Request
+                                    <a href="filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../registrationadmin.php" class="white-text left-align">Registration
+                                    <a href="registrationadmin.php" class="white-text left-align">Registration
                                         <i class="tiny material-icons white-text left">person_add</i>
                                     </a>
                                 </li>
@@ -388,7 +358,7 @@
                         </div>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="no-padding admincolor adminprofilemobile">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -398,8 +368,8 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../profile.php" class="white-text left-align">Profile
-                                        <i class="tiny material-icons  white-text left">face</i>
+                                    <a href="../editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
@@ -468,18 +438,28 @@
                                 <col class="menconfirmcolwidth">
                                 <col class="menconfirmcolwidth">
                                 <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                <col class="menconfirmcolwidth">
+                                
                                 <thead>
-                                    <th class="center-align">Title</th>
-                                    <th class="center-align">Picture</th>
-                                    <th class="center-align">Caption</th>
-                                    <th class="center-align">Price</th>
-                    
+                                    <tr>
+                                        <th class="center-align">Title</th>
+                                        <th class="center-align">Picture</th>
+                                        <th class="center-align">Caption</th>
+                                        <th class="center-align">12 Oz</th>
+                                        <th class="center-align">16 Oz</th>
+                                        <th class="center-align">22 Oz</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                    <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
-                                    <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                    <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
-                                    <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                    <tr>
+                                        <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                        <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                        <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                        <td class="center-align"><?php echo $_SESSION['oz12price'];?></td>
+                                        <td class="center-align"><?php echo $_SESSION['oz16price'];?></td>
+                                        <td class="center-align"><?php echo $_SESSION['oz22price'];?></td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -489,7 +469,7 @@
             </div>
             <div class="container">
                 <div class="row">
-                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
+                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadrinksconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
                                 <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" class="validate">
@@ -498,14 +478,22 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100"  name="menuconfirmcaption" class="materialize-textarea"></textarea>
+                                <textarea data-length="500" autocomplete="off" id="menuconfirmcaption" maxlength="500"  name="menuconfirmcaption" class="materialize-textarea"></textarea>
                                 <label for="menuconfirmcaption">Caption</label>
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" autocomplete="off" name="menupriceconfirm" id="menupriceconfirm">   
-                                <label for="menupriceconfirm">Price</label>
+                            <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz12" id="menuprice">   
+                                <label for="menuprice">12 Oz Price</label>
+                            </div>
+                                <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz16" id="menuprice">   
+                                <label for="menuprice">16 Oz Price</label>
+                            </div>
+                            <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz22" id="menuprice">   
+                                <label for="menuprice">22 Oz Price</label>
                             </div>
                         </div>
                         <div class="row">
@@ -563,18 +551,28 @@
                                     <col class="menconfirmcolwidth">
                                     <col class="menconfirmcolwidth">
                                     <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    <col class="menconfirmcolwidth">
+                                    
                                     <thead>
-                                        <th class="center-align">Title</th>
-                                        <th class="center-align">Picture</th>
-                                        <th class="center-align">Caption</th>
-                                        <th class="center-align">Price</th>
-                        
+                                        <tr>
+                                            <th class="center-align">Title</th>
+                                            <th class="center-align">Picture</th>
+                                            <th class="center-align">Caption</th>
+                                            <th class="center-align">12 Oz</th>
+                                            <th class="center-align">16 Oz</th>
+                                            <th class="center-align">22 Oz</th>
+                                        </tr>
                                     </thead>
                                     <tbody>
-                                        <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
-                                        <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                        <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
-                                        <td class="center-align"><?php echo $_SESSION['displayprice'];?></td>
+                                        <tr>
+                                            <td class="center-align"><?php echo $_SESSION['displaytitle'];?></td>
+                                            <td class="center-align"><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
+                                            <td class="center-align"><?php echo $_SESSION['displaycaption'];?></td>
+                                            <td class="center-align"><?php echo $_SESSION['oz12price'];?></td>
+                                            <td class="center-align"><?php echo $_SESSION['oz16price'];?></td>
+                                            <td class="center-align"><?php echo $_SESSION['oz22price'];?></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -585,7 +583,7 @@
     
             <div class="container">
                 <div class="row">
-                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
+                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadrinksconfirm.php" enctype="multipart/form-data">
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
                                 <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50"  class="validate">
@@ -593,15 +591,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
-                                <label for="menuconfirmcaption">Caption</label>
+                            <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz12" id="menuprice">   
+                                <label for="menuprice">12 Oz Price</label>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" autocomplete="off"  name="menupriceconfirm" id="menupriceconfirm">   
-                                <label for="menupriceconfirm">Price</label>
+                                <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz16" id="menuprice">   
+                                <label for="menuprice">16 Oz Price</label>
+                            </div>
+                            <div class="input-field col s12 m12 l4 xl4">
+                                <input type="text" class="center-align" autocomplete="off" name="oz22" id="menuprice">   
+                                <label for="menuprice">22 Oz Price</label>
                             </div>
                         </div>
                         <div class="row">
@@ -629,207 +629,17 @@
        </div>
        
    </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div cla<div class="row slidereditshowmobile">
-            <div class="row">
-                <div class="col s12 m12 l12 xl12">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col s12 m12 l12 xl12">
-                                <table class="filtertable responsive-table">
-                                    <thead>
-                                        <th>Title</th>
-                                        <th>Picture</th>
-                                        <th>Caption</th>
-                                        <th>Price</th>
-                        
-                                    </thead>
-                                    <tbody>
-                                        <td><?php echo $_SESSION['displaytitle'];?></td>
-                                        <td><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                        <td><?php echo $_SESSION['displaycaption'];?></td>
-                                        <td><?php echo $_SESSION['displayprice'];?></td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col s12 m12 l12 xl12">
-                    <?php
-                         if(isset($_SESSION['menuuploaderror'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['betselleruploaderror'] = null;
-                        }
-                        if (isset($_SESSION['menuuploadsuccess'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['menuuploadsuccess'] =null;
-                        }
-
-                    ?>
-                </div>
-            </div>
-          
-            <div class="row">
-                <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
-                     <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input data-length="50" type="text" class="center-align" autocomplete="off" id="menuconfirmtitle" name="menuconfirmtitle" maxlength="50" required class="validate">
-                                <label for="menuconfirmtitle">Title</label>
-                            </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <textarea data-length="100" autocomplete="off" id="menuconfirmcaption" maxlength="100" required name="menuconfirmcaption" class="materialize-textarea"></textarea>
-                            <label for="menuconfirmcaption">Caption</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
-                            <label for="menupriceconfirm">Price</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="file-field input-field col s12 m12 l12 xl12">
-                            <div class="btn blue-grey darken-4">
-                                <span>Image</span>
-                                <input type="file"  name="menuconfirmimg" required value="image">
-                            </div>
-                            <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
-                            </div>
-                        </div>
-                    </div>
-                   
-                    <div class="row">
-                       <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
-                            <div class="row">
-                                <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-      
-       <div class="row sliderremovemobile">
-           <div class="col s12 m12 l12 xl12">
-               <div class="row">
-                    <div class="col s12 m12 l12 xl12">
-                        <div class="row">
-                            <div class="col s12 m12 l12 xl12">
-                                <table class="filtertable responsive-table">
-                                    <thead>
-                                        <th>Title</th>
-                                        <th>Picture</th>
-                                        <th>Caption</th>
-                                        <th>Price</th>
-                        
-                                    </thead>
-                                    <tbody>
-                                        <td><?php echo $_SESSION['displaytitle'];?></td>
-                                        <td><?php echo "<img width=\"75px\" height=\"50px\" src=\"../../".$_SESSION['displaypath']."\">";?></td>
-                                        <td><?php echo $_SESSION['displaycaption'];?></td>
-                                        <td><?php echo $_SESSION['displayprice'];?></td>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-           </div>
-           
-            
-            <div class="container">
-                <div class="row">
-                    <div class="col s12 m12 l12 xl12">
-                        <?php
-                            
-                        if(isset($_SESSION['menuuploaderror'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align red darken-3\">".$_SESSION['menuuploaderror']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['betselleruploaderror'] = null;
-                        }
-                        if (isset($_SESSION['menuuploadsuccess'])) {
-                            echo "<div class=\"col s12 m12 xl12 m12\">\n";
-                            echo "<p class=\"center-align green darken-3\">".$_SESSION['menuuploadsuccess']."</p>\n";
-                            echo "</div>\n";
-                            $_SESSION['menuuploadsuccess'] =null;
-                        }
-                        ?>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <form class="col s12 m12 l12 xl12" method="POST" action="menuuploadconfirm.php" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" autocomplete="off" name="menuconfirmtitle" data-length="50" maxlength= "50" required class="validate">
-                                <label for="title">Title</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <textarea maxlength="100" data-length="100" autocomplete="off" maxlength="100" required id="menuconfirmcaption" name="menuconfirmcaption" class="materialize-textarea"></textarea>
-                                <label for="menuconfirmcaption">Caption</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" autocomplete="off" required name="menupriceconfirm" id="menupriceconfirm">   
-                                <label for="menupriceconfirm">Price</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn blue-grey darken-4">
-                                    <span>Image</span>
-                                    <input type="file"  name="menuconfirmimg" required value="image">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div class="row">
-                            <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
-                                <div class="row">
-                                    <button type="submit" name="menusubtmiconfirm"  class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-       </div>ss="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
+    
     <!-- for development javascript file -->
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
     <script type="text/javascript" src="../../js/materialize.min.js"></script>
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    
+        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script> -->
+    
     <script src="../../js/main.js" type="text/javascript"></script>
 
 </body>
