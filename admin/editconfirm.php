@@ -84,6 +84,12 @@
                      header("location:editaccount.php");
                      die();
                 } elseif (strlen($passwordpreventsqlinjection) >= 8) {
+                    if (preg_match("/\s/",$passwordpreventsqlinjection)) {
+                        mysqli_close($connection);
+                        $_SESSION['accountediterror'] = "<span><strong class=\"white-text center-align\">Space are not allowed!</strong></span>\n";
+                        header("location:editaccount.php");
+                        die();
+                    }
                     $hashed_password = crypt($passwordpreventsqlinjection , $salt);
                     $passwordStatus = true;
                 }

@@ -178,8 +178,15 @@
                 }
 
                 if (isset($_POST['menupriceconfirm']) && strlen($_POST['menupriceconfirm']) !== 0) {
-                    if (filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT ) || filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_FLOAT )) {
-
+                    if (is_numeric($_POST['menupriceconfirm'])) {
+                        if ($_POST['menupriceconfirm'] > 0) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        }
                         $_SESSION['confirmprice'] = sanitizedData($_POST['menupriceconfirm']);
                         $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice']);
                     
@@ -187,10 +194,10 @@
                         
 
 
-                    } elseif (!filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_INT) || !filter_var($_POST['menupriceconfirm'] , FILTER_VALIDATE_FLOAT )) {
+                    } elseif (!is_numeric($_POST['menupriceconfirm'])) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
+                                                "<strong class=\"white-text\">Use a number for the price!</strong>\n".
                                                 "</strong>\n";
                         header("location:" .  $_SESSION['editpage']);
                         die();

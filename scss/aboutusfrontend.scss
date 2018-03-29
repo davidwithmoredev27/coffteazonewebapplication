@@ -12,6 +12,94 @@
     }
 }
 
+@media only screen and (max-width:599px) {
+    .aboutuscontent {
+        height: 270px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:601px) and (max-width:700px) {
+    .imageheight {
+        height: 205px;
+    }
+    .aboutuscontent {
+        height: 205px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:701px) and (max-width:767px) {
+    .imageheight {
+        height: 205px;
+    }
+    .aboutuscontent {
+        height: 205px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:768px) and (max-width:949px) {
+    .imageheight {
+        height: 210px;
+    }
+    .aboutuscontent {
+        height: 210px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:950px) and (max-width:1023px) {
+    .imageheight {
+        height: 250px;
+    }
+    .aboutuscontent {
+        height: 250px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:1024px) {
+    .imageheight {
+        height: 417px;
+    }
+    .aboutuscontent {
+        height: 417px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        h3 {
+            margin-top: 10px;
+        }
+    }
+}
+
+@media only screen and (max-width:767px) {
+    .showmobileimg {
+        display: block;
+    }
+    .showdesktopimg {
+        display: none;
+    }
+    .aboutuscontent {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .showmobileimg {
+        display: none;
+    }
+    .showdesktopimg {
+        display: block;
+    }
+}
+
 @media only screen and (min-width:1024px) {
     .aboutuscontent {
         padding-left: 10px;

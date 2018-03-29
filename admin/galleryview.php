@@ -43,8 +43,8 @@
 <body>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-           <li><a href="editaccount.php">Change Password</a></li>
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
+            <li><a href="logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
@@ -73,6 +73,7 @@
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
             </li>
+            
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -81,10 +82,38 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="homepage.php" class="white-text left-align">Home
-                                        <i class="tiny material-icons left white-text">home</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                             <a href="#!" class="collapsible-header left-align admincolor white-text">Home
+                                                <i class="tiny material-icons left white-text">home</i>
+                                             </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="slideredit.php" class="white-text left-align indent" style="font-size:.7em !important;">Slider
+                                                            <i class="tiny material-icons left white-text">slideshow</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="bestseller.php" class="white-text left-align indent" style="font-size:.7em !important;">Bestseller
+                                                            <i class="tiny material-icons left white-text">monetization_on</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="newproduct.php" class="white-text left-align indent" style="font-size:.6em !important;">New Prod.
+                                                            <i class="tiny material-icons left white-text">fiber_new</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="promos.php" class="white-text left-align indent" style="font-size:.7em !important;">Promos
+                                                            <i class="tiny material-icons left white-text">new_releases</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -114,7 +143,6 @@
                                         </li>
                                     </ul>
                                 </li>
-                               
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -213,7 +241,7 @@
                     </li>
                 </ul>
             </li>
-            <!--  <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -222,12 +250,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Request
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="registrationadmin.php" class="white-text left-align">Registration
+                                    <a href="../registrationadmin.php" class="white-text left-align">Registration
                                         <i class="tiny material-icons white-text left">person_add</i>
                                     </a>
                                 </li>
@@ -244,7 +272,7 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                 <li>
+                                <li>
                                     <a href="editaccount.php" class="white-text left-align">Change Password
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>

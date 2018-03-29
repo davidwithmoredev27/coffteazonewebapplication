@@ -14,6 +14,7 @@
 @import "gallery";
 @import "filter";
 @import "promos";
+@import "feedback";
 body {
     -webkit-font-smoothing: antialiased;
     display: flex; //min-height: 100vh;
@@ -25,6 +26,10 @@ main {
     flex: 1 0 auto; //height: 700px;
     position: relative;
     z-index: 1;
+}
+
+.side-nav {
+    width: 200px !important;
 }
 
 
@@ -162,12 +167,12 @@ width="100px */
         width: 100px;
     }
     .colwidth:nth-child(6) {
-        width: 50px;
+        width: 100px;
     }
     .colwidth:nth-child(7) {
         width: 50px;
     }
-    .colwidth:nth-child(8) {
+    .colwidth:last-child {
         width: 50px;
     }
     .menconfirmcolwidth:nth-child(1) {
@@ -187,28 +192,30 @@ width="100px */
 @media only screen and (min-width:1024px) {
     .colwidth:nth-child(1) {
         width: 60px;
-    }
-    .colwidth:nth-child(2) {
-        width: 100px;
-    }
-    .colwidth:nth-child(3) {
-        width: 100px;
-    }
-    .colwidth:nth-child(4) {
-        width: 300px;
-    }
-    .colwidth:nth-child(5) {
-        width: 50px;
-    }
-    .colwidth:nth-child(6) {
-        width: 50px;
-    }
-    .colwidth:nth-child(7) {
-        width: 50px;
-    }
-    .colwidth:nth-child(8) {
-        width: 100px;
-    }
+    } // .colwidth:nth-child(2) {
+    //     width: 100px;
+    // }
+    // .colwidth:nth-child(3) {
+    //     width: 100px;
+    // }
+    // .colwidth:nth-child(4) {
+    //     width: 300px;
+    // }
+    // .colwidth:nth-child(5) {
+    //     width: 50px;
+    // }
+    // .colwidth:nth-child(6) {
+    //     width: 100px;
+    // }
+    // .colwidth:nth-child(7) {
+    //     width: 100px;
+    // }
+    // .colwidth:nth-child(8) {
+    //     width: 50px;
+    // }
+    // .colwidth:nth-child(9) {
+    //     width: 50px;
+    // }
     .menconfirmcolwidth:nth-child(1) {
         width: 100px;
     }
@@ -235,14 +242,6 @@ width="100px */
         }
         td:nth-child(3) {
             word-wrap: break-word;
-        }
-    }
-    thead {
-        tr {
-            th {}
-            th:first-child {
-                content: "#";
-            }
         }
     }
 }

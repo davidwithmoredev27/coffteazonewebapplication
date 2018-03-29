@@ -47,9 +47,10 @@
 </head>
 
 <body>
-   <header class="headerstyle">
+     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="../editaccount.php">Change Password</a></li>
+            <li><a href="../logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
@@ -68,7 +69,7 @@
         </div>
         <ul id="slide-out" class="side-nav admincolor fixed  sidenavstyle">
             <li>
-                <h1 class="center-align white-text usernametextadmin">Admin <?php echo $_SESSION['username'];?></h1>
+                <h1 class="center-align white-text usernametextadmin">Coffteazone Admin</h1>
             </li>
             <li class="logostyle">
                 <a href="../dashboard.php" class="center-align"><img src="../../img/logo/cofftealogo.png" width="80px" height="80px" srcset=""></a>
@@ -76,12 +77,6 @@
             <li>
                 <a href="../dashboard.php" class="left-align white-text sidenavmainlinks">
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
-                </a>
-            </li>
-            <li>
-                <a href="../users.php" class="left-align white-text sidenavmainlinks">
-                    <span>Users</span>
-                    <i class="left material-icons white-text">person</i>
                 </a>
             </li>
             
@@ -93,10 +88,38 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="../homepage.php" class="white-text left-align">Home
-                                        <i class="tiny material-icons left white-text">home</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                             <a href="#!" class="collapsible-header left-align admincolor white-text">Home
+                                                <i class="tiny material-icons left white-text">home</i>
+                                             </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="../slideredit.php" class="white-text left-align indent" style="font-size:.7em !important;">Slider
+                                                            <i class="tiny material-icons left white-text">slideshow</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="../bestseller.php" class="white-text left-align indent" style="font-size:.7em !important;">Bestseller
+                                                            <i class="tiny material-icons left white-text">monetization_on</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="../newproduct.php" class="white-text left-align indent" style="font-size:.6em !important;">New Prod.
+                                                            <i class="tiny material-icons left white-text">fiber_new</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="../promos.php" class="white-text left-align indent" style="font-size:.7em !important;">Promos
+                                                            <i class="tiny material-icons left white-text">new_releases</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -215,7 +238,7 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="feedback.php" class="white-text left-align">Feedback
+                                    <a href="../feedback.php" class="white-text left-align">Feedback
                                         <i class="tiny material-icons  white-text left">inbox</i>
                                     </a>
                                 </li>
@@ -233,12 +256,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Request
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="registrationadmin.php" class="white-text left-align">Registration
+                                    <a href="../registrationadmin.php" class="white-text left-align">Registration
                                         <i class="tiny material-icons white-text left">person_add</i>
                                     </a>
                                 </li>
@@ -255,6 +278,11 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
+                                <li>
+                                    <a href="../editaccount.php" class="white-text left-align">Change Password
+                                        <i class="tiny material-icons white-text left">fingerprint</i>
+                                    </a>
+                                </li>
                                 <li>
                                     <a href="../logout.php" class="white-text left-align">Logout
                                         <i class="tiny material-icons white-text left">input</i>
@@ -344,7 +372,7 @@
                                     <th class="center-align">Name</th>
                                     <th class="center-align">Caption</th>
                                     <th class="center-align">Price</th>
-                                    <th></th>  
+                                    <th class="center-align" colspan="2">Options</th>  
                                 </tr>
                             </thead>
                             <tbody>
@@ -363,6 +391,12 @@
                                                 "<form method=\"POST\" action=\"".$_SESSION['editpage']."\">".
                                                     "<input type=\"hidden\" name=\"menueditid\" value=\"".$rows['id'] . "\">".
                                                     "<button type=\"submit\"name=\"menuedit\" class=\"btn waves-effect waves-light\">edit</button>".
+                                                "</form>".
+                                            "</td>";
+                                        echo "<td class=\"center-align\">".
+                                                "<form method=\"POST\" action=\"menudelete.php\">".
+                                                    "<input type=\"hidden\" name=\"menudeleteid\" value=\"".$rows['id'] . "\">".
+                                                    "<button type=\"submit\"name=\"menudelete\" class=\"btn red darken-3 waves-effect waves-light\">Delete</button>".
                                                 "</form>".
                                             "</td>";
                                         echo "</tr>\n";
@@ -418,7 +452,7 @@
                             <div class="row">
                                 <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                     <div class="row">
-                                        <button type="submit" class="btn red darken-2 btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4" name="menusubmit">Add</button>
+                                        <button type="submit" class="btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4" name="menusubmit">Add</button>
                                     </div>
                                 </div>
                             </div>

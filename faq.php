@@ -22,8 +22,6 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
     <style type="text/css">
         .indicator-item:active {
             background-color:red;
@@ -184,7 +182,7 @@
             </div>
             <div class="col s12 m12 l5 xl5 offset-xl1 offset-l1 faqcontent">
                 <div class="row">
-                    
+
                     <div class="col s12 m12 l12 xl12">
                         <h3 style="font-size:1.6em !important; text-decoration:underline;" class="center-align"><b>KTV</b></h3>
                         <ul>
@@ -214,7 +212,6 @@
                             <li><b>Question  4.</b> If reservation is being cancelled do you offer a full refund?</li>
                             <li><b>Answer:</b> No.</li>
                             <li><p></p></li>
-                           
                         </ul>
                     </div>
                 </div>

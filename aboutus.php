@@ -152,7 +152,7 @@
                 <div class="row">
                     <div class="col s12 m12 l12 xl12">
                         <div class="row">
-                            <div class="col s12 m12 l6 xl6">
+                            <div class="col s12 m6 l6 xl6">
                                 <div class="row">
                                     <div class="col s12 m12 l12 xl12"></div>
                                 </div>
@@ -160,13 +160,13 @@
                                     <div class="col s12 m12 l12 xl12"></div>
                                 </div>
                                 <?php
-                                    echo "<img src=\"".$historimage[0]."\" width=\"100%\" height=\"100%\">\n";
+                                    echo "<img src=\"".$historimage[0]."\" width=\"100%\" class=\"imageheight\">\n";
                                 
                                 ?>
                             </div>
                     
                             
-                            <div class="col s12 m12 l6 xl6">
+                            <div class="col s12 m6 l6 xl6">
                                 <div class="row">
                                     <div class="col s12 m12 l12 xl12"></div>
                                 </div>
@@ -192,7 +192,12 @@
                 <div class="row">
                     <div class="col s12 m12 l12 xl12">
                         <div class="row">
-                            <div class="col s12 m12 l6 xl6 aboutuscontent">
+                            <div class="col s12 m6 l6 xl6 showmobileimg">
+                                 <?php         
+                                    echo "<img src=\"".$historimage[1]."\" width=\"100%\" class=\"imageheight\">\n";
+                                ?>
+                            </div>
+                            <div class="col s12 m6 l6 xl6 aboutuscontent">
                                 <h3 class="center-align">Our Mission</h3>
                                 <?php
                                     $sql = "SELECT * FROM tbl_about_mission";
@@ -218,9 +223,9 @@
                                     }
                                 ?>
                             </div>
-                            <div class="col s12 m12 l6 xl6" >
+                            <div class="col s12 m6 l6 xl6 showdesktopimg">
                                  <?php         
-                                    echo "<img src=\"".$historimage[1]."\" width=\"100%\" height=\"500px\">\n";
+                                    echo "<img src=\"".$historimage[1]."\" width=\"100%\" class=\"imageheight\">\n";
                             
                                 ?>
                             </div>

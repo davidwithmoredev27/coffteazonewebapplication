@@ -80,7 +80,7 @@
         }
     }
 
-     function sanitizedData($data) {
+    function sanitizedData($data) {
         $triminput  = trim($data);
         $striplashesinput = stripslashes($triminput);
         $htmlcharscape = htmlspecialchars($striplashesinput);
@@ -145,8 +145,14 @@
 
                 if (isset($_POST['menuprice'])) {
 
-                    if (filter_var($_POST['menuprice'] , FILTER_VALIDATE_INT)) {
-
+                    if (is_numeric($_POST['menuprice'])) {
+                         if ($_POST['menuprice'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        }
                         $_SESSION['price'] = sanitizedData($_POST['menuprice']);
                         $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
                     
@@ -154,7 +160,7 @@
         
                     
 
-                    } else if (!filter_var($_POST['menuprice'] , FILTER_VALIDATE_INT)) {
+                    } else if (!is_numeric($_POST['menuprice'])) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Use digit for price!</strong>\n".

@@ -98,6 +98,23 @@
     -moz-transition: .2s all ease-in-out;
     transition: .2s all ease-in-out;
     padding-top: 5px !important;
+    .dropdowndevider {
+        height: 0px;
+        .menutitle {
+            h3 {
+                color: transparent;
+            }
+        }
+        .dropdowndishcategory {
+            ul {
+                li {
+                    a {
+                        color: transparent;
+                    }
+                }
+            }
+        }
+    }
 }
 
 #showdropdown:hover {
@@ -107,6 +124,23 @@
         width: 100%;
         height: 400px;
         visibility: visible;
+        .dropdowndevider {
+            height: 400px;
+            .menutitle {
+                h3 {
+                    color: white;
+                }
+            }
+            .dropdowndishcategory {
+                ul {
+                    li {
+                        a {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
@@ -125,12 +159,6 @@
     ul {
         li {
             a {
-                -webkit-transition: .3s all ease-in-out;
-                -o-transition: .3s all ease-in-out;
-                -ms-transition: .3s all ease-in-out;
-                -khtml-transition: .3s all ease-in-out;
-                -moz-transition: .3s all ease-in-out;
-                transition: .3s all ease-in-out;
                 &:hover {
                     color: brown;
                 }

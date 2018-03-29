@@ -181,7 +181,13 @@
 
                 if (isset($_POST['oz12']) && strlen($_POST['oz12']) !== 0) {
                     if (filter_var($_POST['oz12'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz12'] , FILTER_VALIDATE_FLOAT )) {
-
+                         if ($_POST['oz12'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        }
                         $_SESSION['confirmprice12oz'] = sanitizedData($_POST['oz12']);
                         $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice12oz']);
                     
@@ -192,7 +198,7 @@
                     } elseif (!filter_var($_POST['oz12'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz12'] , FILTER_VALIDATE_FLOAT )) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
+                                                "<strong class=\"white-text\">Use a number for the price!</strong>\n".
                                                 "</strong>\n";
                         header("location:" .  $_SESSION['editpage']);
                         die();
@@ -213,7 +219,13 @@
 
                 if (isset($_POST['oz16']) && strlen($_POST['oz16']) !== 0) {
                     if (filter_var($_POST['oz16'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz16'] , FILTER_VALIDATE_FLOAT )) {
-
+                        if ($_POST['oz16'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        }
                         $_SESSION['confirmprice16oz'] = sanitizedData($_POST['oz16']);
                         $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice16oz']);
                     
@@ -224,7 +236,7 @@
                     } elseif (!filter_var($_POST['oz16'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz16'] , FILTER_VALIDATE_FLOAT )) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
+                                                "<strong class=\"white-text\">Use a number for the price!</strong>\n".
                                                 "</strong>\n";
                         header("location:" .  $_SESSION['editpage']);
                         die();
@@ -246,7 +258,13 @@
 
                 if (isset($_POST['oz22']) && strlen($_POST['oz22']) !== 0) {
                     if (filter_var($_POST['oz22'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz22'] , FILTER_VALIDATE_FLOAT )) {
-
+                        if ($_POST['oz22'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        }
                         $_SESSION['confirmprice22oz'] = sanitizedData($_POST['oz22']);
                         $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice22oz']);
                     
@@ -257,7 +275,7 @@
                     } elseif (!filter_var($_POST['oz22'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz22'] , FILTER_VALIDATE_FLOAT )) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
-                                                "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
+                                                "<strong class=\"white-text\">Use a number for the price!</strong>\n".
                                                 "</strong>\n";
                         header("location:" .  $_SESSION['editpage']);
                         die();

@@ -150,7 +150,13 @@
                 if (isset($_POST['oz12'])) {
 
                     if (is_numeric($_POST['oz12'])) {
-
+                         if ($_POST['oz12'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        }
                         $_SESSION['price'] = sanitizedData($_POST['oz12']);
                         $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
                     
@@ -174,7 +180,13 @@
                 if (isset($_POST['oz16'])) {
 
                     if (is_numeric($_POST['oz16'])) {
-
+                         if ($_POST['oz16'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        }
                         $_SESSION['price'] = sanitizedData($_POST['oz16']);
                         $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
                     
@@ -197,7 +209,13 @@
                 if (isset($_POST['oz22'])) {
 
                     if (is_numeric($_POST['oz22'])) {
-
+                         if ($_POST['oz12'] < 0) {
+                             $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        }
                         $_SESSION['price'] = sanitizedData($_POST['oz22']);
                         $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
                     

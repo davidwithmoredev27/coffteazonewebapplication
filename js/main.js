@@ -1,7 +1,6 @@
 $(document).ready(function() {
     $(".button-collapse").sideNav({
         edge: 'left',
-        menuWidth: 200,
     });
 
     $(".slider").slider();

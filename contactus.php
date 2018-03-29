@@ -1,5 +1,9 @@
-<?php require "admin/connection.php";
+<?php 
+    require "admin/connection.php";
     session_start();
+
+    $_SESSION['timeZone'] = null;
+    $_SESSION['clientIP'] = null;
     function sanitizedData($data) {
         $triminput  = trim($data);
         $striplashesinput = stripslashes($triminput);
@@ -7,49 +11,112 @@
         $sanitizedData = $htmlcharscape;
         return $sanitizedData;
     }
-
-if (isset($_POST['Submit'])) {
-    # code...
-
-    // if (isset($_POST["name"])) {
-    //     $name = sanitizedData($_POST['name']);
-    //     $sqlInjectPrevent = mysqli_escape_string($connection , $name);
-
-    //     if (is_numeric($sqlInjectPrevent)) {
-            
-    //     } elseif (!is_numeric($sqlInjectPrevent)) {
-
-    //     }
-    // }
-
-    // if (isset($_POST['email'])) {
-    //     $email = sanitizedData($_POST['email']);
-        
-    // } elseif (!isset($_POST['email'])) {
-    //     $_SESSION['emailMessage'] = "<span></span>\n";
-    // }
-
-    // if (isset($_POST['message'])) {
-    //     $message = sanitizedData($_POST['message']);
-    //     $sqlInjectPrevent = mysqli_escape_string($connection , $message);
-    //     $messageSuccess = $sqlInjectPrevent;
-    // }
-
-    if (isset($_POST['email'])) {
+    function GetClient() {
+        $clientIp = "";
+        if (!empty($_SERVER['HTTP_CLIENT_IP'])) {
+            $clientIp = $_SERVER['HTTP_CLIENT_IP'];
+        } elseif (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
+            $clientIp = $_SERVER['HTTP_X_FORWARDED_FOR'];
+        } else {
+            $clientIp = $_SERVER['REMOTE_ADDR'];
+        }
+        $_SESSION['clientIP'] = $clientIp;
     }
-    $name = $_POST["name"];
-    $email = $_POST["email"];
-    $message = $_POST["message"];
-    $phone = $_POST['contactno'];
-    $date = date('Y-m-d');
-    $time = date('H:i:s');
-    $query = "INSERT INTO tbl_feedback(name, email, phone, message, date, time) VALUES
-    ('$name', '$email', $phone ,'$message', '$date', '$time');";
-    $result = $connection->query($query);
 
+    function GetDateAndTime() {
+        GetClient();
+        $clientipaddress = $_SESSION['clientIP'];
+        if (ini_get('allow_url_fopen')) {
+            $details = json_decode(file_get_contents("http://ip-api.com/json/{$clientipaddress}") ,true);
+            @$timeZone = $details['timezone'];
+            $_SESSION['timeZone'] = $timeZone;
+        }
+    }
+    $nameValid = null;
+    $emailValid = null;
+    $messageValid = null;
+    
+    if (isset($_POST['Submit'])) {
 
-}
+        if (isset($_POST['name'])) {
+            $name = sanitizedData($_POST['name']);
+            $preventSQLInjection = mysqli_escape_string($connection ,$name);
+            if (strlen($preventSQLInjection) > 100)  {
+                $_SESSION['contactuserror'] = "<b>Maximum name characters is 100!</b>\n";
+                header("location:contactus.php");
+                die();
+            } elseif (strlen($preventSQLInjection) <= 100) {
+                 if (preg_match('/^[0-9]/' , $preventSQLInjection)) {
+                    $_SESSION['contactuserror'] = "<b>Your name is invalid because the first Character is a number!</b>\n";
+                    header("location:contactus.php");
+                    die();
+                } elseif (!preg_match('/^[0-9]/' , $preventSQLInjection)) {
+                    $nameValid = $preventSQLInjection;   
+                }
+            }
+        }
 
+        if (isset($_POST['email'])) {
+            $email = sanitizedData($_POST['email']);
+            $preventSQLInjection = mysqli_escape_string($connection , $email);
+            if (filter_var($preventSQLInjection , FILTER_VALIDATE_EMAIL)) {
+                if (strlen($preventSQLInjection) > 50) {
+                    $_SESSION['contactuserror'] = "<b>Maximum email characters is 50!</b>\n";
+                        header("location:contactus.php");
+                        die();
+                } elseif (strlen($preventSQLInjection) <= 50) {
+                    if (preg_match('/(^\d|\s)|^\s$/' , $preventSQLInjection)) {
+                        $_SESSION['contactuserror'] = "<b>Please put a valid email address!</b>\n";
+                        header("location:contactus.php");
+                        die();
+                    } elseif (!preg_match('/(^\d|\s)|^\s$/' , $preventSQLInjection)) {
+                        $emailValid = $preventSQLInjection;
+                    }
+                }
+                 
+            } elseif (!filter_var($preventSQLInjection , FILTER_VALIDATE_EMAIL)) {
+                $_SESSION['contactuserror'] = "<b>Please put a valid email address!</b>\n";
+                header("location:contactus.php");
+                die();
+            }
+        }
+
+        if (isset($_POST['message'])) {
+            $message = sanitizedData($_POST['message']);
+            $preventSQLInjection = mysqli_escape_string($connection , $message);
+            if (strlen($preventSQLInjection) > 1000) {
+                $_SESSION['contactuserror'] = "<b>Maximum Message characters is 1000!</b>\n";
+                 header("location:contactus.php");
+                die();
+            } elseif (strlen($preventSQLInjection) <= 1000) {
+                $messageValid = $preventSQLInjection;
+            }
+        }
+
+        if (isset($_POST['contactno'])) {
+            $contactnumber = sanitizedData($_POST['contactno']);
+            $preventSQLInjection = mysqli_escape_string($connection , $contactnumber);
+            if (strlen($preventSQLInjection) > 20) {
+                $_SESSION['contactuserror'] = "<b>Maximum number characters is 20!</b>\n";
+                header("location:contactus.php");
+                die();
+            } elseif (strlen($preventSQLInjection) <= 20) {
+                $contactnoValid = $preventSQLInjection;
+            }
+        }
+    }
+    if (isset($nameValid) && isset($email) && isset($messageValid)) {
+        GetDateAndTime();
+        $timezone = $_SESSION['timeZone'];
+        @date_default_timezone_set($timezone);
+        $timeCreated = date('Y/m/d h:i:sa');
+        $sql = "INSERT INTO tbl_feedback(name, email , phone , message , dateandtime)".
+                "VALUES('$nameValid' , '$emailValid' , '$contactnoValid' , '$messageValid','$timeCreated')";
+        //die($sql);
+        mysqli_query($connection , $sql);
+        $_SESSION['contactussuccess'] = "<b>Your Feedback Successfully sent!</b>\n";
+        header("location:contactus.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -213,6 +280,22 @@ if (isset($_POST['Submit'])) {
         <div class="row">
             <div class="col s12 m12 l4 xl4 offset-l1 offset-xl1 border">
                 <div class="row">
+                    <?php
+                        if(isset($_SESSION['contactuserror'])) {
+                            echo "\t\t\t\t\t\t\t<div class=\" red darken-3 col s12 m12 l12 xl12 feedbackerrormessage\">\n".
+                                 "\t\t\t\t\t\t\t\t<p class=\"white-text\">".$_SESSION['contactuserror']."</p>\n".
+                                 "\t\t\t\t\t\t</div>\n";
+                            $_SESSION['contactuserror'] = null;
+                        }
+                        if (isset($_SESSION['contactussuccess'])) {
+                             echo "\t\t\t\t\t\t\t<div class=\"green darken-3 col s12 m12 l12 xl12 feedbacksuccessmessage\">\n".
+                                 "\t\t\t\t\t\t\t\t<p class=\"white-text\">".$_SESSION['contactussuccess']."</p>\n".
+                                 "\t\t\t\t\t\t</div>\n";
+                            $_SESSION['contactussuccess'] = null;
+                        }   
+                    ?>
+                </div>
+                <div class="row">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="col s12 m12 l12 xl12">
                         <div class="row">
                             <div class="col s12 m12 l12 xl12"></div>
@@ -231,19 +314,19 @@ if (isset($_POST['Submit'])) {
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 x12">
-                                <input type="email" required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your email!" name="email" id="email">
+                                <input type="email" required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your email!" name="email" id="email" maxlength="50">
                                 <label for="email"><b>Email:</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 x12">
-                                <input type="text" required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your mobile number!" name="contactno" id="contactno">
+                                <input type="text" autocomplete="off" style="font-size:.9em !important" placeholder="Enter your mobile number!" name="contactno" id="contactno" maxlength="20">
                                 <label for="contactno"><b>Phone:</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 x12">
-                                <textarea name="message" required autocomplete="off" style="font-size:.9em !important" placeholder="Write your feedback here!" id="message" class="materialize-textarea"></textarea>
+                                <textarea name="message" required autocomplete="off" style="font-size:.9em !important" placeholder="Write your feedback here!" id="message" maxlength="1000" class="materialize-textarea"></textarea>
                                 <label for="message"><b>Message:</b></label>
                             </div>
                         </div>
@@ -303,25 +386,7 @@ if (isset($_POST['Submit'])) {
             </div>
         </div>
         <div class="row">
-            <div class="col s12 m12 l4 xl4 offset-l1 offset-xl1">
-            <!-- <div class="row">
-                <div class="col s12 m12 l12 xl12">
-                    <h3 class="center-align">Join our mailing list</h3>
-                </div>
-            </div>
-            <div class="row">
-                <form action="<?php //echo htmlspecialchars($_SERVER['PHP_SELF'])?>" class="col s12 m12 l12 xl12" method="post">
-                    <div class="row">
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <div class="row">
-                                <input type="email" name="email" id="" class="col s12 m12 l6 xl6">
-                                <button type="submit" name="subscribe" class="col s12 m12 l6 xl6 btn">Subscribe</button>
-                            </div>
-                        </div>
-                    </div>    
-                </form>
-            </div>  -->
-           </div>
+
             <div class="col s12 m12 l12 xl12">
                 <iframe
                     width="100%"
@@ -360,6 +425,9 @@ if (isset($_POST['Submit'])) {
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        
+    </script>
 
 </body>
 </html>

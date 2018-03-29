@@ -7,7 +7,7 @@ var roomsOverlay = document.getElementsByClassName("roomsoverlay");
 var overContentIndex = [];
 
 var selectOverlayContent = function(overlayValue) {
-    console.log(overlayValue);
+
     if (overlayValue == 0 || overlayValue == 1 || overlayValue == 2) {
         overlay[0].style.display = "block";
         overlay[1].style.display = "none";
