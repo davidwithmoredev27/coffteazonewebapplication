@@ -16,16 +16,16 @@
     }
 
     if($_SERVER['REQUEST_METHOD'] === "POST") {
-
+        
         if (isset($_POST['editbestseller'])) {
 
             if (isset($_POST['bestsellerid'])) {
 
-                if (filter_var($_POST['bestsellerid'], FILTER_VALIDATE_INT)){
+                if (is_numeric($_POST['bestsellerid'])){
                     $bestseller = sanitizedData($_POST['bestsellerid']);
                     $sqlInjectionPrevention = mysqli_escape_string($connection , $bestseller);
                  
-
+                    $_SESSION['bestsellerstay'] = $sqlInjectionPrevention;
                     $sql = "SELECT * FROM tbl_bestseller WHERE id =". $sqlInjectionPrevention;
                     $_SESSION['bestsellerconfirm'] = $sqlInjectionPrevention;
                     $result = mysqli_query($connection , $sql);
@@ -42,7 +42,7 @@
                         $displaypath = $row['path'];
                         
                     }
-                } else if (!filter_var($_POST['bestsellerid'], FILTER_VALIDATE_INT)) {
+                } else if (!is_numeric($_POST['bestsellerid'])) {
                     $_SESSION['bestselleruploaderror'] = "<span><strong class=\"white-text\">Enter valid bestseller id!</strong></span>\n";
                     header("location:bestseller.php");
                     die();
@@ -57,9 +57,21 @@
              header("location:bestseller.php");
                 die();
         }
-    } else {
-        header("location:bestseller.php");
-        die();
+    } else if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+        if (isset($_SESSION['bestsellerstay'])) {
+            $sql = "SELECT * FROM tbl_bestseller WHERE id = ". $_SESSION['bestsellerstay'];
+            $result = myqli_query($connection , $sql);
+             while($row = mysqli_fetch_assoc($result)) {
+                $displaytitle = $row['title'];
+                $displaycaption = $row['caption'];
+                $displayprice = $row['price'];
+                $displaypath = $row['path'];
+            }
+        } elseif (!isset($_SESSION['bestsellerstay'])) {
+            mysqli_close($connection , $sql);
+            header("location:bestseller.php");
+            die();
+        }
     }
 ?>
 <html lang="en">
@@ -90,6 +102,14 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
    <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>

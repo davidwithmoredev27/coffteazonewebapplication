@@ -36,7 +36,7 @@
         if (isset($_POST['accountchange'])) {
 
              if (isset($_POST['oldpassword'])) {
-                 if (strlen($_POST['oldpassword']) <= 8) {
+                 if (strlen($_POST['oldpassword']) < 8) {
                     mysqli_close($connection);
                     $_SESSION['accountediterror'] = "<span class=\"center-align\"><strong class=\"white-text center-align\">Invalid password!</strong></span>\n";
                     header("location:editaccount.php");
@@ -57,7 +57,7 @@
                             $oldpasswordStatus = true;
                         } elseif ($passwordConfirm !== $hashed_oldPassword) {
                             mysqli_close($connection);
-                            $_SESSION['accountediterror'] = "<span><strong class=\"white-text center-align\">Invalid password2!</strong></span>\n";
+                            $_SESSION['accountediterror'] = "<span><strong class=\"white-text center-align\">Invalid password!</strong></span>\n";
                             header("location:editaccount.php");
                             die();
                         }
@@ -99,11 +99,7 @@
                 $_SESSION['accountediterror'] = "<span><strong class=\"white-text center-align\">Choose Password!</strong></span>\n";
                 header("location:editaccount.php");
                 die();
-             }
-
-           
-        
-             
+             }             
 
              if (isset($passwordStatus)) {
                 $sql = "UPDATE tbl_admin SET password = ". "\"$hashed_password\"" .  " WHERE username = ". "\"".$_SESSION['username']."\"";

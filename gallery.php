@@ -17,6 +17,7 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="coffteazone Cavite City">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="projection, screen">
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
@@ -37,6 +38,14 @@
     </style>
 </head>
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header>
         <nav class="brown darken-4">
             <div class="nav-wrapper z-depth-5">
@@ -45,7 +54,7 @@
                 </a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">             
-                    <li class="white-text"><a href="index.php" style="color:brown;">HOME</a></li>
+                    <li class="white-text"><a href="index.php">HOME</a></li>
                     <li class="white-text" id="showdropdown"><a href="menu.php">OUR MENU</a>
                          <div id="megadropdown" style="height:400px;left:-1px;" class="row" role="coffteazonemenu">
                             <div class="dropdowndevider col l3 xl3 offset-l1 offset-xl1">
@@ -90,7 +99,7 @@
                                 </div>
                                  <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li><a href="menu/muffins">Muffins</a></li>
+                                        <li><a href="menu/muffins.php">Muffins</a></li>
                                         <li><a href="menu/cakes.php">Cakes</a></li>
                                     </ul>
                                 </nav>
@@ -98,16 +107,16 @@
                         </div>
                     </li>
                     <li class="white-text"><a href="services.php">SERVICES</a></li>
-                    <li class="white-text"><a href="gallery.php">GALLERY</a></li>
+                    <li class="white-text"><a style="color:brown;" href="gallery.php">GALLERY</a></li>
                     <li class="white-text"><a href="aboutus.php">ABOUT US</a></li>
                     <li class="white-text"><a href="faq.php">FAQ'S</a></li>
                     <li class="white-text"><a href="contactus.php">CONTACT US</a></li>
                 </ul>
                  <ul class="side-nav brown darken-3" id="mobile-demo">
-                    <li><a style="color:brown;" href="index.php">HOME</a></li>
+                    <li><a class="white-text" href="index.php">HOME</a></li>
                     <li><a class="white-text" href="menu.php">OUR MENU</a></li>
                     <li><a class="white-text" href="services.php">SERVICES</a></li>
-                    <li><a class="white-text" href="gallery.php">GALLERY</a></li>
+                    <li><a style="color:brown;" href="gallery.php">GALLERY</a></li>
                     <li><a class="white-text" href="aboutus.php">ABOUT US</a></li>
                     <li><a class="white-text" href="faq.php">FAQ'S</a></li>
                     <li><a class="white-text" href="contactus.php">CONTACT US</a></li>
@@ -202,7 +211,6 @@
                             echo "</div>\n";
                         echo "</div>\n";
                     }
-                    
                     echo "</div>\n";
                 }
 
@@ -236,13 +244,12 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
-    <script src="js/main.js" type="text/javascript"></script>
-
+    <script src="js/main.js" type="text/javascript"></script>      
     <script type="text/javascript">
         var counter = 0;
         window.onload = function() {
             var Stylesheet = {
-                
+
             };
             var right = document.getElementsByClassName("rightarrow");
             var left = document.getElementsByClassName("leftarrow");
@@ -250,14 +257,14 @@
             var galleryContent = document.getElementsByClassName("gallerycontainer");
             var imageList = document.getElementsByClassName("imagelist");
             var currentImage = document.getElementsByClassName("currentimg");
-    
+            var boxlist = null;
             var boxlistContainer = [];
             var boxlistCounter = [];
             var arrowLength = right.length;
 
-    
 
-            var toLeft = function () {
+
+            /*var toLeft = function () {
                 for(var i = 0 ; i < arrowLength ; i++) {
                     if (this == left[i]) {
                         var boxlist = galleryContent[i].children;
@@ -269,51 +276,122 @@
                     }
 
                 }
-            };
-            var toRight = function () {
-                for(var i = 0 ; i < arrowLength ; i++) {
-                    if (this == right[i]) {
-                        var boxlist = galleryContent[i].children;                        
+            };*/
+            var toLeft = function() {
+                var boxlist = galleryContent[0].children;
+                for (var i = boxlist.length; i >= 0; i--) {
+                    if (this == left[i]) {
+
                         if (boxlistCounter[i] === undefined) {
-                            boxlistCounter[i] = 0;
+                            boxlistCounter[i] = boxlist.length - 1;
+                            //console.log(boxlistCounter[i]);
+                            console.log("undefinedboxlistCounter[" + i + "] = " + boxlistCounter[i]);
                             currentImage[i].src = imageList[boxlistCounter[i]].src;
+                            var boxlistLast = 0;
+                            boxlist[boxlistLast].style.border = "1px solid blue";
+                            boxlist[boxlistCounter[i]].style.border = "1px solid red";
+                            
+                        } else if (boxlistCounter[i] == boxlist.length - 1) {
+							boxlistCounter[i]--;
+							console.log("lengthboxlistCounter[" + i + "] = " + boxlistCounter[i]);
+                            currentImage[i].src = imageList[boxlistCounter[i]].src;
+                            
+                        } else if (boxlistCounter[i] < boxlist.length - 1 && boxlistCounter[i] != 0) {
+							boxlistCounter[i]--;
+                            var boxlistincrement = boxlistCounter[i] + 1;
+                            console.log("lessthanboxlistCounter[" + i + "] = " + boxlistCounter[i])
+                            boxlist[boxlistincrement].style.border = "1px solid blue";
+                            boxlist[boxlistCounter[i]].style.border = "1px solid red";
+                            currentImage[i].src = imageList[boxlistCounter[i]].src;
+                            
+                        } else if (boxlistCounter[i] == 0) {
+                            boxlistCounter[i] = boxlist.length - 1;
+							//var boxlistLast = boxlistCounter[i] + 1;
+                            currentImage[i].src = imageList[boxlistCounter[i]].src;
+                            console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i])
+                            //boxlist[boxlistLast].style.border = "1px solid black";
+                            
+                            console.log("Counter" + boxlistCounter[i])
+
                         }
-                        
-                        if (boxlistCounter[i] == boxlist.length) {
-                            var boxlistLast = boxlistCounter[i] - 1;
-                            boxlist[boxlistLast].style.border = "1px solid black";
-                            boxlistCounter[i] = 0;
-                        }
-                        boxlist[boxlistCounter[i]].style.border = "1px solid red";
-                        currentImage[i].src = imageList[boxlistCounter[i]].src;
-                        if (boxlistCounter[i] > 0) {
-            
-                            var boxlistdecrement = boxlistCounter[i] - 1;
-                            boxlist[boxlistdecrement].style.border = "1px solid black";
-                           
-                        }
-                        
-                        boxlistCounter[i]++;
-                
-                        console.log(boxlistCounter[i]);
                     }
                 }
             };
-           
-            
-            var loadAllEvents = function (evtOne , evtTwo) {
-                
+            var toRight = function() {
+                for (var i = 0; i < arrowLength; i++) {
+                    if (this == right[i]) {
+						console.log("boxlistCounter value = " + boxlistCounter[i]);
+                        var boxlist = galleryContent[0].children;
+                        if (boxlistCounter[i] === undefined) {
+                            boxlistCounter[i] = 1;
+                            console.log("undefinedboxlistCounter[" + i + "] = " + boxlistCounter[i])
+                            currentImage[i].src = imageList[boxlistCounter[i]].src;
+                        
+						console.log("Eto" + boxlistCounter[i]);
+						}
+						else if (boxlistCounter[i] == 0){
+							boxlistCounter[i]++;
+							console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i]);
+							currentImage[i].src = imageList[boxlistCounter[i]].src;
+							
+							console.log("Eto" + boxlistCounter[i]);
+						}
+						else if (boxlistCounter[i] >= 1 && boxlistCounter[i] != boxlist.length - 1) {
+							boxlistCounter[i]++;
+                            var boxlistdecrement = boxlistCounter[i] - 1;
+                            console.log("&&boxlistCounter[" + i + "] = " + boxlistCounter[i])
+                            boxlist[boxlistdecrement].style.border = "1px solid black";
+							currentImage[i].src = imageList[boxlistCounter[i]].src;
+							
+                        console.log("Eto" + boxlistCounter[i]);
+						}
+						else if (boxlistCounter[i] == boxlist.length -1) {
+                            boxlistCounter[i] = 0;
+							//var boxlistLast = boxlistCounter[i] - 1;
+                            console.log("lenghtboxlistCounter[" + i + "] = " + boxlistCounter[i])
+                           // boxlist[boxlistLast].style.border = "1px solid black";
+							currentImage[i].src = imageList[boxlistCounter[i]].src;
+                            
+							console.log("Eto" + boxlistCounter[i]);
+							}
+						
+                       /*
+					    
+                        //boxlist[boxlistCounter[i]].style.border = "1px solid red";
+                        //currentImage[i].src = imageList[boxlistCounter[i]].src;
+						
+                        else if (boxlistCounter[i] > 0) {
 
-                for (var i = 0 ; i < evtOne.length ; i++ ) {
-                    evtOne[i].addEventListener("click" , toLeft , false);
-                    evtTwo[i].addEventListener("click" , toRight , false);
+                            var boxlistdecrement = boxlistCounter[i] - 1;
+                            console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i])
+                            boxlist[boxlistdecrement].style.border = "1px solid black";
+							currentImage[i].src = imageList[boxlistCounter[i]].src;
+							boxlistCounter[i]++;
+                        }
+
+                       else if (boxlistContainer[i] == 0){
+							
+							console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i]);
+							currentImage[i].src = imageList[boxlistCounter[i]].src;
+							boxlistCounter[i]++;
+						}*/
+                    }
+                }
+            };
+
+
+            var loadAllEvents = function(evtOne, evtTwo) {
+
+
+                for (var i = 0; i < evtOne.length; i++) {
+                    evtOne[i].addEventListener("click", toLeft, false);
+                    evtTwo[i].addEventListener("click", toRight, false);
                 }
             };
             // load all the possible events
             loadAllEvents(left, right);
-           
+
         };
     </script>
-
 </body>
 </html>

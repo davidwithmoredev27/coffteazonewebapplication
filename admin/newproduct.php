@@ -23,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
-    <title>Admin New product</title>
+    <title>Admin | New product</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
     <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
@@ -40,6 +40,14 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>
@@ -298,8 +306,7 @@
                     <div class="nav-wrapper">
                         <div class="col s12 m12 l12 xl12">
                             <a href="#!" class="breadcrumb">Pages</a>
-                            <a href="homepage.php" class="breadcrumb">Home</a>
-        
+                            <a href="#!" class="breadcrumb">Home</a>
                             <a href="#!" class="breadcrumb">New Product</a>
                         </div>
                     </div>
@@ -315,26 +322,34 @@
                         "</div>\n";
                     $_SESSION['promossuccess'] = null;
                 }
+                  if(isset($_SESSION['promoserror'])) {
+                    echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n".
+                        $_SESSION['promoserror']. "\n".
+                        "</div>\n";
+                    $_SESSION['promoserror'] = null;
+                }
             ?>
         </div>
-        <div class="row">
-               
+        <div class="row showmobilenewproduct">
             <div class="col s12 m12 xl12 l12">
                 <div class="row">
-                    <h5 class="col s12 m12 l12 xl12 center-align center-align">New Product list</h5>  
-                </div>
-                <div class="row">
                     <div class="col s12 l12 xl12 m12">
+                        <div class="row">
+                            <h5 class="col s12 m12 l12 xl12 center-align center-align">New Product list</h5>  
+                        </div>
                         <table class="responsive-table" style="table-layout:fixed" >
+                            <col class="promoswidth">
+                            <col class="promoswidth">
                             <col class="promoswidth">
                             <col class="promoswidth">
                             <col class="promoswidth">
                             <thead>
                                 <tr>
+                                    <th class="center-align">#</th>
                                     <th class="center-align">Title</th>
                                     <th class="center-align">Image</th>
                                     <th class="center-align">Description</th>
-                                   <th class="center-align"></th>
+                                    <th class="center-align">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -342,7 +357,7 @@
                                     <?php
                                         $sql = "SELECT * FROM tbl_new_product";
                                         $result = mysqli_query($connection, $sql);
-
+                                        $counter = 1;
                                         if (mysqli_num_rows($result) > 0) {
                                             while ($rows = mysqli_fetch_assoc($result)) {
                                                 $title = $rows['title'];
@@ -350,75 +365,169 @@
                                                 $path = $rows['path'];
                                                 $id = $rows['id'];
                                                 echo "<tr>\n";
+                                                echo "<td class=\"center-align\">". $counter ."</td>\n";
                                                 echo "<td class=\"center-align\">". $title ."</td>\n";
-                                                echo "<td class='center-align'>". "<img src='../$path' width='50px' height='75px'/></td>\n";
+                                                echo "<td class='center-align'>". "<img src='../$path' width='75px' height='50px'/></td>\n";
                                                 echo "<td class='center-align'>$description</td>\n";
                                                 echo "<td class='center-align'>\n".
-                                                        "<form method=\"post\" action='editnewproduct.php' enctype='multipart/form-data'>".
-                                                            "<input type='hidden' value='$id' name='editpromosid'>\n".
-                                                            "<button type='submit' name='promoseditsubmit' class='btn waves-light waves-effect'>Edit</button>\n".
+                                                        "<form method=\"post\" action='deletenewproduct.php'>".
+                                                            "<input type='hidden' value='$id' name='deletepromosid'>\n".
+                                                            "<button type='submit' name='promosedeletesubmit' class='btn red darken-3 waves-light waves-effect'>Delete</button>\n".
                                                         "</form>\n";
                                                 echo "</td>";
+                                                echo "</tr>\n";
+                                                $counter++;;
                                             }
                                         }
                                     ?>
                             </tbody>
                         </table>
                     </div>
-                </div>
-            </div>
-            <div class="col s12 m12 l12 xl12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m12 12 xl12">
-                            <h5 class="center-align">Add new product</h5>
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col s12 m12 12 xl12">
+                                    <h5 class="center-align">Add new product</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <?php
+                                    if(isset($_SESSION['promoserror'])) {
+                                        echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n".
+                                            $_SESSION['promoserror']. "\n".
+                                            "</div>\n";
+                                        $_SESSION['promoserror'] = null;
+                                    }
+                                ?>
+                                <?php
+                                    if(isset($_SESSION['promossuccess'])) {
+                                        echo "<div class=\"col s12 m12 l12 xl12 center-align green darken-3\">\n".
+                                            $_SESSION['promossuccess']. "\n".
+                                            "</div>\n";
+                                        $_SESSION['promosuccess'] = null;
+                                    }
+                                ?>
+                            </div>
+                            <div class="row">
+                                <form action="addnewproduct.php" method="post" class="col s12 m12 xl12 l12" enctype="multipart/form-data">
+                                    <div class="row">
+                                        <div class="input-field col s12 m12 l12 xl12 ">
+                                            <input type="text"  autocomplete="off" required name="promostitle" maxlength="50" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add title!</strong>" data-length="50" id="promostitle">
+                                            <label for="promostitle">Title</label>
+                                        </div>
+                                        <div class="input-field col s12 m12 l12 xl12">
+                                            <textarea name="promosdescription" autocomplete="off" required id="promosdescription" class="tooltipped materialize-textarea" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add description!</strong>" maxlength="500" data-length="500"></textarea>
+                                            <label for="promosdescription">Description</label>
+                                        </div>
+                                        <div class="file-field input-field col s12 m12 l12 xl12">
+                                            <div class="btn blue-grey darken-4">
+                                                <span>Image</span>
+                                                <input type="file" autocomplete="off" required name="promosimg">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Upload image">
+                                            </div>
+                                        </div>
+                                        <div class="input-field col offset-l5 offset-xl5 m12 l2 xl2 s12">
+                                            <div class="row">
+                                                <button type="submit" name="promosaddsubmit" class="col xl12 l12 m12 s12 btn waves-light waves-effect">Add</button>
+                                            </div>
+                                        </div>
+                                    </div>   
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="row">
-                        <?php
-                            if(isset($_SESSION['promoserror'])) {
-                                echo "<div class=\"col s12 m12 l12 xl12 center-align red darken-3\">\n".
-                                    $_SESSION['promoserror']. "\n".
-                                    "</div>\n";
-                                $_SESSION['promoserror'] = null;
-                            }
-                        ?>
-                         <?php
-                            if(isset($_SESSION['promossuccess'])) {
-                                echo "<div class=\"col s12 m12 l12 xl12 center-align green darken-3\">\n".
-                                    $_SESSION['promossuccess']. "\n".
-                                    "</div>\n";
-                                $_SESSION['promosuccess'] = null;
-                            }
-                        ?>
-                    </div>
-                    <div class="row">
-                        <form action="addnewproduct.php" method="post" class="col s12 m12 xl12 l12" enctype="multipart/form-data">
+                </div>
+            </div>
+        </div>
+
+        <div class="row showdesktopnewproduct">
+            <div class="col s12 m12 xl12 l12">
+                <div class="row">
+                    <div class="col s12 m12 l4 xl4">
+                        <div class="container">
                             <div class="row">
-                                <div class="input-field col s12 m12 l12 xl12 ">
-                                    <input type="text"  autocomplete="off" required name="promostitle" maxlength="50" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add title!</strong>" data-length="50" id="promostitle">
-                                    <label for="promostitle">Title</label>
+                                <div class="col s12 m12 12 xl12">
+                                    <h5 class="center-align">Add new product</h5>
                                 </div>
-                                <div class="input-field col s12 m12 l12 xl12">
-                                    <textarea name="promosdescription" autocomplete="off" required id="promosdescription" class="tooltipped materialize-textarea" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add description!</strong>" maxlength="500" data-length="500"></textarea>
-                                    <label for="promosdescription">Description</label>
-                                </div>
-                                <div class="file-field input-field col s12 m12 l12 xl12">
-                                    <div class="btn blue-grey darken-4">
-                                        <span>Image</span>
-                                        <input type="file" autocomplete="off" required name="promosimg">
-                                    </div>
-                                    <div class="file-path-wrapper">
-                                        <input class="file-path validate" type="text" placeholder="Upload image">
-                                    </div>
-                                </div>
-                                <div class="input-field col offset-l5 offset-xl5 m12 l2 xl2 s12">
+                            </div>
+                            <div class="row">
+                                <form action="addnewproduct.php" method="post" class="col s12 m12 xl12 l12" enctype="multipart/form-data">
                                     <div class="row">
-                                        <button type="submit" name="promosaddsubmit" class="col xl12 l12 m12 s12 btn waves-light waves-effect">Add</button>
-                                    </div>
-                                </div>
-                            </div>   
-                        </form>
+                                        <div class="input-field col s12 m12 l12 xl12 ">
+                                            <input type="text"  autocomplete="off" required name="promostitle" maxlength="50" class="center-align tooltipped" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add title!</strong>" data-length="50" id="promostitle">
+                                            <label for="promostitle">Title</label>
+                                        </div>
+                                        <div class="input-field col s12 m12 l12 xl12">
+                                            <textarea name="promosdescription" autocomplete="off" required id="promosdescription" class="tooltipped materialize-textarea" data-delay="50" data-position="top" data-tooltip="<strong class='tooltippedstyle'>Add description!</strong>" maxlength="500" data-length="500"></textarea>
+                                            <label for="promosdescription">Description</label>
+                                        </div>
+                                        <div class="file-field input-field col s12 m12 l12 xl12">
+                                            <div class="btn blue-grey darken-4">
+                                                <span>Image</span>
+                                                <input type="file" autocomplete="off" required name="promosimg">
+                                            </div>
+                                            <div class="file-path-wrapper">
+                                                <input class="file-path validate" type="text" placeholder="Upload image">
+                                            </div>
+                                        </div>
+                                        <div class="input-field col m12 l12 xl12 s12">
+                                            <button type="submit" name="promosaddsubmit" class="col xl12 l12 m12 s12 btn waves-light waves-effect">Add</button>
+                                        </div>
+                                    </div>   
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col s12 l12 xl8 m8">
+                        <div class="row">
+                            <h5 class="col s12 m12 l12 xl12 center-align center-align">New Product list</h5>  
+                        </div>
+                        <table class="responsive-table" style="table-layout:fixed" >
+                            <col class="promoswidth">
+                            <col class="promoswidth">
+                            <col class="promoswidth">
+                            <col class="promoswidth">
+                            <thead>
+                                <tr>
+                                    <th class="center-align">#</th>
+                                    <th class="center-align">Title</th>
+                                    <th class="center-align">Image</th>
+                                    <th class="center-align">Description</th>
+                                    <th class="center-align">Options</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                
+                                    <?php
+                                        $sql = "SELECT * FROM tbl_new_product";
+                                        $result = mysqli_query($connection, $sql);
+                                        $counter = 1;
+                                        if (mysqli_num_rows($result) > 0) {
+                                            while ($rows = mysqli_fetch_assoc($result)) {
+                                                $title = $rows['title'];
+                                                $description = $rows['description'];
+                                                $path = $rows['path'];
+                                                $id = $rows['id'];
+                                                 echo "<tr>\n";
+                                                echo "<td class=\"center-align\">". $counter ."</td>\n";
+                                                echo "<td class=\"center-align\">". $title ."</td>\n";
+                                                echo "<td class='center-align'>". "<img src='../$path' width='75px' height='50px'/></td>\n";
+                                                echo "<td class='center-align'>$description</td>\n";
+                                                echo "<td class='center-align'>\n".
+                                                        "<form method=\"post\" action='deletenewproduct.php'>".
+                                                            "<input type='hidden' value='$id' name='deletepromosid'>\n".
+                                                            "<button type='submit' name='promosedeletesubmit' class='btn red darken-3 waves-light waves-effect'>Delete</button>\n".
+                                                        "</form>\n";
+                                                echo "</td>";
+                                                echo "</tr>\n";
+                                                $counter++;
+                                            }
+                                        }
+                                    ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

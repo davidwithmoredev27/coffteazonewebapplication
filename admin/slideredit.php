@@ -40,10 +40,18 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
@@ -72,6 +80,7 @@
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
             </li>
+            
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -80,10 +89,38 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="homepage.php" class="white-text left-align">Home
-                                        <i class="tiny material-icons left white-text">home</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                             <a href="#!" class="collapsible-header left-align admincolor white-text">Home
+                                                <i class="tiny material-icons left white-text">home</i>
+                                             </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="slideredit.php" class="white-text left-align indent" style="font-size:.7em !important;">Slider
+                                                            <i class="tiny material-icons left white-text">slideshow</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="bestseller.php" class="white-text left-align indent" style="font-size:.7em !important;">Bestseller
+                                                            <i class="tiny material-icons left white-text">monetization_on</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="newproduct.php" class="white-text left-align indent" style="font-size:.6em !important;">New Prod.
+                                                            <i class="tiny material-icons left white-text">fiber_new</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="promos.php" class="white-text left-align indent" style="font-size:.7em !important;">Promos
+                                                            <i class="tiny material-icons left white-text">new_releases</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -112,11 +149,6 @@
                                             </div>
                                         </li>
                                     </ul>
-                                </li>
-                                <li>
-                                    <a href="services.php" class="white-text left-align">Services
-                                        <i class="tiny material-icons left white-text">style</i>
-                                    </a>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -216,7 +248,7 @@
                     </li>
                 </ul>
             </li>
-            <!--  <li class="no-padding">
+             <!-- <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
                         <a class="collapsible-header left-align admincolor white-text">authetication
@@ -225,12 +257,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Request
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="registrationadmin.php" class="white-text left-align">Registration
+                                    <a href="../registrationadmin.php" class="white-text left-align">Registration
                                         <i class="tiny material-icons white-text left">person_add</i>
                                     </a>
                                 </li>
@@ -247,7 +279,7 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                 <li>
+                                <li>
                                     <a href="editaccount.php" class="white-text left-align">Change Password
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
@@ -329,36 +361,38 @@
             ?>
     
             <div class="col s12 m12 l4 xl4 removeslidermobile">
-                <div class="row">
-                    <h5 class="col s12 m12 l12 xl12 center-align">Add Slider</h5>
-                </div>
-                <div class="row">
-                    <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="sliderupload.php">
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <textarea id="textarea1" maxlength="100" data-length="100"  name="sliderdescription" class="materialize-textarea"></textarea>
-                                <label for="textarea1">Description</label>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn brown darken-3">
-                                    <span>image</span>
-                                    <input type="file" name="sliderimg" required value="image">
-                                </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
+                <div class="container">
+                     <div class="row">
+                        <h5 class="col s12 m12 l12 xl12 center-align">Add Slider</h5>
+                    </div>
+                    <div class="row">
+                        <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="sliderupload.php">
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <textarea id="textarea1" maxlength="100" data-length="100"  name="sliderdescription" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Description</label>
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <div class="row">
-                                    <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="submitslider" >Add</button>
+                            <div class="row">
+                                <div class="file-field input-field col s12 m12 l12 xl12">
+                                    <div class="btn blue-grey darken-4">
+                                        <span>image</span>
+                                        <input type="file" name="sliderimg" required value="image">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <div class="row">
+                                        <button type="submit" class="btn col s12 m12 l12 xl12" name="submitslider" >Add</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col s12 m12 l8 xl8 removeslidermobile">
@@ -367,7 +401,7 @@
                 </div>
                 <div class="row">
                     <div class="col s12 m12 l12 xl12">
-                         <table class="responsive-table filtertable  bordered">
+                         <table class="responsive-table bordered">
                             <thead>
                                 <tr>
                                     <th class="center-align">#</th>
@@ -410,11 +444,11 @@
                 </div>
             </div>
             <!-- show on mobile -->
-            <div class="col s12 m12 l8 xl8 showslidermobile">
+            <div class="col s12 m12 l12 xl12 showslidermobile">
                 <div class="row">
                     <h5 class="col s12 m12 l12 xl12 center-align">Slider list</h5>
                     <div class="col s12 m12 l12 xl12">
-                        <table class="responsive-table filtertable">
+                        <table class="responsive-table bordered">
                             <thead>
                                 <tr>
                                     <th class="center-align">#</th>
@@ -455,21 +489,21 @@
                     </div>
                 </div>
             </div>
-            <div class="col s12 m12 l4 xl4 showslidermobile">
+            <div class="col s12 m12 l12 xl12 showslidermobile">
                 <div class="row">
                     <h5 class="col s12 m12 l12 xl12 center-align">Add Slider</h5>
                 </div>
                 <div class="row">
                     <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="sliderupload.php">
-                        <!-- <div class="row">
+                        <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
                                 <textarea id="textarea1" maxlength="100" data-length="100"  name="sliderdescription" class="materialize-textarea"></textarea>
                                 <label for="textarea1">Description</label>
                             </div>
-                        </div> -->
+                        </div>
                         <div class="row">
                             <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn brown darken-3">
+                                <div class="btn blue-grey darken-4">
                                     <span>Image</span>
                                     <input type="file" name="sliderimg" required value="image">
                                 </div>
@@ -481,7 +515,7 @@
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
                                 <div class="row">
-                                    <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="submitslider">Add</button>
+                                    <button type="submit" class="btn waves-light waves-effect col s12 m12 xl12 l12" name="submitslider">Add</button>
                                 </div>
                             </div>
                         </div>

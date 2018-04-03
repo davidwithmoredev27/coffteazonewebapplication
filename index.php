@@ -1,6 +1,7 @@
 <?php require "admin/connection.php"; ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
@@ -33,10 +34,66 @@
             background-repeat:no-repeat !important;
             background-size:100% 100% !important;
         }
-        
+        /* .overlaycontentseller {
+            visibility:hidden;
+            -moz-transition:all .5s ease-in-out;
+            -webkit-transition:all .5s ease-in-out;
+            -khtml-transition:all .5s ease-in-out;
+            -o-transition:all .5s ease-in-out;
+            -ms-transition:all .5s ease-in-out;
+            transition:all .5s ease-in-out;
+        } */
     </style>
 </head>
 <body id="bodyshit">
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
+    <div id="overlaycontainerhomepage">
+        <div class="overlaybtn"><img src="img/buttons/ex.png" id="closebtn" alt=""></div>
+        <div class="overlaybestseller">
+            <?php
+                $sql = "SELECT * FROM tbl_bestseller";
+                $result = mysqli_query($connection , $sql);
+
+                if (mysqli_num_rows($result) > 0 ) {
+                    while ($rows = mysqli_fetch_assoc($result)) {
+                        echo "\t\t\t<div class=\"row overlaycontentseller\">\n";
+                            echo "\t\t\t\t<div class=\"col s12 m12 l12 xl12\">\n".
+                                    "\t\t\t\t\t<div class=\"row\">\n".
+                                        "\t\t\t\t\t\t<div class=\"col s12 m12 l12 xl12\">\n".
+                                            "\t\t\t\t\t\t\t<div class=\"row\">\n".
+                                                "\t\t\t\t\t\t\t\t<div class=\"col s12 m6 l6 xl6\">\n".
+                                                    "\t\t\t\t\t\t\t\t\t<img src=\"".$rows['path']."\" alt=\"".$rows['title']."\" class=\"selleroverlayimage\">\n".
+                                                "\t\t\t\t\t\t\t\t</div>\n".
+                                                "\t\t\t\t\t\t\t\t<div class=\"col s12 m6 l6 xl6\">\n".
+                                                    "\t\t\t\t\t\t\t\t\t<h5 class=\"center-align white-text\">".$rows['title']."</h5>\n".
+                                                    "\t\t\t\t\t\t\t\t\t<h6 class=\"center-align white-text\">".$rows['price']."</h6>\n".
+                                                    "\t\t\t\t\t\t\t\t\t<div class=\"row\">\n".
+                                                        "\t\t\t\t\t\t\t\t\t\t<div class=\"col s12 m12 l12 xl12\">\n".
+                                                        "\t\t\t\t\t\t\t\t\t\t\t<p class=\"center-align white-text\">".$rows['caption']."</p>\n".
+                                                        "\t\t\t\t\t\t\t\t\t\t</div>\n".
+                                                    "\t\t\t\t\t\t\t\t\t</div>\n".
+                                                "\t\t\t\t\t\t\t\t</div>\n".
+                                            "\t\t\t\t\t\t\t</div>\n".
+                                        "\t\t\t\t\t\t</div>\n".
+                                    "\t\t\t\t\t</div>\n".
+                                "\t\t\t\t</div>\n";
+                        echo "\t\t\t</div>\n";
+                    }
+                }
+            
+            ?>
+        </div>
+        <div class="overlay">
+        
+        </div>
+    </div>
     <header class="sliderbackground" class="paddingfixed">
         <nav class="brown darken-4">
             <div class="nav-wrapper z-depth-5">
@@ -90,7 +147,7 @@
                                 </div>
                                  <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li><a href="menu/muffins">Muffins</a></li>
+                                        <li><a href="menu/muffins.php">Muffins</a></li>
                                         <li><a href="menu/cakes.php">Cakes</a></li>
                                     </ul>
                                 </nav>
@@ -140,55 +197,23 @@
                     </div>
                     <div class="row">
                         <?php
-                            $sql = "SELECT * FROM tbl_new_product";
+                            $sql = "SELECT * FROM tbl_new_product ORDER BY id DESC LIMIT 1";
+                     
                             $newproductQuery = mysqli_query($connection , $sql);
-                            if (mysqli_num_rows($newproductQuery) == 1) {
-                                while ($newproductrow = mysqli_fetch_assoc($newproductQuery)) {
-                                    echo "\t\t\t<div class=\"col s12 m6 xl12 l12\">\n";
-                                    echo "\t\t\t\t<a href=\"newproduct.php\">\n";
-                                    echo "\t\t\t\t\t<img src=\"". $newproductrow['path'] . "\" width=\"100%\" height=\"350px\">\n";
-                                    echo "\t\t\t\t</a>\n";
-                                    echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
-                                    //echo "\t\t\t\t\t<h4 class=\"center-align textcolor\">".$newproductrow['title'] . "</h4>\n";
-                                    echo "\t\t\t\t</div>\n"; 
-                                    echo "\t\t\t</div>\n";
-                                }
-                            } elseif (mysqli_num_rows($newproductQuery) >= 2) {
-                                while ($newproductrow = mysqli_fetch_assoc($newproductQuery)) {
-                                    echo "\t\t\t<div class=\"col s12 m6 xl6 l6\">\n";
-                                    echo "\t\t\t\t<a href=\"newproduct.php\">\n";
-                                    echo "\t\t\t\t\t<img src=\"". $newproductrow['path'] . "\" width=\"100%\" height=\"200px\">\n";
-                                    echo "\t\t\t\t</a>\n";
-                                    echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
-                                    //echo "\t\t\t\t\t<h4 class=\"center-align textcolor\">".$newproductrow['title'] . "</h4>\n";
-                                    echo "\t\t\t\t</div>\n"; 
-                                    echo "\t\t\t</div>\n";
-                                }
+                            while ($newproductrow = mysqli_fetch_assoc($newproductQuery)) {
+                                echo "\t\t\t<div class=\"col s12 m12 xl12 l12\">\n";
+                                echo "\t\t\t\t<a href=\"newproduct.php\">\n";
+                                echo "\t\t\t\t\t<img src=\"". $newproductrow['path'] . "\" width=\"100%\" height=\"350px\">\n";
+                                echo "\t\t\t\t</a>\n";
+                                echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
+                                //echo "\t\t\t\t\t<h4 class=\"center-align textcolor\">".$newproductrow['title'] . "</h4>\n";
+                                echo "\t\t\t\t</div>\n"; 
+                                echo "\t\t\t</div>\n";
+                            
                             }
-                        
-                        
+                                                                
                         ?>
-                        <?php
-                           /*  $sql = "SELECT * FROM tbl_new_product";
-                            $newproductQuery = mysqli_query($connection , $sql);                            
-                            if (isset($newproductQuery)) {
-                                if (mysqli_num_rows($newproductQuery) > 0) {
-                                    while ($newproductrow = mysqli_fetch_assoc($newproductQuery)) {
-                                        echo "\t\t\t<div class=\"col s12 m12 xl12 l12\">\n";
-                                        echo "\t\t\t\t<a href=\"newproduct.php\">\n";
-                                        echo "\t\t\t\t\t<img src=\"". $newproductrow['path'] . "\" width=\"100%\" height=\"350px\">\n";
-                                        echo "\t\t\t\t</a>\n";
-                                        echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
-                                        //echo "\t\t\t\t\t<h4 class=\"center-align textcolor\">".$newproductrow['title'] . "</h4>\n";
-                                        echo "\t\t\t\t</div>\n"; 
-                                        echo "\t\t\t</div>\n";
-                                    }
-                                }
-                            } else if (!@mysqli_query($connection , $sql)) {
-                                // die("theres an error".mysqli_connect_error());
-                            }
-                           // mysqli_close($connection); */
-                        ?>
+        
                     </div>
                 </div>
                 <div class="promos">
@@ -197,32 +222,18 @@
                     </div>
                     <div class="row">
                         <?php
-                            $sql = "SELECT * FROM tbl_promos";
+                            $sql = "SELECT * FROM tbl_promos ORDER BY id DESC LIMIT 1";
                             $promoQuery = mysqli_query($connection , $sql);
-                            if (mysqli_num_rows($promoQuery) == 1) {
-                                 while ($promorow = mysqli_fetch_assoc($promoQuery)) {
-                                    echo "\t\t\t<div class=\"col s12 m12 xl12 l12\">\n";
-                                    echo "\t\t\t\t<a href=\"promos.php\">\n";
-                                    echo "\t\t\t\t\t<img src=\"". $promorow['path'] . "\" width=\"100%\" height=\"410px\">\n";
-                                    echo "\t\t\t\t</a>\n";
-                                    echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
-                                    //echo "\t\t\t\t\t<h4 class=\"center-align\">". $promorow['title'] . "</h4>\n";
-                                    echo "\t\t\t\t</div>\n"; 
-                                    echo "\t\t\t</div>\n";
-                                }
-                            } elseif (mysqli_num_rows($promoQuery) >= 2) {
-                                while($promorow = mysqli_fetch_assoc($promoQuery)) {
-                                    echo "\t\t\t<div class=\"col s12 m6 xl6 l6\">\n";
-                                    echo "\t\t\t\t<a href=\"promos.php\">\n";
-                                    echo "\t\t\t\t\t<img src=\"". $promorow['path'] . "\" width=\"100%\" height=\"250px\">\n";
-                                    echo "\t\t\t\t</a>\n";
-                                    echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
-                                    //echo "\t\t\t\t\t<h4 class=\"center-align\">". $promorow['title'] . "</h4>\n";
-                                    echo "\t\t\t\t</div>\n"; 
-                                    echo "\t\t\t</div>\n";
-                                }
+                            while ($promorow = mysqli_fetch_assoc($promoQuery)) {
+                                echo "\t\t\t<div class=\"col s12 m12 xl12 l12\">\n";
+                                echo "\t\t\t\t<a href=\"promos.php\">\n";
+                                echo "\t\t\t\t\t<img src=\"". $promorow['path'] . "\" width=\"100%\" height=\"410px\">\n";
+                                echo "\t\t\t\t</a>\n";
+                                echo "\t\t\t\t<div class=\"white-text container producttitle\">\n";
+                                //echo "\t\t\t\t\t<h4 class=\"center-align\">". $promorow['title'] . "</h4>\n";
+                                echo "\t\t\t\t</div>\n"; 
+                                echo "\t\t\t</div>\n";
                             }
-                        
                         ?>
 
                     </div>
@@ -239,17 +250,23 @@
                         if (isset($sellerQuery)) {
                             if (mysqli_num_rows($sellerQuery) > 0 ) {
                                 while($sellerrow = mysqli_fetch_assoc($sellerQuery)) { 
-                                    echo "\t\t\t\t\t<div class=\"col s12 m6 l6 xl6\">";
-                                    echo "\n\t\t\t\t\t\t<div class=\"col s12 m12 l12 xl12 sellerimg\" style=\"padding:0px;\">\n";
-                                    echo "\t\t\t\t\t\t\t<img class=\"materialboxed\" data-caption=\"". $sellerrow['caption']. "\" src=\"img/home/bestsellerimages/". $sellerrow['image']."\" height=\"200px\" width=\"100%\">\n";
-                                    echo "\t\t\t\t\t\t</div>\n";
-                                    echo "\t\t\t\t\t\t<div class=\" sellertitle col s12 m12 l12 xl12\">\n";
-                                    echo "\t\t\t\t\t\t\t<h5 class=\"white-text center-align shadowtext\">".$sellerrow['title'] ."</h5>\n";
-                                    echo "\t\t\t\t\t\t</div>\n";
-                                    
-                                    echo "\t\t\t\t\t\t<div class=\"row\"><div class=\"col s12 m12 l6 xl6\"></div></div>\n";
-                                     echo "\t\t\t\t\t\t<div class=\"row\"><div class=\"col s12 m12 l6 xl6\"></div></div>\n";
-                                    echo "\t\t\t\t\t</div>\n";
+                        
+                                    echo "<div class=\"col s12 m6 l6 xl6\">\n".
+                                            "<div class=\"row\">\n".
+                                                "<div class=\"col s12 m12 l12 xl12\">\n".
+                                                    "<div class=\"sellerimg\">\n".
+                                                        "<div class=\"showmoreoverlay\"><h5>Show Details</h5></div>\n".
+                                                        "<img src=\"".$sellerrow['path']."\" alt=\"".$sellerrow['title']."\">\n".
+                                                    "</div>\n".
+                                                "</div>\n".
+                                                "<div class=\"row\">\n".
+                                                    "<div class=\"col s12 m12 l12 xl12\"></div>\n".
+                                                "</div>\n".
+                                                "<div class=\"col s12 m12 l12 xl12\">\n".
+                                                    "<h5 class=\"center-align\">".$sellerrow['title']."</h5>\n".
+                                                "</div>\n".
+                                            "</div>\n".
+                                        "</div>\n";
                                 }
                             }
                         } else if (!@mysqli_query($connection , $sql)) {
@@ -282,6 +299,7 @@
     <script  type="text/javascript" src="js/jquery.min.js"></script>
     <script  type="text/javascript" src="js/materialize.min.js"></script>
 
+
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     <!-- 
@@ -289,5 +307,65 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
     <script src="js/main.js" type="text/javascript"></script>
+    
+    <script type="text/javascript">
+
+
+        (function(){
+            var sellerImage = document.getElementsByClassName("sellerimg");
+            var showmoreOverlay = document.getElementsByClassName("showmoreoverlay");
+            var overlayContainerHomepage = document.getElementById("overlaycontainerhomepage");
+            
+            var overlayBestSeller = document.getElementsByClassName("overlaybestseller");
+            var overlayContentSeller = document.getElementsByClassName("overlaycontentseller");
+
+            var showmoreOverlayLength = showmoreOverlay.length;
+            var overlayContentSellerLength = overlayContentSeller.length;
+            var overlayBestSellerLength = overlayBestSeller.length;
+            // function setVendor(element, property, value) {
+            //     element.style["webkit" + property] = value;
+            //     element.style["moz" + property] = value;
+            //     element.style["ms" + property] = value;
+            //     element.style["o" + property] = value;
+            // }
+
+            function SelectSellerImgtoShow(val) {
+                for (var ii = 0 ; ii <= val ; ii++) {
+                    if (val == ii) {
+                         overlayContentSeller[ii].style.display = "block";
+                         break;
+                    }
+                }
+            }
+            var closeSellerimg = function () {
+                this.style.display = "none";
+        
+            };
+
+
+            for (var index = 0 ; index < showmoreOverlayLength  ; index++ ) {
+                // add click event on all showmore overlay if visible
+                showmoreOverlay[index].addEventListener("click" , function () {
+                    overlayContainerHomepage.style.display = "block";
+                    for (var ii = 0;  ii < showmoreOverlayLength ; ii++) {
+                        if (this == showmoreOverlay[ii]) {
+                    
+                            for (var indexb = 0; indexb < overlayContentSellerLength; indexb++ ) {
+                                overlayContentSeller[indexb].style.display = "none";
+                            }
+                            SelectSellerImgtoShow(ii);
+                            break;
+                        }
+                    }
+                
+                }, false);
+            }
+
+            // close the overlay container if click
+            overlayContainerHomepage.addEventListener("click" , closeSellerimg , false);
+        })();
+      
+    
+    </script>
 </body>
 </html>

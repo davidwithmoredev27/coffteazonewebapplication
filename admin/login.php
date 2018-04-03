@@ -12,7 +12,7 @@
         $_SESSION['loginerror'] = 0;
     }
     if ($_SESSION['loginerror'] == 2) {
-        $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">1 more password attempt and you wil be directed to forgot password form!</strong></span>\n";
+        $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">1 more attempt, will direct to forgot password!</strong></span>\n";
     }
     if ($_SESSION['loginerror'] == 3) {
         mysqli_close($connection);
@@ -69,8 +69,9 @@
                     $i++;
                 }
                 if (!isset($userCredentials['username'])) {
-                    $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Enter a valid username!</strong></span>\n";
-                    
+                    $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Invalid username!</strong></span>\n";
+                    header("location:login.php");
+                    die();
                 }
             }
         } 
@@ -104,7 +105,7 @@
                 if (!isset($userCredentials['password'])) {
                     $_SESSION['loginerror'] = $_SESSION['loginerror'] + 1;
                      if ($_SESSION['loginerror'] == 1) {
-                         $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your Password did not match!</strong></span>\n";
+                         $_SESSION['usernameloginerror'] = "<span><strong class=\"white-text\">Looks like your password didn't match!</strong></span>\n";
                      }
                      mysqli_close($connection);
                     header("location:login.php");
@@ -153,6 +154,14 @@
     <link rel="stylesheet" type="text/css" href="../css/logofixed.css">
 </head>
 <body id="loginbackground">
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <div class="container">
         <div class="row">
             <div class="col s12 l12 m12 xl12"></div>
@@ -181,36 +190,41 @@
                         echo "</div>\n";
                     echo "</div>\n";
                 echo "</div>\n";
+                $_SESSION['usernameloginerror'] = null;
+            }
+            if (isset($_SESSION['recoveredsuccess'])) {
+                echo "<div class=\"container\">\n";
+                    echo "<div class=\"row\">\n";
+                        echo "<div class=\"col s12 m6 offset-m3 l6 offset-l3 xl6 offset-xl3 card-panel green darken-3\">\n";
+                            echo "<p class=\"center-align\"><strong class=\"white-text\" >". $_SESSION['recoveredsuccess']."</strong></p>\n";
+                        echo "</div>\n";
+                    echo "</div>\n";
+                echo "</div>\n";
+                $_SESSION['recoveredsuccess'] = null;
             }
         ?>
     </div>
     <div class="row col s12 m12 l12 xl12">
         <div class="container">
             <form class="col s12 m12 l12 x12" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>">
-                <div class="container">
-                    <div class="container">
-                         <div class="input-field col s12 m12 l12 xl12">
-                            <input id="username"  autocomplete="off" onfocus="this.value =''" role="username" type="text" class="brown-text text-darken-3" name="username" class="validate">
-                            <label for="username" class="brown-text text-lighten-4">Username</label>
-                        </div>
-                        <div class="input-field col s12 m12  l12 xl12">
-                            <input id="password" role="password" type="password" class="brown-text text-darken-3" name="password" class="validate">
-                    
-                            <label for="password" class="brown-text text-lighten-3" >Password</label>
-                        </div>
-                        <div class="input-field col s12 m12 l12 xl12">
-                            <a role="passwordrecovery" href="forgotpassword.php" class="brown-text text-lighten-4" id="forgotpassword" >forgot password?</a>
-                            <div class="row">
-                                <div class="col s12 l12 m12 xl12"></div>
-                            </div> 
-                            <div class="row">
-                                <button role="login" id="submitbutton" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12  xl12" type="submit" name="login">login</button>
-                            </div> 
-                        </div>  
-                    </div>
-                      
+                <div class="input-field col s12 m12 l12 xl12">
+                    <input id="username"  autocomplete="off" role="username" type="text" class="black-text" name="username" class="validate">
+                    <label for="username" class="white-text">Username</label>
                 </div>
-                 
+                <div class="input-field col s12 m12  l12 xl12">
+                    <input id="password" role="password" type="password" class="black-text" name="password" class="validate">
+            
+                    <label for="password" class="white-text">Password</label>
+                </div>
+                <div class="input-field col s12 m12 l12 xl12">
+                    <a role="passwordrecovery" href="forgotpassword.php" class="white-text" id="forgotpassword" >forgot password?</a>
+                    <div class="row">
+                        <div class="col s12 l12 m12 xl12"></div>
+                    </div> 
+                    <div class="row">
+                        <button role="login" id="submitbutton" class="waves-effect brown darken-3 waves-light btn col s12 m12 l12  xl12" type="submit" name="login">login</button>
+                    </div> 
+                </div>  
             </form>
         </div>
     </div>
@@ -227,5 +241,5 @@
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/validation.js" type="text/javascript"></script>
 </body>
-<?php $_SESSION['usernameloginerror'] = null;?>
+
 </html>

@@ -90,11 +90,11 @@ input[type=password]:active {
   font-size: 1em;
 }
 
-/* @media only screen and (min-width:1024px) {
-    .slider {
-        height: 500px !important;
-    }
-}*/
+.sellerimg {
+  width: 300px;
+  height: 270px;
+}
+
 .select-wrapper ul li > span {
   color: #4e342e !important;
 }
@@ -673,26 +673,53 @@ header, main, footer {
     width: 100px !important;
   }
 }
-/* @media only screen and (min-width:1024px) {
-    .feedbackcol:nth-child(1) {
-        width: 50px !important;
-    }
-    .feedbackcol:nth-child(2) {
-        width: 150px !important;
-    }
-    .feedbackcol:nth-child(3) {
-        width: 200px !important;
-    }
-    .feedbackcol:nth-child(4) {
-        width: 500px !important;
-    }
-    .feedbackcol:nth-child(5) {
-        width: 100px !important;
-    }
-    .feedbackcol:nth-child(6) {
-        width: 100px !important;
-    }
-}*/
+/*******************************
+    for viewfeedback message style
+********************************/
+.feedbackviewbox {
+  padding: 0;
+  border: 1px solid black;
+  padding-top: 1rem;
+}
+.feedbackviewbox .row:first-child {
+  margin-bottom: 0px !important;
+}
+
+.messagebox {
+  border: 1px solid gray;
+  height: 20rem;
+  padding: 1.2rem;
+  text-indent: 30px;
+}
+
+.viewbuttons {
+  float: right;
+  margin: .9rem;
+  margin-top: 1.2rem;
+}
+
+.text {
+  padding-left: 3rem !important;
+}
+
+@media only screen and (max-width: 767px) {
+  .showmobilenewproduct {
+    display: block !important;
+  }
+
+  .showdesktopnewproduct {
+    display: none !important;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .showmobilenewproduct {
+    display: none !important;
+  }
+
+  .showdesktopnewproduct {
+    display: block !important;
+  }
+}
 body {
   -webkit-font-smoothing: antialiased;
   display: flex;
@@ -708,6 +735,22 @@ main {
 
 .side-nav {
   width: 200px !important;
+}
+
+.no-js {
+  position: fixed;
+  padding-top: 10rem;
+  z-index: 1000;
+  background-color: rgba(39, 20, 17, 0.9);
+  width: 100%;
+  height: 100vh;
+}
+.no-js .row .col h1 {
+  font-size: 2rem;
+  color: white;
+}
+.no-js .row .col p {
+  color: white;
 }
 
 /* .sliderbackground {

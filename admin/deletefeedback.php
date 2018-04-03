@@ -27,34 +27,37 @@
                     $result = mysqli_query($connection , $sql);
 
                     if (mysqli_num_rows($result) > 0) {
-
+                        while ($rows = mysqli_fetch_assoc($result)) {
+                            $path = $rows['path'];
+                        }
                         $sql = "DELETE FROM tbl_feedback WHERE feedbackID = ".$preventSQl;
                         mysqli_query($connection , $sql);
+                        unlink("../" . $path);
                         mysqli_close($connection);
-                        $_SESSION['feedbacksuccess'] = "<span><strong class=\"white-text\">Feedback Successfully Updated!</strong></span>\n";
+                        $_SESSION['feedbacksuccess'] = "<span><strong class=\"white-text\">Data successfully deleted!</strong></span>\n";
                         header("location:feedback.php");
                         die();
                     } elseif (mysqli_num_rows($result) == 0) {
-                         $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Invalid Feedback ID!</strong></span>\n";
+                         $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Invalid feedback id!</strong></span>\n";
                         header("location:feedback.php");
                         die();
                     }
 
                 } elseif (!is_numeric($_POST['feedbackdeleteid'])) { 
                     mysqli_close($connection);
-                    $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Invalid Feedback ID!</strong></span>\n";
+                    $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Invalid feedback id!</strong></span>\n";
                     header("location:feedback.php");
                     die();
                 }
             } elseif (!isset($_POST['feedbackdeleteid'])) {
                 mysqli_close($connection);
-                $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Select feedback needs to be deleted!</strong></span>\n";
+                $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Select feedback message needs to be deleted!</strong></span>\n";
                 header("location:feedback.php");
                 die();
             }
         } elseif (!isset($_POST['feedbackdelete'])) {
             mysqli_close($connection);
-            $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Select feedback needs to be deleted!</strong></span>\n";
+            $_SESSION['feedbackerror'] = "<span><strong class=\"white-text\">Select feedback message needs to be deleted!</strong></span>\n";
             header("location:feedback.php");
             die();
         }

@@ -10,8 +10,6 @@
         return $sanitizedData;
     }
 
-
-
     function RemoveAllInformation($sqlid) {
         require "connection.php";
         $path = false;
@@ -26,7 +24,7 @@
         $sql = "DELETE FROM tbl_bestseller WHERE id =".$id;
         mysqli_query($connection , $sql);
         mysqli_close($connection);
-        $_SESSION['bestselleruploadsuccess'] = "<span><strong class=\"white-text\">Bestseller Successfully Updated!</strong></span>\n";
+        $_SESSION['bestselleruploadsuccess'] = "<span><strong class=\"white-text\">Data Successfully ]delete!</strong></span>\n";
         header("location:bestseller.php");
         die;
 
@@ -46,12 +44,12 @@
                     die;
 
                 } elseif(!is_numeric($_POST['bestsellerid'])) {
-                    $_SESSION['bestselleruploaderror'] = "<span><strong>Invalid Bestseller id!</strong></span>\n";
+                    $_SESSION['bestselleruploaderror'] = "<span><strong>Invalid bestseller id!</strong></span>\n";
                 }
             }
         } else {
             mysqli_close($connection);
-            $_SESSION['bestselleruploaderror'] = "<span><strong>Select Bestseller needs to be Deleted!</strong></span>\n";
+            $_SESSION['bestselleruploaderror'] = "<span><strong>Select bestseller needs to be deleted!</strong></span>\n";
             header("location:bestseller.php");
         }
     } else {

@@ -1,0 +1,17 @@
+@media only screen and (max-width:767px) {
+    .showmobilenewproduct {
+        display: block !important;
+    }
+    .showdesktopnewproduct {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width:768px) {
+    .showmobilenewproduct {
+        display: none !important;
+    }
+    .showdesktopnewproduct {
+        display: block !important;
+    }
+}

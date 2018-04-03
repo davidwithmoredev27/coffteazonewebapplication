@@ -2,6 +2,23 @@
   background-color: rgba(0, 0, 0, 0.925) !important;
 }
 
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.sellerimg {
+  width: 100%;
+  height: 250px;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 @media only screen and (min-width: 1024px) and (max-width: 1158px) {
   .materialboxed.initialized.active {
     height: 500px !important;
@@ -143,7 +160,6 @@
 }
 .dropdowndishcategory ul li a {
   display: inline-block;
-  line-height: normal;
   text-decoration: none;
 }
 .dropdowndishcategory ul li a:hover {
@@ -191,7 +207,6 @@
   }
 }
 .devider {
-  background-color: rgba(62, 39, 25, 0.8);
   -ms-box-shadow: 0px 0px 15px #000;
   -webkit-box-shadow: 0px 0px 15px #000;
   -moz-box-shadow: 0px 0px 15px #000;
@@ -205,7 +220,7 @@
   .menuimg {
     height: 330px;
     width: 200px;
-    border: 5px solid #d41717;
+    border: 5px solid #3f3a3a;
     margin: 0px;
   }
   .menuimg img {
@@ -220,7 +235,7 @@
   .menuimg {
     height: 400px;
     width: 300px;
-    border: 5px solid #d41717;
+    border: 5px solid #3f3a3a;
     margin: 10px;
     padding: 10px;
   }
@@ -248,12 +263,6 @@
   -khtml-box-shadow: 0px 0px 15px #000;
   box-shadow: 0px 0px 15px #000;
   color: white;
-}
-
-.ion-social-facebook-outline {
-  height: 30px !important;
-  width: 50px !important;
-  display: block;
 }
 
 .leftarrow:hover,
@@ -309,6 +318,94 @@
     background-size: 100% 100%;
   }
 }
+#closebtn {
+  width: 100%;
+  height: 100%;
+}
+#closebtn:hover {
+  cursor: pointer;
+}
+
+.overlaybtn {
+  float: right;
+  width: 3rem;
+  height: 3rem;
+}
+
+#overlaycontainerhomepage {
+  display: none;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overlaycontentseller {
+  padding-top: 5rem;
+}
+
+.selleroverlayimage {
+  width: 100%;
+  height: 500px;
+  margin: 0 auto;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 600px) {
+  .selleroverlayimage {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media only screen and (min-width: 601px) and (max-width: 992px) {
+  .selleroverlayimage {
+    width: 100%;
+    height: 300px;
+  }
+}
+@media only screen and (max-width: 600px) {
+  #overlaycontainerhomepage {
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+}
+.sellerimg {
+  position: relative;
+  padding: 0px !important;
+}
+.sellerimg .showmoreoverlay {
+  visibility: hidden !important;
+  padding-top: 5rem !important;
+  position: absolute !important;
+  width: 0px !important;
+  height: 0px !important;
+  z-index: 3;
+  color: transparent;
+  -webkit-transition: all .2s ease-in-out;
+  -moz-transition: all .2s ease-in-out;
+  -khtml-transition: all .2s ease-in-out;
+  -o-transition: all .2s ease-in-out;
+  -ms-transition: all .2s ease-in-out;
+  transition: all .2s ease-in-out;
+}
+.sellerimg img {
+  display: block !important;
+  width: 100%;
+  height: 100%;
+}
+.sellerimg:hover .showmoreoverlay {
+  visibility: visible !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
+  height: 100% !important;
+  width: 100% !important;
+}
+.sellerimg:hover .showmoreoverlay h5 {
+  color: white;
+  text-align: center;
+}
+
     /**************************************
     services stylesheet
 *************************************/
@@ -513,7 +610,7 @@
 
 #mainoeverlaycontainer {
   width: 100%;
-  height: 100%;
+  height: 100vh;
   display: none;
   z-index: 5;
   position: fixed;
@@ -1107,6 +1204,150 @@
   color: rgba(62, 39, 35, 0.9);
   font-family: 'Roboto Slab', serif;
   font-size: 3rem;
+}
+
+.indicator-item:active {
+  background-color: red;
+}
+
+.menutitle {
+  padding-left: 30px;
+}
+
+.titlecontactus {
+  font-size: 1.2em !important;
+  font-weight: bold;
+}
+
+.border {
+  background-color: rgba(255, 255, 255, 0.6);
+  -webkit-box-shadow: 0px 0px 15px #000;
+  -moz-box-shadow: 0px 0px 15px #000;
+  -khtml-box-shadow: 0px 0px 15px #000;
+  -o-box-shadow: 0px 0px 15px #000;
+  -ms-box-shadow: 0px 0px 15px #000;
+  box-shadow: 0px 0px 15px #000;
+  color: black;
+}
+
+label {
+  color: #26a69a !important;
+  font-size: 1.5em !important;
+}
+
+input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+}
+
+input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+}
+
+input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+}
+
+@media only screen and (max-width: 992px) {
+  .paddingstyle {
+    padding-left: 1.2rem !important;
+    padding-right: 1.2rem !important;
+  }
+
+  .border {
+    margin-bottom: 3rem !important;
+  }
+}
+#messagenotifiy {
+  display: none;
+}
+
+.dividerstyle {
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  color: #3a3a3a !important;
+}
+.dividerstyle h3 {
+  font-family: 'Roboto Slab', serif;
+  color: rgba(104, 73, 68, 0.9) !important;
+}
+
+.menuimg h5 {
+  color: rgba(62, 39, 35, 0.9) !important;
+}
+.menuimg p {
+  color: rgba(62, 39, 35, 0.9) !important;
+  font-size: .9rem !important;
+}
+
+.slick-arrow {
+  position: absolute !important;
+  top: 12rem !important;
+  width: 25px !important;
+  height: 25px !important;
+  background: transparent;
+  color: transparent;
+  border: 0px !important;
+}
+.slick-arrow:active {
+  background-color: transparent !important;
+}
+
+.slick-prev {
+  z-index: 2 !important;
+  position: absolute;
+  left: 0rem !important;
+  background-image: url("../img/buttons/leftlogo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.slick-prev:active {
+  background-color: none;
+}
+
+.slick-next {
+  position: absolute;
+  left: 85.3rem !important;
+  background-image: url("../img/buttons/rightlogo.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.slick-next:active {
+  background-color: none;
+}
+
+.slick-dots {
+  display: none !important;
+}
+
+/*************************
+  Individual style for menu
+*************************/
+.menumaincontainer {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2rem !important;
+  -ms-box-shadow: 0px 0px 10px #000;
+  -webkit-box-shadow: 0px 0px 10px #000;
+  -o-box-shadow: 0px 0px 10px #000;
+  -moz-box-shadow: 0px 0px 10px #000;
+  -khtml-box-shadow: 0px 0px 10px #000;
+  box-shadow: 0px 0px 10px #000;
+}
+
+.individualtitle {
+  color: #3f3a3a;
+  font-family: "Roboto Slab", Georgia, 'Times New Roman', Times, serif;
+}
+
+.borderstyle {
+  height: 400px;
+  border: 4px solid #3f3a3a;
+}
+.borderstyle p {
+  font-size: .8rem;
 }
 
 /*# sourceMappingURL=style.css.map */

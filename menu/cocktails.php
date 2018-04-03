@@ -22,25 +22,19 @@
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="../css/style.css">
-    <style>
-        .borderstyle {
-            height:400px;
-            border:3px solid red;
-            color:white;
-        }
-    </style>
+ 
 </head>
 <body id="bodyshit">
     <header>
         <nav class="brown darken-4">
             <div class="nav-wrapper z-depth-5">
-                <a href="index.php"  class="brand-logo uplogo" role="coffteazonelogo">
-                    <img src="img/logo/cofftealogo.png" width="100px" height="100px" alt="">
+                <a href="../index.php"  class="brand-logo uplogo" role="coffteazonelogo">
+                    <img src="../img/logo/cofftealogo.png" width="100px" height="100px" alt="">
                 </a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">             
-                    <li class="white-text"><a href="index.php" style="color:brown;">HOME</a></li>
-                    <li class="white-text" id="showdropdown"><a href="menu.php">OUR MENU</a>
+                    <li class="white-text"><a href="../index.php" >HOME</a></li>
+                    <li class="white-text" id="showdropdown"><a style="color:brown;" href="../menu.php">OUR MENU</a>
                          <div id="megadropdown" style="height:400px;left:-1px;" class="row" role="coffteazonemenu">
                             <div class="dropdowndevider col l3 xl3 offset-l1 offset-xl1">
                                 <div class="col l12 xl12 menutitle">
@@ -48,14 +42,14 @@
                                 </div>
                                 <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li class="col l12 xl12"><a href="menu/starter.php">Starter</a></li>
-                                        <li class="col l12 xl12"><a href="menu/burger_and_sandwiches.php">Burger and Sandwiches</a></li>
-                                        <li class="col l12 xl12"><a href="menu/pizza.php">Pizza</a></li>
-                                        <li class="col l12 xl12"><a href="menu/soup.php">Soup</a></li>
-                                        <li class="col l12 xl12"><a href="menu/maincourse.php">Main Course</a></li>
-                                        <li class="col l12 xl12"><a href="menu/groupmeals.php">Group Meals</a></li>
-                                        <li class="col l12 xl12"><a href="menu/platter.php">Platter</a></li>
-                                        <li class="col l12 xl12"><a href="menu/pasta.php">Pasta</a></li>
+                                        <li class="col l12 xl12"><a href="starter.php">Starter</a></li>
+                                        <li class="col l12 xl12"><a href="burger_and_sandwiches.php">Burger and Sandwiches</a></li>
+                                        <li class="col l12 xl12"><a href="pizza.php">Pizza</a></li>
+                                        <li class="col l12 xl12"><a href="soup.php">Soup</a></li>
+                                        <li class="col l12 xl12"><a href="maincourse.php">Main Course</a></li>
+                
+                                        <li class="col l12 xl12"><a href="platter.php">Platter</a></li>
+                                        <li class="col l12 xl12"><a href="pasta.php">Pasta</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -65,16 +59,16 @@
                                 </div>
                                 <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li class="col l12 xl12"><a href="menu/signaturedrinks.php">Signature Drinks</a></li>
-                                        <li class="col l12 xl12"><a href="menu/italliansoda.php">Italian Soda</a></li>
-                                        <li class="col l12 xl12"><a href="menu/fruittea.php">Fruit Tea</a></li>
-                                        <li class="col l12 xl12"><a href="menu/hotdrinks.php">Hot Drinks</a></li>
-                                        <li class="col l12 xl12"><a href="menu/icedcoffee.php">Iced Coffee</a></li>
-                                        <li class="col l12 xl12"><a href="menu/frappucino.php">Frappucino</a></li>
-                                        <li class="col l12 xl12"><a href="menu/yakultdrinks.php">Yakult Drinks</a></li>
-                                        <li class="col l12 xl12"><a href="menu/milktea.php">Milk Tea</a></li>
-                                        <li class="col l12 xl12"><a href="menu/smoothies.php">Smoothies</a></li>
-                                        <li class="col l12 xl12"><a href="menu/cocktails.php">Cocktails</a></li>
+                                        <li class="col l12 xl12"><a href="signaturedrinks.php">Signature Drinks</a></li>
+                                        <li class="col l12 xl12"><a href="italliansoda.php">Italian Soda</a></li>
+                                        <li class="col l12 xl12"><a href="fruittea.php">Fruit Tea</a></li>
+                                        <li class="col l12 xl12"><a href="hotdrinks.php">Hot Drinks</a></li>
+                                        <li class="col l12 xl12"><a href="icedcoffee.php">Iced Coffee</a></li>
+                                        <li class="col l12 xl12"><a href="frappucino.php">Frappucino</a></li>
+                                        <li class="col l12 xl12"><a href="yakultdrinks.php">Yakult Drinks</a></li>
+                                        <li class="col l12 xl12"><a href="milktea.php">Milk Tea</a></li>
+                                        <li class="col l12 xl12"><a href="smoothies.php">Smoothies</a></li>
+                                        <li class="col l12 xl12"><a href="cocktails.php">Cocktails</a></li>
                                     </ul>
                                 </nav>
                             </div>
@@ -84,27 +78,27 @@
                                 </div>
                                  <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li><a href="menu/muffins">Muffins</a></li>
-                                        <li><a href="menu/cakes.php">Cakes</a></li>
+                                        <li><a href="muffins">Muffins</a></li>
+                                        <li><a href="cakes.php">Cakes</a></li>
                                     </ul>
                                 </nav>
                             </div>
                         </div>
                     </li>
-                    <li class="white-text"><a href="services.php">SERVICES</a></li>
-                    <li class="white-text"><a href="gallery.php">GALLERY</a></li>
-                    <li><a class="white-text" href="aboutus.php">ABOUT US</a></li>
-                    <li><a class="white-text" href="faq.php">FAQ'S</a></li>
-                    <li><a class="white-text" href="contactus.php">CONTACT US</a></li>
+                    <li class="white-text"><a href="../services.php">SERVICES</a></li>
+                    <li class="white-text"><a href="../gallery.php">GALLERY</a></li>
+                    <li><a class="white-text" href="../aboutus.php">ABOUT US</a></li>
+                    <li><a class="white-text" href="../faq.php">FAQ'S</a></li>
+                    <li><a class="white-text" href="../contactus.php">CONTACT US</a></li>
                 </ul>
                  <ul class="side-nav brown darken-3" id="mobile-demo">
-                    <li><a style="color:brown;" href="index.php">HOME</a></li>
-                    <li><a class="white-text" href="menu.php">OUR MENU</a></li>
-                    <li><a class="white-text" href="services.php">SERVICES</a></li>
-                    <li><a class="white-text" href="gallery.php">GALLERY</a></li>
-                   <li><a class="white-text" href="aboutus.php">ABOUT US</a></li>
-                    <li><a class="white-text" href="faq.php">FAQ'S</a></li>
-                    <li><a class="white-text" href="contactus.php">CONTACT US</a></li>
+                    <li><a class="white-text" href="../index.php">HOME</a></li>
+                    <li><a style="color:brown;"  href="../menu.php">OUR MENU</a></li>
+                    <li><a class="white-text" href="../services.php">SERVICES</a></li>
+                    <li><a class="white-text" href="../gallery.php">GALLERY</a></li>
+                    <li><a class="white-text" href="../aboutus.php">ABOUT US</a></li>
+                    <li><a class="white-text" href="../faq.php">FAQ'S</a></li>
+                    <li><a class="white-text" href="../contactus.php">CONTACT US</a></li>
                 </ul>
             </div> 
         </nav>
@@ -113,11 +107,11 @@
     <main>
         <div class="row">
             <div class="col s12 m12 l12 xl12">
-                <h3 class="center-align">Cocktails</h3>
+                <h3 class="center-align individualtitle">Cocktails</h3>
             </div>
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                    <div class="row">
+                    <div class="row menumaincontainer">
                         <?php
                             $sql = "SELECT * FROM tbl_menu_cocktails";
                             $result = mysqli_query($connection , $sql);
@@ -128,9 +122,9 @@
                                 $caption = $rows['caption'];
                                 echo "<div class=\"left-align col s12 m12 l2 xl2\" style=\"margin-bottom:10px;\">\n";
                                 echo "<div class=\"borderstyle\" style=\"padding:10px;\">\n";
-                                echo "<img class=\"materialboxed\" width=\"100%\" height=\"100%\" src=\""."../". $path . "\">\n";
+                                echo "<img class=\"menuimagestyle\" width=\"100%\"  src=\""."../". $path . "\">\n";
                                 echo "<h5 class='center-align' style=\"font-size:1.1em;\">$title</h5>\n";
-                                echo "<h6 class='center-align'>$price</h6>\n";
+                                echo "<h6 class='center-align'>&#8369;$price</h6>\n";
                                 echo "<p class='center-align'>$caption</p>\n";
                                 echo "</div>\n";
                                 echo "</div>\n";
@@ -156,7 +150,7 @@
         <div class="row">
             <span class="col s12 m12 l4 xl4 offset-xl1 offset-l1">&copy; <?php echo htmlspecialchars(date("Y")) . " "."Coffteazone";?></span>
             <span class="col s12 m12 xl4 l4"><?php echo $address; ?></span>
-            <a href="https://www.facebook.com/CoffteaZone" class="col s12 m2 l3 xl3 center-align"><img src="img/logo/FACEBOOKLOGO.png" width="30px" height="100%" alt=""></a>
+            <a href="https://www.facebook.com/CoffteaZone" class="col s12 m2 l3 xl3 center-align"><img src="../img/logo/FACEBOOKLOGO.png" width="30px" height="100%" alt=""></a>
         </div>
     </footer>
     <!-- for development javascript file -->

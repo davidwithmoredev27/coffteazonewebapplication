@@ -1,0 +1,89 @@
+.dividerstyle {
+    background-color: rgba(255, 255, 255, 0.8) !important;
+    color: #3a3a3a !important;
+    h3 {
+        font-family: 'Roboto Slab', serif;
+        color: rgba(104, 73, 68, 0.9) !important;
+    }
+}
+
+.menuimg {
+    h5 {
+        color: rgba(62, 39, 35, 0.9) !important;
+    }
+    p {
+        color: rgba(62, 39, 35, 0.9) !important;
+        font-size: .9rem !important;
+    }
+}
+
+.slick-arrow {
+    position: absolute !important;
+    top: 12rem !important;
+    width: 25px !important;
+    height: 25px !important;
+    background: transparent;
+    color: transparent;
+    border: 0px !important;
+    &:active {
+        background-color: transparent !important;
+    }
+}
+
+.slick-prev {
+    z-index: 2 !important;
+    position: absolute;
+    left: 0rem !important;
+    background-image: url("../img/buttons/leftlogo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    &:active {
+        background-color: none;
+    }
+}
+
+.slick-next {
+    position: absolute;
+    left: 85.3rem !important;
+    background-image: url("../img/buttons/rightlogo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    &:active {
+        background-color: none;
+    }
+}
+
+.slick-dots {
+    display: none !important;
+}
+
+
+/*************************
+  Individual style for menu
+*************************/
+
+.menumaincontainer {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 2rem !important;
+    -ms-box-shadow: 0px 0px 10px #000;
+    -webkit-box-shadow: 0px 0px 10px #000;
+    -o-box-shadow: 0px 0px 10px #000;
+    -moz-box-shadow: 0px 0px 10px #000;
+    -khtml-box-shadow: 0px 0px 10px #000;
+    box-shadow: 0px 0px 10px #000;
+}
+
+.individualtitle {
+    color: #3f3a3a;
+    font-family: "Roboto Slab", Georgia, 'Times New Roman', Times, serif;
+}
+
+.borderstyle {
+    height: 400px;
+    border: 4px solid #3f3a3a;
+    p {
+        font-size: .8rem;
+    }
+}

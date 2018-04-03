@@ -40,6 +40,14 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>
@@ -342,22 +350,41 @@
                                     <th class="center-align">Email</th>
                                     <th class="center-align">Phone</th>
                                     <th class="center-align">Message</th>
-                                    <th class="center-align">Date&amp;Time</th>
+                                    <th class="center-align">Date &amp; Time</th>
                                     <th class="center-align" colspan="2">Options</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
+                                    
                                     $sql = "SELECT * FROM tbl_feedback";
                                     $result = mysqli_query($connection , $sql);
                                     $counter = 1;
                                     while($rows = mysqli_fetch_assoc($result)) {
                                         echo "<tr>\n";
                                         echo "<td class=\"center-align\">".$counter."</td>\n";
-                                        echo "<td class=\"center-align\">".$rows['name']."</td>\n";
-                                        echo "<td class=\"center-align\">".$rows['email']."</td>\n";
-                                        echo "<td class=\"center-align\">".$rows['phone']."</td>\n";
-                                        echo "<td class=\"center-align\">".$rows['message']."</td>\n";
+                                        if (strlen($rows['name']) > 12) {
+                                            $name = substr($rows['name'],0,12)."...";
+                                        } elseif (strlen($rows['name'] <= 12)) {
+                                            $name = $rows['name'];
+                                        }
+                                        echo "<td class=\"center-align\">".$name."</td>\n";
+                                         if (strlen($rows['email']) > 12) {
+                                            $email = substr($rows['email'],0,12)."...";
+                                        } elseif (strlen($rows['email'] <= 12)) {
+                                            $email = $rows['email'];
+                                        }
+                                        echo "<td class=\"center-align\">".$email."</td>\n";
+                                        if (strlen($rows['phone']) >= 7) {
+                                            $phone = substr($rows['phone'] , 0 , 7)."...";
+                                        }
+                                        echo "<td class=\"center-align\">". $phone."</td>\n";
+                                        if (strlen($rows['message']) > 35) {
+                                            $message = substr($rows['message'],0,35)."...";
+                                        } elseif (strlen($rows['message'] <= 35)) {
+                                            $message = $rows['message'];
+                                        }
+                                        echo "<td class=\"center-align\">".$message."</td>\n";
                                         echo "<td class=\"center-align\">".$rows['dateandtime']."</td>\n";
                                         echo "<td class=\"center-align\">".
                                                 "<form method=\"POST\" action=\"viewfeedback.php\">\n".

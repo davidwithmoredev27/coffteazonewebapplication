@@ -72,6 +72,14 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>
@@ -335,19 +343,6 @@
         </div>
         <div class="row">
             <div class="col s12 m12 xl12 l12">
-                <div class="container">
-                    <div class="row">
-                        <div class="col s12 m12 l12 xl5 offset-xl7">
-                            <label for="searchbox">Search</label>
-                            <input type="text" id="searchbox">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12 m12 l12 xl5 offset-xl7">
-                            <div id="outputmessage"></div>
-                        </div>
-                    </div>
-                </div>
                 
                 <div class="container">
                     <?php 
@@ -373,7 +368,7 @@
                         <thead>
                             <tr>
                                 <th class="center-align">Id</th>
-                                <th class="center-align">Name</th>
+
                                 <th class="center-align">Picture</th>
                                 <th class="center-align">Delete</th>
                                 <th></th>
@@ -395,7 +390,7 @@
                                             "\t\t\t\t\t\t\t<td class=\"center-align\">\n".
                                                 "\t\t\t\t\t\t\t\t<form action=\"deleteimage.php\" method=\"post\">\n".
                                                     "\t\t\t\t\t\t\t\t\t<input type=\"hidden\"  name=\"deleteid\" value=\"".$rows['id']."\">\n".
-                                                    "\t\t\t\t\t\t\t\t\t<button name=\"deletesubmit\" type=\"submit\" style=\"font-size:.8em;\"class=\"btn waves-light waves-effect\">Delete</button>\n".
+                                                    "\t\t\t\t\t\t\t\t\t<button name=\"deletesubmit\" type=\"submit\" style=\"font-size:.8em;\"class=\"btn red darken-3 waves-light waves-effect\">Delete</button>\n".
                                                 "\t\t\t\t\t\t\t\t</form>\n"
                                             ."\t\t\t\t\t\t\t</td>\n".
                                         "\n\t\t\t\t\t\t\t\t</tr>\n";

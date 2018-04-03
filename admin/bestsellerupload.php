@@ -132,7 +132,7 @@
                     $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Provide a caption!</strong>\n".
                                             "</strong>\n";
-                    header("location:bestselleredit.php");
+                    header("location:bestseller.php");
                     die();
             }
 
@@ -200,7 +200,7 @@
             $_SESSION['bestselleruploadsuccess'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">BestSeller Succefully updated!</strong>\n".
                                             "</strong>\n";
-            header("location:bestselleredit.php");
+            header("location:bestseller.php");
             die();
         } else if(!isset($uploadStatus) && !isset($DescriptionSuccess) && !isset($titleSuccess) && !isset($priceSuccess)) {
              $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".

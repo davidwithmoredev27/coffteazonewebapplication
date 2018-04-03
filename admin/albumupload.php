@@ -122,7 +122,7 @@
                
                 if (strlen($preventSQlinjection) <= 50 && strlen($preventSQlinjection) !== 0 ) {
                     $title = $preventSQlinjection;
-                    $titleSuccess = preg_replace('/\s+/', '', $preventSQlinjection);
+                    $titleSuccess = preg_replace('/\s/', '_', $preventSQlinjection);
                     $_SESSION['albumtitlepath'] = $titleSuccess;
                 } elseif (strlen($preventSQlinjection) > 50) {
                     mysqli_close($connection);
@@ -178,9 +178,11 @@
             }
 
         
-            if (isset($titleSuccess) and isset($descriptionSuccess) and isset($_SESSION['uploadstatus']) && $_SESSION['uploadstatus'] == 1) {
+            if (isset($titleSuccess) and isset($_SESSION['uploadstatus']) && $_SESSION['uploadstatus'] == 1) {
                 for ($index = 0 ; $index < $_SESSION['filnamecount'] ; $index++) {
+        
                     $sql = "INSERT INTO tbl_gallery_album_".$_SESSION['albumtitlepath']."(path)"." VALUES('".$_SESSION['path'][$index]."')";
+                    //die($sql);
                     mysqli_query($connection , $sql);
                 }
                $sql = "CREATE TABLE IF NOT EXISTS tbl_gallery_album_title". "(".

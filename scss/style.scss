@@ -2,6 +2,23 @@
     background-color: rgba(0, 0, 0, 0.925) !important;
 }
 
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.sellerimg {
+    width: 100%;
+    height: 250px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
 @mixin TransitionAnimation($time, $function) {
     -moz-transition: $time $function;
     -webkit-transition: $time $function;
@@ -176,7 +193,6 @@
             height: 30px;
             a {
                 display: inline-block;
-                line-height: normal;
                 text-decoration: none;
                 &:hover {
                     color: white;
@@ -225,7 +241,6 @@
 }
 
 .devider {
-    background-color: rgba(62, 39, 25, 0.8);
     -ms-box-shadow: 0px 0px 15px #000;
     -webkit-box-shadow: 0px 0px 15px #000;
     -moz-box-shadow: 0px 0px 15px #000;
@@ -239,7 +254,7 @@
     .menuimg {
         height: 330px;
         width: 200px;
-        border: 5px solid rgb(212, 23, 23);
+        border: 5px solid rgb(63, 58, 58);
         margin: 0px;
         img {
             width: 100%;
@@ -255,7 +270,7 @@
     .menuimg {
         height: 400px;
         width: 300px;
-        border: 5px solid rgb(212, 23, 23);
+        border: 5px solid rgb(63, 58, 58);
         margin: 10px;
         padding: 10px;
         img {
@@ -284,12 +299,6 @@
     -khtml-box-shadow: 0px 0px 15px #000;
     box-shadow: 0px 0px 15px #000;
     color: white;
-}
-
-.ion-social-facebook-outline {
-    height: 30px !important;
-    width: 50px !important;
-    display: block;
 }
 
 .leftarrow,
@@ -359,6 +368,101 @@
     }
 }
 
+#closebtn {
+    width: 100%;
+    height: 100%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.overlaybtn {
+    float: right;
+    width: 3rem;
+    height: 3rem;
+}
+
+#overlaycontainerhomepage {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.overlaycontentseller {
+    padding-top: 5rem;
+}
+
+.selleroverlayimage {
+    width: 100%;
+    height: 500px;
+    margin: 0 auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+@media only screen and (max-width:600px) {
+    .selleroverlayimage {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media only screen and (min-width:601px) and (max-width:992px) {
+    .selleroverlayimage {
+        width: 100%;
+        height: 300px;
+    }
+}
+
+@media only screen and (max-width:600px) {
+    #overlaycontainerhomepage {
+        overflow-x: hidden;
+        overflow-y: scroll;
+    }
+}
+
+.sellerimg {
+    position: relative;
+    padding: 0px !important;
+    .showmoreoverlay {
+        visibility: hidden !important;
+        padding-top: 5rem !important;
+        position: absolute !important;
+        width: 0px !important;
+        height: 0px !important;
+        z-index: 3;
+        color: transparent;
+        -webkit-transition: all .2s ease-in-out;
+        -moz-transition: all .2s ease-in-out;
+        -khtml-transition: all .2s ease-in-out;
+        -o-transition: all .2s ease-in-out;
+        -ms-transition: all .2s ease-in-out;
+        transition: all .2s ease-in-out;
+    }
+    img {
+        display: block !important;
+        width: 100%;
+        height: 100%;
+    }
+    &:hover {
+        .showmoreoverlay {
+            visibility: visible !important;
+            background-color: rgba(0, 0, 0, 0.8) !important;
+            height: 100% !important;
+            width: 100% !important;
+            h5 {
+                color: white;
+                text-align: center;
+            }
+        }
+    }
+}
+
 @import "servicesfrontend";
 @import "aboutusfrontend";
 @import "faqfrontend";
+@import "contactusfrontend";
+@import "menufrontend";

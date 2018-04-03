@@ -26,7 +26,7 @@
         $sql = "DELETE FROM tbl_slider WHERE id =".$id;
         mysqli_query($connection , $sql);
         mysqli_close($connection);
-        $_SESSION['uploadsuccess'] = "<span><strong class=\"white-text\">Slider Successfully Updated!</strong></span>\n";
+        $_SESSION['uploadsuccess'] = "<span><strong class=\"white-text\">Data successfully deleted!</strong></span>\n";
         header("location:slideredit.php");
         die;
 

@@ -15,6 +15,7 @@
 @import "filter";
 @import "promos";
 @import "feedback";
+@import "newproduct";
 body {
     -webkit-font-smoothing: antialiased;
     display: flex; //min-height: 100vh;
@@ -30,6 +31,26 @@ main {
 
 .side-nav {
     width: 200px !important;
+}
+
+.no-js {
+    position: fixed;
+    padding-top: 10rem;
+    z-index: 1000;
+    background-color: rgba(39, 20, 17, 0.9);
+    width: 100%;
+    height: 100vh;
+    .row {
+        .col {
+            h1 {
+                font-size: 2rem;
+                color: white;
+            }
+            p {
+                color: white;
+            }
+        }
+    }
 }
 
 

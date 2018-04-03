@@ -5,8 +5,7 @@
     $_SESSION['timeZone'] = null;
     $_SESSION['clientIP'] = null;
     function sanitizedData($data) {
-        $triminput  = trim($data);
-        $striplashesinput = stripslashes($triminput);
+        $striplashesinput = stripslashes($data);
         $htmlcharscape = htmlspecialchars($striplashesinput);
         $sanitizedData = $htmlcharscape;
         return $sanitizedData;
@@ -46,12 +45,13 @@
                 header("location:contactus.php");
                 die();
             } elseif (strlen($preventSQLInjection) <= 100) {
-                 if (preg_match('/^[0-9]/' , $preventSQLInjection)) {
-                    $_SESSION['contactuserror'] = "<b>Your name is invalid because the first Character is a number!</b>\n";
+                 if (preg_match('/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^\s|^[0-9]/' , $preventSQLInjection)) {
+                    $_SESSION['contactuserror'] = "<b>Your name is invalid!</b>\n";
                     header("location:contactus.php");
                     die();
-                } elseif (!preg_match('/^[0-9]/' , $preventSQLInjection)) {
-                    $nameValid = $preventSQLInjection;   
+                } elseif (!preg_match('/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^\s|^[0-9]/' , $preventSQLInjection)) {
+                    $nameValid = $preventSQLInjection;
+                    $_SESSION['namevalid'] = $nameValid;   
                 }
             }
         }
@@ -65,12 +65,13 @@
                         header("location:contactus.php");
                         die();
                 } elseif (strlen($preventSQLInjection) <= 50) {
-                    if (preg_match('/(^\d|\s)|^\s$/' , $preventSQLInjection)) {
+                    if (preg_match('/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/' , $preventSQLInjection)) {
                         $_SESSION['contactuserror'] = "<b>Please put a valid email address!</b>\n";
                         header("location:contactus.php");
                         die();
-                    } elseif (!preg_match('/(^\d|\s)|^\s$/' , $preventSQLInjection)) {
+                    } elseif (!preg_match('/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/' , $preventSQLInjection)) {
                         $emailValid = $preventSQLInjection;
+                        $_SESSION['emailvalid']  = $emailValid;
                     }
                 }
                  
@@ -81,17 +82,7 @@
             }
         }
 
-        if (isset($_POST['message'])) {
-            $message = sanitizedData($_POST['message']);
-            $preventSQLInjection = mysqli_escape_string($connection , $message);
-            if (strlen($preventSQLInjection) > 1000) {
-                $_SESSION['contactuserror'] = "<b>Maximum Message characters is 1000!</b>\n";
-                 header("location:contactus.php");
-                die();
-            } elseif (strlen($preventSQLInjection) <= 1000) {
-                $messageValid = $preventSQLInjection;
-            }
-        }
+       
 
         if (isset($_POST['contactno'])) {
             $contactnumber = sanitizedData($_POST['contactno']);
@@ -101,7 +92,35 @@
                 header("location:contactus.php");
                 die();
             } elseif (strlen($preventSQLInjection) <= 20) {
-                $contactnoValid = $preventSQLInjection;
+                if (preg_match('/[a-zA-Z]|[[:blank:]]|[\'^£$%&*()}{@#~?><>,.|=_+¬-]/',$preventSQLInjection)) {
+                    $_SESSION['contactuserror'] = "<b>Invalid Number!</b>\n";
+                    header("location:contactus.php");
+                    die();
+                } elseif (!preg_match('/[a-zA-Z]|[[:blank:]]|[\'^£$%&*()}{@#~?><>,.|=_+¬-]/',$preventSQLInjection)) {
+                    $contactnoValid = $preventSQLInjection;
+                    $_SESSION['contactnovalid'] = $contactnoValid;
+                }
+               
+            }
+        }
+
+         if (isset($_POST['message'])) {
+            $message = sanitizedData($_POST['message']);
+            $preventSQLInjection = mysqli_escape_string($connection , $message);
+            if (strlen($preventSQLInjection) > 1000) {
+                $_SESSION['contactuserror'] = "<b>Maximum Message characters is 1000!</b>\n";
+                 header("location:contactus.php");
+                die();
+            } elseif (strlen($preventSQLInjection) <= 1000) {
+                if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]/" , $preventSQLInjection)) {
+                    $_SESSION['contactuserror'] = "<b>Please don't use space and special characters as your first entry!</b>\n";
+                    header("location:contactus.php");
+                    die();
+                } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]/" , $preventSQLInjection)) {
+
+                    $messageValid = $preventSQLInjection;
+
+                }
             }
         }
     }
@@ -109,16 +128,21 @@
         GetDateAndTime();
         $timezone = $_SESSION['timeZone'];
         @date_default_timezone_set($timezone);
-        $timeCreated = date('Y/m/d h:i:sa');
+        $timeCreated = date('Y-m-d h:i:sa');
         $sql = "INSERT INTO tbl_feedback(name, email , phone , message , dateandtime)".
                 "VALUES('$nameValid' , '$emailValid' , '$contactnoValid' , '$messageValid','$timeCreated')";
         //die($sql);
         mysqli_query($connection , $sql);
-        $_SESSION['contactussuccess'] = "<b>Your Feedback Successfully sent!</b>\n";
+        $_SESSION['namevalid'] = null;
+        $_SESSION['emailvalid'] = null;
+        $_SESSION['contactnovalid'] = null;
+        $_SESSION['contactussuccess'] = "<b>Feedback successfully sent!</b>\n";
         header("location:contactus.php");
+        die();
+        
+    
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,44 +160,35 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="coffteazone Cavite City">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="projection, screen">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <style type="text/css">
-        .indicator-item:active {
-            background-color:red;
+       #message::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: black !important;
+       }
+        #message::-moz-placeholder { /* Firefox 19+ */
+            color: black !important;
         }
-        .menutitle {
-            padding-left:30px;
+        #message:-ms-input-placeholder { /* IE 10+ */
+            color: pink !important;
         }
-        .titlecontactus {
-            font-size:1.2em !important;
-            font-weight:bold;
-        }
-        .border {
-            background-color:rgba(255 , 255 ,255 ,0.6);
-            box-shadow:0px 0px 15px #000;
-            color:black;
-        }
-        label {
-            color:#26a69a !important;
-            font-size:1.5em !important;
-        }
-        ::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-            color: black;
-        }
-
-        :-ms-input-placeholder { /* Internet Explorer 10-11 */
-            color: black;
-        }
-
-        ::-ms-input-placeholder { /* Microsoft Edge */
-            color: black;
+        #message:-moz-placeholder { /* Firefox 18- */
+            color: pink !important;
         }
     </style>
 </head>
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
    <header>
         <nav class="brown darken-4">
             <div class="nav-wrapper z-depth-5">
@@ -182,7 +197,7 @@
                 </a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">             
-                    <li class="white-text"><a href="index.php" style="color:brown;">HOME</a></li>
+                    <li class="white-text"><a href="index.php">HOME</a></li>
                     <li class="white-text" id="showdropdown"><a href="menu.php">OUR MENU</a>
                          <div id="megadropdown" style="height:400px;left:-1px;" class="row" role="coffteazonemenu">
                             <div class="dropdowndevider col l3 xl3 offset-l1 offset-xl1">
@@ -227,7 +242,7 @@
                                 </div>
                                  <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li><a href="menu/muffins">Muffins</a></li>
+                                        <li><a href="menu/muffins.php">Muffins</a></li>
                                         <li><a href="menu/cakes.php">Cakes</a></li>
                                     </ul>
                                 </nav>
@@ -238,16 +253,16 @@
                     <li class="white-text"><a href="gallery.php">GALLERY</a></li>
                     <li class="white-text"><a href="aboutus.php">ABOUT US</a></li>
                     <li class="white-text"><a href="faq.php">FAQ'S</a></li>
-                    <li class="white-text"><a href="contactus.php">CONTACT US</a></li>
+                    <li class="white-text"><a style="color:brown;" href="contactus.php">CONTACT US</a></li>
                 </ul>
                  <ul class="side-nav brown darken-3" id="mobile-demo">
-                    <li><a style="color:brown;" href="index.php">HOME</a></li>
+                    <li><a class="white-text" href="index.php">HOME</a></li>
                     <li><a class="white-text" href="menu.php">OUR MENU</a></li>
                     <li><a class="white-text" href="services.php">SERVICES</a></li>
                     <li><a class="white-text" href="gallery.php">GALLERY</a></li>
                    <li><a class="white-text" href="aboutus.php">ABOUT US</a></li>
                     <li><a class="white-text" href="faq.php">FAQ'S</a></li>
-                    <li><a class="white-text" href="contactus.php">CONTACT US</a></li>
+                    <li><a style="color:brown;" href="contactus.php">CONTACT US</a></li>
                 </ul>
             </div> 
         </nav>
@@ -277,24 +292,22 @@
         <div class="row">
             <div class="col s12 m12 l12 xl12"></div>
         </div>
-        <div class="row">
+        <div class="row paddingstyle">
             <div class="col s12 m12 l4 xl4 offset-l1 offset-xl1 border">
-                <div class="row">
-                    <?php
-                        if(isset($_SESSION['contactuserror'])) {
-                            echo "\t\t\t\t\t\t\t<div class=\" red darken-3 col s12 m12 l12 xl12 feedbackerrormessage\">\n".
-                                 "\t\t\t\t\t\t\t\t<p class=\"white-text\">".$_SESSION['contactuserror']."</p>\n".
-                                 "\t\t\t\t\t\t</div>\n";
-                            $_SESSION['contactuserror'] = null;
-                        }
-                        if (isset($_SESSION['contactussuccess'])) {
-                             echo "\t\t\t\t\t\t\t<div class=\"green darken-3 col s12 m12 l12 xl12 feedbacksuccessmessage\">\n".
-                                 "\t\t\t\t\t\t\t\t<p class=\"white-text\">".$_SESSION['contactussuccess']."</p>\n".
-                                 "\t\t\t\t\t\t</div>\n";
-                            $_SESSION['contactussuccess'] = null;
-                        }   
-                    ?>
-                </div>
+                <?php
+                    if(isset($_SESSION['contactuserror'])) {
+                        echo "\t\t\t\t\t\t\t<div class=\" red darken-3 col s12 m12 l12 xl12 feedbackerrormessage\">\n".
+                                "\t\t\t\t\t\t\t\t<p class=\"white-text center-align\">".$_SESSION['contactuserror']."</p>\n".
+                                "\t\t\t\t\t\t</div>\n";
+                        $_SESSION['contactuserror'] = null;
+                    }
+                    if (isset($_SESSION['contactussuccess'])) {
+                            echo "\t\t\t\t\t\t\t<div class=\"green darken-3 col s12 m12 l12 xl12 feedbacksuccessmessage\">\n".
+                                "\t\t\t\t\t\t\t\t<p class=\"white-text center-align\">".$_SESSION['contactussuccess']."</p>\n".
+                                "\t\t\t\t\t\t</div>\n";
+                        $_SESSION['contactussuccess'] = null;
+                    }   
+                ?>
                 <div class="row">
                     <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF'])?>" method="post" class="col s12 m12 l12 xl12">
                         <div class="row">
@@ -308,25 +321,26 @@
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
-                                <input style="font-size:.9em !important" required autocomplete="off" type="text" placeholder="Enter your name!" name="name" id="mailname" maxlength="100">
+                                <input style="font-size:.9em !important" required autocomplete="off" type="text" placeholder="Enter your name!" name="name" id="mailname" maxlength="100" value="<?php if(isset($_SESSION['namevalid'])){ echo $_SESSION['namevalid'];$_SESSION['namevalid'] = null; } ?>">
                                 <label for="mailname"><b>Name:</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 x12">
-                                <input type="email" required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your email!" name="email" id="email" maxlength="50">
+                                <input type="email" required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your email!" name="email" id="email" maxlength="50" value="<?php if (isset($_SESSION['emailvalid'])){echo $_SESSION['emailvalid']; $_SESSION['emailvalid'] = null;}?>">
                                 <label for="email"><b>Email:</b></label>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12 m12 l12 x12">
-                                <input type="text" autocomplete="off" style="font-size:.9em !important" placeholder="Enter your mobile number!" name="contactno" id="contactno" maxlength="20">
+                                <input type="text"  required autocomplete="off" style="font-size:.9em !important" placeholder="Enter your mobile number!" name="contactno" id="contactno" maxlength="20" value="<?php if (isset($_SESSION['contactnovalid'])) { echo $_SESSION['contactnovalid']; $_SESSION['contactnovalid'] = null;}?>">
                                 <label for="contactno"><b>Phone:</b></label>
                             </div>
                         </div>
                         <div class="row">
+                            <span id="messagenotifiy" class="col s12 m12 l12 xl12"></span>
                             <div class="input-field col s12 m12 l12 x12">
-                                <textarea name="message" required autocomplete="off" style="font-size:.9em !important" placeholder="Write your feedback here!" id="message" maxlength="1000" class="materialize-textarea"></textarea>
+                                <textarea name="message" required autocomplete="off" id="message" style="font-size:.9em !important" placeholder="Write your feedback here!" id="message" maxlength="1000" class="materialize-textarea"></textarea>
                                 <label for="message"><b>Message:</b></label>
                             </div>
                         </div>
@@ -426,7 +440,23 @@
      -->
     <script src="js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-        
+        (function(){
+            var message = document.getElementById("message");
+            var messageValue = message.value;
+            var messageNotify = document.getElementById("messagenotify");
+            var specialCharacter = /^([\'^£$%&*()}{@#~?><>,.|=_+¬-])|\s/g;
+
+            function checkforSpcialCharacters() {
+                console.log("Hello world!");
+                if (specialCharacter.exec(messageValue)) {
+                    messageNotify.innerHTML = "test lang";
+                    messageNotify.style.visibility = "visible !important";
+                } else if (!specialCharacter.exec(messageValue)) {
+                    messageNotify.style.visibility = "hidden !important";
+                }
+            }
+            message.addEventListener("keydown" , checkforSpcialCharacters , false);
+        }());
     </script>
 
 </body>

@@ -40,6 +40,14 @@
 </head>
 
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="editaccount.php">Change Password</a></li>
@@ -340,40 +348,42 @@
             ?>
     
             <div class="col s12 m12 l4 xl4 removeslidermobile">
-                <div class="row">
-                    <h5 class="col s12 m12 l12 xl12 center-align">Add Bestseller</h5>
-                </div>
-                <div class="row">
-                    <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="bestsellerupload.php">
-                        <div class="row">
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" id="title" name="bestsellertitle" maxlength="20" required class="validate">
-                                <label for="title">Title</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <textarea id="textarea1" maxlength="20"   name="bestsellerdescription" class="materialize-textarea"></textarea>
-                                <label for="textarea1">Caption</label>
-                            </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <input type="text" class="center-align" required name="bestsellerprice" id="bestsellerprice">   
-                                <label for="bestsellerprice">Price</label>
-                            </div>
-                            <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn blue-gray darken-4">
-                                    <span>image</span>
-                                    <input type="file" name="bestsellerimg" required value="image">
+                <div class="container">
+                    <div class="row">
+                        <h5 class="col s12 m12 l12 xl12 center-align">Add Bestseller</h5>
+                    </div>
+                    <div class="row">
+                        <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="bestsellerupload.php">
+                            <div class="row">
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <input type="text" class="center-align" id="title" name="bestsellertitle" maxlength="20" required class="validate">
+                                    <label for="title">Title</label>
                                 </div>
-                                <div class="file-path-wrapper">
-                                    <input class="file-path validate" type="text">
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <textarea id="textarea1" maxlength="20"   name="bestsellerdescription" class="materialize-textarea"></textarea>
+                                    <label for="textarea1">Caption</label>
+                                </div>
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <input type="text" class="center-align" required name="bestsellerprice" id="bestsellerprice">   
+                                    <label for="bestsellerprice">Price</label>
+                                </div>
+                                <div class="file-field input-field col s12 m12 l12 xl12">
+                                    <div class="btn blue-grey darken-4">
+                                        <span>image</span>
+                                        <input type="file" name="bestsellerimg" required value="image">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path validate" type="text">
+                                    </div>
+                                </div>
+                                <div class="input-field col s12 m12 l12 xl12">
+                                    <div class="row">
+                                        <button type="submit" class="btn waves-light waves-effect col s12 m12 xl12" name="submitbestseller">Add</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <div class="row">
-                                    <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="submitbestseller">Add</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
             <div class="col s12 m12 l8 xl8 removeslidermobile">
@@ -503,7 +513,7 @@
                         </div>
                         <div class="row">
                             <div class="file-field input-field col s12 m12 l12 xl12">
-                                <div class="btn brown darken-3">
+                                <div class="btn blue-grey darken-4">
                                     <span>Image</span>
                                     <input type="file" name="bestsellerimg" required value="image">
                                 </div>
@@ -515,46 +525,15 @@
                         <div class="row">
                             <div class="input-field col s12 m12 l12 xl12">
                                 <div class="row">
-                                    <button type="submit" class="btn brown darken-3 btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="submitbestseller">Add</button>
+                                    <button type="submit" class="btn waves-light waves-effect col s12 m12 xl3 offset-xl4 l3 offset-l4" name="submitbestseller">Add</button>
                                 </div>
                             </div>
                         </div>
                     </form>
                 </div>
             </div>
-            <div class="col s12 m12 xl12 l12">
-               <div class="row showslidermobile">
-                   <form action="bestselleredit.php" method="POST" class="col s12 m12 l12 xl12">
-                        <div class="row">
-                             <div class="input-field col s12 m12 xl12 l12">
-                                <div class="row">
-                                    <input type="text" id="bestsellerid" name="bestsellerid" class=" col s12 m12 xl12 l12 center-align" required  placeholder="id">
-                                </div>
-                            </div>
-                            <div class="input-field col s12 m12 l12 xl12">
-                                <div class="row">
-                                    <button type="submit" name="editbestseller" class="btn waves-light waves-effect col s12 m12 xl12 l12">Edit</button>
-                                </div>
-                            </div>
-                           
-                        </div>
-                   </form>
-               </div>
-            </div>
         </div>
     </main>
-    <!-- <footer class="page-footer brown darken-4">
-        <div class="footer-copyright">
-            <div class="container">
-                <div class="row">
-                    <span class="col s12 m12 l6 xl6 center-align white-text">&copy;
-                        <?php// echo htmlspecialchars(date("Y")) . " "."Coffteazone";?>
-                    </span>
-                    <a class="white-text col s12 m12 l6 xl6 center-align" href="#!">http://www.coffteazone.com</a>
-                </div>
-            </div>
-        </div>
-    </footer> -->
     <!-- for development javascript file -->
     <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/materialize.min.js"></script> -->

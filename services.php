@@ -37,10 +37,29 @@
         .materialboxed initialised {
             width:100%;
         }
-       
+       ul.liststyle {
+           list-style: circle !important;
+           list-style-type:circle !important;
+       }
+       ul.liststyle li::before {
+          content:" *";
+          margin-left:1rem;
+          margin-right:1rem;
+          font-weight:900;
+    
+       }
+    
     </style>
 </head>
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <div class="row" id="mainoeverlaycontainer">
         <div class="col s12 m12 l12 xl12">
             <!-- ktroomscontainer -->
@@ -55,24 +74,26 @@
                             <div class="col s12 m12 l12 x12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l12 xl12">
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                     <ul>
-                                        <li>Minimum of 5 persons.</li>
-                                        <li>Maximum of 20 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                     <ul class="liststyle">
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 20 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div> 
                             </div>
@@ -82,24 +103,26 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l5 xl5">
                                 <div class="roomcontent">
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                    <ul>
-                                        <li>Minimum of 5 persons.</li>
-                                        <li>Maximum of 20 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 20 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -114,23 +137,24 @@
                             <div class="col s12 m12 l12 xl12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv2/20180117_112818.jpg" alt="" srcset=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l12 xl12">
                                 <div class="roomcontent">
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                    <ul>
-                                        <li>Minimum of 15 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum of 15 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
-                                        <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -140,23 +164,24 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv2/20180117_112818.jpg" alt="" srcset=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l5 xl5">
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                    <ul>
-                                        <li>Minimum of 15 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum of 15 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
                                         <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -170,24 +195,26 @@
                             <div class="col s12 m12 l12 xl12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv3/20180117_113104.jpg" alt="" srcset=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l12 xl12">
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                    <ul>
-                                        <li>Minimum of 5 persons.</li>
-                                        <li>Maximum of 15 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 15 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -197,24 +224,26 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv3/20180117_113104.jpg" alt="" srcset=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li>
                                     </ul>
                                 </div>
                             </div>
                             <div class="col s12 m12 l5 xl5">
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-                                    <ul>
-                                        <li>Minimum of 5 persons.</li>
-                                        <li>Maximum of 15 persons.</li>
-                                        <li>&#8369;150 per head (For the first hour).</li>
-                                        <li>&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li>Consumable of food and drinks.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 15 persons.</li>
+                                        <li class="left-align">&#8369;150 per head (For the first hour).</li>
+                                        <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
+                                        <li class="left-align">Consumable of food and drinks.</li>
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-                                    <ul>
-                                        <li>No down payment</li>
-                                        <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">No down payment</li>
+                                        <li class="left-align">When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -238,20 +267,20 @@
                                 <div class="roomcontent">
                                      <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                      <h6><b>Package 1.</b> Seven thousand (&#8369;7,000)</h6>
-                                     <ul>
-                                        <li>Minimum capacity of 100 persons.</li>
-                                        <li>Sound system with DJ.</li>
-                                        <li>Tables and chairs</li>
-                                        <li>Personal powder room.</li>
-                                        <li>Air condition.</li>
-                                        <li>Preparation time is one hour.</li>
-                                        <li>Operating party time is 6 hours.</li>
-                                        <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                     <ul class="liststyle">
+                                        <li class="left-align">Minimum capacity of 100 persons.</li>
+                                        <li class="left-align">Sound system with DJ.</li>
+                                        <li class="left-align">Tables and chairs</li>
+                                        <li class="left-align">Personal powder room.</li>
+                                        <li class="left-align">Air condition.</li>
+                                        <li class="left-align">Preparation time is one hour.</li>
+                                        <li class="left-align">Operating party time is 6 hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
-                                    <ul>
-                                        <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                                        <li>No confirmation of arrival will cancel the reservation.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum deposit at least one thousand (&#8369;1000).</li>
+                                        <li class="left-align">No confirmation of arrival will cancel the reservation.</li>
                                     </ul>
                                 </div> 
                             </div>
@@ -269,20 +298,20 @@
                                 <div class="roomcontent martinascontent">
                                     <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                     <h6><b>Package 1.</b> Seven thousand (&#8369;7,000)</h6>
-                                    <ul>
-                                        <li>Minimum capacity of 100 persons.</li>
-                                        <li>Sound system with DJ.</li>
-                                        <li>Tables and chairs</li>
-                                        <li>Personal powder room.</li>
-                                        <li>Air condition.</li>
-                                        <li>Preparation time is one hour.</li>
-                                        <li>Operating party time is 6 hours.</li>
-                                        <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum capacity of 100 persons.</li>
+                                        <li class="left-align">Sound system with DJ.</li>
+                                        <li class="left-align">Tables and chairs</li>
+                                        <li class="left-align">Personal powder room.</li>
+                                        <li class="left-align">Air condition.</li>
+                                        <li class="left-align">Preparation time is one hour.</li>
+                                        <li class="left-align">Operating party time is 6 hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
-                                    <ul>
-                                        <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                                        <li>No confirmation of arrival will cancel the reservation.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum deposit at least one thousand (&#8369;1000).</li>
+                                        <li class="left-align">No confirmation of arrival will cancel the reservation.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -305,22 +334,22 @@
                                 <div class="roomcontent ">
                                      <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                      <h6><b>Package 2.</b> Ten thousand (&#8369;10,000)with extension.</h6>
-                                     <ul>
-                                        <li>Minimum capacity of 150 persons.</li>
-                                        <li>Sound system with DJ.</li>
-                                        <li>Tables and chairs</li>
-                                        <li>Personal powder room.</li>
-                                        <li>Air condition.</li>
-                                        <li>Available room.</li>
-                                        <li>Projector.</li>
-                                        <li>Preparation time is one hour.</li>
-                                        <li>Operating party time is 6 hours.</li>
-                                        <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                     <ul class="liststyle">
+                                        <li class="left-align">Minimum capacity of 150 persons.</li>
+                                        <li class="left-align">Sound system with DJ.</li>
+                                        <li class="left-align">Tables and chairs</li>
+                                        <li class="left-align">Personal powder room.</li>
+                                        <li class="left-align">Air condition.</li>
+                                        <li class="left-align">Available room.</li>
+                                        <li class="left-align">Projector.</li>
+                                        <li class="left-align">Preparation time is one hour.</li>
+                                        <li class="left-align">Operating party time is 6 hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
-                                    <ul>
-                                        <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                                        <li>No confirmation of arrival will cancel the reservation.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum deposit at least one thousand (&#8369;1000).</li>
+                                        <li class="left-align">No confirmation of arrival will cancel the reservation.</li>
                                     </ul>
                                 </div> 
                             </div>
@@ -338,22 +367,22 @@
                                 <div class="roomcontent martinascontent">
                                     <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                     <h6><b>Package 2.</b> Ten thousand (&#8369;10,000)with extension.</h6>
-                                    <ul>
-                                        <li>Minimum capacity of 150 persons.</li>
-                                        <li>Sound system with DJ.</li>
-                                        <li>Tables and chairs</li>
-                                        <li>Personal powder room.</li>
-                                        <li>Air condition.</li>
-                                        <li>Available room.</li>
-                                        <li>Projector.</li>
-                                        <li>Preparation time is one hour.</li>
-                                        <li>Operating party time is 6 hours.</li>
-                                        <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum capacity of 150 persons.</li>
+                                        <li class="left-align">Sound system with DJ.</li>
+                                        <li class="left-align">Tables and chairs</li>
+                                        <li class="left-align">Personal powder room.</li>
+                                        <li class="left-align">Air condition.</li>
+                                        <li class="left-align">Available room.</li>
+                                        <li class="left-align">Projector.</li>
+                                        <li class="left-align">Preparation time is one hour.</li>
+                                        <li class="left-align">Operating party time is 6 hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
-                                    <ul>
-                                        <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                                        <li>No confirmation of arrival will cancel the reservation.</li>
+                                    <ul class="liststyle">
+                                        <li class="left-align">Minimum deposit at least one thousand (&#8369;1000).</li>
+                                        <li class="left-align">No confirmation of arrival will cancel the reservation.</li>
                                     </ul>
                                 </div>
                             </div>
@@ -364,86 +393,6 @@
             </section>
         </div>
     </div>
-    
-        
-       
-    <!--    
-         <div id="modal3" class="modal modal-fixed-footer">
-            <div class="modal-content">
-           <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
-            <ul>
-                <li>Minimum of 5 persons.</li>
-                <li>Maximum of 15 persons.</li>
-                <li>&#8369;150 per head (For the first hour).</li>
-                <li>&#8369;100 per head (For the next and succeding hour)</li>
-                <li>Consumable of food and drinks.</li>
-            </ul>
-            <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-            <ul>
-                <li>No down payment</li>
-                <li>When the customer don't come within 30 minutes of the scheduled time of resrvation, the slot will be given to the other customer.</li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        </div> 
-        
-        
-        <div id="modal4" class="modal modal-fixed-footer">
-            <div class="modal-content">
-           <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
-           <h6><b>Package 1.</b> Seven thousand (&#8369;7,000)</h6>
-            <ul>
-                <li>Minimum capacity of 100 persons.</li>
-                <li>Sound system with DJ.</li>
-                <li>Tables and chairs</li>
-                <li>Personal powder room.</li>
-                <li>Air condition.</li>
-                <li>Preparation time is one hour.</li>
-                <li>Operating party time is 6 hours.</li>
-                <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
-
-            </ul>
-            <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-            <ul>
-                <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                <li>No confirmation of arrival will cancel the reservation.</li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        </div>
-
-        <div id="modal5" class="modal modal-fixed-footer">
-           <div class="modal-content">
-           <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
-           <h6><b>Package 2.</b> Ten thousand (&#8369;10,000)with extension.</h6>
-
-            <ul>
-                <li>Minimum capacity of 150 persons.</li>
-                <li>Sound system with DJ.</li>
-                <li>Tables and chairs</li>
-                <li>Personal powder room.</li>
-                <li>Air condition.</li>
-                <li>Available room.</li>
-                <li>Projector.</li>
-                <li>Preparation time is one hour.</li>
-                <li>Operating party time is 6 hours.</li>
-                <li>Additional five hundred (&#8369;500) for the next and succeding hours.</li>
-
-            </ul>
-            <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
-            <ul>
-                <li>Minimum deposit at least one thousand (&#8369;1000).</li>
-                <li>No confirmation of arrival will cancel the reservation.</li>
-            </ul>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
-        </div>
-        </div> -->
     <header>
         <nav class="brown darken-4 ">
             <div class="nav-wrapper">
@@ -647,10 +596,17 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
      -->
-    <script src="js/main.js" type="text/javascript"></script>
+    <!-- <script src="js/main.js" type="text/javascript"></script> -->
     <script>
-          $(document).ready(function(){
+        $(document).ready(function(){
+            $(".button-collapse").sideNav({
+                edge: 'left',
+            });
+   
             $('.materialboxed').materialbox();
+            $(".slider").slider({
+                duration: 400,
+            });
          });
     </script>
     <!-- overlay function -->

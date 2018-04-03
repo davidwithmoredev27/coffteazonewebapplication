@@ -109,6 +109,7 @@
                 } 
             } else if (!isset($_POST['bestsellertitleconfirm']) || strlen($_POST['bestsellertitleconfirm']) == 0) {
                 $sql = "SELECT title FROM tbl_bestseller WHERE id =". $_SESSION['bestsellerconfirm'];
+                
                 $result = mysqli_query($connection , $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -116,6 +117,7 @@
                         $titleSuccess = $rows['title'];
                     }
                 }
+                
             }
 
             if (isset($_POST['bestsellerdecriptionconfirm'])) {
@@ -131,24 +133,35 @@
                     $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">You cannot use more than 50 characters!</strong>\n".
                                             "</strong>\n";
-                    header("location:bestsellereedit.php");
+                    header("location:bestseller.php");
                     die();
                 } 
             } else if (!isset($_POST['bestsellerdecriptionconfirm']) || strlen($_POST['bestsellerdecriptionconfirm']) == 0) {
+                
                 $sql = "SELECT caption FROM tbl_bestseller WHERE id =".$_SESSION['bestsellerconfirm'];
+                
                 $result = mysqli_query($connection , $sql);
 
                 if (mysqli_num_rows($result) > 0) {
                     while($rows = mysqli_fetch_assoc($result)) {
                         $DescriptionSuccess = $rows['caption'];
+                        
                     }
                 }
+
             }
-
+            
             if (isset($_POST['bestsellerpriceconfirm'])) {
+                if (is_numeric($_POST['bestsellerpriceconfirm'])) {
 
-                if (filter_var($_POST['bestsellerpriceconfirm'] , FILTER_VALIDATE_INT)) {
-
+                    if ($_POST['bestsellerpriceconfirm'] <= 0) {
+                        mysqli_close($connection);
+                        $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Use negative number for the price!</strong>\n".
+                                                "</strong>\n";
+                        header("location:bestselleredit.php");
+                        die();
+                    }
                     $price = sanitizedData($_POST['bestsellerpriceconfirm']);
                     $preventSQLInjection = mysqli_escape_string($connection , $price);
                 
@@ -156,11 +169,13 @@
     
 
 
-                } else if (!filter_var($_POST['bestsellerpriceconfirm'] , FILTER_VALIDATE_INT)) {
-                    if (!isset($_POST['bestsellerpriceconfirm']) || strlen($_POST['bestsellerpriceconfirm']) == 0) {
+                } else if (!is_numeric($_POST['bestsellerpriceconfirm'])) {
+        
+                    if (!isset($_POST['bestsellerpriceconfirm'])) {
                         $sql = "SELECT price FROM tbl_bestseller WHERE id =".$_SESSION['bestsellerconfirm'];
+                        
                         $result = mysqli_query($connection , $sql);
-
+                        
                         if (mysqli_num_rows($result) > 0) {
                             while($rows = mysqli_fetch_assoc($result)) {
                                 $priceSuccess = $rows['price'];
@@ -171,13 +186,14 @@
                         $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Please use a number for the price!</strong>\n".
                                                 "</strong>\n";
-                        header("location:bestselleredit.php");die();
+                        header("location:bestseller.php");die();
                     }
                    
                 }
                 
-            } else if (!isset($_POST['bestsellerpriceconfirm']) || strlen($_POST['bestsellerpriceconfirm']) == 0) {
+            } else if (!isset($_POST['bestsellerpriceconfirm'])) {
                 $sql = "SELECT * FROM tbl_bestseller WHERE id = ".$_SESSION['bestsellerconfirm'];
+                
                 $result = mysqli_query($connection , $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -186,10 +202,8 @@
                     }
                 }
             }
-
-           
+            
             if (isset($_FILES['bestsellerimgconfirm']) && $_FILES['bestsellerimgconfirm']['error'] == 0) {
-    
                 $filePath = UploadFile($_FILES['bestsellerimgconfirm']);
             } elseif (isset($_FILES['bestsellerimgconfirm']) && $_FILES['bestsellerimgconfirm']['error'] > 0) {
                  $sql = "SELECT * FROM tbl_bestseller WHERE id = ".$_SESSION['bestsellerconfirm'];
@@ -202,23 +216,10 @@
                     }
                 }
             }
-            die($priceSuccess . $DescriptionSuccess . $titleSuccess . $_SESSION['dirpath']);
         }
+       
         if (isset($filePath) && isset($titleSuccess) &&  isset($DescriptionSuccess) && isset($priceSuccess)) {
-            
-
-            
-            // $sql ="SELECT * FROM tbl_bestseller";
-            // $result = mysqli_query($connection , $sql);
-            // if (mysqli_num_rows($result) === 6) {
-            //     $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
-            //                                 "<strong class=\"white-text\">Bestseller reach 6!</strong>\n".
-            //                                 "</strong>\n";
-            //     mysqli_close($connection);
-            //     header("location:bestseller.php");
-            //     die();
-            // }
-            
+        
             $dirPath = $_SESSION['dirpath'];
             $_SESSION['dirpath'] = null;
             $sql = "UPDATE tbl_bestseller SET title = '$titleSuccess', image = '$filePath', caption ='$DescriptionSuccess' , price = $priceSuccess , path =  '$dirPath' WHERE id = ".$_SESSION['bestsellerconfirm'];

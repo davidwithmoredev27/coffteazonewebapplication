@@ -1,4 +1,4 @@
-<?php require "admin/connection.php" ?>
+<?php require "admin/connection.php"; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -7,7 +7,6 @@
     <!--[if lt IE 9]>
         <script type="text/javascript" src="js/html5shiv.min.js"></script>
     <![endif]-->
-    <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/logo/favicon.ico" type="image/x-icon"/>
@@ -17,11 +16,12 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="coffteazone Cavite City">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
+    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="projection,screen">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css" />
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" />
+	<!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css" /> -->
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <style type="text/css">
         .indicator-item:active {
@@ -29,14 +29,6 @@
         }
         .menutitle {
             padding-left:30px;
-        }
-        .slick-next {
-			height:100% !important;
-           
-		}
-		.slick-prev {
-			height:100% !important;
-    
         }
          h3, h5 , h6 {
             color:white;
@@ -54,6 +46,14 @@
     </style>
 </head>
 <body>
+    <noscript class="no-js">
+       <div class="row">
+           <div class="col s12 m12 l12 xl12">
+               <h1 class="center-align">Please enable javascript on your web browser!</h1>
+                <p class="center-align">Our website will not function correctly if javascript is disabled.</p>
+           </div>
+       </div>
+    </noscript>
     <header>
         <nav class="brown darken-4">
             <div class="nav-wrapper z-depth-5">
@@ -62,8 +62,8 @@
                 </a>
                 <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
                 <ul class="right hide-on-med-and-down">             
-                    <li class="white-text"><a href="index.php" style="color:brown;">HOME</a></li>
-                    <li class="white-text" id="showdropdown"><a href="menu.php">OUR MENU</a>
+                    <li class="white-text"><a href="index.php">HOME</a></li>
+                    <li id="showdropdown"><a href="menu.php" style="color:brown;">OUR MENU</a>
                          <div id="megadropdown" style="height:400px;left:-1px;" class="row" role="coffteazonemenu">
                             <div class="dropdowndevider col l3 xl3 offset-l1 offset-xl1">
                                 <div class="col l12 xl12 menutitle">
@@ -107,7 +107,7 @@
                                 </div>
                                  <nav class="dropdowndishcategory col l12 xl12">
                                     <ul>
-                                        <li><a href="menu/muffins">Muffins</a></li>
+                                        <li><a href="menu/muffins.php">Muffins</a></li>
                                         <li><a href="menu/cakes.php">Cakes</a></li>
                                     </ul>
                                 </nav>
@@ -121,8 +121,8 @@
                     <li class="white-text"><a href="contactus.php">CONTACT US</a></li>
                 </ul>
                  <ul class="side-nav brown darken-3" id="mobile-demo">
-                    <li><a style="color:brown;" href="index.php">HOME</a></li>
-                    <li><a class="white-text" href="menu.php">OUR MENU</a></li>
+                    <li><a class="white-text" href="index.php">HOME</a></li>
+                    <li><a href="menu.php" style="color:brown;">OUR MENU</a></li>
                     <li><a class="white-text" href="services.php">SERVICES</a></li>
                     <li><a class="white-text" href="gallery.php">GALLERY</a></li>
                    <li><a class="white-text" href="aboutus.php">ABOUT US</a></li>
@@ -144,7 +144,7 @@
         <div class="row">
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle">
                         <h3 class="center-align">Starter</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -176,7 +176,7 @@
             
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle">
                         <h3 class="center-align">Platter</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -210,7 +210,7 @@
             
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Pizza</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -244,7 +244,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider  dividerstyle" >
                         <h3 class="center-align">Main Course</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -277,7 +277,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Pasta</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -309,7 +309,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Soup</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -343,7 +343,7 @@
             </div>
              <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Hot Drinks</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -377,7 +377,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Iced Coffee</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -411,7 +411,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Frappuccino</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -446,7 +446,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Signature Drinks</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -480,7 +480,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Italian soda</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -514,7 +514,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Yakult Drinks</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -548,7 +548,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Milk Tea</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -582,9 +582,9 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
-                        <h3 class="center-align ">Smoothies</h3>
-                        <div class="row devider">
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle">
+                        <h3 class="center-align">Smoothies</h3>
+                        <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
                                 <?php
                                         $sql = "SELECT * FROM tbl_menu_smoothies";
@@ -616,7 +616,7 @@
 
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Cocktails</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -653,7 +653,7 @@
             
              <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Cakes</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -686,7 +686,7 @@
             
             <div class="row">
                 <div class="col s12 m12 l12 xl12">
-                     <div class="col s12 m12 l12 xl12 devider" >
+                     <div class="col s12 m12 l12 xl12 devider dividerstyle" >
                         <h3 class="center-align">Muffins</h3>
                         <div class="row">
                             <div class="col s12 m12 l12 xl12 dishcat">
@@ -728,7 +728,7 @@
         <div class="row">
             <span class="col s12 m12 l4 xl4 offset-xl1 offset-l1">&copy; <?php echo htmlspecialchars(date("Y")) . " "."Coffteazone";?></span>
             <span class="col s12 m12 xl4 l4"><?php echo $address; ?></span>
-            <a href="https://www.facebook.com/CoffteaZone" class="col s12 m2 l3 xl3 center-align"><img src="img/logo/FACEBOOKLOGO.png" width="30px" height="100%" alt=""></a>
+            <a href="https://www.facebook.com/CoffteaZone"  class="col s12 m2 l3 xl3 center-align"><img src="img/logo/FACEBOOKLOGO.png" width="30px" height="30px" alt=""></a>
         </div>
     </footer>
     <script type="text/javascript">
@@ -757,6 +757,24 @@
 
     <script src="js/main.js" type="text/javascript"></script>
     <script src="js/carousel.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
+            var body = document.getElementsByTagName("body")[0];
+            
+            body.addEventListerner("resize" , function() {
+                
+            })
+        })();
+        $(document).ready(function() {
+            $(".dishcat").slick({
+                infinite: true,
+                slidesToShow: 5,
+                centerPadding: "60px",
+                //slidesToScroll : 3,
+                dots: true
+            });
+        });
+    </script>
     
 </body>
 </html>

@@ -49,15 +49,15 @@
             }
             if (in_array($filetype , $allowed)) {
                 
-                if (file_exists("../img/home/promos" .$filename )) {
-                    unlink("../img/home/promos/" .$filename);
-                    move_uploaded_file($filetmpname, "../img/home/promos/" .$filename);
-                    $_SESSION['dirpath'] = "img/home/promos/" .$filename;
+                if (file_exists("../img/home/featureandnewimages" .$filename )) {
+                    unlink("../img/home/featureandnewimages/" .$filename);
+                    move_uploaded_file($filetmpname, "../img/home/featuredandnewimages/" .$filename);
+                    $_SESSION['dirpath'] = "img/home/featureandnewimages/" .$filename;
                     $_SESSION['uploadstatus'] = true;
                     return $filename;
                 } else {
-                    move_uploaded_file($filetmpname, "../img/home/promos/" .$filename);
-                    $_SESSION['dirpath'] ="img/home/promos/" .$filename;
+                    move_uploaded_file($filetmpname, "../img/home/featuredandnewimages/" .$filename);
+                    $_SESSION['dirpath'] ="img/home/featuredandnewimages/" .$filename;
                     $imgPath = $filename;
                     $_SESSION['uploadstatus'] = true;
                     return $filename;
@@ -88,7 +88,7 @@
                         
                         mysqli_close($connection);
                         $_SESSION['promoserror']= "<span class=\"center-align\"><strong class=\"white-text\">First character is a number!</strong></span>\n";
-                        header("location:promos.php");
+                        header("location:newproduct.php");
                         die;
                     } elseif (strlen($_POST['promostitle']) > 0 && !is_numeric($_POST['promostitle'][0])) {
                         $title = sanitizedData($_POST['promostitle']);
@@ -167,16 +167,18 @@
     
                 $pathPass  = $_SESSION['dirpath'];
                 //die($pathPass);
-                $sql = "CREATE TABLE IF NOT EXISTS tbl_promos (".
+                $sql = "CREATE TABLE IF NOT EXISTS tbl_new_promos (".
                     "id INT NOT NULL AUTO_INCREMENT,".
                     "title VARCHAR(50) NOT NULL,".
-                    "description VARCHAR(100) NOT NULL,".
+                    "description VARCHAR(500) NOT NULL,".
                     "path VARCHAR(1000) NOT NULL,".
                     "PRIMARY KEY(id)".
                 ")";
+                //die($sql);
                 mysqli_query($connection , $sql);
-                $sql = "INSERT INTO tbl_promos(title , description,  path) ".
+                $sql = "INSERT INTO tbl_promos (title , description,  path) ".
                         "VALUES('$titlepass' , '$descriptionPass' , '$pathPass')";
+                        // die($sql);
                 //die($sql);
                 mysqli_query($connection , $sql);
 

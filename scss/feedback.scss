@@ -165,23 +165,32 @@
 }
 
 
-/* @media only screen and (min-width:1024px) {
-    .feedbackcol:nth-child(1) {
-        width: 50px !important;
+/*******************************
+    for viewfeedback message style
+********************************/
+
+.feedbackviewbox {
+    padding: 0;
+    border: 1px solid black;
+    padding-top: 1rem;
+    .row:first-child {
+        margin-bottom: 0px !important;
     }
-    .feedbackcol:nth-child(2) {
-        width: 150px !important;
-    }
-    .feedbackcol:nth-child(3) {
-        width: 200px !important;
-    }
-    .feedbackcol:nth-child(4) {
-        width: 500px !important;
-    }
-    .feedbackcol:nth-child(5) {
-        width: 100px !important;
-    }
-    .feedbackcol:nth-child(6) {
-        width: 100px !important;
-    }
-}*/
+}
+
+.messagebox {
+    border: 1px solid gray;
+    height: 20rem;
+    padding: 1.2rem;
+    text-indent: 30px;
+}
+
+.viewbuttons {
+    float: right;
+    margin: .9rem;
+    margin-top: 1.2rem;
+}
+
+.text {
+    padding-left: 3rem !important;
+}
