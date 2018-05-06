@@ -42,7 +42,7 @@
                         die;
                     } elseif (strlen($_POST['description']) > 0 && !is_numeric($_POST['description'][0])) {
                         $description = sanitizedData($_POST['description']);
-                        $sqlPreventInjection = mysqli_escape_string($connection , $description);
+                        $sqlPreventInjection = mysqli_real_escape_string($connection , $description);
                         
                         if (strlen($sqlPreventInjection) <= 1000 &&  strlen($sqlPreventInjection) !== 0) {
                             $_SESSION['descriptionSuccess'] = $sqlPreventInjection; 

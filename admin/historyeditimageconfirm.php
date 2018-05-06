@@ -93,7 +93,7 @@
                         die;
                     } elseif (strlen($_POST['historyname']) > 0 && !is_numeric($_POST['historyname'][0])) {
                         $name = sanitizedData($_POST['historyname']);
-                        $sqlPreventInjection = mysqli_escape_string($connection , $name);
+                        $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
                             $_SESSION['historyimgnamesuccess'] = $sqlPreventInjection;

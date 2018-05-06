@@ -21,10 +21,10 @@
     if (isset($_POST['deleteaccount'])) {
         
 
-        if (filter_var($_POST['deleteid'] , FILTER_VALIDATE_INT)) {
+        if (is_numeric($_POST['deleteid'])) {
             
             $UserID = sanitizedData($_POST['deleteid']);
-            $userIDSQlIPrevent = mysqli_escape_string($connection , $UserID);
+            $userIDSQlIPrevent = mysqli_real_escape_string($connection , $UserID);
             
             $sql = "SELECT ID FROM tbl_admin WHERE ID =". $userIDSQlIPrevent;
             $IDqueryResult = mysqli_query($connection , $sql);
@@ -41,7 +41,7 @@
                 header("location:users.php?admin");     
             }
 
-        } else if(!filter_var($_POST['deleteid'] , FILTER_VALIDATE_INT)) {
+        } else if(!is_numeric($_POST['deleteid'])) {
             mysqli_close($connection);
             $_SESSION['accountdeleteerror'] = "<span><strong class=\"white-text\">Input a Valid ID!</strong></span>\n";
             header("location:users.php?admin");

@@ -93,11 +93,19 @@
                             move_uploaded_file($filetmpname[$index] ,"../img/gallery/" . $_SESSION['albumtitlepath']."/".$filename[$index]);
                         }
                     }
+                    copy("../img/buttons/next.png" , "../img/gallery/" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/prev.png" , "../img/gallery/" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/loading.gif" , "../img/gallery/" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/close.png","../img/gallery/" . $_SESSION['albumtitlepath']);
                 } elseif (!file_exists("../img/gallery/" . $_SESSION['albumtitlepath'])) {
                     mkdir($_SESSION['mainpath'].$_SESSION['albumtitlepath'] , 0755);
                     for($index = 0 ; $index < count($filename); $index++) {
                         move_uploaded_file($filetmpname[$index], "../img/gallery/" . $_SESSION['albumtitlepath']."/".$filename[$index]);
                     }
+                    copy("../img/buttons/next.png" , "../img/gallery/" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/prev.png" , "../img/gallery" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/loading.gif" , "../img/gallery/" . $_SESSION['albumtitlepath']);
+                    copy("../img/buttons/close.png","../img/gallery/" . $_SESSION['albumtitlepath']);
                 }
             }
 

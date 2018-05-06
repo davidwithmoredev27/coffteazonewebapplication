@@ -5,7 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,8 +18,8 @@
     <meta property="og:title" content="coffteazone Cavite City">
     <meta property="og:site_name" content="Coffteazone">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
-    <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" type="text/css" href="css/materialize.min.css"> -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -260,15 +261,15 @@
             <a href="https://www.facebook.com/CoffteaZone" class="col s12 m2 l3 xl3 center-align"><img src="img/logo/FACEBOOKLOGO.png" width="30px" height="100%" alt=""></a>
         </div>
     </footer>
-    <script  type="text/javascript" src="js/jquery.min.js"></script>
-    <script  type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    
     <script src="js/main.js" type="text/javascript"></script>
 
 </body>

@@ -39,7 +39,7 @@
                         die;
                     } elseif (strlen($_POST['editnameconfirm']) > 0 && !is_numeric($_POST['editnameconfirm'][0])) {
                         $name = sanitizedData($_POST['editnameconfirm']);
-                        $sqlPreventInjection = mysqli_escape_string($connection , $name);
+                        $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
                             $_SESSION['historyeditconfirm'] = $sqlPreventInjection;
@@ -78,7 +78,7 @@
                         die;
                     } elseif (strlen($_POST['editdescriptionconfirm']) > 0 && !is_numeric($_POST['editdescriptionconfirm'][0])) {
                         $name = sanitizedData($_POST['editdescriptionconfirm']);
-                        $sqlPreventInjection = mysqli_escape_string($connection , $name);
+                        $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 255 &&  strlen($sqlPreventInjection) !== 0) {
                             $_SESSION['descriptioneditconfirm'] = $sqlPreventInjection;

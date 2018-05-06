@@ -67,7 +67,7 @@
 
         if (isset($_POST['password']) && !empty($_POST['password'])) {
             $passwordSanitized = sanitizedData($_POST['password']);
-            $password = mysqli_escape_string($connection , $passwordSanitized);
+            $password = mysqli_real_escape_string($connection , $passwordSanitized);
             
             $encCost = array("cost" => 11);
 

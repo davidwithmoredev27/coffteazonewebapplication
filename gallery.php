@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,8 +17,9 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="coffteazone Cavite City">
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="projection, screen">
+    <!-- <link rel="stylesheet" type="text/css" href="css/materialize.min.css" media="projection, screen"> -->
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <link rel="stylesheet" type="text/css" href="css/lightbox.min.css">
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -34,8 +35,37 @@
             height:145px;
             padding:0 !important;
         }
+        
+        
+        @media only screen and (min-width:1024px) {
+            .imagelist {
+                display:block;
+                overflow:hidden !important;
+                
+                -webkit-transition:all .2s ease-in-out;
+                -moz-transition:all .2s ease-in-out;
+                -khtml-transition:all .2s ease-in-out;
+                -o-transition:all .2s ease-in-out;
+                -ms-transition:all .2s ease-in-out;
+                transition:all .2s ease-in-out;
+            }
+              .imagelist:hover {
+                -webkit-transform:scale(1.15); /* Safari and Chrome */
+                -moz-transform:scale(1.15); /* Firefox */
+                -ms-transform:scale(1.15); /* IE 9 */
+                -o-transform:scale(1.15); /* Opera */
+                transform:scale(1.15);
+                position:relative;
+                box-shadow:0px 0px 10px #000;
+                margin:0 auto;
+                z-index:3;
+                height:250px !important;
+                width:250px !important;
+            }
+        }
       
     </style>
+
 </head>
 <body>
     <noscript class="no-js">
@@ -146,14 +176,14 @@
                 if (mysqli_num_rows($result) > 0):
                     while($rows = mysqli_fetch_assoc($result)) {
                         // put all the neccessary title in the tables where titles put on
-                        $galleryTitles[$counter] = $rows['title'];
+                        $galleryTitles[$counter] = strtolower($rows['title']);
                     
                         $counter++;
                     }
                 endif;
                 for($indexs = 0 ; $indexs < count($galleryTitles) ; $indexs++) {
             
-                    echo "<div class=\"col s12 m12 l12 xl12 \">\n";
+                    echo "<div class=\"col s12 m12 l12 xl12 containerpadding\">\n";
                     
                     $sqlpath = "SELECT path FROM tbl_gallery_album_".$galleryTitles[$indexs];
                     $sqlfirstPath = "SELECT path FROM tbl_gallery_album_".$galleryTitles[$indexs]. " LIMIT 1";
@@ -169,16 +199,17 @@
                     if (mysqli_num_rows($GaleryTitleResult) > 0) {
                         while ($rows = mysqli_fetch_assoc($GaleryTitleResult)) {
                             $title = $rows['title'];
+                        
                         }
-                        echo "<div class=\"row\">\n";
+                        echo "<div class=\"row \">\n";
                             echo "<div class=\"col s12 m12 l12 xl12 gallery\">\n";
                                 echo "<div class=\"row\">\n";
                                     echo "<div class=\"col s12 m12 l12 xl12\">\n";
-                                        echo "<h5 class=\"center-align\" style=\"text-transform:capitalize\">".$title."</h5>\n";
+                                        echo "<h5 class=\"center-align titleAlbum\" style=\"text-transform:capitalize\">".$title."</h5>\n";
                                     echo "</div>\n";
                                 echo "</div>\n";
                                 echo "<div class=\"row\">\n";
-                                    echo "<div class=\"col s12 m12 l8 xl8 gallerycontainer\">\n";
+                                    echo "<div class=\"col s12 m12 l12 xl12 gallerycontainer\">\n";
                                         if(mysqli_num_rows($pathResult) > 0) {
                                             while ($rows = mysqli_fetch_assoc($pathResult)) {
                                                 echo "<div class=\"col s6 m6 l2 xl2 box\" style=\"border:1px solid black\">\n";
@@ -188,25 +219,19 @@
                                         }    
                                     echo "</div>\n";
 
-                                    echo "<div class=\"col s12 m12 l4 xl4\">\n";
-                                        echo "<div class=\"row\">\n";
-                                            if (mysqli_num_rows($sqlfirstPathResult) > 0) {
-                                                while ($rows = mysqli_fetch_assoc($sqlfirstPathResult)) {
-                                                    echo "<div class=\"col s12 m12 l12 xl12\" style=\"padding:0px;border:1px solid black ;height:350px;\">\n";
-                                                    echo     "<img class=\"currentimg\" src=\"\" width=\"100%\" height=\"100%\" alt=\"\">\n";
-                                                    echo "</div>";
-                                                    echo  "<div class=\"col s12 m12 l12 xl12\" style=\"height:auto;\">\n";
-                                                        echo  "<div class=\"col s6 m6 l6 xl6\">\n";
-                                                            echo  "<p class=\"center-align\" style=\"font-size:2em;\"><span class=\"leftarrow\"><b>&lt;</b></span></p>\n";
-                                                        echo  "</div>\n";
-                                                         echo  "<div class=\"col s6 m6 l6 xl6\">\n";
-                                                            echo  "<p class=\"center-align\" style=\"font-size:2em;\"><span class=\"rightarrow\"><b>&gt;</b></span></p>\n";
-                                                        echo  "</div>\n";
-                                                    echo  "</div>\n";
-                                                }
-                                            }
-                                        echo "</div>\n";
-                                    echo "</div>\n";
+                                    // echo "<div class=\"col s12 m12 l4 xl4\">\n";
+                                    //     echo "<div class=\"row\">\n";
+                                    //         if (mysqli_num_rows($sqlfirstPathResult) > 0) {
+                                    //             while ($rows = mysqli_fetch_assoc($sqlfirstPathResult)) {
+                                    //                 echo "<div class=\"col s12 m12 l12 xl12\" style=\"padding:0px;border:1px solid black ;height:350px;\">\n";
+                                    //                 echo     "<img class=\"currentimg\" src=\"\" width=\"100%\" height=\"100%\" alt=\"\">\n";
+                                    //                 echo "</div>";
+                                    //                 echo  "<div class=\"col s12 m12 l12 xl12\" style=\"height:auto;\">\n";
+                                    //                 echo  "</div>\n";
+                                    //             }
+                                    //         }
+                                    //     echo "</div>\n";
+                                    // echo "</div>\n";
                                 echo "</div>\n";
                             echo "</div>\n";
                         echo "</div>\n";
@@ -236,162 +261,24 @@
         </div>
     </footer>
     <!-- for development javascript file -->
-    <script  type="text/javascript" src="js/jquery.min.js"></script>
-    <script  type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/materialize.min.js"></script> -->
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
-    <script src="js/main.js" type="text/javascript"></script>      
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    <script src="js/lightbox.min.js" type="text/javascript"></script>
+    <script src="js/main.js" type="text/javascript"></script>
     <script type="text/javascript">
-        var counter = 0;
-        window.onload = function() {
-            var Stylesheet = {
-
-            };
-            var right = document.getElementsByClassName("rightarrow");
-            var left = document.getElementsByClassName("leftarrow");
-            var box = document.getElementsByClassName("box");
-            var galleryContent = document.getElementsByClassName("gallerycontainer");
-            var imageList = document.getElementsByClassName("imagelist");
-            var currentImage = document.getElementsByClassName("currentimg");
-            var boxlist = null;
-            var boxlistContainer = [];
-            var boxlistCounter = [];
-            var arrowLength = right.length;
-
-
-
-            /*var toLeft = function () {
-                for(var i = 0 ; i < arrowLength ; i++) {
-                    if (this == left[i]) {
-                        var boxlist = galleryContent[i].children;
-                        if (boxlistCounter[i] == undefined) {
-                            boxlistCounter = boxlist.length;
-                        } 
-                        console.log(boxlistCounter[i]);
-                        
-                    }
-
-                }
-            };*/
-            var toLeft = function() {
-                var boxlist = galleryContent[0].children;
-                for (var i = boxlist.length; i >= 0; i--) {
-                    if (this == left[i]) {
-
-                        if (boxlistCounter[i] === undefined) {
-                            boxlistCounter[i] = boxlist.length - 1;
-                            //console.log(boxlistCounter[i]);
-                            console.log("undefinedboxlistCounter[" + i + "] = " + boxlistCounter[i]);
-                            currentImage[i].src = imageList[boxlistCounter[i]].src;
-                            var boxlistLast = 0;
-                            boxlist[boxlistLast].style.border = "1px solid blue";
-                            boxlist[boxlistCounter[i]].style.border = "1px solid red";
-                            
-                        } else if (boxlistCounter[i] == boxlist.length - 1) {
-							boxlistCounter[i]--;
-							console.log("lengthboxlistCounter[" + i + "] = " + boxlistCounter[i]);
-                            currentImage[i].src = imageList[boxlistCounter[i]].src;
-                            
-                        } else if (boxlistCounter[i] < boxlist.length - 1 && boxlistCounter[i] != 0) {
-							boxlistCounter[i]--;
-                            var boxlistincrement = boxlistCounter[i] + 1;
-                            console.log("lessthanboxlistCounter[" + i + "] = " + boxlistCounter[i])
-                            boxlist[boxlistincrement].style.border = "1px solid blue";
-                            boxlist[boxlistCounter[i]].style.border = "1px solid red";
-                            currentImage[i].src = imageList[boxlistCounter[i]].src;
-                            
-                        } else if (boxlistCounter[i] == 0) {
-                            boxlistCounter[i] = boxlist.length - 1;
-							//var boxlistLast = boxlistCounter[i] + 1;
-                            currentImage[i].src = imageList[boxlistCounter[i]].src;
-                            console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i])
-                            //boxlist[boxlistLast].style.border = "1px solid black";
-                            
-                            console.log("Counter" + boxlistCounter[i])
-
-                        }
-                    }
-                }
-            };
-            var toRight = function() {
-                for (var i = 0; i < arrowLength; i++) {
-                    if (this == right[i]) {
-						console.log("boxlistCounter value = " + boxlistCounter[i]);
-                        var boxlist = galleryContent[0].children;
-                        if (boxlistCounter[i] === undefined) {
-                            boxlistCounter[i] = 1;
-                            console.log("undefinedboxlistCounter[" + i + "] = " + boxlistCounter[i])
-                            currentImage[i].src = imageList[boxlistCounter[i]].src;
-                        
-						console.log("Eto" + boxlistCounter[i]);
-						}
-						else if (boxlistCounter[i] == 0){
-							boxlistCounter[i]++;
-							console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i]);
-							currentImage[i].src = imageList[boxlistCounter[i]].src;
-							
-							console.log("Eto" + boxlistCounter[i]);
-						}
-						else if (boxlistCounter[i] >= 1 && boxlistCounter[i] != boxlist.length - 1) {
-							boxlistCounter[i]++;
-                            var boxlistdecrement = boxlistCounter[i] - 1;
-                            console.log("&&boxlistCounter[" + i + "] = " + boxlistCounter[i])
-                            boxlist[boxlistdecrement].style.border = "1px solid black";
-							currentImage[i].src = imageList[boxlistCounter[i]].src;
-							
-                        console.log("Eto" + boxlistCounter[i]);
-						}
-						else if (boxlistCounter[i] == boxlist.length -1) {
-                            boxlistCounter[i] = 0;
-							//var boxlistLast = boxlistCounter[i] - 1;
-                            console.log("lenghtboxlistCounter[" + i + "] = " + boxlistCounter[i])
-                           // boxlist[boxlistLast].style.border = "1px solid black";
-							currentImage[i].src = imageList[boxlistCounter[i]].src;
-                            
-							console.log("Eto" + boxlistCounter[i]);
-							}
-						
-                       /*
-					    
-                        //boxlist[boxlistCounter[i]].style.border = "1px solid red";
-                        //currentImage[i].src = imageList[boxlistCounter[i]].src;
-						
-                        else if (boxlistCounter[i] > 0) {
-
-                            var boxlistdecrement = boxlistCounter[i] - 1;
-                            console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i])
-                            boxlist[boxlistdecrement].style.border = "1px solid black";
-							currentImage[i].src = imageList[boxlistCounter[i]].src;
-							boxlistCounter[i]++;
-                        }
-
-                       else if (boxlistContainer[i] == 0){
-							
-							console.log("boxlistCounter[" + i + "] = " + boxlistCounter[i]);
-							currentImage[i].src = imageList[boxlistCounter[i]].src;
-							boxlistCounter[i]++;
-						}*/
-                    }
-                }
-            };
-
-
-            var loadAllEvents = function(evtOne, evtTwo) {
-
-
-                for (var i = 0; i < evtOne.length; i++) {
-                    evtOne[i].addEventListener("click", toLeft, false);
-                    evtTwo[i].addEventListener("click", toRight, false);
-                }
-            };
-            // load all the possible events
-            loadAllEvents(left, right);
-
-        };
+         var titleAlbum = document.getElementsByClassName("titleAlbum");         
+         for (var i = 0 ;i < titleAlbum.length ; i++) {
+                var title = titleAlbum[i].textContent; 
+            if(title.search("_")) {
+                    var text = titleAlbum[i].textContent;
+                titleAlbum[i].textContent = text.replace("_" , " ");
+            }
+        }
     </script>
 </body>
 </html>

@@ -941,4 +941,10 @@ width="100px */
   padding-left: 83px !important;
 }
 
+.paginationbox {
+  padding-left: 30%;
+  padding-right: 30%;
+  width: 100%;
+}
+
 /*# sourceMappingURL=main.css.map */

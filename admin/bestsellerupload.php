@@ -138,16 +138,23 @@
 
             if (isset($_POST['bestsellerprice'])) {
 
-                if (filter_var($_POST['bestsellerprice'] , FILTER_VALIDATE_INT)) {
+                if (is_numeric($_POST['bestsellerprice'])) {
 
                     $price = sanitizedData($_POST['bestsellerprice']);
-                    $preventSQLInjection = mysqli_escape_string($connection , $price);
-                
+                    $preventSQLInjection = mysqli_real_escape_string($connection , $price);
+                    
+                    if ($preventSQLInjection < 0) {
+                        mysqli_close($connection);
+                        $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
+                                                "</strong>\n";
+                        header("location:bestseller.php");die();
+                    }
                     $priceSuccess = $preventSQLInjection;
     
 
 
-                } else if (!filter_var($_POST['bestsellerprice'] , FILTER_VALIDATE_INT)) {
+                } else if (!is_numeric($_POST['bestsellerprice'])) {
                     mysqli_close($connection);
                     $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\">\n".
                                             "<strong class=\"white-text\">Please use a number for the price!</strong>\n".

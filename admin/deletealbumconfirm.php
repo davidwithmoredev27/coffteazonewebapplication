@@ -34,7 +34,7 @@
 
             if (isset($_POST['selectalbum'])) {
                 $title = sanitizedData($_POST['selectalbum']);
-                $preventSQLInjection = mysqli_escape_string($connection, $title);
+                $preventSQLInjection = mysqli_real_escape_string($connection, $title);
                 $sql = "SELECT title FROM tbl_gallery_album_title WHERE title = '$preventSQLInjection'";
                 $result = mysqli_query($connection , $sql);
 

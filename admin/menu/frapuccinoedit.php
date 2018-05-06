@@ -28,9 +28,9 @@
 
             if (isset($_POST['menueditid'])) {
 
-                if (filter_var($_POST['menueditid'], FILTER_VALIDATE_INT)){
+                if (is_numeric($_POST['menueditid'])){
                     $menu = sanitizedData($_POST['menueditid']);
-                    $sqlInjectionPrevention = mysqli_escape_string($connection , $menu);
+                    $sqlInjectionPrevention = mysqli_real_escape_string($connection , $menu);
                     $_SESSION['idstay'] = $sqlInjectionPrevention;
 
                     $sql = "SELECT * FROM ".$_SESSION['database_name']. " WHERE id =". $sqlInjectionPrevention;
@@ -50,7 +50,7 @@
                         $_SESSION['displaycaption'] = $rows['caption'];
                         $_SESSION['displaypath'] = $rows['path'];
                     }
-                } elseif (!filter_var($_POST['menueditid'], FILTER_VALIDATE_INT)) {
+                } elseif (!is_numeric($_POST['menueditid'])) {
                     $_SESSION['menuuploaderror'] = "<span><strong class=\"white-text\">Enter valid ".$_SESSION['pagename']." id!</strong></span>\n";
                     header("location:". $_SESSION['pagelink']);
                     die();
@@ -102,7 +102,7 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -111,8 +111,8 @@
     <link rel="shortcut icon" href="../../img/logo/favicon.ico" type="image/x-icon" />
     <title>Admin <?php echo $_SESSION['pagename']; ?> edit</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -173,7 +173,7 @@
            </div>
        </div>
     </noscript>
-     <header class="headerstyle">
+    <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
             <li><a href="../editaccount.php">Change Password</a></li>
             <li><a href="../logout.php">Log Out</a></li> 
@@ -275,6 +275,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                 <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">Services
+                                                <i class="tiny material-icons left white-text">motorcycle</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="../ktvservices.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="../martinasservices.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -314,7 +337,29 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                            
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">FAQ
+                                                <i class="tiny material-icons left white-text">question_answer</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="../ktvfaq.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="../martinasfaq.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -405,12 +450,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="../editaccount.php" class="white-text left-align">Change Password
+                                    <a href="../editaccount.php" class="white-text left-align" style="font-size:.8em !important;">Change Pass.
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="../logout.php" class="white-text left-align">Logout
+                                    <a href="../logout.php" class="white-text left-align" style="font-size:.8em !important;">Logout
                                         <i class="tiny material-icons white-text left">input</i>
                                     </a>
                                 </li>
@@ -548,7 +593,7 @@
                         <div class="row">
                         <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                 <div class="row">
-                                    <button type="submit" name="menusubtmiconfirm"  class="btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
+                                    <button type="submit" name="menusubtmiconfirm"  class="add btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -656,7 +701,7 @@
                         <div class="row">
                             <div class="input-field col s12 m12 l8 xl8 offset-l5 offset-xl5">
                                 <div class="row">
-                                    <button type="submit" name="menusubtmiconfirm"  class="btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
+                                    <button type="submit" name="menusubtmiconfirm"  class="delete btn waves-light waves-effect col s6 m6 offset-s3 offset-m3 xl4 l4">Update</button>
                                 </div>
                             </div>
                         </div>
@@ -678,6 +723,39 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     
     <script src="../../js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
+
+            var deleteData = function() {
+                var click = document.getElementsByClassName("delete");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want To delete this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            var addData = function() {
+                var click = document.getElementsByClassName("add");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to add this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            window.onload  = function () {
+                addData();
+                deleteData();
+            };
+        })();
+    </script>
 
 </body>
 </html>

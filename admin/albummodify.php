@@ -112,7 +112,7 @@
 
             if (isset($_POST['selectalbum'])) {
                 $option = sanitizedData($_POST['selectalbum']);
-                $preventSQlinjection = mysqli_escape_string($connection , $option);
+                $preventSQlinjection = mysqli_real_escape_string($connection , $option);
                 $sql = "SELECT title FROM tbl_gallery_album_title WHERE title = '".$preventSQlinjection."'";
                 $result = mysqli_query($connection , $sql);
 

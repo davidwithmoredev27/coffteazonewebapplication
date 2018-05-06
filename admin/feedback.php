@@ -16,17 +16,17 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
-    <title>Admin Feedback</title>
+    <title>Admin | Feedback</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -150,6 +150,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                 <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">Services
+                                                <i class="tiny material-icons left white-text">motorcycle</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvservices.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasservices.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -189,7 +212,29 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                            
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">FAQ
+                                                <i class="tiny material-icons left white-text">question_answer</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvfaq.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasfaq.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -280,12 +325,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                    <a href="editaccount.php" class="white-text left-align" style="font-size:.8em !important;">Change Pass.
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="logout.php" class="white-text left-align">Logout
+                                    <a href="logout.php" class="white-text left-align" style="font-size:.8em !important;">Logout
                                         <i class="tiny material-icons white-text left">input</i>
                                     </a>
                                 </li>
@@ -354,13 +399,27 @@
                                     <th class="center-align" colspan="2">Options</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <?php
-                                    
-                                    $sql = "SELECT * FROM tbl_feedback";
+                            <tbody id="feedbackdata">
+                                <?php    
+                                    $sql = "SELECT * FROM tbl_feedback ORDER BY feedbackID DESC";
                                     $result = mysqli_query($connection , $sql);
+                                    $number_of_results  = mysqli_num_rows($result);
+                                    $results_per_page = 10;
+                                    $number_of_pages = ceil ($number_of_results  / $results_per_page);
                                     $counter = 1;
-                                    while($rows = mysqli_fetch_assoc($result)) {
+
+                                    if (!isset($_GET['page'])) {
+                                        $page = htmlspecialchars(1);
+                                    } elseif (isset($_GET['page'])) {
+                                        $page = htmlspecialchars($_GET['page']);
+                                    }
+
+                                    $this_page_first_result =  ($page - 1) * $results_per_page;
+
+                                    $sql = "SELECT * FROM tbl_feedback ORDER BY feedbackID DESC LIMIT  ". $this_page_first_result . " , " . $results_per_page;
+                                    
+                                    $result = @mysqli_query($connection , $sql);
+                                    while($rows = @mysqli_fetch_assoc($result)) {
                                         echo "<tr>\n";
                                         echo "<td class=\"center-align\">".$counter."</td>\n";
                                         if (strlen($rows['name']) > 12) {
@@ -369,7 +428,7 @@
                                             $name = $rows['name'];
                                         }
                                         echo "<td class=\"center-align\">".$name."</td>\n";
-                                         if (strlen($rows['email']) > 12) {
+                                            if (strlen($rows['email']) > 12) {
                                             $email = substr($rows['email'],0,12)."...";
                                         } elseif (strlen($rows['email'] <= 12)) {
                                             $email = $rows['email'];
@@ -386,6 +445,7 @@
                                         }
                                         echo "<td class=\"center-align\">".$message."</td>\n";
                                         echo "<td class=\"center-align\">".$rows['dateandtime']."</td>\n";
+                                    
                                         echo "<td class=\"center-align\">".
                                                 "<form method=\"POST\" action=\"viewfeedback.php\">\n".
                                                     "<input type=\"hidden\" name=\"feedbackviewid\" value=\"".$rows['feedbackID'] . "\">\n".
@@ -405,21 +465,99 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <ul class="pagination">
+                                    <?php
+                                        if ($page > 10) {
+                                             echo "<li class=\"waves-effect\"><a href=\"feedback.php?page=".($page - 1)."\"><i class=\"material-icons\">chevron_left</i></a></li>\n";
+                                        }
+                                        for ($page = 1 ; $page <= $number_of_pages; $page++) {
+                                            //echo $page;
+                                            echo "<li class=\"pagelink waves-effect active teal lighten-1\"><a href=\"feedback.php?page=".$page."\">".
+                                            $page."</a></li>\n";
+                                        }
+                                        
+                                    ?> 
+                                </ul>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </main>
     <!-- for development javascript file -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     <script src="../js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
+
+            var deleteData = function() {
+                var click = document.getElementsByClassName("delete");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want To delete this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            var addData = function() {
+                var click = document.getElementsByClassName("add");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to add this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+
+            var updateData = function() {
+                var click = document.getElementsByClassName("update");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to update this album?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            
+            var Pagination = function() {
+                var pageLink = document.getELementsByClassName("pagelink");
+                console.log(pageLink);
+                // var pageLinkLength = pageLink.length;
+
+                // if (pageLinkLength === 1) {
+                //     pageLink[0].style.margin = "0 auto !important";
+                // }
+            };
+
+
+            window.onload  = function () {
+                addData();
+                deleteData();
+                updateData();
+                Pagination();
+            };
+        })();
+    </script>
 
 </body>
 </html>

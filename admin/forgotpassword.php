@@ -66,13 +66,13 @@
         
         if (isset($_POST['securityquestion']) && !empty($_POST['securityquestion']))  {
             $securityValue = sanitizedData($_POST['securityquestion']);
-            $_SESSION['securityQuestionval'] = mysqli_escape_string($connection , $securityValue);
+            $_SESSION['securityQuestionval'] = mysqli_real_escape_string($connection , $securityValue);
 
 
             if ($_SESSION['securityQuestionval'] == 1) {
                 if (isset($_POST['answer']) && !empty($_POST['answer'])) {
                     $answerValue = sanitizedData($_POST['answer']);
-                    $answerpreventSql = mysqli_escape_string($connection ,$answerValue);
+                    $answerpreventSql = mysqli_real_escape_string($connection ,$answerValue);
                     $sql = "SELECT year FROM tbl_admin";
                     $result = mysqli_query($connection , $sql);
                     while ($rows = mysqli_fetch_assoc($result)) {
@@ -90,7 +90,7 @@
             } elseif ($_SESSION['securityQuestionval'] == 2) {
                  if (isset($_POST['answer']) && !empty($_POST['answer'])) {
                     $answerValue = sanitizedData($_POST['answer']);
-                    $answerpreventSql = mysqli_escape_string($connection ,$answerValue);
+                    $answerpreventSql = mysqli_real_escape_string($connection ,$answerValue);
                     $sql = "SELECT color FROM tbl_admin";
                     $result = mysqli_query($connection , $sql);
                     while ($rows = mysqli_fetch_assoc($result)) {
@@ -108,7 +108,7 @@
             } elseif ($_SESSION['securityQuestionval'] == 3) {
                 if (isset($_POST['answer']) && !empty($_POST['answer'])) {
                     $answerValue = sanitizedData($_POST['answer']);
-                    $answerpreventSql = mysqli_escape_string($connection ,$answerValue);
+                    $answerpreventSql = mysqli_real_escape_string($connection ,$answerValue);
                     $sql = "SELECT pet FROM tbl_admin";
                     $result = mysqli_query($connection , $sql);
                     while ($rows = mysqli_fetch_assoc($result)) {
@@ -203,17 +203,17 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon"/>
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon"/>
-    <title>Forgot Password</title>
+    <title>Admin | Forgot Password</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen , projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen , projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/logofixed.css">
     <style type="text/css">
@@ -315,14 +315,14 @@
         </div>
     </div>
     <!-- for development javascript file -->
-    <script  type="text/javascript" src="../js/jquery.min.js"></script>
-    <script  type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script  type="text/javascript" src="../js/jquery.min.js"></script>
+    <script  type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/validation.js" type="text/javascript"></script>
 </body>

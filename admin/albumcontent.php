@@ -16,7 +16,7 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,40 +24,9 @@
     <link rel="icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <title>Album <?php echo $_SESSION['selectedtitle'];?></title>
-    <script type="text/javascript">
-        window.onload = function() {
-            var AjaxCall = function () {
-                var ajax;
-                if (window.XMLHttpRequest) {
-                    ajax = new XMLHttpRequest();
-                } else if (!window.XMLHttpRequest) {
-                   ajax = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                return ajax;
-            };
-
-            var searchBox = document.getElementById("searchbox");
-            
-            var showImage = function() {
-                var outputmessage = document.getElementById("outputmessage");
-               var ajaxhttp =  AjaxCall();
-                
-               ajaxhttp.onreadystatechange = function () {
-                   if (this.status == 200 && this.readyState == 4) {
-                       outputmessage.innerHTML = this.responseText;
-                       console.log(outputmessage);
-                   }
-               };
-               ajaxhttp.open("POST" , "test.php?q"  , true);
-               ajaxhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-               ajaxhttp.send();
-            };
-            searchBox.addEventListener("keydown" , showImage , false);
-        };
-    </script>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -182,6 +151,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                 <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">Services
+                                                <i class="tiny material-icons left white-text">motorcycle</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvservices.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasservices.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -221,7 +213,29 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                            
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">FAQ
+                                                <i class="tiny material-icons left white-text">question_answer</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvfaq.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasfaq.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -312,12 +326,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                    <a href="editaccount.php" class="white-text left-align" style="font-size:.8em !important;">Change Pass.
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="logout.php" class="white-text left-align">Logout
+                                    <a href="logout.php" class="white-text left-align" style="font-size:.8em !important;">Logout
                                         <i class="tiny material-icons white-text left">input</i>
                                     </a>
                                 </li>
@@ -377,6 +391,7 @@
                         <tbody>
                             <?php
                                 $sql = "SELECT * FROM tbl_gallery_album_".$_SESSION['selectedtitle'];
+                        
                                 $result = mysqli_query($connection , $sql);
                                 $counter = 1;
                                 if (mysqli_num_rows($result) > 0) {
@@ -390,7 +405,7 @@
                                             "\t\t\t\t\t\t\t<td class=\"center-align\">\n".
                                                 "\t\t\t\t\t\t\t\t<form action=\"deleteimage.php\" method=\"post\">\n".
                                                     "\t\t\t\t\t\t\t\t\t<input type=\"hidden\"  name=\"deleteid\" value=\"".$rows['id']."\">\n".
-                                                    "\t\t\t\t\t\t\t\t\t<button name=\"deletesubmit\" type=\"submit\" style=\"font-size:.8em;\"class=\"btn red darken-3 waves-light waves-effect\">Delete</button>\n".
+                                                    "\t\t\t\t\t\t\t\t\t<button name=\"deletesubmit\" type=\"submit\" style=\"font-size:.8em;\"class=\"delete btn red darken-3 waves-light waves-effect\">Delete</button>\n".
                                                 "\t\t\t\t\t\t\t\t</form>\n"
                                             ."\t\t\t\t\t\t\t</td>\n".
                                         "\n\t\t\t\t\t\t\t\t</tr>\n";
@@ -405,16 +420,48 @@
         </div>
    </main>
     <!-- for development javascript file -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjsi.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     <script src="../js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
+
+            var deleteData = function() {
+                var click = document.getElementsByClassName("delete");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want To delete this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            var addData = function() {
+                var click = document.getElementsByClassName("add");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to add this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            window.onload  = function () {
+                addData();
+                deleteData();
+            };
+        })();
+    </script>
     
 </body>
 

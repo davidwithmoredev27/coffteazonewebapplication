@@ -94,7 +94,7 @@
 
             if (isset($_POST['bestsellertitleconfirm'])) {
                 $title = sanitizedData($_POST['bestsellertitleconfirm']);
-                $preventSQLInjection = mysqli_escape_string($connection , $title);
+                $preventSQLInjection = mysqli_real_escape_string($connection , $title);
                 //die($preventSQLInjection);
                 if (strlen($preventSQLInjection) < 20 || strlen($preventSQLInjection) == 20) {
                     
@@ -122,7 +122,7 @@
 
             if (isset($_POST['bestsellerdecriptionconfirm'])) {
                 $description = sanitizedData($_POST['bestsellerdecriptionconfirm']);
-                $preventSQLInjection = mysqli_escape_string($connection , $description);
+                $preventSQLInjection = mysqli_real_escape_string($connection , $description);
 
                 if (strlen($preventSQLInjection) < 50 || strlen($preventSQLInjection) == 50) {
                     
@@ -163,7 +163,7 @@
                         die();
                     }
                     $price = sanitizedData($_POST['bestsellerpriceconfirm']);
-                    $preventSQLInjection = mysqli_escape_string($connection , $price);
+                    $preventSQLInjection = mysqli_real_escape_string($connection , $price);
                 
                     $priceSuccess = $preventSQLInjection;
     

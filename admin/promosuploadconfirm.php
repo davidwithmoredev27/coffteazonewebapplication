@@ -100,7 +100,7 @@
                     }
                     $_SESSION['confirmtitle'] = sanitizedData($_POST['menuconfirmtitle']);
                   
-                    $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['confirmtitle']);
+                    $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection ,  $_SESSION['confirmtitle']);
     
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
@@ -143,7 +143,7 @@
                         } 
                     }
                     $_SESSION['confirmdescription'] = sanitizedData($_POST['menuconfirmcaption']);
-                    $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmdescription']);
+                    $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmdescription']);
         
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
                     

@@ -8,3 +8,6 @@ servername:coffteazone.x10host.com
 mysql username:cofftea2_admin
 mysql password:coffteazone
 dbname:cofftea2_coffteadb
+ftp-account:dave@coffteazone.x10host.com
+ftp-servername:ftp.coffteazone.x10host.com
+ftp-password:cofftea

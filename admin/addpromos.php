@@ -92,7 +92,7 @@
                         die;
                     } elseif (strlen($_POST['promostitle']) > 0 && !is_numeric($_POST['promostitle'][0])) {
                         $title = sanitizedData($_POST['promostitle']);
-                        $sqlPreventInjection = mysqli_escape_string($connection , $title);
+                        $sqlPreventInjection = mysqli_real_escape_string($connection , $title);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
                             $_SESSION['promostitleSuccess'] = $sqlPreventInjection; 

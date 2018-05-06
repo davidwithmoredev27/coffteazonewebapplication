@@ -255,7 +255,15 @@ main {
   }
 }
 .gallery {
-  background-color: rgba(62, 39, 25, 0.8);
+  background-color: rgba(255, 255, 255, 0.7);
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -ms-border-radius: 10px;
+  border-radius: 10px;
+  padding-left: 1.5rem !important;
+  padding-right: 1.5rem !important;
   -ms-box-shadow: 0px 0px 15px #000;
   -webkit-box-shadow: 0px 0px 15px #000;
   -moz-box-shadow: 0px 0px 15px #000;
@@ -263,6 +271,14 @@ main {
   -khtml-box-shadow: 0px 0px 15px #000;
   box-shadow: 0px 0px 15px #000;
   color: white;
+}
+.gallery .row .col h5 {
+  color: rgba(62, 39, 35, 0.9);
+}
+
+.containerpadding {
+  padding-left: 50px !important;
+  padding-right: 50px !important;
 }
 
 .leftarrow:hover,
@@ -1319,6 +1335,19 @@ input::-ms-input-placeholder {
   background-color: none;
 }
 
+@media only screen and (min-width: 1024px) and (max-width: 1250px) {
+  .slick-next {
+    position: absolute;
+    left: 66rem !important;
+    background-image: url("../img/buttons/rightlogo.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  .slick-next:active {
+    background-color: none;
+  }
+}
 .slick-dots {
   display: none !important;
 }

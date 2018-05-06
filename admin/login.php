@@ -139,7 +139,7 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,8 +148,8 @@
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon"/>
     <title>Coffteazone Login</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen , projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen , projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <link rel="stylesheet" type="text/css" href="../css/logofixed.css">
 </head>
@@ -230,14 +230,14 @@
     </div>
     
     <!-- for development javascript file -->
-    <script  type="text/javascript" src="../js/jquery.min.js"></script>
-    <script  type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script  type="text/javascript" src="../js/jquery.min.js"></script>
+    <script  type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     <script src="../js/main.js" type="text/javascript"></script>
     <script src="../js/validation.js" type="text/javascript"></script>
 </body>

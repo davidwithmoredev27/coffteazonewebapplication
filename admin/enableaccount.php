@@ -24,10 +24,10 @@
         if (isset($_POST['enableaccount'])) {
             
             if (isset($_POST['enableid'])) {
-                if (filter_var($_POST['enableid'] , FILTER_VALIDATE_INT)) {
+                if (is_numeric($_POST['enableid'])) {
 
                     $userID = sanitizedData($_POST['enableid']);
-                    $preventSQLInjection = mysqli_escape_string($connection , $userID);
+                    $preventSQLInjection = mysqli_real_escape_string($connection , $userID);
 
                     $sql = "SELECT * FROM tbl_admin_disable WHERE id =". $preventSQLInjection;
                     $result = mysqli_query($connection  ,$sql);
@@ -55,7 +55,7 @@
                         header("location:users.php?admin");
                     }
 
-                } elseif (!filter_var($_POST['disableid'] , FILTER_VALIDATE_INT)) {
+                } elseif (!is_numeric($_POST['disableid'])) {
                     mysqli_close($connection);
                     $_SESSION['enableerror'] = "<span><strong class=\"white-text\">enter valid admin id!</strong></span>\n";
                     header("location:users.php?admin");

@@ -55,6 +55,20 @@
     }
 }
 
+@media only screen and (min-width:1024px) and (max-width:1250px) {
+    .slick-next {
+        position: absolute;
+        left: 66rem !important;
+        background-image: url("../img/buttons/rightlogo.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        &:active {
+            background-color: none;
+        }
+    }
+}
+
 .slick-dots {
     display: none !important;
 }

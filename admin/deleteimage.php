@@ -19,14 +19,15 @@ session_start();
         
             if (isset($_POST['deleteid'])) {
                 $deleteid = sanitizedData($_POST['deleteid']);
-                $preventSqlInjection = mysqli_escape_string($connection , $deleteid);
+                $preventSqlInjection = mysqli_real_escape_string($connection , $deleteid);
+                
                 if (is_numeric($preventSqlInjection)) {
                     $sql = "SELECT path FROM tbl_gallery_album_".$_SESSION['selectedtitle']. " WHERE id =". $preventSqlInjection;
                     $result = mysqli_query($connection, $sql);
                     while($rows = mysqli_fetch_assoc($result)) {
                         $path = $rows['path'];
                     }
-                    unli("../". $path);
+                    unlink("../". $path);
                     $sql = "DELETE FROM tbl_gallery_album_".$_SESSION['selectedtitle']." WHERE id = ".$preventSqlInjection;
                     mysqli_query($connection , $sql);
                     $_SESSION['albumimagesuccess'] = "<span class=\"center-align\"><strong class=\"white-text\">Image successfully deleted!</strong></span>\n";

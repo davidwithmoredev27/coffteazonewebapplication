@@ -18,7 +18,7 @@
 
             if (isset($_POST['selectalbum'])) {
                 $selectalbumData = sanitizedData($_POST['selectalbum']);
-                $preventSqlInjection = mysqli_escape_string($connection ,$selectalbumData);
+                $preventSqlInjection = mysqli_real_escape_string($connection ,$selectalbumData);
                 $sql = "SELECT * FROM tbl_gallery_album_title";
                 $result = mysqli_query($connection ,$sql);
                 if (mysqli_num_rows($result) > 0) {

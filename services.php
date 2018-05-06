@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
-        <script type="text/javascript" src="js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="icon" href="img/logo/favicon.ico" type="image/x-icon"/>
@@ -17,8 +18,8 @@
     <meta property="og:site_name" content="Coffteazone">
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet"> 
     <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection"> -->
-    <link rel="stylesheet" href="css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen , projection">
+    <!-- <link rel="stylesheet" href="css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <link rel="stylesheet" type="text/css" href="css/paddingfixed.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
@@ -74,9 +75,20 @@
                             <div class="col s12 m12 l12 x12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room1";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
                                         <li><img src="img/services/overlayimages/ktv1/ktv1.jpg"></li>
-                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -85,7 +97,7 @@
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                      <ul class="liststyle">
                                         <li class="left-align">Minimum of 5 persons.</li>
-                                        <li class="left-align">Maximum of 20 persons.</li>
+                                        <li class="left-align">Maximum of 30 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
                                         <li class="left-align">Consumable of food and drinks.</li>
@@ -103,9 +115,20 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room1";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                       <!--  <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg"></li>
                                         <li><img src="img/services/overlayimages/ktv1/ktv1.jpg"></li>
-                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li>
+                                        <li><img src="img/services/overlayimages/ktv1/ktv1.1.jpg"></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -114,7 +137,7 @@
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
                                         <li class="left-align">Minimum of 5 persons.</li>
-                                        <li class="left-align">Maximum of 20 persons.</li>
+                                        <li class="left-align">Maximum of 30 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
                                         <li class="left-align">Consumable of food and drinks.</li>
@@ -137,8 +160,19 @@
                             <div class="col s12 m12 l12 xl12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
-                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room2";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -146,7 +180,8 @@
                                 <div class="roomcontent">
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 15 persons.</li>
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 20 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
                                         <li class="left-align">Consumable of food and drinks.</li>
@@ -164,8 +199,19 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
-                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room2";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv2/ktv2.1.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv2/ktv2.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -173,7 +219,8 @@
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 15 persons.</li>
+                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <li class="left-align">Maximum of 20 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
                                         <li class="left-align">Consumable of food and drinks.</li>
@@ -195,9 +242,20 @@
                             <div class="col s12 m12 l12 xl12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room3";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>    
+                                        <!-- <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
                                         <li><img src="img/services/overlayimages/ktv3/ktv3.1.jpg" alt=""></li>
-                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -224,9 +282,20 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
+                                     `  <?php
+                                            $sql = "SELECT path FROM tbl_services_ktv_room3";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>    
+                                        <!-- <li><img src="img/services/overlayimages/ktv3/ktv3.jpg" alt=""></li>
                                         <li><img src="img/services/overlayimages/ktv3/ktv3.1.jpg" alt=""></li>
-                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li>
+                                        <li><img src="img/services/overlayimages/ktv3/ktv3.2.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -259,7 +328,17 @@
                             <div class="col s12 m12 l12 x12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                         <?php
+                                            $sql = "SELECT path FROM tbl_services_martinas_package1";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>    
                                     </ul>
                                 </div>
                             </div>
@@ -290,7 +369,18 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                        <?php
+                                            $sql = "SELECT path FROM tbl_services_martinas_package1";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -326,7 +416,18 @@
                             <div class="col s12 m12 l12 x12">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                         <?php
+                                            $sql = "SELECT path FROM tbl_services_martinas_package2";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -341,6 +442,7 @@
                                         <li class="left-align">Personal powder room.</li>
                                         <li class="left-align">Air condition.</li>
                                         <li class="left-align">Available room.</li>
+                                        <li class="left-align">Extension room.</li>
                                         <li class="left-align">Projector.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
@@ -359,7 +461,18 @@
                             <div class="col s12 m12 l5 xl5 offset-l1 offset-xl1">
                                 <div class="slider slideroverlay">
                                     <ul class="slides">
-                                        <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li>
+                                         <?php
+                                            $sql = "SELECT path FROM tbl_services_martinas_package2";
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result)) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo " <li><img src=\"".$rows['path']."\"></li>\n";
+                                                }
+                                            }
+                                        
+                                        ?>
+                                        <!-- <li><img src="img/services/overlayimages/ktv1/20180117_112828.jpg" alt=""></li> -->
                                     </ul>
                                 </div>
                             </div>
@@ -374,6 +487,7 @@
                                         <li class="left-align">Personal powder room.</li>
                                         <li class="left-align">Air condition.</li>
                                         <li class="left-align">Available room.</li>
+                                        <li class="left-align">Extension room.</li>
                                         <li class="left-align">Projector.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
@@ -587,15 +701,15 @@
         </div>
     </footer>
     <!-- for development javascript file -->
-    <script  type="text/javascript" src="js/jquery.min.js"></script>
-    <script  type="text/javascript" src="js/materialize.min.js"></script>
+    <!-- <script  type="text/javascript" src="js/jquery.min.js"></script>
+    <script  type="text/javascript" src="js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+
     <!-- <script src="js/main.js" type="text/javascript"></script> -->
     <script>
         $(document).ready(function(){

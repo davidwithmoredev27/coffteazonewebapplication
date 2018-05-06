@@ -102,7 +102,7 @@
                 if (is_numeric($_POST['mobileone'])) {
 
                     $name = sanitizedData($_POST['mobileone']);
-                    $sqlPreventInjection = mysqli_escape_string($connection , $name);
+                    $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                     
                     if (strlen($sqlPreventInjection) <= 15 &&  strlen($sqlPreventInjection) !== 0) {
                         $_SESSION['phoneoneSuccess'] = $sqlPreventInjection;
@@ -139,7 +139,7 @@
                 if (is_numeric($_POST['mobiletwo'])) {
 
                     $name = sanitizedData($_POST['mobiletwo']);
-                    $sqlPreventInjection = mysqli_escape_string($connection , $name);
+                    $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                     
                     if (strlen($sqlPreventInjection) <= 15 &&  strlen($sqlPreventInjection) !== 0) {
                         $_SESSION['phonetwoSuccess'] = $sqlPreventInjection;

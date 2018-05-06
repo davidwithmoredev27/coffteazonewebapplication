@@ -25,6 +25,7 @@
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -33,8 +34,8 @@
     <link rel="shortcut icon" href="../img/logo/favicon.ico" type="image/x-icon" />
     <title>Admin Users Page</title>
     <link rel="stylesheet" type="text/css" href="../css/normalize.css">
-    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection"> -->
-    <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css" media="screen, projection">
+    <!-- <link rel="stylesheet" type="text/css" href="../css/materialize.min.css" media="screen, projection"> -->
     <link rel="stylesheet" type="text/css" href="../css/main.css">
     <?php 
         if(isset($_SESSION['sessionexpnotifacation'])) {
@@ -76,7 +77,8 @@
     </div>
     <header class="headerstyle">
         <ul id="dropdown1" class="dropdown-content admincolor adminlinks">
-            <li><a href="logout.php">Log Out</a></li>
+            <li><a href="editaccount.php">Change Password</a></li>
+            <li><a href="logout.php">Log Out</a></li> 
         </ul>
         <nav>
             <div class="nav-wrapper adminnavbar admincolor">
@@ -105,6 +107,7 @@
                     <span>Dashboard</span><i class="left material-icons white-text">dashboard</i>
                 </a>
             </li>
+            
             <li class="no-padding">
                 <ul class="collapsible collapsible-accordion">
                     <li>
@@ -113,10 +116,38 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                <li>
-                                    <a href="homepage.php" class="white-text left-align">Home
-                                        <i class="tiny material-icons left white-text">home</i>
-                                    </a>
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                             <a href="#!" class="collapsible-header left-align admincolor white-text">Home
+                                                <i class="tiny material-icons left white-text">home</i>
+                                             </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                    <li>
+                                                        <a href="slideredit.php" class="white-text left-align indent" style="font-size:.7em !important;">Slider
+                                                            <i class="tiny material-icons left white-text">slideshow</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="bestseller.php" class="white-text left-align indent" style="font-size:.7em !important;">Bestseller
+                                                            <i class="tiny material-icons left white-text">monetization_on</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="newproduct.php" class="white-text left-align indent" style="font-size:.6em !important;">New Prod.
+                                                            <i class="tiny material-icons left white-text">fiber_new</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="promos.php" class="white-text left-align indent" style="font-size:.7em !important;">Promos
+                                                            <i class="tiny material-icons left white-text">new_releases</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
                                 </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
@@ -138,6 +169,29 @@
                                                     </li>
                                                      <li>
                                                          <a href="dessert.php" class="white-text left-align indent">Dessert
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                 <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">Services
+                                                <i class="tiny material-icons left white-text">motorcycle</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvservices.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasservices.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
@@ -185,7 +239,29 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                            
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">FAQ
+                                                <i class="tiny material-icons left white-text">question_answer</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvfaq.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasfaq.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -253,12 +329,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="filter.php" class="white-text left-align">Request
+                                    <a href="../filter.php" class="white-text left-align">Request
                                         <i class="tiny material-icons  white-text left">blur_circular</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="registrationadmin.php" class="white-text left-align">Registration
+                                    <a href="../registrationadmin.php" class="white-text left-align">Registration
                                         <i class="tiny material-icons white-text left">person_add</i>
                                     </a>
                                 </li>
@@ -275,13 +351,13 @@
                         </a>
                         <div class="collapsible-body admincolor">
                             <ul>
-                                 <li>
-                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                <li>
+                                    <a href="editaccount.php" class="white-text left-align" style="font-size:.8em !important;">Change Pass.
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="logout.php" class="white-text left-align">Logout
+                                    <a href="logout.php" class="white-text left-align" style="font-size:.8em !important;">Logout
                                         <i class="tiny material-icons white-text left">input</i>
                                     </a>
                                 </li>
@@ -534,15 +610,15 @@
     </main>
   
     <!-- for development javascript file -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
-    <!-- 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+
     <script src="../js/main.js" type="text/javascript"></script>
 </body><?php 
     mysqli_close($connection); 

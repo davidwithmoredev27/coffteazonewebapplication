@@ -18,7 +18,7 @@
             if (isset($_POST['deletepromosid'])) {
                 if (is_numeric($_POST['deletepromosid'])) {
                     $id = sanitizedData($_POST['deletepromosid']);
-                    $preventSQl = mysqli_escape_string($connection , $id);
+                    $preventSQl = mysqli_real_escape_string($connection , $id);
 
                     $sql = "SELECT * FROM tbl_promos WHERE id = ". $preventSQl;
 

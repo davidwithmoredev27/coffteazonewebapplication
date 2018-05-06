@@ -37,7 +37,7 @@
             if(isset($_POST['sliderid'])) {
                 if (is_numeric($_POST['sliderid'])) {
                     $deleteid = sanitizedData($_POST['sliderid']);
-                    $preventSqlInjection  = mysqli_escape_string($connection , $deleteid);
+                    $preventSqlInjection  = mysqli_real_escape_string($connection , $deleteid);
 
 
                     $sql = "SELECT * FROM tbl_slider WHERE id = ". $preventSqlInjection;

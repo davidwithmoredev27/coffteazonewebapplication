@@ -17,6 +17,7 @@
     <meta charset="UTF-8">
     <!--[if lt IE 9]>
         <script type="text/javascript" src="../js/html5shiv.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
     <![endif]-->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -150,6 +151,29 @@
                                         </li>
                                     </ul>
                                 </li>
+                                 <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">Services
+                                                <i class="tiny material-icons left white-text">motorcycle</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvservices.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasservices.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -189,7 +213,29 @@
                                         <i class="tiny material-icons left white-text">local_phone</i>
                                     </a>
                                 </li>
-                            
+                                <li class="no-padding">
+                                    <ul class="collapsible collapsible-accordion">
+                                        <li>
+                                            <a href="#!" class="collapsible-header white-text left-align">FAQ
+                                                <i class="tiny material-icons left white-text">question_answer</i>
+                                            </a>
+                                            <div class="collapsible-body admincolor">
+                                                <ul>
+                                                     <li>
+                                                         <a href="ktvfaq.php" class="white-text left-align" style="font-size:.8em !important;">KTV
+                                                            <i class="tiny material-icons left white-text">mic</i>
+                                                        </a>
+                                                    </li>
+                                                     <li>
+                                                         <a href="martinasfaq.php" class="white-text left-align" style="font-size:.8em !important;">Martinas
+                                                            <i class="tiny material-icons left white-text">cake</i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
                                 <li class="no-padding">
                                     <ul class="collapsible collapsible-accordion">
                                         <li>
@@ -280,12 +326,12 @@
                         <div class="collapsible-body admincolor">
                             <ul>
                                 <li>
-                                    <a href="editaccount.php" class="white-text left-align">Change Password
+                                    <a href="editaccount.php" class="white-text left-align" style="font-size:.8em !important;">Change Pass.
                                         <i class="tiny material-icons white-text left">fingerprint</i>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="logout.php" class="white-text left-align">Logout
+                                    <a href="logout.php" class="white-text left-align" style="font-size:.8em !important;">Logout
                                         <i class="tiny material-icons white-text left">input</i>
                                     </a>
                                 </li>
@@ -386,7 +432,7 @@
                                 </div>
                                 <div class="input-field col l12 m12 xl12 s12">
                                     <div class="row">
-                                        <button type="submit" name="visionsubmits" class="col offset-xl4 offset-l4 xl3 l3 m12 s12 btn waves-light waves-effect">Add</button>
+                                        <button type="submit" name="visionsubmits" class="add col offset-xl4 offset-l4 xl3 l3 m12 s12 btn waves-light waves-effect">Add</button>
                                     </div>
                                 </div>
                             </div>   
@@ -397,16 +443,62 @@
         </div>
     </main>
     <!-- for development javascript file -->
-    <script type="text/javascript" src="../js/jquery.min.js"></script>
-    <script type="text/javascript" src="../js/materialize.min.js"></script>
+    <!-- <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/materialize.min.js"></script> -->
 
     <!-- for production ready javascript file -->
     <!-- uncomment all the script for production used -->
     
-        <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
-     -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
     <script src="../js/main.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
+
+            var deleteData = function() {
+                var click = document.getElementsByClassName("delete");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want To delete this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            var addData = function() {
+                var click = document.getElementsByClassName("add");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to add this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+
+            var updateData = function() {
+                var click = document.getElementsByClassName("update");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to update this album?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            window.onload  = function () {
+                addData();
+                deleteData();
+                updateData();
+            };
+        })();
+    </script>
 
 </body>
 <?php $_SESSION['registrationsuccess'] = null;?>

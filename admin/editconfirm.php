@@ -43,7 +43,7 @@
                     die;
                  } elseif (strlen($_POST['oldpassword'])  >= 8) {
                     $oldpassword = sanitizedData($_POST['oldpassword']);
-                    $oldpasspreventsqlinjection = mysqli_escape_string($connection ,$oldpassword);
+                    $oldpasspreventsqlinjection = mysqli_real_escape_string($connection ,$oldpassword);
                     $hashed_oldPassword = crypt($oldpasspreventsqlinjection , $salt);
                     $sql = "SELECT password FROM tbl_admin WHERE username ="."\"".$_SESSION['username']."\"";
                 

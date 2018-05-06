@@ -100,7 +100,7 @@
                     
                     $_SESSION['title'] = sanitizedData($_POST['menutitle']);
                    
-                    $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['title']);
+                    $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection ,  $_SESSION['title']);
     
                     if (strlen($_SESSION['preventsqlinjection']) < 50 || strlen($_SESSION['preventsqlinjection']) == 50) {
                         
@@ -124,7 +124,7 @@
 
                 if (isset($_POST['menucaption'])) {
                     $_SESSION['description'] = sanitizedData($_POST['menucaption']);
-                    $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['description']);
+                    $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['description']);
         
                     if (strlen($_SESSION['preventsqlinjection']) < 500 || strlen($_SESSION['preventsqlinjection']) == 500) {
                     
@@ -158,7 +158,7 @@
                             die();
                         }
                         $_SESSION['price'] = sanitizedData($_POST['oz12']);
-                        $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
+                        $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['price']);
                     
                         $_SESSION['priceOz12success'] = $_SESSION['preventsqlinjection'];
         
@@ -188,7 +188,7 @@
                             die();
                         }
                         $_SESSION['price'] = sanitizedData($_POST['oz16']);
-                        $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
+                        $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['price']);
                     
                         $_SESSION['priceOz16success'] = $_SESSION['preventsqlinjection'];
         
@@ -217,7 +217,7 @@
                             die();
                         }
                         $_SESSION['price'] = sanitizedData($_POST['oz22']);
-                        $_SESSION['preventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['price']);
+                        $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['price']);
                     
                         $_SESSION['priceOz22success'] = $_SESSION['preventsqlinjection'];
         

@@ -35,7 +35,7 @@
             if(isset($_POST['bestsellerid'])) {
                 if (is_numeric($_POST['bestsellerid'])) {
                     $deleteid = sanitizedData($_POST['bestsellerid']);
-                    $preventSqlInjection  = mysqli_escape_string($connection , $deleteid);
+                    $preventSqlInjection  = mysqli_real_escape_string($connection , $deleteid);
 
 
                     $sql = "SELECT * FROM tbl_bestseller WHERE id = ". $preventSqlInjection;

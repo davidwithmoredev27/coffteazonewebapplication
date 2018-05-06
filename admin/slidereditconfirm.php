@@ -85,7 +85,7 @@
 
             if (isset($_POST['slidereditdecription'])) {
                 $description = sanitizedData($_POST['slidereditdecription']);
-                $preventSQLInjection = mysqli_escape_string($connection , $description);
+                $preventSQLInjection = mysqli_real_escape_string($connection , $description);
 
                 if (strlen($preventSQLInjection) < 50 || strlen($preventSQLInjection) == 50) {
                     

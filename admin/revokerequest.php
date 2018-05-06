@@ -21,7 +21,7 @@
 
     if (isset($_POST['revoke'])) {
         
-        if (filter_var($_POST['revokeid'] , FILTER_VALIDATE_INT)) {
+        if (is_numeric($_POST['revokeid'])) {
             $UserID = sanitizedData($_POST['revokeid']);
             $userIDSQlIPrevent = mysqli_escape_string($connection , $UserID);
             
@@ -40,7 +40,7 @@
                 header("location:filter.php?admin");     
             }
 
-        } elseif (!filter_var($_POST['revokeid'] , FILTER_VALIDATE_INT)) {
+        } elseif (!is_numeric($_POST['revokeid'])) {
             mysqli_close($connection);
             $_SESSION['accountrevokeerror'] = "<span><strong class=\"white-text\">input a Valid is!</strong></span>\n";
             header("location:filter.php?admin");

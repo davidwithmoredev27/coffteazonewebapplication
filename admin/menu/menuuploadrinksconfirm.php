@@ -111,7 +111,7 @@
                     }
                     $_SESSION['confirmtitle'] = sanitizedData($_POST['menuconfirmtitle']);
                   
-                    $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection ,  $_SESSION['confirmtitle']);
+                    $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection ,  $_SESSION['confirmtitle']);
     
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
@@ -154,7 +154,7 @@
                         } 
                     }
                     $_SESSION['confirmdescription'] = sanitizedData($_POST['menuconfirmcaption']);
-                    $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmdescription']);
+                    $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmdescription']);
         
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
                     
@@ -227,7 +227,7 @@
                             die();
                         }
                         $_SESSION['confirmprice16oz'] = sanitizedData($_POST['oz16']);
-                        $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice16oz']);
+                        $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmprice16oz']);
                     
                         $_SESSION['priceconfirm16ozsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         
@@ -266,7 +266,7 @@
                             die();
                         }
                         $_SESSION['confirmprice22oz'] = sanitizedData($_POST['oz22']);
-                        $_SESSION['confirmpreventsqlinjection'] = mysqli_escape_string($connection , $_SESSION['confirmprice22oz']);
+                        $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmprice22oz']);
                     
                         $_SESSION['priceconfirm22ozsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         

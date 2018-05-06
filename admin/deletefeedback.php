@@ -20,7 +20,7 @@
             if (isset($_POST['feedbackdeleteid'])) {
                 if (is_numeric($_POST['feedbackdeleteid'])) {
                     $feedbackId = sanitizedData($_POST['feedbackdeleteid']);
-                    $preventSQl = mysqli_escape_string($connection , $feedbackId);
+                    $preventSQl = mysqli_real_escape_string($connection , $feedbackId);
 
                     $sql = "SELECT * FROM tbl_feedback WHERE feedbackID = ". $preventSQl;
 
