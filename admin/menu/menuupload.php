@@ -100,7 +100,18 @@
     
                     if (strlen($_SESSION['preventsqlinjection']) < 50 || strlen($_SESSION['preventsqlinjection']) == 50) {
                         
-                        $_SESSION['titlesuccess'] = $_SESSION['preventsqlinjection'];
+                        if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['preventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['preventsqlinjection'])) {
+                            $_SESSION['titlesuccess'] = $_SESSION['preventsqlinjection'];
+                        }
+                      
+                        
                        
                     } else if (strlen($_SESSION['preventsqlinjection']) > 50) {
                         mysqli_close($connection);
@@ -123,8 +134,16 @@
                     $_SESSION['preventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['description']);
         
                     if (strlen($_SESSION['preventsqlinjection']) < 500 || strlen($_SESSION['preventsqlinjection']) == 500) {
-                    
-                        $_SESSION['descriptionsuccess'] = $_SESSION['preventsqlinjection'];
+                        if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['preventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['pagelink']);
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['preventsqlinjection'])) {
+                            $_SESSION['descriptionsuccess'] = $_SESSION['preventsqlinjection'];
+                        }
             
                     } else if (strlen($_SESSION['preventsqlinjection']) > 500) {
                         mysqli_close($connection);

@@ -96,7 +96,14 @@
                         $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['historyimgnamesuccess'] = $sqlPreventInjection;
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historyerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:edithistory.php");
+                                die;
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historyimgnamesuccess'] = $sqlPreventInjection;
+                            }
+                            
                                     
                         } elseif (strlen($sqlPreventInjection) > 50 && strlen($sqlPreventInjection) == 0 ) {
                             mysqli_close($connection);

@@ -95,7 +95,14 @@
                         $sqlPreventInjection = mysqli_escape_string($connection , $title);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['promostitleSuccess'] = $sqlPreventInjection; 
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['promoserror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:newproduct.php");
+                                die;
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['promostitleSuccess'] = $sqlPreventInjection;
+                            }
+                             
                             
                         } elseif (strlen($sqlPreventInjection) > 50 ) {
                             mysqli_close($connection);

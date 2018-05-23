@@ -174,6 +174,11 @@
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
+                                                     <li>
+                                                         <a href="../termsandcondition.php" class="white-text center-align" style="font-size:.7em !important;">Terms &amp; Conditions
+                                                
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -431,8 +436,21 @@
                                 <?php
                                     $sql = "SELECT * FROM ". $_SESSION['database_name'];
                                     $result = mysqli_query($connection , $sql);
+                                    $number_of_results  = mysqli_num_rows($result);
+                                    $results_per_page = 5;
+                                    $number_of_pages = ceil ($number_of_results  / $results_per_page);
                                     $counter = 1;
-                                    while($rows = mysqli_fetch_assoc($result)) {
+
+                                    if (!isset($_GET['page'])) {
+                                        $page = htmlspecialchars(1);
+                                    } elseif (isset($_GET['page'])) {
+                                        $page = htmlspecialchars($_GET['page']);
+                                    }
+                                    $this_page_first_result =  ($page - 1) * $results_per_page;
+
+                                    $sql = "SELECT * FROM ". $_SESSION['database_name'] . " LIMIT " . $this_page_first_result . " , " . $results_per_page;
+                                    $result = @mysqli_query($connection , $sql);
+                                    while($rows = @mysqli_fetch_assoc($result)) {
                                         echo "<tr>\n";
                                         echo "<td class=\"center-align\">".$counter."</td>\n";
                                         echo "<td class=\"center-align\"><img height=\"35px\" width=\"50px\" src=\"../../".$rows['path']."\"></td>\n";
@@ -458,6 +476,23 @@
 
                             </tbody>
                     </table>
+                    <div class="col s12 m12 l12 xl12">
+                        <div class="row">
+                            <div class="col s12 m12 l12 xl12">
+                                <ul class="pagination">
+                                    <?php
+                            
+                                        for ($page = 1 ; $page <= $number_of_pages; $page++) {
+                                            //echo $page;
+                                            echo "<li class=\"pagelink waves-effect active teal lighten-1\"><a href=\"".$_SESSION['pagelink']."?page=".$page."\">".
+                                            $page."</a></li>\n";
+                                        }
+                                        
+                                    ?> 
+                                </ul>
+                            </div> 
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -471,7 +506,7 @@
                         <h5 class="col s12 m12 l12 xl12 center-align">Add <?php echo $_SESSION['pagename'];?></h5>
                     </div>
                     <div class="row">
-                        <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="menuuploaddrinks.php">
+                        <form class="col s12 m12 l12 xl12" method="POST" enctype="multipart/form-data" action="menuupload.php">
                             <div class="row">
                                 <div class="input-field col s12 m12 l12 xl12">
                                     <input type="text" id="menutitle" class="center-align" autocomplete="off" name="menutitle" maxlength="50" data-length="50" required class="validate">

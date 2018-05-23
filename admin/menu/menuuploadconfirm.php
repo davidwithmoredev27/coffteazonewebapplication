@@ -113,7 +113,17 @@
     
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
-                        $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                         if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['confirmpreventsqlinjection'])) {
+                           $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+                        
                         //die($_SESSION['confirmpreventsqlinjection']);
                        
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 50) {
@@ -156,6 +166,16 @@
         
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
                     
+                        if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['confirmpreventsqlinjection'])) {
+                           $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+
                         $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
                         //die($_SESSION['descriptionconfirmsuccess']);
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 500) {

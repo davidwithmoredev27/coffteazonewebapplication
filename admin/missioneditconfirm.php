@@ -42,8 +42,15 @@
                         $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 1000 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['descriptioneditconfirm'] = $sqlPreventInjection;
-                                    
+                            
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['missionerrror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:editmission.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['descriptioneditconfirm'] = $sqlPreventInjection;
+                            }
+                                
                         } elseif (strlen($sqlPreventInjection) > 1000 && strlen($sqlPreventInjection) == 0 ) {
                             mysqli_close($connection);
                             $_SESSION['missionerrror']= "<span class=\"center-align\"><strong class=\"white-text\">Characters is greater than 255!</strong></span>\n";

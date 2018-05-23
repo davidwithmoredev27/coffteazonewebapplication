@@ -45,7 +45,13 @@
                         $sqlPreventInjection = mysqli_escape_string($connection , $description);
                         
                         if (strlen($sqlPreventInjection) <= 255 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['descriptionSuccess'] = $sqlPreventInjection; 
+                             if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['missioneerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:mission.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                 $_SESSION['descriptionSuccess'] = $sqlPreventInjection; 
+                            }
                             
                         } elseif (strlen($sqlPreventInjection) > 255 ) {
                             mysqli_close($connection);

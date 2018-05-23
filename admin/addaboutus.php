@@ -96,7 +96,13 @@
                         $sqlPreventInjection = mysqli_escape_string($connection , $title);
                         
                         if (strlen($sqlPreventInjection) <= 3000 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['historySuccess'] = $sqlPreventInjection; 
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['aboutuserror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historySuccess'] = $sqlPreventInjection; 
+                            }
+                            
                             
                         } elseif (strlen($sqlPreventInjection) > 3000 ) {
                             mysqli_close($connection);
@@ -133,7 +139,13 @@
                         $sqlPreventInjection = mysqli_escape_string($connection , $title);
                         
                         if (strlen($sqlPreventInjection) <= 3000 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['visionSuccess'] = $sqlPreventInjection; 
+                             if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['aboutuserror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['visionSuccess'] = $sqlPreventInjection; 
+                            }
+                            
                             
                         } elseif (strlen($sqlPreventInjection) > 3000 ) {
                             mysqli_close($connection);
@@ -172,7 +184,14 @@
                         $sqlPreventInjection = mysqli_escape_string($connection , $title);
                         
                         if (strlen($sqlPreventInjection) <= 3000 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['missionSuccess'] = $sqlPreventInjection; 
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['aboutuserror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:aboutus.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['missionSuccess'] = $sqlPreventInjection;
+                            }
+                             
                             
                         } elseif (strlen($sqlPreventInjection) > 3000 ) {
                             mysqli_close($connection);

@@ -90,7 +90,12 @@
 
                 if (strlen($preventSQLInjection) < 50 || strlen($preventSQLInjection) == 50) {
                     
-                    $DescriptionSuccess = $preventSQLInjection;
+                    if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]/" ,$preventSQLInjection)) {
+                        $_SESSION['slideruploaderror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                        header("location:slideredit.php");die();
+                    } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]/" ,$preventSQLInjection)) {
+                        $DescriptionSuccess = $preventSQLInjection;
+                    }
                     
                 } elseif (strlen($preventSQLInjection) > 50) {
                     mysqli_close($connection);

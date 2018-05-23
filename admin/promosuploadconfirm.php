@@ -1,5 +1,5 @@
 <?php
-    require "../connection.php";
+    require "connection.php";
     session_start();
     if (!isset($_SESSION['username']) && !isset($_SESSION['password'])) {
         mysqli_close($connection);
@@ -79,7 +79,7 @@
         return $sanitizedData;
     }
     function ProcessMenu($menu , $path) {
-        require "../connection.php";
+        require "connection.php";
         if (isset($menu) && isset($path)) {
             if (isset($_POST['menusubtmiconfirm'])) {
 
@@ -104,7 +104,13 @@
     
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
                         
-                        $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                         if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                             $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+                        
                         //die($_SESSION['confirmpreventsqlinjection']);
                        
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 50) {
@@ -146,8 +152,13 @@
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmdescription']);
         
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
-                    
-                        $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                         if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                             $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+            
                         //die($_SESSION['descriptionconfirmsuccess']);
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 500) {
                         mysqli_close($connection);

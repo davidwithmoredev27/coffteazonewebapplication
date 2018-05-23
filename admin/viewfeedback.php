@@ -243,6 +243,11 @@
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
+                                                     <li>
+                                                         <a href="termsandcondition.php" class="white-text center-align" style="font-size:.7em !important;">Terms &amp; Conditions
+                                                
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -445,7 +450,7 @@
                             <div class="col s12 m12 l12 xl12">
                                     <form action="deletefeedback.php" method="POST" class="viewbuttons">
                                         <input type="hidden" required name="feedbackdeleteid" value="<?php echo $_SESSION['viewfeedbackid'];?>">
-                                        <button type="submit" name="feedbackdelete" class="btn red darken-3 waves-light waves-effect">Delete</button>
+                                        <button type="submit" name="feedbackdelete" class="delete btn red darken-3 waves-light waves-effect">Delete</button>
                                     </form>
                                     <a href="feedback.php" class="btn waves-light waves-effect viewbuttons">Close</a>
                                 </div>
@@ -465,7 +470,52 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" type="text/javascript"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        (function(){
 
-   
+            var deleteData = function() {
+                var click = document.getElementsByClassName("delete");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want To delete this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            var addData = function() {
+                var click = document.getElementsByClassName("add");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to add this data?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+
+            var updateData = function() {
+                var click = document.getElementsByClassName("update");
+                for (var x = 0 ; x < click.length ; x++) {
+                    click[x].addEventListener("click" , function (e) {
+                        var x = confirm("Do you want to update this album?");
+                        if (!x) {
+                            e.preventDefault();
+                            return false;
+                        }
+                    } , false);
+                }
+            };
+            window.onload  = function () {
+                addData();
+                deleteData();
+                updateData();
+            };
+        })();
+    </script>
 </body>
 </html>

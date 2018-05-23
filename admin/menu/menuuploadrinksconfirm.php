@@ -114,8 +114,16 @@
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection ,  $_SESSION['confirmtitle']);
     
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 50 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 ) || strlen($_SESSION['confirmpreventsqlinjection']) == 50) {
-                        
-                        $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['confirmpreventsqlinjection'])) {
+                           $_SESSION['titleconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+                
                         //die($_SESSION['confirmpreventsqlinjection']);
                        
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 50) {
@@ -157,8 +165,17 @@
                     $_SESSION['confirmpreventsqlinjection'] = mysqli_real_escape_string($connection , $_SESSION['confirmdescription']);
         
                     if ((strlen($_SESSION['confirmpreventsqlinjection']) < 500 && strlen($_SESSION['confirmpreventsqlinjection']) !== 0 )|| strlen($_SESSION['confirmpreventsqlinjection']) == 500) {
-                    
-                        $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                         if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$_SESSION['confirmpreventsqlinjection'])) {
+                            mysqli_close($connection);
+                            $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
+                                                "<strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong>\n".
+                                                "</strong>\n";
+                            header("location:" .  $_SESSION['editpage']);
+                            die();
+                        } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" , $_SESSION['confirmpreventsqlinjection'])) {
+                           $_SESSION['descriptionconfirmsuccess'] = $_SESSION['confirmpreventsqlinjection'];
+                        }
+
                         //die($_SESSION['descriptionconfirmsuccess']);
                     } elseif (strlen($_SESSION['confirmpreventsqlinjection']) > 500) {
                         mysqli_close($connection);
@@ -180,7 +197,7 @@
                 }
 
                 if (isset($_POST['oz12']) && strlen($_POST['oz12']) !== 0) {
-                    if (filter_var($_POST['oz12'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz12'] , FILTER_VALIDATE_FLOAT )) {
+                    if (is_numeric($_POST['oz12']) {
                          if ($_POST['oz12'] < 0) {
                              $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
@@ -195,7 +212,7 @@
                         
 
 
-                    } elseif (!filter_var($_POST['oz12'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz12'] , FILTER_VALIDATE_FLOAT )) {
+                    } elseif (!is_numeric($_POST['oz12'])) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Use a number for the price!</strong>\n".
@@ -218,7 +235,7 @@
                 #for price 16 oz
 
                 if (isset($_POST['oz16']) && strlen($_POST['oz16']) !== 0) {
-                    if (filter_var($_POST['oz16'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz16'] , FILTER_VALIDATE_FLOAT )) {
+                    if (is_numeric($_POST['oz16'])) {
                         if ($_POST['oz16'] < 0) {
                              $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
@@ -233,7 +250,7 @@
                         
 
 
-                    } elseif (!filter_var($_POST['oz16'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz16'] , FILTER_VALIDATE_FLOAT )) {
+                    } elseif (!is_numeric($_POST['oz16'])) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Use a number for the price!</strong>\n".
@@ -257,7 +274,7 @@
 
 
                 if (isset($_POST['oz22']) && strlen($_POST['oz22']) !== 0) {
-                    if (filter_var($_POST['oz22'] , FILTER_VALIDATE_INT ) || filter_var($_POST['oz22'] , FILTER_VALIDATE_FLOAT )) {
+                    if (is_numeric($_POST['oz22'])) {
                         if ($_POST['oz22'] < 0) {
                              $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Negative number is not allowed!</strong>\n".
@@ -272,7 +289,7 @@
                         
 
 
-                    } elseif (!filter_var($_POST['oz22'] , FILTER_VALIDATE_INT) || !filter_var($_POST['oz22'] , FILTER_VALIDATE_FLOAT )) {
+                    } elseif (!is_numeric($_POST['oz22'])) {
                         mysqli_close($connection);
                         $_SESSION['menuuploaderror'] = "<span class=\"center-align\">\n".
                                                 "<strong class=\"white-text\">Use a number for the price!</strong>\n".

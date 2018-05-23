@@ -129,9 +129,16 @@
                 $preventSQlinjection = mysqli_escape_string($connection , $albumtitle);
                
                 if (strlen($preventSQlinjection) <= 50 && strlen($preventSQlinjection) !== 0 ) {
-                    $title = $preventSQlinjection;
-                    $titleSuccess = preg_replace('/\s/', '_', $preventSQlinjection);
-                    $_SESSION['albumtitlepath'] = $titleSuccess;
+                    if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQlinjection)) {
+                        $_SESSION['albumerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters entry!</strong></span>\n";
+                        header("location:galleryalbumadd.php");
+                        die();
+                    } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQlinjection)) {
+                        $title = $preventSQlinjection;
+                        $titleSuccess = preg_replace('/\s/', '_', $preventSQlinjection);
+                        $_SESSION['albumtitlepath'] = $titleSuccess;
+                    }
+                   
                 } elseif (strlen($preventSQlinjection) > 50) {
                     mysqli_close($connection);
                     $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".
@@ -153,8 +160,17 @@
                 $preventSQlinjection = mysqli_escape_string($connection , $albumdescription);
                 
                 if (strlen($preventSQlinjection) <= 100  && strlen($preventSQlinjection) !== 0 ) {
-                    $descriptionSuccess = $preventSQlinjection;
-                    $_SESSION['albumdescription'] = $descriptionSuccess;
+
+
+                    if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQlinjection)) {
+                        $_SESSION['albumerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters entry!</strong></span>\n";
+                        header("location:galleryalbumadd.php");
+                        die();
+                    } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQlinjection)) {
+                        $descriptionSuccess = $sqlPreventInjection;
+                        $_SESSION['albumdescription'] = $descriptionSuccess;
+                    }
+                    
                 } elseif (strlen($preventSQlinjection) > 100) {
                     mysqli_close($connection);
                       $_SESSION['albumerror'] = "<span class=\"red darken-3\"><strong class=\"white-text center-align\">".

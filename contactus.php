@@ -58,7 +58,7 @@
 
         if (isset($_POST['email'])) {
             $email = sanitizedData($_POST['email']);
-            $preventSQLInjection = mysqli_escape_string($connection , $email);
+            $preventSQLInjection = mysqli_real_escape_string($connection , $email);
             if (filter_var($preventSQLInjection , FILTER_VALIDATE_EMAIL)) {
                 if (strlen($preventSQLInjection) > 50) {
                     $_SESSION['contactuserror'] = "<b>Maximum email characters is 50!</b>\n";
@@ -86,14 +86,14 @@
 
         if (isset($_POST['contactno'])) {
             $contactnumber = sanitizedData($_POST['contactno']);
-            $preventSQLInjection = mysqli_escape_string($connection , $contactnumber);
-            if (strlen($preventSQLInjection) > 20) {
-                $_SESSION['contactuserror'] = "<b>Maximum number characters is 20!</b>\n";
+            $preventSQLInjection = mysqli_real_escape_string($connection , $contactnumber);
+            if (strlen($preventSQLInjection) > 11) {
+                $_SESSION['contactuserror'] = "<b>Maximum Phone number characters is 12!</b>\n";
                 header("location:contactus.php");
                 die();
-            } elseif (strlen($preventSQLInjection) <= 20) {
+            } elseif (strlen($preventSQLInjection) <= 11) {
                 if (preg_match('/[a-zA-Z]|[[:blank:]]|[\'^£$%&*()}{@#~?><>,.|=_+¬-]/',$preventSQLInjection)) {
-                    $_SESSION['contactuserror'] = "<b>Invalid Number!</b>\n";
+                    $_SESSION['contactuserror'] = "<b>Invalid Phone Number!</b>\n";
                     header("location:contactus.php");
                     die();
                 } elseif (!preg_match('/[a-zA-Z]|[[:blank:]]|[\'^£$%&*()}{@#~?><>,.|=_+¬-]/',$preventSQLInjection)) {

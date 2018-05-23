@@ -168,6 +168,11 @@
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
+                                                     <li>
+                                                         <a href="termsandcondition.php" class="white-text center-align" style="font-size:.7em !important;">Terms &amp; Conditions
+                                                
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -466,13 +471,13 @@
                                             echo "<td class=\"center-align\"><img height=\"35px\" width=\"50px\" src=\"../".$rows['path']."\"></td>\n";
                                             echo "<td class=\"center-align\">".$rows['img']."</td>\n";
                                     
-                                            echo "<td class=\center-align\">".
+                                            echo "<td class=\"center-align\">".
                                                     "<form method=\"POST\" action=\"slideedit.php\">".
                                                         "<input type=\"hidden\" name=\"sliderid\" value=\"".$rows['id'] . "\">".
                                                         "<button type=\"submit\" name=\"editslider\" class=\"btn waves-effect waves-light\">edit</button>".
                                                     "</form>".
                                                 "</td>";
-                                              echo "<td class=\center-align\">".
+                                              echo "<td class=\"center-align\">".
                                                     "<form method=\"POST\" action=\"sliderdelete.php\">".
                                                         "<input type=\"hidden\" name=\"sliderid\" value=\"".$rows['id'] . "\">".
                                                         "<button type=\"submit\" name=\"deleteslider\" class=\"delete btn waves-effect red darken-3 waves-light\">Delete</button>".
@@ -512,7 +517,7 @@
                                             echo "<td class=\"center-align\">".$counter."</td>\n";
                                             echo "<td class=\"center-align\"><img height=\"35px\" width=\"50px\" src=\"../".$rows['path']."\"></td>\n";
                                             echo "<td class=\"center-align\">".$rows['img']."</td>\n";
-                                             echo "<td class=\center-align\">".
+                                             echo "<td class=\"center-align\">".
                                                     "<form method=\"POST\" action=\"slideedit.php\">".
                                                         "<input type=\"hidden\" name=\"sliderid\" value=\"".$rows['id'] . "\">".
                                                         "<button type=\"submit\" name=\"editslider\" class=\"btn waves-effect waves-light\">edit</button>".
@@ -581,7 +586,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js" type="text/javascript"></script>
 
     <script src="../js/main.js" type="text/javascript"></script>
-    <script src="../js/validation.js" type="text/javascript"><script>
+    <script src="../js/validation.js" type="text/javascript"></script>
     <script type="text/javascript">
         (function(){
 
@@ -614,7 +619,7 @@
                 var click = document.getElementsByClassName("update");
                 for (var x = 0 ; x < click.length ; x++) {
                     click[x].addEventListener("click" , function (e) {
-                        var x = confirm("Do you want to update this album?");
+                        var x = confirm("Do you want to update this data?");
                         if (!x) {
                             e.preventDefault();
                             return false;
@@ -629,7 +634,6 @@
             };
         })();
     </script>
-
 </body>
 
 </html>

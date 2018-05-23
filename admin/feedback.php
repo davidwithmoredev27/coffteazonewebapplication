@@ -168,6 +168,11 @@
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
+                                                     <li>
+                                                         <a href="termsandcondition.php" class="white-text center-align" style="font-size:.7em !important;">Terms &amp; Conditions
+                                                
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>
@@ -455,7 +460,7 @@
                                         echo "<td class=\"center-align\">\n".
                                                 "<form method=\"POST\" action=\"deletefeedback.php\">\n".
                                                     "<input type=\"hidden\" name=\"feedbackdeleteid\" value=\"".$rows['feedbackID'] . "\">\n".
-                                                    "<button type=\"submit\" name=\"feedbackdelete\" class=\"btn red darken-3 waves-effect waves-light\">Delete</button>\n".
+                                                    "<button type=\"submit\" name=\"feedbackdelete\" class=\"delete btn red darken-3 waves-effect waves-light\">Delete</button>\n".
                                                 "</form>".
                                             "</td>";
                                         echo "</tr>\n";
@@ -470,9 +475,7 @@
                             <div class="col s12 m12 l12 xl12">
                                 <ul class="pagination">
                                     <?php
-                                        if ($page > 10) {
-                                             echo "<li class=\"waves-effect\"><a href=\"feedback.php?page=".($page - 1)."\"><i class=\"material-icons\">chevron_left</i></a></li>\n";
-                                        }
+                    
                                         for ($page = 1 ; $page <= $number_of_pages; $page++) {
                                             //echo $page;
                                             echo "<li class=\"pagelink waves-effect active teal lighten-1\"><a href=\"feedback.php?page=".$page."\">".

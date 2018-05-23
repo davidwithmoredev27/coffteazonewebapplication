@@ -217,6 +217,11 @@
                                                             <i class="tiny material-icons left white-text">cake</i>
                                                         </a>
                                                     </li>
+                                                     <li>
+                                                         <a href="termsandcondition.php" class="white-text center-align" style="font-size:.7em !important;">Terms &amp; Conditions
+                                                
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </li>

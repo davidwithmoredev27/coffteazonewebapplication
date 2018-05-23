@@ -96,11 +96,23 @@
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                      <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                         <?php
+                                            $sql = "SELECT * FROM tbl_roomonetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 30 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -136,11 +148,23 @@
                                 <div class="roomcontent">
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_roomonetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 30 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -180,11 +204,23 @@
                                 <div class="roomcontent">
                                     <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_roomtwotc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 20 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -219,11 +255,23 @@
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_roomtwotc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 20 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                         <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -263,11 +311,23 @@
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_roomthreetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 15 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -303,11 +363,23 @@
                                 <div class="roomcontent">
                                      <h6 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum of 5 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_roomthreetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum of 5 persons.</li>
                                         <li class="left-align">Maximum of 15 persons.</li>
                                         <li class="left-align">&#8369;150 per head (For the first hour).</li>
                                         <li class="left-align">&#8369;100 per head (For the next and succeding hour)</li>
-                                        <li class="left-align">Consumable of food and drinks.</li>
+                                        <li class="left-align">Consumable of food and drinks.</li> -->
                                     </ul>
                                     <h6 class="center-align" style="font-size:1.3em"><b>Reservation</b></h6>
                                     <ul class="liststyle">
@@ -347,14 +419,26 @@
                                      <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                      <h6><b>Package 1.</b> Seven thousand (&#8369;7,000)</h6>
                                      <ul class="liststyle">
-                                        <li class="left-align">Minimum capacity of 100 persons.</li>
+                                         <?php
+                                            $sql = "SELECT * FROM tbl_packageonetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum capacity of 100 persons.</li>
                                         <li class="left-align">Sound system with DJ.</li>
                                         <li class="left-align">Tables and chairs</li>
                                         <li class="left-align">Personal powder room.</li>
                                         <li class="left-align">Air condition.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
-                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li> -->
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
                                     <ul class="liststyle">
@@ -389,14 +473,26 @@
                                     <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                     <h6><b>Package 1.</b> Seven thousand (&#8369;7,000)</h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum capacity of 100 persons.</li>
+                                        <?php
+                                            $sql = "SELECT * FROM tbl_packageonetc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum capacity of 100 persons.</li>
                                         <li class="left-align">Sound system with DJ.</li>
                                         <li class="left-align">Tables and chairs</li>
                                         <li class="left-align">Personal powder room.</li>
                                         <li class="left-align">Air condition.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
-                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li> -->
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
                                     <ul class="liststyle">
@@ -436,7 +532,19 @@
                                      <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                      <h6><b>Package 2.</b> Ten thousand (&#8369;10,000)with extension.</h6>
                                      <ul class="liststyle">
-                                        <li class="left-align">Minimum capacity of 150 persons.</li>
+                                         <?php
+                                            $sql = "SELECT * FROM tbl_packagetwotc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum capacity of 150 persons.</li>
                                         <li class="left-align">Sound system with DJ.</li>
                                         <li class="left-align">Tables and chairs</li>
                                         <li class="left-align">Personal powder room.</li>
@@ -446,7 +554,7 @@
                                         <li class="left-align">Projector.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
-                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li> -->
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
                                     <ul class="liststyle">
@@ -481,7 +589,19 @@
                                     <h5 class="center-align" style="font-size:1.3em"><b>Terms and Condition</b></h5>
                                     <h6><b>Package 2.</b> Ten thousand (&#8369;10,000)with extension.</h6>
                                     <ul class="liststyle">
-                                        <li class="left-align">Minimum capacity of 150 persons.</li>
+                                         <?php
+                                            $sql = "SELECT * FROM tbl_packagetwotc";
+
+                                            $result = mysqli_query($connection , $sql);
+
+                                            if (mysqli_num_rows($result) > 0) {
+                                                while ($rows = mysqli_fetch_assoc($result)) {
+                                                    echo "<li class=\"left-align\">".$rows['terms_and_conditions'] . "</li>\n";
+                                                }
+                                            }
+                                         
+                                         ?>
+                                        <!-- <li class="left-align">Minimum capacity of 150 persons.</li>
                                         <li class="left-align">Sound system with DJ.</li>
                                         <li class="left-align">Tables and chairs</li>
                                         <li class="left-align">Personal powder room.</li>
@@ -491,7 +611,7 @@
                                         <li class="left-align">Projector.</li>
                                         <li class="left-align">Preparation time is one hour.</li>
                                         <li class="left-align">Operating party time is 6 hours.</li>
-                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li>
+                                        <li class="left-align">Additional five hundred (&#8369;500) for the next and succeding hours.</li> -->
                                     </ul>
                                     <h5 class="center-align" style="font-size:1.3em"><b>Reservation</b></h5>
                                     <ul class="liststyle">

@@ -93,7 +93,13 @@
                 $preventSQLInjection = mysqli_escape_string($connection , $title);
                 //die($preventSQLInjection);
                 if (strlen($preventSQLInjection) < 20 || strlen($preventSQLInjection) == 20) {
-                    
+                    if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQLInjection)) {
+                        $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                        header("location:bestseller.php");
+                        die();
+                    } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQLInjection)) {
+                         $titleSuccess = $preventSQLInjection;
+                    }
                     $titleSuccess = $preventSQLInjection;
                 } else if (strlen($preventSQLInjection) > 20) {
                     mysqli_close($connection);
@@ -116,8 +122,13 @@
                 $preventSQLInjection = mysqli_escape_string($connection , $description);
 
                 if (strlen($preventSQLInjection) < 50 || strlen($preventSQLInjection) == 50) {
-                    
-                    $DescriptionSuccess = $preventSQLInjection;
+                    if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQLInjection)) {
+                        $_SESSION['bestselleruploaderror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                         header("location:bestseller.php");
+                        die();
+                    } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$preventSQLInjection)) {
+                        $DescriptionSuccess = $preventSQLInjection;
+                    }
                     
                 } else if (strlen($preventSQLInjection) > 50) {
                     mysqli_close($connection);

@@ -42,7 +42,16 @@
                         $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 50 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['historyeditconfirm'] = $sqlPreventInjection;
+
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historyerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:edithistory.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historyeditconfirm'] = $sqlPreventInjection;
+                            }
+                            
+        
                                     
                         } elseif (strlen($sqlPreventInjection) > 50 && strlen($sqlPreventInjection) == 0 ) {
                             mysqli_close($connection);
@@ -81,8 +90,15 @@
                         $sqlPreventInjection = mysqli_real_escape_string($connection , $name);
                         
                         if (strlen($sqlPreventInjection) <= 255 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['descriptioneditconfirm'] = $sqlPreventInjection;
-                                    
+
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['historyerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:edithistory.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['descriptioneditconfirm'] = $sqlPreventInjection;
+                            }
+                            
                         } elseif (strlen($sqlPreventInjection) > 255 && strlen($sqlPreventInjection) == 0 ) {
                             mysqli_close($connection);
                             $_SESSION['historyerror']= "<span class=\"center-align\"><strong class=\"white-text\">Characters is greater than 255!</strong></span>\n";

@@ -45,8 +45,14 @@
                         $sqlPreventInjection = mysqli_real_escape_string($connection , $description);
                         
                         if (strlen($sqlPreventInjection) <= 1000 &&  strlen($sqlPreventInjection) !== 0) {
-                            $_SESSION['descriptionSuccess'] = $sqlPreventInjection; 
-                            
+                            if (preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['visionerror'] = "<span class=\"center-align\"><strong class=\"white-text\">You cannot use space and special characters and numbers as your first entry!</strong></span>\n";
+                                header("location:vision.php");
+                                die();
+                            } elseif (!preg_match("/^[\'^£$%&*()}{@#~?><>,.|=_+¬-]|^[[:blank:]]|^[0-9]/" ,$sqlPreventInjection)) {
+                                $_SESSION['descriptionSuccess'] = $sqlPreventInjection;
+                            }
+                    
                         } elseif (strlen($sqlPreventInjection) > 1000 ) {
                             mysqli_close($connection);
                             $_SESSION['visionerrror']= "<span class=\"center-align\"><strong class=\"white-text\">Characters is greater than 255!</strong></span>\n";
